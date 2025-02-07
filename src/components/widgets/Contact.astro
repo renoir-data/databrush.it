@@ -14,6 +14,9 @@ const {
   button,
   description,
 
+  method = 'post',
+  action = '',
+
   id,
   isDark = false,
   classes = {},
@@ -33,6 +36,8 @@ const {
           disclaimer={disclaimer}
           button={button}
           description={description}
+          method={method}
+          action={action}
         />
       </div>
     )

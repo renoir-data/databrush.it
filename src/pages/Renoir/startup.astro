@@ -1,0 +1,419 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+import Features2 from '~/components/widgets/Features2.astro';
+import Features from '~/components/widgets/Features.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+
+import ContactUs from '~/components/widgets/Contact.astro';
+
+import brush_small from '~/assets/images/brush/small.svg?raw';
+import brush_medium from '~/assets/images/brush/medium.svg?raw';
+import brush_large from '~/assets/images/brush/large.svg?raw';
+import brush_xlarge from '~/assets/images/brush/xlarge.svg?raw';
+
+const metadata = {
+  title: 'Databrush Landing Page',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    tagline="Databrush"
+    actions={[
+      {
+        variant: 'primary',
+        target: '_blank',
+        text: 'Get Renoir',
+        href: 'https://github.com/onwidget/astrowind',
+        icon: 'tabler:download',
+      },
+      { text: 'Learn more', href: '#features', variant: 'secondary' },
+    ]}
+  >
+    <Fragment slot="title">
+      <!-- Improve <span class="hidden sm:inline">the online presence of</span> your <span
+        class="text-accent dark:text-white highlight">Startup</span
+      > with Astrowind templates -->
+      <div class="inset-0 bg-gradient-ellipse"></div>
+      You need a <span class=" dark:text-white highlight">Brush</span> to paint a <span
+        class=" dark:text-white highlight">Data Masterpiece</span
+      >
+    </Fragment>
+
+    <Fragment slot="subtitle">
+
+      <!-- Step into the spotlight with <span class="font-semibold">Astrowind</span> templates, your pathway to fortifying your
+      startup's digital footprint, fostering credibility, and expanding your reach. -->
+      <!-- <div class="inset-0 bg-gradient-subslogan"></div> -->
+      Create a <span class="font-semibold">Fast, Easy, Flexible and Efficient</span> Data Infrastructure that grows with
+      you thanks to <span class="font-semibold">Renoir</span>
+      
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0">
+        <!-- small -->
+        <div class="xs:hidden">
+          <Fragment set:html={brush_small} />
+        </div>
+        <!-- medium -->
+        <div class="hidden xs:max-lg:block pt-10">
+          <Fragment set:html={brush_medium} />
+        </div>
+      <div class="flex justify-center items-center overflow-hidden">
+        <div class="hidden lg:max-2xl:block pt-16">
+          <Fragment set:html={brush_large} />
+        </div>
+      </div>
+        <!-- large -->
+      </div>
+      <div class="flex justify-center items-center overflow-hidden -m-32">
+        <div class="hidden 2xl:block">
+          <Fragment set:html={brush_xlarge} />
+        </div>
+      </div>
+    </Fragment>
+    <!-- 
+    <Fragment slot="image">
+      <YouTube id="gxBkghlglTg" title="Astro just Launched.... Could it be the ultimate web framework?" />
+      <style is:inline>
+        lite-youtube {
+          margin: 0 auto;
+          max-width: 100%;
+        }
+      </style>
+    </Fragment> -->
+  </Hero>
+
+  <!-- Features2 Widget ************** -->
+
+  <Features3
+    title="About us"
+    isBeforeContent = {true}
+  >
+    <Fragment slot="subtitle">
+      Databrush is built on decades of expertise in designing distributed infrastructures for data analytics. Led by <span class="text-accent dark:text-white highlight">Davide, Luca, and Fabio</span>, and supported by <span class="text-accent dark:text-white highlight">Gianpaolo and Alessandro</span> from Politecnico di Milano it combines technological innovation and strategic vision to tackle the most complex challenges.
+    </Fragment>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent "></div>
+    </Fragment>
+  </Features3>
+
+  <!-- Stats Widget ****************** -->
+
+  <Stats
+    title="Renoir community in numbers"
+    subtitle="Is just the beginning but it keeps growing"
+    stats={[
+      { title: 'Place at ACM DEBS', amount: '1º' },
+      { title: 'Downloads', amount: '>1000' },
+      { title: 'GitHub Stars', amount: '69' },
+      { title: 'Research Papers', amount: '3' },
+
+    ]}
+  />
+
+  <!-- Brands Widget ****************** -->
+<!-- 
+  <Brands
+    title="Partnerships & Collaborations"
+    icons={[]}
+    images={[
+      {
+        src: 'https://cdn.pixabay.com/photo/2015/05/26/09/37/paypal-784404_1280.png',
+        alt: 'Paypal',
+      },
+      {
+        src: 'https://cdn.pixabay.com/photo/2021/12/06/13/48/visa-6850402_1280.png',
+        alt: 'Visa',
+      },
+      {
+        src: 'https://cdn.pixabay.com/photo/2013/10/01/10/29/ebay-189064_1280.png',
+        alt: 'Ebay',
+      },
+
+      {
+        src: 'https://cdn.pixabay.com/photo/2015/04/13/17/45/icon-720944_1280.png',
+        alt: 'Youtube',
+      },
+      {
+        src: 'https://cdn.pixabay.com/photo/2013/02/12/09/07/microsoft-80658_1280.png',
+        alt: 'Microsoft',
+      },
+      {
+        src: 'https://cdn.pixabay.com/photo/2015/04/23/17/41/node-js-736399_1280.png',
+        alt: 'Node JS',
+      },
+      {
+        src: 'https://cdn.pixabay.com/photo/2015/10/31/12/54/google-1015751_1280.png',
+        alt: 'Google',
+      },
+      {
+        src: 'https://cdn.pixabay.com/photo/2021/12/06/13/45/meta-6850393_1280.png',
+        alt: 'Meta',
+      },
+      {
+        src: 'https://cdn.pixabay.com/photo/2013/01/29/22/53/yahoo-76684_1280.png',
+        alt: 'Yahoo',
+      },
+    ]}
+  >
+      <Fragment slot="subtitle">
+        At <span class="text-accent dark:text-white highlight">Databrush</span>, we believe that innovation isn't just about technology, it's also about collaboration
+      </Fragment>
+  </Brands> -->
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="What services do we provide?"
+    subtitle="We offer companies the ability to exploit the full potential of their data"
+    items={[
+      {
+        title: 'Renoir Platform',
+        description:
+          'For companies that needs a powerfull and flexible platform to manage their data and analytics.',
+        icon: 'flat-color-icons:document',
+        callToAction : {
+          target: '_blank',
+          text: 'Get Renoir',
+          href: ''
+        },
+        classes: {
+          panel: 'flex justify-between',
+        },
+      },
+      {
+        title: 'Data Science',
+        description:
+          'For companies that needs to extract value from their data and make data-driven decisions.',
+        icon: 'flat-color-icons:template',
+        callToAction : {
+          target: '_blank',
+          text: 'Contact Us',
+          href: ''
+        },
+        classes: {
+          panel: 'flex justify-between',
+        },
+      },
+      {
+        title: 'Renoir in Cloud ',
+        description:
+          'For companies that needs to scale their data infrastructure and analytics.',
+        icon: 'flat-color-icons:voice-presentation',
+        callToAction : {
+          target: '_blank',
+          text: 'Learn More',
+          href: ''
+        },
+        classes: {
+          panel: 'flex justify-between',
+        },
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- Features Widget *************** -->
+
+  <Features
+    id="features"
+    title="Features of Renoir"
+    subtitle="Renoir has several features that make it a great choice for your company data infrastructure"
+    columns={3}
+    items={[
+      {
+        title: 'Design with the Latest Technologies',
+        description:
+          'Built with Rust, ensuring high performance and reliability. Renoir is designed to perform even in the most critical tasks.',
+        icon: 'tabler:artboard',
+      },
+      {
+        title: 'Streaming Real Time',
+        description: 'Design to handle real-time data streams, Renoir is the perfect choice for companies that need to process data when they are generated.',
+        icon: 'tabler:picture-in-picture',
+      },
+      {
+        title: 'Customizability',
+        description:
+          'Easily customizable to perform even the most complex tasks for every vertical scenario, making it the ultimate solution for your needs.',
+        icon: 'tabler:adjustments-horizontal',
+      },
+      {
+        title: 'Lighting Fast',
+        description: 'Optimized for speed and performance to ensure insights are delivered quickly and efficiently.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Easy to Use',
+        description:
+          'Designed with user-friendliness in mind, thanks to its high-level API, Renoir is easy to use and integrate with your existing infrastructure.',
+        icon: 'tabler:arrows-right-left',
+      },
+      {
+        title: 'Open Source',
+        description: 'The engine of Renoir is open source, allowing the community to contribute and improve the platform.',
+        icon: 'tabler:plug-connected',
+      },
+    ]}
+  />
+
+  <!-- FAQs Widget ******************* -->
+
+  <FAQs
+    title="Frequently Asked Questions"
+    items={[
+      {
+        title: 'How do I start using Renoir?',
+        description:
+          'You can start usign Renoir following the quick start guide in the documentation. It is easier than you think. If you need help, you can reach out to our support team.',
+      },
+      {
+        title: 'Why should I use Renoir?',
+        description:
+          'Renoir is a powerful and flexible platform it is designed to scale with your company and adapt to your needs. This means that you can focus on what really matters: your business. It cuts down the time to market, operetional cost and allows you to make data-driven decisions.',
+      },
+      {
+        title: 'Where can I find more information about Renoir?',
+        description:
+          'If you need more information about Renoir, you can visit our documentation page. There you will find all the information you need to start using Renoir. More technical information can be found in the GitHub repository. Lastly if you want to read use cases or research papers, you can visit our blog.',
+      },
+      {
+        title: 'Can I try Renoir before buying?',
+        description:
+          'Yes, the engine of Renoir is and always will be open source. You can try it and use it for free. Be part of our community and help us to improve the platform. If you need more from Renoir, you can always upgrade to the enterprise version.',
+      },
+      {
+        title: 'How can Databrush help my company?',
+        description:
+          'Databrush is a team of experts in data analytics and distributed infrastructures. We can help you to design and implement the best data infrastructure for your company. We can help you to extract value from your data and make data-driven decisions. We can help you to scale your data infrastructure and analytics. If you want to know more about how we can help you, you can contact us.',
+      },
+      {
+        title: 'Why Renoir was created?',
+        description:
+          "Renoir is born after years of experience in designing distributed infrastructures for data analytics. We saw that there was a need for a real-time streaming framework that was easy to use, scalable and reliable; withouth reducing the performance. Renoir is the answer to that need. It is designed to be the ultimate solution for your data infrastructure.",
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </FAQs>
+
+  <!-- Features3 Widget ************** -->
+<!-- 
+  <Features3
+    title="Let us know how we can help"
+    subtitle="We're here to help and answer any question you might have."
+    columns={4}
+    items={[
+      {
+        title: 'Phone',
+        icon: 'tabler:phone',
+        callToAction: {
+          target: '_blank',
+          text: 'Call us',
+          href: '/',
+          variant: 'link',
+        },
+      },
+      {
+        title: 'Email',
+        icon: 'tabler:mail',
+        callToAction: {
+          target: '_blank',
+          text: 'Write to us',
+          href: '/',
+          variant: 'link',
+        },
+      },
+      {
+        title: 'Chat with sales',
+        icon: 'tabler:message-circle',
+        callToAction: {
+          target: '_blank',
+          text: 'Start chatting',
+          href: '/',
+          variant: 'link',
+        },
+      },
+      {
+        title: 'Chat with support',
+        icon: 'tabler:message-circle',
+        callToAction: {
+          target: '_blank',
+          text: 'Start chatting',
+          href: '/',
+          variant: 'link',
+        },
+      },
+    ]}
+  /> -->
+
+
+  <ContactUs
+    id="form"
+    title="Drop us a message today!"
+    subtitle="Whether you have a question about features, trials, pricing, need a demo, or anything else, our team is ready to answer all your questions."
+    inputs={[
+      {
+        type: 'text',
+        name: 'name',
+        label: 'Name',
+        placeholder: 'John Doe',
+      },
+      {
+        type: 'email',
+        name: 'email',
+        label: 'Email',
+        placeholder: 'jonh.doe@mail.com'
+      },
+    ]}
+    textarea={{
+      label: 'Message',
+      placeholder: 'HI, I would like to know more about Renoir and how it can help my company.',
+    }}
+    disclaimer={{
+      label:
+        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
+    }}
+    description="Our support team typically responds within 24 business hours."
+    button='Send Message'
+    method='post'
+    action="https://forms.un-static.com/forms/f92a74143ea36998a842bb838854714e148f4379"
+  />
+
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        target: '_blank',
+        text: 'Get Renoir',
+        href: 'https://github.com/deib-polimi/renoir',
+        icon: 'tabler:download',
+      },
+    ]}
+  >
+    <Fragment slot="title">Be a part of our vision</Fragment>
+
+    <Fragment slot="subtitle">
+      <!-- Join the <span class="font-semibold">Astrowind</span> community and start building your online presence today. -->
+      Join the <span class="font-semibold">Renoir</span> community and start building your data infrastructure today.
+    </Fragment>
+  </CallToAction>
+</Layout>

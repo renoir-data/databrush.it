@@ -30,7 +30,7 @@
   }
 
   .btn-secondary {
-    @apply btn;
+    @apply btn; background-color: var(--aw-color-bg-page);
   }
 
   .btn-tertiary {
@@ -89,4 +89,51 @@
 
 .dd *:first-child {
   margin-top: 0;
+}
+
+@keyframes draw {
+  from {
+    stroke-dasharray: 8000;
+    stroke-dashoffset: 8000;
+  }
+  to {
+    stroke-dasharray: 8000;
+    stroke-dashoffset: 0;
+  }
+}
+
+.home-image path {
+  stroke-dasharray: 8000;
+  stroke-dashoffset: 8000;
+  animation: draw 3s ease-in-out forwards;
+}
+
+/* for smaller screen */
+@media (max-width: 767px) {
+  .bg-gradient-ellipse {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    width: 100%;
+    height: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(ellipse at center, var(--aw-color-bg-page-alpha) 30%, var(--aw-color-bg-page) 100%);
+    filter: blur(100px);
+    z-index: -5;
+  }
+}
+
+/* for larger screen */
+@media (min-width: 768px) {
+  .bg-gradient-ellipse {
+    position: absolute;
+    left: 50%;
+    top: 80%;
+    width: 100%;
+    height: 200%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(ellipse at center, var(--aw-color-bg-page-alpha) 30%, var(--aw-color-bg-page) 100%);
+    filter: blur(100px);
+    z-index: -5;
+  }
 }

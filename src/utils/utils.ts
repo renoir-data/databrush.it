@@ -1,4 +1,8 @@
+import type { MarkdownHeading } from 'astro';
 import { I18N } from 'astrowind:config';
+import { clsx, type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+import type { HeadingHierarchy } from '~/doc_types';
 
 export const formatter: Intl.DateTimeFormat = new Intl.DateTimeFormat(I18N?.language, {
   year: 'numeric',
@@ -50,3 +54,37 @@ export const toUiAmount = (amount: number) => {
 
   return value;
 };
+
+// for shadcn components
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+// Helper function to capitalize the first letter of a string
+export const capitalizeFirstLetter = (str: string) => {
+  if (!str) return str;
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
+// create headings for ToC
+export function createHeadingHierarchy(headings: MarkdownHeading[]): HeadingHierarchy[] {
+  const topLevelHeadings: HeadingHierarchy[] = [];
+
+  headings.forEach((heading) => {
+    const h = {
+      ...heading,
+      subheadings: [],
+    };
+
+    if (h.depth >= 2) {
+      topLevelHeadings.push(h);
+    } else {
+      const parent = topLevelHeadings[topLevelHeadings.length - 1];
+      if (parent) {
+        parent.subheadings.push(h);
+      }
+    }
+  });
+
+  return topLevelHeadings;
+}

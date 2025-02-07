@@ -7,7 +7,7 @@ import Headline from '~/components/ui/Headline.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 const {
   title = '',
-  subtitle = '',
+  subtitle = await Astro.slots.render('subtitle'),
   tagline = '',
   icons = [],
   images = [],

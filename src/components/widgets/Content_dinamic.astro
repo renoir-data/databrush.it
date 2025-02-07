@@ -1,0 +1,171 @@
+---
+import type { Content as Props } from '~/types';
+import Headline from '../ui/Headline.astro';
+import WidgetWrapper from '../ui/WidgetWrapper.astro';
+import Image from '~/components/common/Image.astro';
+import Button from '~/components/ui/Button.astro';
+import ItemGrid from '../ui/ItemGrid.astro';
+import company from '../../assets/images/use_cases/data_company.jpg';
+
+const {
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  tagline,
+  content = await Astro.slots.render('content'),
+  callToAction,
+  items = [],
+  columns,
+  image = await Astro.slots.render('image'),
+  isReversed = false,
+  isAfterContent = false,
+
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+---
+
+<WidgetWrapper
+  id={id}
+  isDark={isDark}
+  containerClass={`max-w-7xl mx-auto ${isAfterContent ? 'pt-0 md:pt-0 lg:pt-0' : ''} ${classes?.container ?? ''}`}
+  bg={bg}
+>
+  <Headline
+    title={title}
+    subtitle={subtitle}
+    tagline={tagline}
+    classes={{
+      container: 'max-w-xl sm:mx-auto lg:max-w-2xl',
+      title: 'text-4xl md:text-5xl font-bold tracking-tighter mb-4 font-heading',
+      subtitle: 'max-w-3xl mx-auto sm:text-center text-xl text-muted dark:text-slate-400',
+    }}
+  />
+  <div class="mx-auto max-w-7xl p-4 md:px-8">
+    <div class={`md:flex ${isReversed ? 'md:flex-row-reverse' : ''} md:gap-16`}>
+      <div class="md:basis-1/2 self-center">
+        {content && <div class="mb-12 text-lg dark:text-slate-400" set:html={content} />}
+
+        {
+          callToAction && (
+            <div class="mt-[-40px] mb-8 text-primary">
+              <Button variant="link" {...callToAction} />
+            </div>
+          )
+        }
+
+        <ItemGrid
+          items={items}
+          columns={columns}
+          defaultIcon="tabler:check"
+          classes={{
+            container: `gap-y-2 md:gap-y-4`,
+            panel: 'max-w-none hover:ring ring-primary-500/70 transition-shadow duration-300 rounded-lg p-4 hover-div',
+            title: 'text-lg font-medium leading-6 dark:text-white ml-2 rtl:ml-0 rtl:mr-2 md:max-xl:text-2xl',
+            description: 'text-muted dark:text-slate-400 ml-2 rtl:ml-0 rtl:mr-2 md:max-xl:hidden',
+            icon: 'flex h-7 w-7 items-center justify-center rounded-full bg-green-600 dark:bg-green-700 text-gray-50 p-1',
+            action: 'text-lg font-medium leading-6 dark:text-white ml-2 rtl:ml-0 rtl:mr-2',
+          }}
+        />
+      </div>
+      <div aria-hidden="true" class="mt-10 md:mt-0 md:basis-1/2">
+          <div class="relative m-auto max-w-4xl">
+              <img id="slideshow" src={company.src} class="w-full h-auto rounded-3xl" alt="team" />
+          </div>
+      </div>
+    </div>
+  </div>
+</WidgetWrapper>
+
+<style>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .fade {
+    animation: fadeIn 0.8s ease;
+  }
+</style>
+
+<script>
+
+  import company from '../../assets/images/use_cases/data_company.jpg';
+  import processes from '../../assets/images/use_cases/processes.jpg';
+  import value from '../../assets/images/use_cases/datavalue.jpg';
+
+  // An array of image paths – update these paths as needed.
+  const images = [
+    company.src,
+    processes.src,
+    value.src,
+  ];
+
+  let currentIndex = 0;
+  let interval;
+  const slideshow = document.getElementById('slideshow') as HTMLImageElement;
+
+  /**
+   * Triggers a fade-in animation on the image by removing and re-adding the fade class.
+   */
+  function triggerFade() {
+    if (slideshow) {
+      slideshow.classList.remove('fade');
+      // Force reflow to restart the animation
+      void slideshow.offsetWidth;
+      slideshow.classList.add('fade');
+    }
+  }
+
+  /**
+   * Changes the current image and applies the fade animation.
+   * @param {number} index - The index of the new image in the array.
+   */
+  function changeImage(index) {
+    currentIndex = index;
+    if (slideshow) {
+      slideshow.src = images[index];
+    }
+    triggerFade();
+  }
+
+  /**
+   * Starts the automatic slideshow.
+   */
+  function startSlideshow() {
+    clearInterval(interval);
+    interval = setInterval(() => {
+      const nextIndex = (currentIndex + 1) % images.length;
+      changeImage(nextIndex);
+    }, 2000);
+  }
+  
+  /**
+   * Stops the slideshow.
+   */
+  function stopSlideshow() {
+    clearInterval(interval);
+  }
+
+  // Start the slideshow on page load.
+  startSlideshow();
+
+  // Add event listeners for the hover divs.
+  const hoverDivs = document.querySelectorAll('.hover-div');
+  hoverDivs.forEach(div => {
+    div.addEventListener('mouseenter', () => {
+      console.log('mouseenter');
+      stopSlideshow();
+      const index = parseInt((div as HTMLElement).dataset.index ?? '0', 10);
+      changeImage(index);
+    });
+    
+    div.addEventListener('mouseout', () => {
+      startSlideshow();
+    });
+  });
+</script>

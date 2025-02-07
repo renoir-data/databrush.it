@@ -9,7 +9,7 @@ const {
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
   tagline = await Astro.slots.render('tagline'),
-  image,
+  image = await Astro.slots.render('image'),
   items = [],
   columns,
   defaultIcon,

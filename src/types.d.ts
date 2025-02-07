@@ -44,6 +44,41 @@ export interface Post {
   readingTime?: number;
 }
 
+export interface DocumentationPage {
+  id: string,
+  slug: string,
+  permalink: string,
+  order: number,
+
+  title: string,
+  date?: Date,
+  description?: string,
+
+  Content?: AstroComponentFactory;
+  content?: string;
+
+  readingTime?: number;
+}
+
+export interface Documentation {
+  name: string,
+  chapters: DocumentationChapters[],
+  permalink: string
+}
+
+export interface DocumentationChapters {
+  title: string;
+  order: number;
+  children: DocumentationPagee[];
+  permalink: string;
+}
+
+export interface DocumentationPagee {
+  title: string,
+  order: number,
+  permalink: string,
+}
+
 export interface Taxonomy {
   slug: string;
   title: string;
@@ -139,6 +174,7 @@ export interface Item {
   classes?: Record<string, string>;
   callToAction?: CallToAction;
   image?: Image;
+  data?: Record<string, string>;
 }
 
 export interface Price {
@@ -186,6 +222,7 @@ export interface CallToAction extends Omit<HTMLAttributes<'a'>, 'slot'> {
   text?: string;
   icon?: string;
   classes?: Record<string, string>;
+  disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
 }
 
@@ -210,6 +247,8 @@ export interface Form {
   disclaimer?: Disclaimer;
   button?: string;
   description?: string;
+  method?: string;
+  action?: string;
 }
 
 // WIDGETS

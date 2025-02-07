@@ -1,0 +1,27 @@
+---
+import { type SideNavMenuProps } from '~/doc_types';
+import { capitalizeFirstLetter } from '~/utils/utils';
+
+const { items } = Astro.props as SideNavMenuProps;
+const pathname: string = new URL(Astro.request.url).pathname;
+---
+
+<ul class="list-none">
+  {
+    items.map((item) => {
+      const label = capitalizeFirstLetter(item.title);
+      const className = `
+      ${item.level === 0 ? 'font-bold text-2xl' : item.level === 1 ? 'font-semibold text-md' : 'font-normal text-sm'}
+      ${pathname === '/' + item.permalink ? 'text-primary' : 'no-underline'}
+      `.trim();
+      return (
+        <li class="w-full m-2">
+          <a href={`/${item.permalink}`} class={`${className} leading-normal w-full`}>
+            {label}
+          </a>
+          {item.children.length > 0 && <Astro.self items={item.children} />}
+        </li>
+      );
+    })
+  }
+</ul>

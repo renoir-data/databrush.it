@@ -1,0 +1,34 @@
+---
+import { type HeadingHierarchy, type HeadingProps } from '~/doc_types';
+import { createHeadingHierarchy } from '~/utils/utils';
+
+const { headings } = Astro.props as HeadingProps;
+const toc: HeadingHierarchy[] = createHeadingHierarchy(headings ?? []);
+
+const currHash: string = Astro.url.hash;
+---
+
+{
+  toc.length > 1 && (
+    <div class="relative">
+      <h2 class="text-xl border-none italic">Table of content</h2>
+      <ul class="list-none">
+        {toc.map((heading) => {
+          const className = `${heading.depth === 2 ? 'font-semibold' : 'text-muted-foreground'} m-2`;
+          const hash = `#${heading.slug}`;
+          // TODO: fix the hash highlighting, it is not working
+          return (
+            <li class={className}>
+              <a
+                href={hash}
+                class={`text-md ${currHash === hash ? 'text-primary' : 'no-underline'}`}
+              >
+                {heading.text}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  )
+}
