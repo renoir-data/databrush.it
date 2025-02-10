@@ -29,7 +29,7 @@ export const headerData = {
     },
     {
       text: 'Contact',
-      href: '#',
+      href: '/contact',
     },
   ],
   actions: [{ text: 'Download', href: 'https://github.com/deib-polimi/renoir', target: '_blank' }],

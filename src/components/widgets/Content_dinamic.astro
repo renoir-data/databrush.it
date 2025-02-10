@@ -2,7 +2,6 @@
 import type { Content as Props } from '~/types';
 import Headline from '../ui/Headline.astro';
 import WidgetWrapper from '../ui/WidgetWrapper.astro';
-import Image from '~/components/common/Image.astro';
 import Button from '~/components/ui/Button.astro';
 import ItemGrid from '../ui/ItemGrid.astro';
 import company from '../../assets/images/use_cases/data_company.jpg';
@@ -15,10 +14,8 @@ const {
   callToAction,
   items = [],
   columns,
-  image = await Astro.slots.render('image'),
   isReversed = false,
   isAfterContent = false,
-
   id,
   isDark = false,
   classes = {},
@@ -46,7 +43,6 @@ const {
     <div class={`md:flex ${isReversed ? 'md:flex-row-reverse' : ''} md:gap-16`}>
       <div class="md:basis-1/2 self-center">
         {content && <div class="mb-12 text-lg dark:text-slate-400" set:html={content} />}
-
         {
           callToAction && (
             <div class="mt-[-40px] mb-8 text-primary">
@@ -54,7 +50,6 @@ const {
             </div>
           )
         }
-
         <ItemGrid
           items={items}
           columns={columns}
@@ -70,9 +65,9 @@ const {
         />
       </div>
       <div aria-hidden="true" class="mt-10 md:mt-0 md:basis-1/2">
-          <div class="relative m-auto max-w-4xl">
-              <img id="slideshow" src={company.src} class="w-full h-auto rounded-3xl" alt="team" />
-          </div>
+        <div class="relative m-auto max-w-4xl">
+          <img id="slideshow" src={company.src} class="w-full h-auto rounded-3xl" alt="team" />
+        </div>
       </div>
     </div>
   </div>
@@ -88,84 +83,111 @@ const {
     }
   }
   .fade {
-    animation: fadeIn 0.8s ease;
+    animation: fadeIn 1s ease;
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  .fade-out {
+    animation: fadeOut 0.5s ease;
   }
 </style>
 
 <script>
-
   import company from '../../assets/images/use_cases/data_company.jpg';
   import processes from '../../assets/images/use_cases/processes.jpg';
   import value from '../../assets/images/use_cases/datavalue.jpg';
 
-  // An array of image paths – update these paths as needed.
-  const images = [
-    company.src,
-    processes.src,
-    value.src,
-  ];
+  document.addEventListener("DOMContentLoaded", () => {
+    // Array di immagini (usa .src per ottenere il percorso)
+    const images = [
+      company.src,
+      processes.src,
+      value.src,
+    ];
 
-  let currentIndex = 0;
-  let interval;
-  const slideshow = document.getElementById('slideshow') as HTMLImageElement;
+    let currentIndex = 0;
+    let interval;
+    const slideshow = document.getElementById("slideshow");
 
-  /**
-   * Triggers a fade-in animation on the image by removing and re-adding the fade class.
-   */
-  function triggerFade() {
-    if (slideshow) {
-      slideshow.classList.remove('fade');
-      // Force reflow to restart the animation
-      void slideshow.offsetWidth;
-      slideshow.classList.add('fade');
+    /**
+     * Cambia immagine con animazione:
+     * - Applica il fade-out alla vecchia immagine.
+     * - Al termine del fade-out, cambia l'immagine e applica il fade-in.
+     *
+     * @param {number} index - L'indice della nuova immagine.
+     */
+    function changeImage(index) {
+      if (!slideshow) return;
+
+      // Rimuovo eventuali classi di animazione esistenti e applico il fade-out
+      slideshow.classList.remove("fade");
+      slideshow.classList.add("fade-out");
+
+      // Quando l'animazione di fade-out termina, cambio immagine e avvio il fade-in
+      slideshow.addEventListener("animationend", function handleFadeOut(e) {
+        // Verifico che sia terminata l'animazione di fade-out
+        if (e.animationName !== "fadeOut") return;
+        slideshow.classList.remove("fade-out");
+
+        // Cambio l'immagine e aggiorno l'indice corrente
+        (slideshow as HTMLImageElement).src = images[index];
+        currentIndex = index;
+
+        // Forzo il reflow (opzionale, per essere sicuri che il browser rilevi la modifica)
+        void slideshow.offsetWidth;
+
+        // Avvio il fade-in
+        slideshow.classList.add("fade");
+
+        // Al termine del fade-in, rimuovo la classe per evitare conflitti
+        slideshow.addEventListener("animationend", function handleFadeIn(e) {
+          if (e.animationName !== "fadeIn") return;
+          slideshow.classList.remove("fade");
+        }, { once: true });
+      }, { once: true });
     }
-  }
 
-  /**
-   * Changes the current image and applies the fade animation.
-   * @param {number} index - The index of the new image in the array.
-   */
-  function changeImage(index) {
-    currentIndex = index;
-    if (slideshow) {
-      slideshow.src = images[index];
+    /**
+     * Avvia lo slideshow automaticamente.
+     * L'intervallo è impostato a 4000ms per dare tempo al fade-out (2s) e al fade-in (2s).
+     */
+    function startSlideshow() {
+      clearInterval(interval);
+      interval = setInterval(() => {
+        const nextIndex = (currentIndex + 1) % images.length;
+        changeImage(nextIndex);
+      }, 4000);
     }
-    triggerFade();
-  }
 
-  /**
-   * Starts the automatic slideshow.
-   */
-  function startSlideshow() {
-    clearInterval(interval);
-    interval = setInterval(() => {
-      const nextIndex = (currentIndex + 1) % images.length;
-      changeImage(nextIndex);
-    }, 2000);
-  }
-  
-  /**
-   * Stops the slideshow.
-   */
-  function stopSlideshow() {
-    clearInterval(interval);
-  }
+    /**
+     * Ferma lo slideshow.
+     */
+    function stopSlideshow() {
+      clearInterval(interval);
+    }
 
-  // Start the slideshow on page load.
-  startSlideshow();
+    // Avvio dello slideshow all'entrata nel DOM
+    startSlideshow();
 
-  // Add event listeners for the hover divs.
-  const hoverDivs = document.querySelectorAll('.hover-div');
-  hoverDivs.forEach(div => {
-    div.addEventListener('mouseenter', () => {
-      console.log('mouseenter');
-      stopSlideshow();
-      const index = parseInt((div as HTMLElement).dataset.index ?? '0', 10);
-      changeImage(index);
-    });
-    
-    div.addEventListener('mouseout', () => {
-      startSlideshow();
+    // Aggiungo gli event listener per i div con la classe "hover-div"
+    document.querySelectorAll(".hover-div").forEach((div, index) => {
+      div.addEventListener("mouseenter", () => {
+        stopSlideshow();
+        changeImage(index);
+      });
+      div.addEventListener("mouseover", () => {
+        stopSlideshow();
+      });
+      div.addEventListener("mouseout", () => {
+        startSlideshow();
+      });
     });
   });
 </script>
