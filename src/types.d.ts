@@ -183,6 +183,7 @@ export interface Price {
   subtitle?: string;
   description?: string;
   price?: number | string;
+  sign?: string;
   period?: string;
   items?: Array<Item>;
   callToAction?: CallToAction;

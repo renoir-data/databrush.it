@@ -10,10 +10,6 @@ export const headerData = {
           href: getPermalink('/renoir/overview'),
         },
         {
-          text: 'Use Cases',
-          href: getPermalink('/renoir/use-cases'),
-        },
-        {
           text: 'Documentation',
           href: getPermalink('/docs/renoir'),
         },
