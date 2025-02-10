@@ -175,7 +175,7 @@ export interface Item {
   callToAction?: CallToAction;
   image?: Image;
   data?: Record<string, string>;
-  year: number;
+  year?: number;
 }
 
 export interface Price {
