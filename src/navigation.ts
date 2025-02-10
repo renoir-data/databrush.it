@@ -21,7 +21,7 @@ export const headerData = {
     },
     {
       text: 'Blog',
-      href: '#',
+      href: getBlogPermalink(),
     },
     {
       text: 'Roadmap',
