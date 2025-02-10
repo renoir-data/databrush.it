@@ -119,7 +119,7 @@
     transform: translate(-50%, -50%);
     background: radial-gradient(ellipse at center, var(--aw-color-bg-page-alpha) 30%, var(--aw-color-bg-page) 100%);
     filter: blur(100px);
-    z-index: -5;
+    z-index: -1;
   }
 }
 

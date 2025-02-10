@@ -54,13 +54,13 @@ const metadata = {
     </Fragment>
 
     <Fragment slot="bg">
-      <div class="absolute inset-0">
+      <div class="absolute inset-0 -z-30">
         <!-- small -->
-        <div class="xs:hidden">
+        <div class="xs:hidden overflow-hidden">
           <Fragment set:html={brush_small} />
         </div>
         <!-- medium -->
-        <div class="hidden xs:max-lg:block pt-10">
+        <div class="hidden xs:max-lg:block pt-10 overflow-hidden">
           <Fragment set:html={brush_medium} />
         </div>
       <div class="flex justify-center items-center overflow-hidden">
