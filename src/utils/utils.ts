@@ -88,3 +88,7 @@ export function createHeadingHierarchy(headings: MarkdownHeading[]): HeadingHier
 
   return topLevelHeadings;
 }
+
+export function isYear(number: number): boolean {
+  return /^\d{4}$/.test(number.toString());
+}
