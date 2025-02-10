@@ -175,6 +175,7 @@ export interface Item {
   callToAction?: CallToAction;
   image?: Image;
   data?: Record<string, string>;
+  year: number;
 }
 
 export interface Price {
@@ -306,6 +307,7 @@ export interface Steps extends Omit<Headline, 'classes'>, Widget {
     description?: string;
     icon?: string;
     classes?: Record<string, string>;
+    year: number;
   }>;
   callToAction?: string | CallToAction;
   image?: string | Image;
