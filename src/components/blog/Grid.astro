@@ -1,14 +1,19 @@
 ---
 import Item from '~/components/blog/GridItem.astro';
+import Item_noimg from '~/components/blog/GridItem_noimg.astro';
 import type { Post } from '~/types';
 
 export interface Props {
   posts: Array<Post>;
+  img: boolean;
 }
 
-const { posts } = Astro.props;
+const { 
+  posts,
+  img,
+ } = Astro.props;
 ---
 
 <div class="grid gap-6 row-gap-5 md:grid-cols-2 lg:grid-cols-4 -mb-6">
-  {posts.map((post) => <Item post={post} />)}
+  {img ? posts.map((post) => <Item post={post} />) : posts.map((post) => <Item_noimg post={post} />)}
 </div>

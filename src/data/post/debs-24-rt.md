@@ -9,6 +9,7 @@ tags:
   - Research
   - DEBS
 # metadata:
+
 ---
 
 We are happy to announce that our paper **"Safe Shared State in Dataflow Systems"** has been accepted at the **18th ACM International Conference on Distributed and Event-based Systems (DEBS 2024)**.
