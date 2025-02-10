@@ -12,33 +12,44 @@ const metadata = {
 <Layout metadata={metadata}>
   <!-- HeroText Widget ******************* -->
 
-  <HeroText tagline="Contact" title="Let's Connect!" />
+  <HeroText tagline="Contact" title="Let's Connect!" subtitle="In Databrush we are always open to new partnerships, collaborations, and opportunities. We are here to help you with any questions you may have."/>
 
   <ContactUs
     id="form"
     title="Drop us a message today!"
-    subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
     inputs={[
       {
         type: 'text',
         name: 'name',
         label: 'Name',
+        placeholder: 'John Doe',
       },
       {
         type: 'email',
         name: 'email',
         label: 'Email',
+        placeholder: 'jonh.doe@mail.com'
       },
     ]}
     textarea={{
       label: 'Message',
+      placeholder: 'HI, I would like to know more about Renoir and how it can help my company.',
     }}
     disclaimer={{
       label:
         'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
     }}
     description="Our support team typically responds within 24 business hours."
-  />
+    button='Send Message'
+    method='post'
+    action="https://forms.un-static.com/forms/f92a74143ea36998a842bb838854714e148f4379"
+  
+  >
+
+  <Fragment slot="subtitle">
+    For quicker answers, explore our <a href="/#FAQ" class="highlight underline">FAQs</a> section. You may find the solution you're looking  for right there! If not, the Databrush team is delighted to help you.
+  </Fragment>
+  </ContactUs>
 
   <!-- Features2 Widget ************** -->
 
@@ -47,33 +58,19 @@ const metadata = {
     items={[
       {
         title: 'General support',
-        description: `Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality.`,
+        description: `Chat with us for general questions, feedback, suggestions, or any other inquiries not covered by the other support categories.`,
       },
       {
         title: 'Contact sales',
         description:
-          'Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.',
+          'Chat with us for sales inquiries, custom projects, partnerships, or other business-related matters.',
       },
       {
         title: 'Technical support',
         description:
-          'Chat with us when facing issues like template installation, problems editing difficulties, compatibility issues with software or download errors, or other technical challenges related to using the templates.',
-      },
-      {
-        title: 'Phone',
-        description: '+1 (234) 567-890',
-        icon: 'tabler:headset',
-      },
-      {
-        title: 'Email',
-        description: 'contact@support.com',
-        icon: 'tabler:mail',
-      },
-      {
-        title: 'Location',
-        description: '1234 Lorem Ipsum St, 12345, Miami, EEUU',
-        icon: 'tabler:map-pin',
+          'Chat with us for technical issues, bugs, feature requests, or any other technical inquiries.',
       },
     ]}
   />
+
 </Layout>
