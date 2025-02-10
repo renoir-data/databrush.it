@@ -21,7 +21,7 @@ metadata:
   openGraph:
     site_name: Databrush
     images:
-      - url: '~/assets/images/default.png'
+      - url: '~/assets/images/team.png'
         width: 1200
         height: 628
     type: website
