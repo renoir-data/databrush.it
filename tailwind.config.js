@@ -20,6 +20,7 @@ export default {
       },
       screens: {
         'xs': '489px',
+        'ham': '768px', // trigger di astro wind per quando mostrare il menu ad HAMburger
       }, 
 
       animation: {
