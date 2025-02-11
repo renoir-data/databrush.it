@@ -42,36 +42,28 @@ const metadata = {
   >
     <Fragment slot="title">
       <div class="inset-0 bg-gradient-ellipse"></div>
-      You need a <span class=" dark:text-white highlight">Brush</span> to paint a <span
-        class=" dark:text-white highlight">Data Masterpiece</span
+      You need a <span class="dark:text-white highlight">Brush</span> to paint a <span class="dark:text-white highlight"
+        >Data Masterpiece</span
       >
     </Fragment>
 
     <Fragment slot="subtitle">
       Create a <span class="font-semibold">Fast, Easy, Flexible and Efficient</span> Data Infrastructure that grows with
       you thanks to <span class="font-semibold">Renoir</span>
-      
     </Fragment>
 
     <Fragment slot="bg">
-      <div class="absolute inset-0 -z-30">
-        <!-- small -->
-        <div class="xs:hidden overflow-hidden">
-          <Fragment set:html={brush_small} />
+      <div class="flex justify-center items-center -z-30 overflow-x-hidden">
+        <div class="sm:hidden w-full">
+          <Fragment set:html={brush_small} class:list="" />
         </div>
-        <!-- medium -->
-        <div class="hidden xs:max-lg:block pt-10 overflow-hidden">
+        <div class="hidden sm:max-lg:block min-[768px]:mt-20 w-full">
           <Fragment set:html={brush_medium} />
         </div>
-      <div class="flex justify-center items-center overflow-hidden">
-        <div class="hidden lg:max-2xl:block pt-16">
+        <div class="hidden lg:max-2xl:block mt-20">
           <Fragment set:html={brush_large} />
         </div>
-      </div>
-        <!-- large -->
-      </div>
-      <div class="flex justify-center items-center overflow-hidden -m-32">
-        <div class="hidden 2xl:block">
+        <div class="hidden 2xl:block -mt-16">
           <Fragment set:html={brush_xlarge} />
         </div>
       </div>
@@ -80,15 +72,15 @@ const metadata = {
 
   <!-- Features2 Widget ************** -->
 
-  <Features3
-    title="About us"
-    isBeforeContent = {true}
-  >
+  <Features3 title="About us" isBeforeContent={true}>
     <Fragment slot="subtitle">
-      Databrush is built on decades of expertise in designing distributed infrastructures for data analytics. Led by <span class="text-accent dark:text-white highlight">Davide, Luca, and Fabio</span>, and supported by <span class="text-accent dark:text-white highlight">Gianpaolo and Alessandro</span> from Politecnico di Milano it combines technological innovation and strategic vision to tackle the most complex challenges.
+      Databrush is built on decades of expertise in designing distributed infrastructures for data analytics. Led by <span
+        class="text-accent dark:text-white highlight">Davide, Luca, and Fabio</span
+      >, and supported by <span class="text-accent dark:text-white highlight">Gianpaolo and Alessandro</span> from Politecnico
+      di Milano it combines technological innovation and strategic vision to tackle the most complex challenges.
     </Fragment>
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent "></div>
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Features3>
 
@@ -102,7 +94,6 @@ const metadata = {
       { title: 'Downloads', amount: '>1000' },
       { title: 'GitHub Stars', amount: '69' },
       { title: 'Research Papers', amount: '3' },
-
     ]}
   />
 
@@ -114,13 +105,12 @@ const metadata = {
     items={[
       {
         title: 'Renoir Platform',
-        description:
-          'For companies that needs a powerfull and flexible platform to manage their data and analytics.',
+        description: 'For companies that needs a powerfull and flexible platform to manage their data and analytics.',
         icon: 'tabler:stack-front',
-        callToAction : {
+        callToAction: {
           target: '_blank',
           text: 'Get Renoir',
-          href: '/docs/renoir'
+          href: '/docs/renoir',
         },
         classes: {
           panel: 'flex justify-between',
@@ -128,13 +118,12 @@ const metadata = {
       },
       {
         title: 'Data Science',
-        description:
-          'For companies that needs to extract value from their data and make data-driven decisions.',
+        description: 'For companies that needs to extract value from their data and make data-driven decisions.',
         icon: 'tabler:chart-covariate',
-        callToAction : {
+        callToAction: {
           target: '_blank',
           text: 'Contact Us',
-          href: '/contact'
+          href: '/contact',
         },
         classes: {
           panel: 'flex justify-between',
@@ -142,13 +131,12 @@ const metadata = {
       },
       {
         title: 'Renoir in Cloud ',
-        description:
-          'For companies that needs to scale their data infrastructure and analytics.',
+        description: 'For companies that needs to scale their data infrastructure and analytics.',
         icon: 'tabler:cloud',
-        callToAction : {
+        callToAction: {
           target: '_blank',
           text: 'Learn More',
-          href: '/renoir/overview'
+          href: '/renoir/overview',
         },
         classes: {
           panel: 'flex justify-between',
@@ -177,7 +165,8 @@ const metadata = {
       },
       {
         title: 'Streaming Real Time',
-        description: 'Design to handle real-time data streams, Renoir is the perfect choice for companies that need to process data when they are generated.',
+        description:
+          'Design to handle real-time data streams, Renoir is the perfect choice for companies that need to process data when they are generated.',
         icon: 'tabler:picture-in-picture',
       },
       {
@@ -199,12 +188,12 @@ const metadata = {
       },
       {
         title: 'Open Source',
-        description: 'The engine of Renoir is open source, allowing the community to contribute and improve the platform.',
+        description:
+          'The engine of Renoir is open source, allowing the community to contribute and improve the platform.',
         icon: 'tabler:plug-connected',
       },
     ]}
   />
-
 
   <!-- Use Cases -->
 
@@ -216,21 +205,21 @@ const metadata = {
         description:
           'Optimize you decision and forecast your trends by analyzing billions of data in real-time all without the high cost of traditional infrastructure.',
         icon: 'tabler:presentation',
-        data: { "data-index": "0" },
+        data: { 'data-index': '0' },
       },
       {
         title: 'Industry 4.0: Monitoring Processes',
         description:
           'Reduce downtime and maximize efficiency with continuous machine monitoring and real-time data analysis, ensuring smooth and efficient operations.',
         icon: 'tabler:settings',
-        data: { "data-index": "1" },
+        data: { 'data-index': '1' },
       },
       {
         title: 'Transform Data into Value',
         description:
           'Leverage Renoir and our expertise in the field to uncover new opportunities and optimize business strategies, even with limited existing infrastructure.',
         icon: 'tabler:wand',
-        data: { "data-index": "2" },
+        data: { 'data-index': '2' },
       },
     ]}
     image={{
@@ -246,7 +235,7 @@ const metadata = {
   <!-- FAQs Widget ******************* -->
 
   <FAQs
-    id='FAQ'
+    id="FAQ"
     title="Frequently Asked Questions"
     items={[
       {
@@ -277,7 +266,7 @@ const metadata = {
       {
         title: 'Why Renoir was created?',
         description:
-          "Renoir is born after years of experience in designing distributed infrastructures for data analytics. We saw that there was a need for a real-time streaming framework that was easy to use, scalable and reliable; withouth reducing the performance. Renoir is the answer to that need. It is designed to be the ultimate solution for your data infrastructure.",
+          'Renoir is born after years of experience in designing distributed infrastructures for data analytics. We saw that there was a need for a real-time streaming framework that was easy to use, scalable and reliable; withouth reducing the performance. Renoir is the answer to that need. It is designed to be the ultimate solution for your data infrastructure.',
       },
     ]}
   >
@@ -301,7 +290,7 @@ const metadata = {
         type: 'email',
         name: 'email',
         label: 'Email',
-        placeholder: 'jonh.doe@mail.com'
+        placeholder: 'jonh.doe@mail.com',
       },
     ]}
     textarea={{
@@ -313,11 +302,10 @@ const metadata = {
         'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
     }}
     description="Our support team typically responds within 24 business hours."
-    button='Send Message'
-    method='post'
+    button="Send Message"
+    method="post"
     action="https://forms.un-static.com/forms/f92a74143ea36998a842bb838854714e148f4379"
   />
-
 
   <!-- CallToAction Widget *********** -->
 
