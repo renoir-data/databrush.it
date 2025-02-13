@@ -9,7 +9,7 @@ order: 0
 
 ### REactive Network of Operators In Rust
 
-[API Docs](https://databrush.it/docs/renoir/)
+[API Docs](https://deib-polimi.github.io/renoir/renoir/)
 
 Renoir *(short: Noir)  [/ʁənwaʁ/, /nwaʁ/]* is a distributed data processing platform based on the dataflow paradigm that provides an ergonomic programming interface, similar to that of Apache Flink, but has much better performance characteristics.
 
