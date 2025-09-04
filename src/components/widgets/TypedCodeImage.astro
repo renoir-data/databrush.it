@@ -1,0 +1,393 @@
+---
+import { codeToHtml } from 'shiki';
+
+// --- Component Props ---
+interface Props {
+  code?: string;
+  lang?: string;
+  fileName?: string;
+  typeSpeed?: number;
+  /** Delay in ms after typing finishes before the "Run" button is clicked. */
+  runDelay?: number;
+  /** Delay in ms after the "Run" button is clicked before the loading spinner appears. */
+  loadDelay?: number;
+}
+
+// --- Default Props ---
+const {
+  code = `
+// --- Getting data from sensors ---
+let mut data_from_sensors = env.stream(source_gen)
+    // data sanity checks
+    .map(|data: GenerationDataRaw| {
+        first_sanity_check(data)
+    })
+    // divide into three streams for different processing
+    .split(3);
+  `,
+  lang = 'rust',
+  fileName = 'data_source.rs',
+  typeSpeed = 40,
+  runDelay = 1000,
+  loadDelay = 500,
+} = Astro.props;
+
+// --- Server-side Syntax Highlighting ---
+const highlightedHtml = await codeToHtml(code.trim(), {
+  lang,
+  theme: 'one-dark-pro',
+});
+---
+
+<div class="code-window-wrapper">
+  <!-- Mouse Cursor (Now a styled div) -->
+  <div class="mouse-cursor"></div>
+
+  <!-- STATE 1: Code Editor (Visible by default) -->
+  <div class="code-window">
+    <!-- Editor Header -->
+    <div class="header">
+      <div class="left-controls">
+        <div class="dots">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+        </div>
+        <div class="tab active">
+          <!-- Rust Icon SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="rust-icon" viewBox="0 0 32 32"><path d="M24,20a2.00591,2.00591,0,0,1-2-2,2,2,0,0,0-2-2,3.00017,3.00017,0,0,0,2.99579-3.16132A3.11454,3.11454,0,0,0,19.83026,10H4v2h6v8H4v2H16V20H14V18h4c.81885.81885.29669,2.30811,1.17865,3.36987A1.88526,1.88526,0,0,0,20.63879,22H28V20Zm-6-6H14V12h4a1,1,0,0,1,0,2Z" style="fill:#ff7043"></path><path d="M16.01108,3.77914A12.22061,12.22061,0,1,1,5.88381,9.14562,12.16113,12.16113,0,0,1,16.01108,3.77914m.00057-1h0A13.22132,13.22132,0,1,0,23.41531,5.056,13.21772,13.21772,0,0,0,16.0116,2.77914Z" style="fill:#ff7043"></path><polygon points="25.139 2.512 20.897 3.327 20.325 4.17 25.383 7.597 25.955 6.754 25.139 2.512" style="fill:#ff7043"></polygon><polygon points="19.282 0.041 15.674 2.418 15.469 3.415 21.454 4.646 21.659 3.649 19.282 0.041" style="fill:#ff7043"></polygon><polygon points="12.925 0 10.501 3.577 10.694 4.577 16.694 3.423 16.501 2.423 12.925 0" style="fill:#ff7043"></polygon><polygon points="7.036 2.395 6.166 6.627 6.726 7.477 11.828 4.115 11.268 3.265 7.036 2.395" style="fill:#ff7043"></polygon><polygon points="2.512 6.861 3.327 11.103 4.17 11.675 7.597 6.617 6.754 6.045 2.512 6.861" style="fill:#ff7043"></polygon><polygon points="0.041 12.718 2.418 16.326 3.415 16.531 4.646 10.546 3.649 10.341 0.041 12.718" style="fill:#ff7043"></polygon><polygon points="0 19.075 3.577 21.499 4.577 21.306 3.423 15.306 2.423 15.499 0 19.075" style="fill:#ff7043"></polygon><polygon points="2.395 24.964 6.627 25.834 7.477 25.274 4.115 20.172 3.265 20.732 2.395 24.964" style="fill:#ff7043"></polygon><polygon points="6.861 29.488 11.103 28.673 11.675 27.83 6.617 24.403 6.045 25.246 6.861 29.488" style="fill:#ff7043"></polygon><polygon points="12.718 31.959 16.326 29.582 16.531 28.585 10.546 27.354 10.341 28.351 12.718 31.959" style="fill:#ff7043"></polygon><polygon points="19.075 32 21.499 28.423 21.306 27.423 15.306 28.577 15.499 29.577 19.075 32" style="fill:#ff7043"></polygon><polygon points="24.964 29.605 25.834 25.373 25.274 24.523 20.172 27.885 20.732 28.735 24.964 29.605" style="fill:#ff7043"></polygon><polygon points="29.488 25.139 28.673 20.897 27.83 20.325 24.403 25.383 25.246 25.955 29.488 25.139" style="fill:#ff7043"></polygon><polygon points="32 12.925 28.423 10.501 27.423 10.694 28.577 16.694 29.577 16.501 32 12.925" style="fill:#ff7043"></polygon><polygon points="29.605 7.036 25.373 6.166 24.523 6.726 27.885 11.828 28.735 11.268 29.605 7.036" style="fill:#ff7043"></polygon><polygon points="31.959 19.282 29.582 15.674 28.585 15.469 27.354 21.454 28.351 21.659 31.959 19.282" style="fill:#ff7043"></polygon></svg>
+          <span>{fileName}</span>
+        </div>
+      </div>
+      <div class="right-controls">
+        <button class="run-button">Run</button>
+      </div>
+    </div>
+
+    <!-- Code Area -->
+    <div class="code-body">
+      <div class="source-code" style="display: none;" set:html={highlightedHtml}></div>
+      <div class="typed-code"></div>
+    </div>
+  </div>
+
+  <!-- STATE 2: Loading Spinner (Hidden by default) -->
+  <div class="loading-state">
+      <svg class="spinner" viewBox="0 0 50 50">
+        <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+      </svg>
+  </div>
+</div>
+
+<style>
+  .code-window-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 1rem;
+    background: #111;
+    /* Ensure the wrapper maintains its height during transition */
+    min-height: 400px; 
+  }
+
+  .code-window {
+    background-color: #262335;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+    width: 100%;
+    max-width: 650px;
+    overflow: hidden;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background-color: #262335;
+  }
+
+  .left-controls, .right-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .dots { display: flex; gap: 8px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot.red { background-color: #ff5f56; }
+  .dot.yellow { background-color: #ffbd2e; }
+  .dot.green { background-color: #27c93f; }
+
+  .tab { display: flex; align-items: center; gap: 8px; color: #a9a9a9; padding: 6px 12px; border-radius: 6px; }
+  .tab.active { background-color: #3a364f; color: #e0e0e0; }
+  .rust-icon { width: 16px; height: 16px; }
+
+  .run-button {
+    background-color: #3c863f;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease-in-out;
+  }
+  .run-button:hover { background-color: #4caf50; }
+  .run-button.clicked { transform: scale(0.95); }
+
+  .code-body {
+    position: relative;
+    padding: 1rem;
+    min-height: 250px;
+  }
+  
+  .typed-code :global(pre) {
+    margin: 0;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 16px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    background-color: transparent !important;
+  }
+
+  .cursor {
+    display: inline-block;
+    background-color: #e0e0e0;
+    width: 9px;
+    height: 1.2em;
+    margin-left: 2px;
+    transform: translateY(4px);
+    opacity: 1;
+  }
+  .cursor.blinking { animation: blink 1s step-end infinite; }
+  
+  @keyframes blink {
+    from, to { background-color: transparent; }
+    50% { background-color: #e0e0e0; }
+  }
+
+  /* --- Mouse Cursor Styles --- */
+  .mouse-cursor {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease;
+    
+    /* --- NEW STYLES for Circle --- */
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(2px);
+  }
+
+  .mouse-cursor.visible {
+    opacity: 1;
+  }
+
+  .mouse-cursor.clicking {
+    transform: translate(-50%, -50%) scale(0.9);
+    transition: transform 0.1s ease-in-out;
+  }
+
+  /* --- Loading State and Spinner Styles --- */
+  .loading-state {
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 650px;
+    min-height: 334px; /* Match code window height */
+    background-color: #262335;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+  }
+
+  .spinner {
+    animation: rotate 2s linear infinite;
+    width: 50px;
+    height: 50px;
+  }
+
+  .spinner .path {
+    stroke: #4caf50;
+    stroke-linecap: round;
+    animation: dash 1.5s ease-in-out infinite;
+  }
+
+  @keyframes rotate { 100% { transform: rotate(360deg); } }
+  @keyframes dash {
+    0% { stroke-dasharray: 1, 150; stroke-dashoffset: 0; }
+    50% { stroke-dasharray: 90, 150; stroke-dashoffset: -35; }
+    100% { stroke-dasharray: 90, 150; stroke-dashoffset: -124; }
+  }
+
+  /* --- State Switching Logic --- */
+  .code-window-wrapper.loading .code-window {
+    display: none;
+  }
+  .code-window-wrapper.loading .loading-state {
+    display: flex;
+  }
+  .code-window-wrapper.loading .mouse-cursor {
+    opacity: 0;
+  }
+</style>
+
+<script define:vars={{ typeSpeed, runDelay, loadDelay }}>
+  class CodeTyper {
+    constructor(wrapperEl, speed, delays) {
+      this.wrapperEl = wrapperEl;
+      this.sourceEl = wrapperEl.querySelector('.source-code');
+      this.targetEl = wrapperEl.querySelector('.typed-code');
+      this.runButton = wrapperEl.querySelector('.run-button');
+      this.mouseCursor = wrapperEl.querySelector('.mouse-cursor');
+      this.speed = speed;
+      this.delays = delays;
+
+      if (!this.sourceEl || !this.targetEl || !this.runButton || !this.mouseCursor) {
+        console.error("Required elements for CodeTyper not found.");
+        return;
+      }
+      this.init();
+    }
+
+    async init() {
+      const sourcePre = this.sourceEl.querySelector('pre');
+      if (!sourcePre) return;
+      
+      this.sourceCodeNode = sourcePre.querySelector('code');
+      if (!this.sourceCodeNode) return;
+
+      this.targetEl.innerHTML = '';
+      const outputPre = this.createStyledElement('pre', sourcePre);
+      this.targetCodeNode = this.createStyledElement('code', this.sourceCodeNode);
+      outputPre.appendChild(this.targetCodeNode);
+      this.targetEl.appendChild(outputPre);
+
+      this.cursor = document.createElement('span');
+      this.cursor.className = 'cursor';
+      this.targetEl.appendChild(this.cursor);
+      
+      await this.runAnimationSequence();
+    }
+    
+    createStyledElement(tagName, sourceElement) {
+        const el = document.createElement(tagName);
+        el.className = sourceElement.className;
+        el.style.cssText = sourceElement.style.cssText;
+        return el;
+    }
+
+    wait(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async typeNode(sourceNode, targetNode) {
+      for (const child of sourceNode.childNodes) {
+        if (child.nodeType === Node.ELEMENT_NODE) {
+          const newElement = this.createStyledElement(child.tagName, child);
+          targetNode.appendChild(newElement);
+          await this.typeNode(child, newElement);
+        } else if (child.nodeType === Node.TEXT_NODE) {
+          const text = child.textContent || '';
+          for (const char of text) {
+            targetNode.appendChild(document.createTextNode(char));
+            await this.wait(this.speed);
+          }
+        }
+      }
+    }
+
+    async animateMouseToButton() {
+      // Get button position relative to wrapper
+      const wrapperRect = this.wrapperEl.getBoundingClientRect();
+      const buttonRect = this.runButton.getBoundingClientRect();
+      
+      // Calculate the center of the button relative to the wrapper
+      const targetX = buttonRect.left + buttonRect.width / 2 - wrapperRect.left;
+      const targetY = buttonRect.top + buttonRect.height / 2 - wrapperRect.top;
+      
+      // Show the cursor
+      this.mouseCursor.classList.add('visible');
+      
+      // Animate to button position
+      this.mouseCursor.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+      this.mouseCursor.style.left = `${targetX}px`;
+      this.mouseCursor.style.top = `${targetY}px`;
+      this.mouseCursor.style.transform = 'translate(-50%, -50%)';
+      
+      // Wait for animation to complete
+      await this.wait(800);
+    }
+
+    async simulateMouseClick() {
+      // Add clicking animation
+      this.mouseCursor.classList.add('clicking');
+      
+      // Trigger button click effect
+      this.runButton.classList.add('clicked');
+      
+      await this.wait(150);
+      
+      // Remove effects
+      this.mouseCursor.classList.remove('clicking');
+      this.runButton.classList.remove('clicked');
+    }
+
+    async runAnimationSequence() {
+      // 1. Type the code
+      this.cursor.style.display = 'inline-block';
+      await this.typeNode(this.sourceCodeNode, this.targetCodeNode);
+      this.cursor.classList.add('blinking');
+      
+      // 2. Wait after typing is done (reduced to account for mouse animation time)
+      await this.wait(Math.max(this.delays.run - 800, 200));
+
+      // 3. Animate mouse cursor to button
+      await this.animateMouseToButton();
+
+      // 4. Simulate mouse click
+      await this.simulateMouseClick();
+
+      // 5. Wait before showing the loader
+      await this.wait(this.delays.load);
+
+      // 6. Switch to the loading state
+      this.wrapperEl.classList.add('loading');
+    
+      await this.wait(2000); // The 2-second spinner duration you requested.
+
+      const monitoringComponent = document.querySelector('.monitoring-wrapper');
+      if (monitoringComponent) {
+        // Hide this code window
+        this.wrapperEl.style.display = 'none';
+        // Show and activate the monitoring graph component
+        monitoringComponent.style.display = 'flex';
+        monitoringComponent.classList.add('active');
+      }
+    }
+  }
+
+  // Use an IntersectionObserver to start the animation only when visible.
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const delays = { run: runDelay, load: loadDelay };
+        new CodeTyper(entry.target, typeSpeed, delays);
+        observer.unobserve(entry.target); // Animate only once
+      }
+    });
+  });
+
+  observer.observe(document.querySelector('.code-window-wrapper'));
+</script>

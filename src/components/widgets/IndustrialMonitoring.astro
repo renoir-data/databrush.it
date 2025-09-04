@@ -1,0 +1,263 @@
+---
+// This component has no props for now
+---
+<!-- Load the Lordicon script required for the animated icons -->
+<script src="https://cdn.lordicon.com/lordicon.js"></script>
+
+
+<div class="monitoring-wrapper">
+  <svg id="monitoring-svg-container" class="absolute w-full h-full pointer-events-none"></svg>
+
+  <div class="w-full max-w-7xl mx-auto flex items-center justify-between h-full">
+    <!-- Sources Panel (Left) -->
+    <div class="arch-panel sources-panel">
+      <div class="arch-icon" data-icon-id="source1">
+        <!-- --- FIX: Scaled down icon size -->
+        <lord-icon src="https://cdn.lordicon.com/txfzrzvh.json" trigger="loop" delay="1000" colors="primary:#26e9af,secondary:#ffffff" style="width:60px;height:60px"></lord-icon>
+        <p>Sensor</p>
+      </div>
+      <div class="arch-icon" data-icon-id="source2">
+        <lord-icon src="https://cdn.lordicon.com/wsaaegar.json" trigger="loop" delay="1500" colors="primary:#26e9af,secondary:#ffffff" style="width:60px;height:60px"></lord-icon>
+        <p>Camera</p>
+      </div>
+      <div class="arch-icon" data-icon-id="source3">
+        <lord-icon src="https://cdn.lordicon.com/ipnwkgdy.json" trigger="loop" delay="2000" colors="primary:#26e9af,secondary:#ffffff" style="width:60px;height:60px"></lord-icon>
+        <p>Production Line</p>
+      </div>
+    </div>
+
+    <!-- Center Panel -->
+    <div class="center-column">
+      <div class="arch-panel third-parties-panel">
+        <div class="arch-icon" data-icon-id="third1">
+          <lord-icon src="https://cdn.lordicon.com/ggnoyhfp.json" trigger="loop" delay="500" colors="primary:#af4ad4,secondary:#26e9af" style="width:60px;height:60px"></lord-icon>
+          <p>Pattern Matching</p>
+        </div>
+      </div>
+      <div class="arch-icon arch-panel renoir-panel" data-icon-id="renoir">
+        <div class="renoir-logo-box">
+          <!-- --- FIX: Scaled down logo size -->
+          <img src="/images/Renoir.png" alt="Renoir Logo" class="w-32" />
+        </div>
+      </div>
+      <div class="opacity-0 h-1/3"></div>
+    </div>
+
+    <!-- Results Panel (Right) -->
+    <div class="arch-panel results-panel">
+      <div class="arch-icon" data-icon-id="result1">
+        <lord-icon src="https://cdn.lordicon.com/lbcxnxti.json" trigger="loop" delay="2500" colors="primary:#af4ad4,secondary:#ffffff" style="width:60px;height:60px"></lord-icon>
+        <p>Dashboard</p>
+      </div>
+      <div class="arch-icon" data-icon-id="result2">
+        <lord-icon src="https://cdn.lordicon.com/lltgvngb.json" trigger="loop" delay="3000" colors="primary:#af4ad4,secondary:#ffffff" style="width:60px;height:60px"></lord-icon>
+        <p>Alarm</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="arch-title arch-panel">Industrial Monitoring</h2>
+</div>
+
+<style>
+  .monitoring-wrapper {
+    --color-logo: #26e9af;
+    --color-renoir: #af4ad4;
+    --color-bg: #111827;
+
+    position: relative;
+    width: 100%;
+    
+    /* --- FIX: Constrained dimensions to match the code window --- */
+    max-width: 650px;
+    height: 430px; /* Slightly taller to fit title nicely */
+    background-color: #262335;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+    overflow: hidden;
+
+    display: none; /* Hidden by default */
+    align-items: center;
+    justify-content: center;
+    font-family: system-ui, sans-serif;
+    color: white;
+  }
+
+  /* --- FIX: Changed all vh units to % and reduced padding --- */
+  .center-column {
+    width: 40%; /* Reduced width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 2rem 0;
+  }
+  
+  .arch-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .sources-panel, .results-panel {
+    width: 30%; /* Increased width slightly */
+    height: 100%;
+    padding: 2rem 0;
+    gap: 1rem; /* Added gap for even spacing */
+  }
+  .third-parties-panel {
+    height: 33.33%;
+    justify-content: center;
+  }
+  .renoir-panel {
+    justify-content: center;
+  }
+
+  .monitoring-wrapper.active .renoir-panel { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+  .monitoring-wrapper.active .sources-panel { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+  .monitoring-wrapper.active .results-panel { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+  .monitoring-wrapper.active .third-parties-panel { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+  .monitoring-wrapper.active .arch-title { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+
+  .arch-icon { text-align: center; }
+  /* --- FIX: Scaled down font size for icon text --- */
+  .arch-icon p { margin-top: 0.5rem; font-size: 0.9rem; }
+  
+  /* --- FIX: Resized and repositioned title for smaller container --- */
+  .arch-title {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(0); /* translateY is handled by animation */
+    font-size: 2.25rem; /* text-4xl */
+    text-shadow: 0 0 25px #262335, 0 0 35px #262335;
+  }
+
+  @keyframes renoirBoxGlow {
+    0% { box-shadow: 0 0 6px 1px rgba(175, 74, 212, 0.4); }
+    50% { box-shadow: 0 0 16px 5px rgba(175, 74, 212, 0.7); }
+    100% { box-shadow: 0 0 6px 1px rgba(175, 74, 212, 0.4); }
+  }
+
+  .renoir-logo-box {
+    position: relative; display: inline-block; border-radius: 1.5rem; padding: 0.5rem;
+    animation: renoirBoxGlow 4s ease-in-out infinite;
+  }
+
+  @keyframes dataFlowRay {
+    from { stroke-dashoffset: 0; }
+    to { stroke-dashoffset: -40; } /* Adjusted for smaller dash array */
+  }
+
+  .connector-path-line, .connector-path-glow {
+    fill: none;
+    /* --- FIX: Changed dash array to create a dotted/dashed line effect --- */
+    stroke-dasharray: 8 12;
+    animation: dataFlowRay 1s linear infinite;
+  }
+  .connector-path-line { stroke-width: 2.5px; }
+  .connector-path-glow {
+    stroke-width: 8px;
+    opacity: 0.4;
+    filter: blur(3px);
+  }
+</style>
+
+<script>
+  function drawConnectors() {
+    const wrapper = document.querySelector('.monitoring-wrapper');
+    const svgContainer = document.getElementById('monitoring-svg-container');
+    if (!wrapper || !svgContainer || !wrapper.classList.contains('active')) return;
+    
+    svgContainer.innerHTML = '';
+    const containerRect = svgContainer.getBoundingClientRect();
+    
+    const iconRects = {};
+    wrapper.querySelectorAll('.arch-icon').forEach((icon) => {
+      iconRects[icon.dataset.iconId] = icon.getBoundingClientRect();
+    });
+
+    const renoirRect = iconRects['renoir'];
+    if (!renoirRect || renoirRect.width === 0) return;
+
+    const createAnimatedPath = (d, color) => {
+      const glowPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      glowPath.setAttribute('d', d);
+      glowPath.setAttribute('class', 'connector-path-glow');
+      glowPath.style.stroke = color;
+      svgContainer.appendChild(glowPath);
+
+      const linePath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      linePath.setAttribute('d', d);
+      linePath.setAttribute('class', 'connector-path-line');
+      linePath.style.stroke = color;
+      svgContainer.appendChild(linePath);
+    };
+
+    Object.keys(iconRects).forEach((id) => {
+      if (id === 'renoir') return;
+      const iconRect = iconRects[id];
+      if (!iconRect || iconRect.width === 0) return;
+
+      if (id.startsWith('source')) {
+        const color = 'var(--color-logo)';
+        const start = { x: iconRect.right - containerRect.left + 10, y: iconRect.top + iconRect.height / 2 - containerRect.top };
+        const end = { x: renoirRect.left - containerRect.left - 10, y: renoirRect.top + renoirRect.height / 2 - containerRect.top };
+        const c1 = { x: start.x + 100, y: start.y };
+        const c2 = { x: end.x - 100, y: end.y };
+        createAnimatedPath(`M ${start.x} ${start.y} C ${c1.x} ${c1.y}, ${c2.x} ${c2.y}, ${end.x} ${end.y}`, color);
+      } else if (id.startsWith('result')) {
+        const color = 'var(--color-renoir)';
+        const start = { x: renoirRect.right - containerRect.left + 10, y: renoirRect.top + renoirRect.height / 2 - containerRect.top };
+        const end = { x: iconRect.left - containerRect.left - 10, y: iconRect.top + iconRect.height / 2 - containerRect.top };
+        const c1 = { x: start.x + 100, y: start.y };
+        const c2 = { x: end.x - 100, y: end.y };
+        createAnimatedPath(`M ${start.x} ${start.y} C ${c1.x} ${c1.y}, ${c2.x} ${c2.y}, ${end.x} ${end.y}`, color);
+      } else if (id.startsWith('third')) {
+        // Path from Renoir TO External Service (Request)
+        const startUp = { x: renoirRect.left + renoirRect.width / 2 - containerRect.left, y: renoirRect.top - containerRect.top - 10 };
+        const endUp = { x: iconRect.left + iconRect.width / 2 - containerRect.left, y: iconRect.bottom - containerRect.top + 10 };
+        const c1Up = { x: startUp.x, y: startUp.y - 60 };
+        const c2Up = { x: endUp.x, y: endUp.y + 60 };
+        createAnimatedPath(`M ${startUp.x} ${startUp.y} C ${c1Up.x} ${c1Up.y}, ${c2Up.x} ${c2Up.y}, ${endUp.x} ${endUp.y}`, 'var(--color-renoir)');
+
+        // Path FROM External Service TO Renoir (Response)
+        const startDown = { x: iconRect.left + iconRect.width / 2 - containerRect.left, y: iconRect.bottom - containerRect.top + 10 };
+        const endDown = { x: renoirRect.left + renoirRect.width / 2 - containerRect.left, y: renoirRect.top - containerRect.top - 10 };
+        const c1Down = { x: startDown.x, y: startDown.y + 60 };
+        const c2Down = { x: endDown.x, y: endDown.y - 60 };
+        createAnimatedPath(`M ${startDown.x} ${startDown.y} C ${c1Down.x} ${c1Down.y}, ${c2Down.x} ${c2Down.y}, ${endDown.x} ${endDown.y}`, 'var(--color-logo)');
+      }
+    });
+  }
+  
+  // Use a MutationObserver to detect when the 'active' class is added.
+  // This is a robust way to trigger animations from another component.
+  const observer = new MutationObserver((mutationsList) => {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+        const targetElement = mutation.target;
+        if (targetElement.classList.contains('active')) {
+          // Wait for the panel entrance animations to finish before drawing lines
+          setTimeout(drawConnectors, 800);
+          // Redraw on resize
+          window.addEventListener('resize', drawConnectors);
+          // Stop observing once activated
+          observer.disconnect();
+        }
+      }
+    }
+  });
+
+  // Start observing the wrapper element as soon as the script runs.
+  const wrapperElement = document.querySelector('.monitoring-wrapper');
+  if (wrapperElement) {
+    observer.observe(wrapperElement, { attributes: true });
+  }
+</script>
