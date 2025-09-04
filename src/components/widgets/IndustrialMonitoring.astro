@@ -1,6 +1,10 @@
 ---
-// This component has no props for now
+
+import Image from '~/components/common/Image.astro';
+
+import renoir from "~/assets/images/Renoir.png";
 ---
+
 <!-- Load the Lordicon script required for the animated icons -->
 <script src="https://cdn.lordicon.com/lordicon.js"></script>
 
@@ -12,7 +16,6 @@
     <!-- Sources Panel (Left) -->
     <div class="arch-panel sources-panel">
       <div class="arch-icon" data-icon-id="source1">
-        <!-- --- FIX: Scaled down icon size -->
         <lord-icon src="https://cdn.lordicon.com/txfzrzvh.json" trigger="loop" delay="1000" colors="primary:#26e9af,secondary:#ffffff" style="width:60px;height:60px"></lord-icon>
         <p>Sensor</p>
       </div>
@@ -34,10 +37,10 @@
           <p>Pattern Matching</p>
         </div>
       </div>
+      <!-- --- FIX: Changed Renoir logo to a pill shape with text --- -->
       <div class="arch-icon arch-panel renoir-panel" data-icon-id="renoir">
         <div class="renoir-logo-box">
-          <!-- --- FIX: Scaled down logo size -->
-          <img src="/images/Renoir.png" alt="Renoir Logo" class="w-32" />
+          <Image src={renoir} alt="Renoir Logo" width={40} height={40} class="w-10 h-10 mr-3" />
         </div>
       </div>
       <div class="opacity-0 h-1/3"></div>
@@ -55,11 +58,44 @@
       </div>
     </div>
   </div>
-
-  <h2 class="arch-title arch-panel">Industrial Monitoring</h2>
 </div>
 
 <style>
+
+/* Replace the existing connector styles with these */
+.connector-dotted-line {
+  fill: none;
+  stroke-width: 2px;
+  stroke-dasharray: 8 12; /* Creates dotted pattern */
+  stroke-linecap: round;
+}
+
+@keyframes draw-dotted-line {
+  from {
+    stroke-dashoffset: var(--line-length);
+    opacity: 0;
+  }
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+/* Flowing animation for the dots */
+@keyframes flow-dots {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -20; /* Negative value makes dots flow forward */
+  }
+}
+
+/* Apply flowing animation after drawing is complete */
+.connector-dotted-line.flowing {
+  animation: flow-dots 3s linear infinite;
+}
+
   .monitoring-wrapper {
     --color-logo: #26e9af;
     --color-renoir: #af4ad4;
@@ -67,32 +103,29 @@
 
     position: relative;
     width: 100%;
-    
-    /* --- FIX: Constrained dimensions to match the code window --- */
-    max-width: 650px;
-    height: 430px; /* Slightly taller to fit title nicely */
+    max-width: 750px; /* Increased size */
+    height: 500px; /* Increased size */
+    margin: 2rem auto;
     background-color: #262335;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
     overflow: hidden;
-
-    display: none; /* Hidden by default */
+    display: none;
     align-items: center;
     justify-content: center;
     font-family: system-ui, sans-serif;
     color: white;
   }
 
-  /* --- FIX: Changed all vh units to % and reduced padding --- */
   .center-column {
-    width: 40%; /* Reduced width */
+    width: 40%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     height: 100%;
-    padding: 2rem 0;
+    padding: 2.5rem 0;
   }
   
   .arch-panel {
@@ -106,10 +139,10 @@
   }
 
   .sources-panel, .results-panel {
-    width: 30%; /* Increased width slightly */
+    width: 30%;
     height: 100%;
-    padding: 2rem 0;
-    gap: 1rem; /* Added gap for even spacing */
+    padding: 2.5rem 0;
+    gap: 1rem;
   }
   .third-parties-panel {
     height: 33.33%;
@@ -126,16 +159,18 @@
   .monitoring-wrapper.active .arch-title { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
 
   .arch-icon { text-align: center; }
-  /* --- FIX: Scaled down font size for icon text --- */
   .arch-icon p { margin-top: 0.5rem; font-size: 0.9rem; }
   
-  /* --- FIX: Resized and repositioned title for smaller container --- */
+  /* --- FIX: Resized and repositioned title to match new design --- */
   .arch-title {
     position: absolute;
-    bottom: 1.5rem;
+    bottom: 3rem;
     left: 50%;
-    transform: translateX(-50%) translateY(0); /* translateY is handled by animation */
-    font-size: 2.25rem; /* text-4xl */
+    transform: translateX(-50%) translateY(0);
+    font-size: 3rem; /* text-5xl */
+    font-weight: 600;
+    line-height: 1.1;
+    text-align: center;
     text-shadow: 0 0 25px #262335, 0 0 35px #262335;
   }
 
@@ -145,117 +180,152 @@
     100% { box-shadow: 0 0 6px 1px rgba(175, 74, 212, 0.4); }
   }
 
+  /* --- FIX: Styled the central Renoir element as a pill --- */
   .renoir-logo-box {
-    position: relative; display: inline-block; border-radius: 1.5rem; padding: 0.5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-radius: 9999px;
+    padding: 0.5rem 1.5rem 0.5rem 1rem;
     animation: renoirBoxGlow 4s ease-in-out infinite;
+    background-color: #262335; /* Add bg to sit on top of connectors */
+    border: 1px solid rgba(175, 74, 212, 0.5);
+  }
+  .renoir-text {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin: 0;
   }
 
-  @keyframes dataFlowRay {
-    from { stroke-dashoffset: 0; }
-    to { stroke-dashoffset: -40; } /* Adjusted for smaller dash array */
+  /* --- FIX: New animation for drawing the connector outlines --- */
+  @keyframes draw-line {
+    to { stroke-dashoffset: 0; }
   }
 
-  .connector-path-line, .connector-path-glow {
+  .connector-channel-fill {
+    fill: #000;
+    opacity: 0;
+    animation: fade-in 0.5s ease forwards;
+  }
+  
+  .connector-channel-outline {
     fill: none;
-    /* --- FIX: Changed dash array to create a dotted/dashed line effect --- */
-    stroke-dasharray: 8 12;
-    animation: dataFlowRay 1s linear infinite;
+    stroke-width: 2px;
+    /* --- JS will set dasharray and dashoffset dynamically --- */
+    animation: draw-line 1.5s ease-out forwards;
   }
-  .connector-path-line { stroke-width: 2.5px; }
-  .connector-path-glow {
-    stroke-width: 8px;
-    opacity: 0.4;
-    filter: blur(3px);
+  
+  .connector-line {
+      fill: none;
+      stroke-width: 2px;
+      animation: draw-line 1s ease-out forwards;
+  }
+
+  @keyframes fade-in {
+    to { opacity: 1; }
   }
 </style>
 
 <script>
-  function drawConnectors() {
-    const wrapper = document.querySelector('.monitoring-wrapper');
-    const svgContainer = document.getElementById('monitoring-svg-container');
-    if (!wrapper || !svgContainer || !wrapper.classList.contains('active')) return;
-    
-    svgContainer.innerHTML = '';
-    const containerRect = svgContainer.getBoundingClientRect();
-    
-    const iconRects = {};
-    wrapper.querySelectorAll('.arch-icon').forEach((icon) => {
-      iconRects[icon.dataset.iconId] = icon.getBoundingClientRect();
-    });
-
-    const renoirRect = iconRects['renoir'];
-    if (!renoirRect || renoirRect.width === 0) return;
-
-    const createAnimatedPath = (d, color) => {
-      const glowPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      glowPath.setAttribute('d', d);
-      glowPath.setAttribute('class', 'connector-path-glow');
-      glowPath.style.stroke = color;
-      svgContainer.appendChild(glowPath);
-
-      const linePath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      linePath.setAttribute('d', d);
-      linePath.setAttribute('class', 'connector-path-line');
-      linePath.style.stroke = color;
-      svgContainer.appendChild(linePath);
-    };
-
-    Object.keys(iconRects).forEach((id) => {
-      if (id === 'renoir') return;
-      const iconRect = iconRects[id];
-      if (!iconRect || iconRect.width === 0) return;
-
-      if (id.startsWith('source')) {
-        const color = 'var(--color-logo)';
-        const start = { x: iconRect.right - containerRect.left + 10, y: iconRect.top + iconRect.height / 2 - containerRect.top };
-        const end = { x: renoirRect.left - containerRect.left - 10, y: renoirRect.top + renoirRect.height / 2 - containerRect.top };
-        const c1 = { x: start.x + 100, y: start.y };
-        const c2 = { x: end.x - 100, y: end.y };
-        createAnimatedPath(`M ${start.x} ${start.y} C ${c1.x} ${c1.y}, ${c2.x} ${c2.y}, ${end.x} ${end.y}`, color);
-      } else if (id.startsWith('result')) {
-        const color = 'var(--color-renoir)';
-        const start = { x: renoirRect.right - containerRect.left + 10, y: renoirRect.top + renoirRect.height / 2 - containerRect.top };
-        const end = { x: iconRect.left - containerRect.left - 10, y: iconRect.top + iconRect.height / 2 - containerRect.top };
-        const c1 = { x: start.x + 100, y: start.y };
-        const c2 = { x: end.x - 100, y: end.y };
-        createAnimatedPath(`M ${start.x} ${start.y} C ${c1.x} ${c1.y}, ${c2.x} ${c2.y}, ${end.x} ${end.y}`, color);
-      } else if (id.startsWith('third')) {
-        // Path from Renoir TO External Service (Request)
-        const startUp = { x: renoirRect.left + renoirRect.width / 2 - containerRect.left, y: renoirRect.top - containerRect.top - 10 };
-        const endUp = { x: iconRect.left + iconRect.width / 2 - containerRect.left, y: iconRect.bottom - containerRect.top + 10 };
-        const c1Up = { x: startUp.x, y: startUp.y - 60 };
-        const c2Up = { x: endUp.x, y: endUp.y + 60 };
-        createAnimatedPath(`M ${startUp.x} ${startUp.y} C ${c1Up.x} ${c1Up.y}, ${c2Up.x} ${c2Up.y}, ${endUp.x} ${endUp.y}`, 'var(--color-renoir)');
-
-        // Path FROM External Service TO Renoir (Response)
-        const startDown = { x: iconRect.left + iconRect.width / 2 - containerRect.left, y: iconRect.bottom - containerRect.top + 10 };
-        const endDown = { x: renoirRect.left + renoirRect.width / 2 - containerRect.left, y: renoirRect.top - containerRect.top - 10 };
-        const c1Down = { x: startDown.x, y: startDown.y + 60 };
-        const c2Down = { x: endDown.x, y: endDown.y - 60 };
-        createAnimatedPath(`M ${startDown.x} ${startDown.y} C ${c1Down.x} ${c1Down.y}, ${c2Down.x} ${c2Down.y}, ${endDown.x} ${endDown.y}`, 'var(--color-logo)');
-      }
-    });
-  }
+function drawConnectors() {
+  const wrapper = document.querySelector('.monitoring-wrapper');
+  const svg = document.getElementById('monitoring-svg-container');
+  if (!wrapper || !svg || !wrapper.classList.contains('active')) return;
   
-  // Use a MutationObserver to detect when the 'active' class is added.
-  // This is a robust way to trigger animations from another component.
+  svg.innerHTML = '';
+  const containerRect = svg.getBoundingClientRect();
+  
+  const iconRects = {};
+  wrapper.querySelectorAll('.arch-icon[data-icon-id]').forEach((icon) => {
+    iconRects[icon.dataset.iconId] = icon.getBoundingClientRect();
+  });
+
+  const renoirRect = iconRects['renoir'];
+  if (!renoirRect || renoirRect.width === 0) return;
+
+  // Helper to create animated dotted lines
+  const createDottedLine = (d, color, delay) => {
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', d);
+    path.setAttribute('class', 'connector-dotted-line');
+    path.style.stroke = color;
+    path.style.strokeWidth = '2px';
+    path.style.fill = 'none';
+    path.style.strokeDasharray = '8 12'; // Creates dotted effect
+    path.style.animationDelay = `${delay}s`;
+    
+    svg.appendChild(path);
+    
+    // Set up drawing animation
+    const length = path.getTotalLength();
+    path.style.strokeDashoffset = length;
+    path.style.animation = `draw-dotted-line 2s ease-out forwards`;
+    path.style.animationDelay = `${delay}s`;
+  };
+
+  // Draw individual lines from each source to Renoir center
+  const renoirCenter = { 
+    x: renoirRect.left + renoirRect.width/2 - containerRect.left, 
+    y: renoirRect.top + renoirRect.height/2 - containerRect.top 
+  };
+
+  // Source connections
+  ['source1', 'source2', 'source3'].forEach((sourceId, index) => {
+    const sourceRect = iconRects[sourceId];
+    if (sourceRect) {
+      const start = { 
+        x: sourceRect.right - containerRect.left, 
+        y: sourceRect.top + sourceRect.height/2 - containerRect.top 
+      };
+      
+      // Create curved path to center
+      const controlX = start.x + (renoirCenter.x - start.x) * 0.7;
+      const d = `M ${start.x} ${start.y} Q ${controlX} ${start.y} ${renoirCenter.x - 30} ${renoirCenter.y}`;
+      createDottedLine(d, '#26e9af', 0.2 + index * 0.1);
+    }
+  });
+
+  // Result connections
+  ['result1', 'result2'].forEach((resultId, index) => {
+    const resultRect = iconRects[resultId];
+    if (resultRect) {
+      const end = { 
+        x: resultRect.left - containerRect.left, 
+        y: resultRect.top + resultRect.height/2 - containerRect.top 
+      };
+      
+      // Create curved path from center
+      const controlX = renoirCenter.x + (end.x - renoirCenter.x) * 0.3;
+      const d = `M ${renoirCenter.x + 30} ${renoirCenter.y} Q ${controlX} ${end.y} ${end.x} ${end.y}`;
+      createDottedLine(d, '#af4ad4', 0.6 + index * 0.1);
+    }
+  });
+
+  // Third party connection (vertical line from Pattern Matching)
+  const thirdRect = iconRects['third1'];
+  if (thirdRect) {
+    const start = { 
+      x: thirdRect.left + thirdRect.width/2 - containerRect.left, 
+      y: thirdRect.bottom - containerRect.top 
+    };
+    const d = `M ${start.x} ${start.y} L ${renoirCenter.x} ${renoirCenter.y - 30}`;
+    createDottedLine(d, '#af4ad4', 0.5);
+  }
+}
+
   const observer = new MutationObserver((mutationsList) => {
     for (const mutation of mutationsList) {
       if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
         const targetElement = mutation.target;
         if (targetElement.classList.contains('active')) {
-          // Wait for the panel entrance animations to finish before drawing lines
-          setTimeout(drawConnectors, 800);
-          // Redraw on resize
+          setTimeout(drawConnectors, 600); // Wait for panel animations
           window.addEventListener('resize', drawConnectors);
-          // Stop observing once activated
           observer.disconnect();
         }
       }
     }
   });
 
-  // Start observing the wrapper element as soon as the script runs.
   const wrapperElement = document.querySelector('.monitoring-wrapper');
   if (wrapperElement) {
     observer.observe(wrapperElement, { attributes: true });
