@@ -18,6 +18,7 @@ import brush_large from '~/assets/images/brush/large.svg?raw';
 import brush_xlarge from '~/assets/images/brush/xlarge.svg?raw';
 import Content_dinamic from '~/components/widgets/Content_dinamic.astro';
 import TypedCodeImage from '~/components/widgets/TypedCodeImage.astro';
+import * as m from '~/paraglide/messages';
 import IndustrialMonitoring from '~/components/widgets/IndustrialMonitoring.astro';
 
 const metadata = {
@@ -49,10 +50,7 @@ const metadata = {
       >
     </Fragment>
 
-    <Fragment slot="subtitle">
-      Create a <span class="font-semibold">Fast, Easy, Flexible and Efficient</span> Data Infrastructure that grows with
-      you thanks to <span class="font-semibold">Renoir</span>
-    </Fragment>
+    <Fragment slot="subtitle" set:html={m.hero_subtitle()} />
 
     <Fragment slot="bg">
       <div class="flex justify-center items-center -z-30 overflow-x-hidden">

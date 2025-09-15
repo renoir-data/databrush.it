@@ -8,6 +8,7 @@ import Button from '~/components/ui/Button.astro';
 import { getHomePermalink } from '~/utils/permalinks';
 import { trimSlash, getAsset } from '~/utils/permalinks';
 import type { CallToAction } from '~/types';
+import { locales, language, setLocale } from '~/paraglide/runtime';
 
 interface Link {
   text?: string;
@@ -136,8 +137,35 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
       ]}
     >
       <div class="items-center flex justify-between w-full md:w-auto">
-        <div class="flex">
+        <div class="flex items-center">
           {showToggleTheme && <ToggleTheme iconClass="w-6 h-6 md:w-5 md:h-5 md:inline-block" />}
+
+          <div class="relative dropdown ml-4">
+            <button
+              type="button"
+              class="hover:text-link dark:hover:text-white px-4 py-3 flex items-center whitespace-nowrap"
+            >
+              <Icon name="tabler:language" class="w-5 h-5" />
+            </button>
+            <ul id="lang-switcher" class="dropdown-menu md:backdrop-blur-md dark:md:bg-dark rounded md:absolute pl-4 md:pl-0 hidden font-medium md:bg-white/90 md:min-w-[100px] drop-shadow-xl">
+              {locales.map((lang) => (
+                <li>
+                  <a
+                    id={lang}
+                    class:list={[
+                      'first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap',
+                      { 'aw-link-active': lang === language },
+                    ]}
+                    href="#"
+                    data-lang={lang}
+                  >
+                    {lang.toUpperCase()}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {
             showRssFeed && (
               <a
@@ -165,3 +193,21 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
     </div>
   </div>
 </header>
+
+<script is:inline type="module" define:vars={{ language }}>
+  import { setLocale } from '/src/paraglide/runtime';
+
+  const langSwitcher = document.getElementById('lang-switcher');
+  if (langSwitcher) {
+    langSwitcher.addEventListener('click', (e) => {
+      const target = e.target.closest('a');
+      if (target && target.dataset.lang) {
+        e.preventDefault();
+        const newLang = target.dataset.lang;
+        if (newLang !== language) {
+          setLocale(newLang);
+        }
+      }
+    });
+  }
+</script>
