@@ -1,29 +1,32 @@
 ---
-import type { GetStaticPaths } from 'astro';
 import { render } from 'astro:content';
 import { Icon } from 'astro-icon/components';
 import SideNavMenu from '~/components/docs/SideNavMenu.astro';
 import TableofContent from '~/components/docs/TableofContent.astro';
-import type { DocsEntry, Heading, MenuItem } from '~/doc_types';
+import type { MenuItem } from '~/doc_types';
 import PageLayout from '~/layouts/PageLayout.astro';
-import { fetchBook, getStaticPathsDocs, next, previous } from '~/utils/docs';
+import { fetchBook, next, previous } from '~/utils/docs';
+import { getEntry } from 'astro:content';
 
-export const prerender = true;
+const { page } = Astro.params;
 
-export const getStaticPaths = (async () => {
-  return await getStaticPathsDocs();
-}) satisfies GetStaticPaths;
+if (!page) {
+  // Or return a Response for a custom 404 page
+  return Astro.redirect('/404');
+}
 
-const { entry, headings, page } = Astro.props as {
-  entry: DocsEntry;
-  headings: Heading[];
-  page: string;
-};
+const entry = await getEntry('docs', page);
 
-const pathname: string = new URL(Astro.request.url).pathname;
+if (!entry) {
+  // The requested page doesn't exist in the content collection.
+  return Astro.redirect('/404');
+}
+
+const { Content, headings } = await render(entry);
+
+const pathname: string = Astro.url.pathname;
 
 const [book] = page.split('/');
-const { Content } = await render(entry);
 const menu: MenuItem[] = await fetchBook(book);
 const current: MenuItem | undefined = menu.find((item) => '/' + item.permalink === pathname);
 
