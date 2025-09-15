@@ -1,72 +1,73 @@
 import { getPermalink, getBlogPermalink } from './utils/permalinks';
+import type * as m from './paraglide/messages';
 
-export const headerData = {
+export const getHeaderData = (m: typeof import('./paraglide/messages')) => ({
   links: [
     {
-      text: 'Renoir',
+      text: m.nav_renoir(),
       links: [
         {
-          text: 'Overview',
+          text: m.nav_overview(),
           href: getPermalink('/renoir/overview'),
         },
         {
-          text: 'Documentation',
+          text: m.nav_documentation(),
           href: getPermalink('/docs/renoir'),
         },
       ],
     },
     {
-      text: 'Blog',
+      text: m.nav_blog(),
       href: getBlogPermalink(),
     },
     {
-      text: 'Roadmap',
+      text: m.nav_roadmap(),
       href: getPermalink('/roadmap'),
     },
     {
-      text: 'Contact',
+      text: m.nav_contact(),
       href: '/contact',
     },
     {
-      text: 'About Us',
+      text: m.nav_about_us(),
       href: '/about',
     },
   ],
-  actions: [{ text: 'Download', href: 'https://github.com/deib-polimi/renoir', target: '_blank' }],
-};
+  actions: [{ text: m.nav_download(), href: 'https://github.com/deib-polimi/renoir', target: '_blank' }],
+});
 
-export const footerData = {
+export const getFooterData = (m: typeof import('./paraglide/messages')) => ({ 
   links: [
     {
-      title: 'Renoir',
+      title: m.nav_renoir(),
       links: [
-        { text: 'Overview', href: '/renoir/overview' },
-        { text: 'Documentation', href: '/docs/renoir' },
-        { text: 'Reference', href: 'https://github.com/deib-polimi/renoir' },
+        { text: m.nav_overview(), href: '/renoir/overview' },
+        { text: m.nav_documentation(), href: '/docs/renoir' },
+        { text: m.footer_reference(), href: 'https://github.com/deib-polimi/renoir' },
       ],
     },
     {
-      title: 'Community',
+      title: m.footer_community(),
       links: [
-        { text: 'Blog', href: getBlogPermalink() },
-        { text: 'Roadmap', href: '/roadmap' },
-        { text: 'Contact', href: '/contact' },
+        { text: m.nav_blog(), href: getBlogPermalink() },
+        { text: m.nav_roadmap(), href: '/roadmap' },
+        { text: m.nav_contact(), href: '/contact' },
       ],
     },
     {
-      title: 'Databrush',
+      title: m.footer_databrush(),
       links: [
-        { text: 'About', href: '/about' },
-        { text: 'Contact', href: '/contact' },
+        { text: m.footer_about(), href: '/about' },
+        { text: m.nav_contact(), href: '/contact' },
       ],
     },
   ],
   secondaryLinks: [
-    { text: 'Cookie Policy', href: getPermalink('/terms') },
-    { text: 'Privacy Policy', href: getPermalink('/privacy') },
+    { text: m.footer_cookie_policy(), href: getPermalink('/terms') },
+    { text: m.footer_privacy_policy(), href: getPermalink('/privacy') },
   ],
   socialLinks: [
     { ariaLabel: 'LinkedIn', icon: 'tabler:brand-linkedin', href: 'https://www.linkedin.com/company/data-brush' },
     { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/deib-polimi/renoir' },
   ],
-};
+});

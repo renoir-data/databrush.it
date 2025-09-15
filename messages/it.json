@@ -69,5 +69,19 @@
   "contact_description": "Il nostro team di supporto risponde in genere entro 24 ore lavorative.",
   "contact_button": "Invia Messaggio",
   "cta_title": "Sii parte della nostra visione",
-  "cta_subtitle": "Unisciti alla comunità di <span class=\"font-semibold\">Renoir</span> e inizia a costruire la tua infrastruttura dati oggi stesso."
+  "cta_subtitle": "Unisciti alla comunità di <span class=\"font-semibold\">Renoir</span> e inizia a costruire la tua infrastruttura dati oggi stesso.",
+  "nav_renoir": "Renoir",
+  "nav_overview": "Panoramica",
+  "nav_documentation": "Documentazione",
+  "nav_blog": "Blog",
+  "nav_roadmap": "Roadmap",
+  "nav_contact": "Contatti",
+  "nav_about_us": "Chi siamo",
+  "nav_download": "Scarica",
+  "footer_reference": "Riferimenti",
+  "footer_community": "Comunità",
+  "footer_databrush": "Databrush",
+  "footer_about": "Chi siamo",
+  "footer_cookie_policy": "Informativa sui cookie",
+  "footer_privacy_policy": "Informativa sulla privacy"
 }
