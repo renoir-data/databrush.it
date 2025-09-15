@@ -17,9 +17,7 @@ import brush_medium from '~/assets/images/brush/medium.svg?raw';
 import brush_large from '~/assets/images/brush/large.svg?raw';
 import brush_xlarge from '~/assets/images/brush/xlarge.svg?raw';
 import Content_dinamic from '~/components/widgets/Content_dinamic.astro';
-import TypedCodeImage from '~/components/widgets/TypedCodeImage.astro';
 import * as m from '~/paraglide/messages';
-import IndustrialMonitoring from '~/components/widgets/IndustrialMonitoring.astro';
 
 const metadata = {
   title: 'Databrush',
@@ -36,19 +34,14 @@ const metadata = {
       {
         variant: 'primary',
         target: '_blank',
-        text: 'Get Renoir',
+        text: m.hero_action_1(),
         href: '/docs/renoir',
         icon: 'tabler:download',
       },
-      { text: 'Learn more', href: '#features', variant: 'secondary' },
+      { text: m.hero_action_2(), href: '#features', variant: 'secondary' },
     ]}
   >
-    <Fragment slot="title">
-      <div class="inset-0 bg-gradient-ellipse"></div>
-      You need a <span class="dark:text-white highlight">Brush</span> to paint a <span class="dark:text-white highlight"
-        >Data Masterpiece</span
-      >
-    </Fragment>
+    <Fragment slot="title" set:html={m.hero_title()} />
 
     <Fragment slot="subtitle" set:html={m.hero_subtitle()} />
 
@@ -72,13 +65,8 @@ const metadata = {
 
   <!-- Features2 Widget ************** -->
 
-  <Features3 title="About us" isBeforeContent={true}>
-    <Fragment slot="subtitle">
-      Databrush is built on decades of expertise in designing distributed infrastructures for data analytics. Led by <span
-        class="text-accent dark:text-white highlight">Davide, Luca, and Fabio</span
-      >, and supported by <span class="text-accent dark:text-white highlight">Gianpaolo and Alessandro</span> from Politecnico
-      di Milano it combines technological innovation and strategic vision to tackle the most complex challenges.
-    </Fragment>
+  <Features3 title={m.about_us_title()} isBeforeContent={true}>
+    <Fragment slot="subtitle" set:html={m.about_us_subtitle()} />
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
@@ -90,29 +78,29 @@ const metadata = {
   <!-- <IndustrialMonitoring/> -->
 
   <Stats
-    title="Renoir community in numbers"
-    subtitle="Is just the beginning but it keeps growing"
+    title={m.stats_title()}
+    subtitle={m.stats_subtitle()}
     stats={[
-      { title: 'Place at ACM DEBS', amount: '1º' },
-      { title: 'Downloads', amount: '>1000' },
-      { title: 'GitHub Stars', amount: '69' },
-      { title: 'Research Papers', amount: '3' },
+      { title: m.stats_item_1_title(), amount: '1º' },
+      { title: m.stats_item_2_title(), amount: '>1000' },
+      { title: m.stats_item_3_title(), amount: '83' },
+      { title: m.stats_item_4_title(), amount: '4' },
     ]}
   />
 
   <!-- Features2 Widget ************** -->
 
   <Features2
-    title="What services do we provide?"
-    subtitle="We offer companies the ability to exploit the full potential of their data"
+    title={m.services_title()}
+    subtitle={m.services_subtitle()}
     items={[
       {
-        title: 'Renoir Platform',
-        description: 'For companies that needs a powerfull and flexible platform to manage their data and analytics.',
+        title: m.services_item_1_title(),
+        description: m.services_item_1_description(),
         icon: 'tabler:stack-front',
         callToAction: {
           target: '_blank',
-          text: 'Get Renoir',
+          text: m.services_item_1_cta(),
           href: '/docs/renoir',
         },
         classes: {
@@ -120,12 +108,12 @@ const metadata = {
         },
       },
       {
-        title: 'Data Science',
-        description: 'For companies that needs to extract value from their data and make data-driven decisions.',
+        title: m.services_item_2_title(),
+        description: m.services_item_2_description(),
         icon: 'tabler:chart-covariate',
         callToAction: {
           target: '_blank',
-          text: 'Contact Us',
+          text: m.services_item_2_cta(),
           href: '/contact',
         },
         classes: {
@@ -133,12 +121,12 @@ const metadata = {
         },
       },
       {
-        title: 'Renoir in Cloud ',
-        description: 'For companies that needs to scale their data infrastructure and analytics.',
+        title: m.services_item_3_title(),
+        description: m.services_item_3_description(),
         icon: 'tabler:cloud',
         callToAction: {
           target: '_blank',
-          text: 'Learn More',
+          text: m.services_item_3_cta(),
           href: '/renoir/overview',
         },
         classes: {
@@ -156,43 +144,38 @@ const metadata = {
 
   <Features
     id="features"
-    title="Features of Renoir"
-    subtitle="Renoir has several features that make it a great choice for your company data infrastructure"
+    title={m.features_title()}
+    subtitle={m.features_subtitle()}
     columns={3}
     items={[
       {
-        title: 'Design with the Latest Technologies',
-        description:
-          'Built with Rust, ensuring high performance and reliability. Renoir is designed to perform even in the most critical tasks.',
+        title: m.features_item_1_title(),
+        description: m.features_item_1_description(),
         icon: 'tabler:artboard',
       },
       {
-        title: 'Streaming Real Time',
-        description:
-          'Design to handle real-time data streams, Renoir is the perfect choice for companies that need to process data when they are generated.',
+        title: m.features_item_2_title(),
+        description: m.features_item_2_description(),
         icon: 'tabler:picture-in-picture',
       },
       {
-        title: 'Customizability',
-        description:
-          'Easily customizable to perform even the most complex tasks for every vertical scenario, making it the ultimate solution for your needs.',
+        title: m.features_item_3_title(),
+        description: m.features_item_3_description(),
         icon: 'tabler:adjustments-horizontal',
       },
       {
-        title: 'Lighting Fast',
-        description: 'Optimized for speed and performance to ensure insights are delivered quickly and efficiently.',
+        title: m.features_item_4_title(),
+        description: m.features_item_4_description(),
         icon: 'tabler:rocket',
       },
       {
-        title: 'Easy to Use',
-        description:
-          'Designed with user-friendliness in mind, thanks to its high-level API, Renoir is easy to use and integrate with your existing infrastructure.',
+        title: m.features_item_5_title(),
+        description: m.features_item_5_description(),
         icon: 'tabler:arrows-right-left',
       },
       {
-        title: 'Open Source',
-        description:
-          'The engine of Renoir is open source, allowing the community to contribute and improve the platform.',
+        title: m.features_item_6_title(),
+        description: m.features_item_6_description(),
         icon: 'tabler:plug-connected',
       },
     ]}
@@ -204,23 +187,20 @@ const metadata = {
     isReversed
     items={[
       {
-        title: 'Data-driven Companies',
-        description:
-          'Optimize you decision and forecast your trends by analyzing billions of data in real-time all without the high cost of traditional infrastructure.',
+        title: m.use_cases_item_1_title(),
+        description: m.use_cases_item_1_description(),
         icon: 'tabler:presentation',
         data: { 'data-index': '0' },
       },
       {
-        title: 'Industry 4.0: Monitoring Processes',
-        description:
-          'Reduce downtime and maximize efficiency with continuous machine monitoring and real-time data analysis, ensuring smooth and efficient operations.',
+        title: m.use_cases_item_2_title(),
+        description: m.use_cases_item_2_description(),
         icon: 'tabler:settings',
         data: { 'data-index': '1' },
       },
       {
-        title: 'Transform Data into Value',
-        description:
-          'Leverage Renoir and our expertise in the field to uncover new opportunities and optimize business strategies, even with limited existing infrastructure.',
+        title: m.use_cases_item_3_title(),
+        description: m.use_cases_item_3_description(),
         icon: 'tabler:wand',
         data: { 'data-index': '2' },
       },
@@ -231,7 +211,7 @@ const metadata = {
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-4xl text-center font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Use Cases</h3>
+      <h3 class="text-4xl text-center font-bold tracking-tight dark:text-white sm:text-3xl mb-2" set:html={m.use_cases_title()}/>
     </Fragment>
   </Content_dinamic>
 
@@ -239,37 +219,31 @@ const metadata = {
 
   <FAQs
     id="FAQ"
-    title="Frequently Asked Questions"
+    title={m.faq_title()}
     items={[
       {
-        title: 'How do I start using Renoir?',
-        description:
-          'You can start usign Renoir following the quick start guide in the documentation. It is easier than you think. If you need help, you can reach out to our support team.',
+        title: m.faq_item_1_title(),
+        description: m.faq_item_1_description(),
       },
       {
-        title: 'Why should I use Renoir?',
-        description:
-          'Renoir is a powerful and flexible platform it is designed to scale with your company and adapt to your needs. This means that you can focus on what really matters: your business. It cuts down the time to market, operetional cost and allows you to make data-driven decisions.',
+        title: m.faq_item_2_title(),
+        description: m.faq_item_2_description(),
       },
       {
-        title: 'Where can I find more information about Renoir?',
-        description:
-          'If you need more information about Renoir, you can visit our documentation page. There you will find all the information you need to start using Renoir. More technical information can be found in the GitHub repository. Lastly if you want to read use cases or research papers, you can visit our blog.',
+        title: m.faq_item_3_title(),
+        description: m.faq_item_3_description(),
       },
       {
-        title: 'Can I try Renoir before buying?',
-        description:
-          'Yes, the engine of Renoir is and always will be open source. You can try it and use it for free. Be part of our community and help us to improve the platform. If you need more from Renoir, you can always upgrade to the enterprise version.',
+        title: m.faq_item_4_title(),
+        description: m.faq_item_4_description(),
       },
       {
-        title: 'How can Databrush help my company?',
-        description:
-          'Databrush is a team of experts in data analytics and distributed infrastructures. We can help you to design and implement the best data infrastructure for your company. We can help you to extract value from your data and make data-driven decisions. We can help you to scale your data infrastructure and analytics. If you want to know more about how we can help you, you can contact us.',
+        title: m.faq_item_5_title(),
+        description: m.faq_item_5_description(),
       },
       {
-        title: 'Why Renoir was created?',
-        description:
-          'Renoir is born after years of experience in designing distributed infrastructures for data analytics. We saw that there was a need for a real-time streaming framework that was easy to use, scalable and reliable; withouth reducing the performance. Renoir is the answer to that need. It is designed to be the ultimate solution for your data infrastructure.',
+        title: m.faq_item_6_title(),
+        description: m.faq_item_6_description(),
       },
     ]}
   >
@@ -280,32 +254,31 @@ const metadata = {
 
   <ContactUs
     id="form"
-    title="Drop us a message today!"
-    subtitle="Whether you have a question about features, trials, pricing, need a demo, or anything else, our team is ready to answer all your questions."
+    title={m.contact_title()}
+    subtitle={m.contact_subtitle()}
     inputs={[
       {
         type: 'text',
         name: 'name',
-        label: 'Name',
-        placeholder: 'John Doe',
+        label: m.contact_input_name_label(),
+        placeholder: m.contact_input_name_placeholder(),
       },
       {
         type: 'email',
         name: 'email',
-        label: 'Email',
-        placeholder: 'jonh.doe@mail.com',
+        label: m.contact_input_email_label(),
+        placeholder: m.contact_input_email_placeholder(),
       },
     ]}
     textarea={{
-      label: 'Message',
-      placeholder: 'HI, I would like to know more about Renoir and how it can help my company.',
+      label: m.contact_textarea_label(),
+      placeholder: m.contact_textarea_placeholder(),
     }}
     disclaimer={{
-      label:
-        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
+      label: m.contact_disclaimer_label(),
     }}
-    description="Our support team typically responds within 24 business hours."
-    button="Send Message"
+    description={m.contact_description()}
+    button={m.contact_button()}
     method="post"
     action="https://forms.un-static.com/forms/f92a74143ea36998a842bb838854714e148f4379"
   />
@@ -317,16 +290,14 @@ const metadata = {
       {
         variant: 'primary',
         target: '_blank',
-        text: 'Get Renoir',
+        text: m.hero_action_1(),
         href: '/docs/renoir',
         icon: 'tabler:download',
       },
     ]}
   >
-    <Fragment slot="title">Be a part of our vision</Fragment>
+    <Fragment slot="title" set:html={m.cta_title()} />
 
-    <Fragment slot="subtitle">
-      Join the <span class="font-semibold">Renoir</span> community and start building your data infrastructure today.
-    </Fragment>
+    <Fragment slot="subtitle" set:html={m.cta_subtitle()} />
   </CallToAction>
 </Layout>
