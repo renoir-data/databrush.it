@@ -8,7 +8,7 @@ import { blogListRobots, fetchPostsByLocale, blogPostsPerPage } from '~/utils/bl
 import { BLOG_BASE } from '~/utils/permalinks';
 import type { MetaData } from '~/types';
 
-export const prerender = false;
+export const prerender = true;
 
 const currentPage = 1;
 const allPosts = await fetchPostsByLocale('en');

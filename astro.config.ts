@@ -17,7 +17,6 @@ import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehype
 
 import react from '@astrojs/react';
 import { paraglideVitePlugin } from "@inlang/paraglide-js";
-import node from "@astrojs/node";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -27,7 +26,6 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
 
 export default defineConfig({
   output: 'static',
-  adapter: node({ mode: 'standalone' }),
   trailingSlash: 'ignore',
   
   i18n: {

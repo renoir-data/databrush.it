@@ -3,15 +3,32 @@ import Layout from '~/layouts/PageLayout.astro';
 import BlogList from '~/components/blog/List.astro';
 import Headline from '~/components/blog/Headline.astro';
 import Pagination from '~/components/blog/Pagination.astro';
-import { blogTagRobots, fetchPostsByLocale, blogPostsPerPage } from '~/utils/blog';
-import { TAG_BASE } from '~/utils/permalinks';
+import { blogTagRobots, fetchPostsByLocale } from '~/utils/blog';
 
-export const prerender = false;
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const posts = await fetchPostsByLocale('it');
+  const tags = new Set();
+  
+  posts.forEach((post) => {
+    if (post.tags) {
+      post.tags.forEach(tag => {
+        if (tag.slug) {
+          tags.add(tag.slug);
+        }
+      });
+    }
+  });
+
+  return Array.from(tags).map((tagSlug) => ({
+    params: { page: tagSlug }
+  }));
+}
 
 // Get tag slug from URL params
 const tagSlug = Astro.params.page;
-const currentPageParam = Astro.url.searchParams.get('page');
-const currentPage = currentPageParam ? parseInt(currentPageParam) : 1;
+const currentPage = 1; // Static generation - single page for each tag
 
 // Fetch all posts and filter by tag (Italian locale)
 const allPosts = await fetchPostsByLocale('it');
@@ -21,22 +38,21 @@ const taggedPosts = allPosts.filter((post) =>
   Array.isArray(post.tags) && post.tags.find((t) => t.slug === tagSlug)
 );
 
-const totalPages = Math.ceil(taggedPosts.length / blogPostsPerPage);
-const start = (currentPage - 1) * blogPostsPerPage;
-const end = start + blogPostsPerPage;
+const start = 0;
+const end = taggedPosts.length;
 const posts = taggedPosts.slice(start, end);
 
 const page = {
   data: posts,
   currentPage: currentPage,
   url: {
-    prev: currentPage > 1 ? `/${TAG_BASE}/${tagSlug}?page=${currentPage - 1}` : undefined,
-    next: currentPage < totalPages ? `/${TAG_BASE}/${tagSlug}?page=${currentPage + 1}` : undefined,
+    prev: undefined,
+    next: undefined,
   },
 };
 
 const metadata = {
-  title: `Posts by tag '${tag.title}'${currentPage > 1 ? ` — Page ${currentPage} ` : ''}`,
+  title: `Posts by tag '${tag.title}'`,
   robots: {
     index: blogTagRobots?.index,
     follow: blogTagRobots?.follow,

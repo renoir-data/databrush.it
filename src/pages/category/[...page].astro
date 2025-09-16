@@ -3,15 +3,29 @@ import Layout from '~/layouts/PageLayout.astro';
 import BlogList from '~/components/blog/List.astro';
 import Headline from '~/components/blog/Headline.astro';
 import Pagination from '~/components/blog/Pagination.astro';
-import { blogCategoryRobots, fetchPostsByLocale, blogPostsPerPage } from '~/utils/blog';
+import { blogCategoryRobots, fetchPostsByLocale } from '~/utils/blog';
 import { CATEGORY_BASE } from '~/utils/permalinks';
 
-export const prerender = false;
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const posts = await fetchPostsByLocale('en');
+  const categories = new Set();
+  
+  posts.forEach((post) => {
+    if (post.category?.slug) {
+      categories.add(post.category.slug);
+    }
+  });
+
+  return Array.from(categories).map((categorySlug) => ({
+    params: { page: categorySlug }
+  }));
+}
 
 // Get category slug from URL params
 const categorySlug = Astro.params.page;
-const currentPageParam = Astro.url.searchParams.get('page');
-const currentPage = currentPageParam ? parseInt(currentPageParam) : 1;
+const currentPage = 1; // Static generation - single page for each category
 
 // Fetch all posts and filter by category
 const allPosts = await fetchPostsByLocale('en');
@@ -21,9 +35,9 @@ const categoryPosts = allPosts.filter((post) =>
   post.category && post.category.slug === categorySlug
 );
 
-const totalPages = Math.ceil(categoryPosts.length / blogPostsPerPage);
-const start = (currentPage - 1) * blogPostsPerPage;
-const end = start + blogPostsPerPage;
+const totalPages = 1; // Show all posts on one page for now
+const start = 0;
+const end = categoryPosts.length;
 const posts = categoryPosts.slice(start, end);
 
 const page = {
