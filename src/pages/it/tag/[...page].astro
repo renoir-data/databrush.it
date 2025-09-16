@@ -3,7 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import BlogList from '~/components/blog/List.astro';
 import Headline from '~/components/blog/Headline.astro';
 import Pagination from '~/components/blog/Pagination.astro';
-import { blogTagRobots, fetchPosts, blogPostsPerPage } from '~/utils/blog';
+import { blogTagRobots, fetchPostsByLocale, blogPostsPerPage } from '~/utils/blog';
 import { TAG_BASE } from '~/utils/permalinks';
 
 export const prerender = false;
@@ -13,8 +13,8 @@ const tagSlug = Astro.params.page;
 const currentPageParam = Astro.url.searchParams.get('page');
 const currentPage = currentPageParam ? parseInt(currentPageParam) : 1;
 
-// Fetch all posts and filter by tag
-const allPosts = await fetchPosts();
+// Fetch all posts and filter by tag (Italian locale)
+const allPosts = await fetchPostsByLocale('it');
 const tag = { slug: tagSlug, title: tagSlug };
 
 const taggedPosts = allPosts.filter((post) => 

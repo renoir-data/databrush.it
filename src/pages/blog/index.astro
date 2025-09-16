@@ -4,14 +4,14 @@ import BlogList from '~/components/blog/List.astro';
 import Headline from '~/components/blog/Headline.astro';
 import Pagination from '~/components/blog/Pagination.astro';
 import * as m from '~/paraglide/messages';
-import { blogListRobots, fetchPosts, blogPostsPerPage } from '~/utils/blog';
+import { blogListRobots, fetchPostsByLocale, blogPostsPerPage } from '~/utils/blog';
 import { BLOG_BASE } from '~/utils/permalinks';
 import type { MetaData } from '~/types';
 
 export const prerender = false;
 
 const currentPage = 1;
-const allPosts = await fetchPosts();
+const allPosts = await fetchPostsByLocale('en');
 const totalPages = Math.ceil(allPosts.length / blogPostsPerPage);
 
 const start = 0;

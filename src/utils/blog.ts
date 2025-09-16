@@ -4,7 +4,7 @@ import type { CollectionEntry } from 'astro:content';
 import type { Post } from '~/types';
 import { APP_BLOG } from 'astrowind:config';
 import { cleanSlug, trimSlash, BLOG_BASE, POST_PERMALINK_PATTERN, CATEGORY_BASE, TAG_BASE } from './permalinks';
-import { getLocalizedContent, extractLocaleFromPath } from './localization';
+import { getLocalizedContent } from './localization';
 
 const generatePermalink = async ({
   id,
@@ -200,9 +200,29 @@ export const getStaticPathsBlogList = async ({ paginate }: { paginate: PaginateF
 };
 
 /** */
+export const getStaticPathsBlogListByLocale = async ({ paginate, locale = 'en' }: { paginate: PaginateFunction, locale?: string }) => {
+  if (!isBlogEnabled || !isBlogListRouteEnabled) return [];
+  return paginate(await fetchPostsByLocale(locale), {
+    params: { blog: BLOG_BASE || undefined },
+    pageSize: blogPostsPerPage,
+  });
+};
+
+/** */
 export const getStaticPathsBlogPost = async () => {
   if (!isBlogEnabled || !isBlogPostRouteEnabled) return [];
   return (await fetchPosts()).flatMap((post) => ({
+    params: {
+      blog: post.permalink,
+    },
+    props: { post },
+  }));
+};
+
+/** */
+export const getStaticPathsBlogPostByLocale = async (locale: string = 'en') => {
+  if (!isBlogEnabled || !isBlogPostRouteEnabled) return [];
+  return (await fetchPostsByLocale(locale)).flatMap((post) => ({
     params: {
       blog: post.permalink,
     },
@@ -215,6 +235,30 @@ export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: Pagin
   if (!isBlogEnabled || !isBlogCategoryRouteEnabled) return [];
 
   const posts = await fetchPosts();
+  const categories = {};
+  posts.map((post) => {
+    if (post.category?.slug) {
+      categories[post.category?.slug] = post.category;
+    }
+  });
+
+  return Array.from(Object.keys(categories)).flatMap((categorySlug) =>
+    paginate(
+      posts.filter((post) => post.category?.slug && categorySlug === post.category?.slug),
+      {
+        params: { category: categorySlug, blog: CATEGORY_BASE || undefined },
+        pageSize: blogPostsPerPage,
+        props: { category: categories[categorySlug] },
+      }
+    )
+  );
+};
+
+/** */
+export const getStaticPathsBlogCategoryByLocale = async ({ paginate, locale = 'en' }: { paginate: PaginateFunction, locale?: string }) => {
+  if (!isBlogEnabled || !isBlogCategoryRouteEnabled) return [];
+
+  const posts = await fetchPostsByLocale(locale);
   const categories = {};
   posts.map((post) => {
     if (post.category?.slug) {
@@ -261,8 +305,71 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
 };
 
 /** */
+export const getStaticPathsBlogTagByLocale = async ({ paginate, locale = 'en' }: { paginate: PaginateFunction, locale?: string }) => {
+  if (!isBlogEnabled || !isBlogTagRouteEnabled) return [];
+
+  const posts = await fetchPostsByLocale(locale);
+  const tags = {};
+  posts.map((post) => {
+    if (Array.isArray(post.tags)) {
+      post.tags.map((tag) => {
+        tags[tag?.slug] = tag;
+      });
+    }
+  });
+
+  return Array.from(Object.keys(tags)).flatMap((tagSlug) =>
+    paginate(
+      posts.filter((post) => Array.isArray(post.tags) && post.tags.find((elem) => elem.slug === tagSlug)),
+      {
+        params: { tag: tagSlug, blog: TAG_BASE || undefined },
+        pageSize: blogPostsPerPage,
+        props: { tag: tags[tagSlug] },
+      }
+    )
+  );
+};
+
+/** */
 export async function getRelatedPosts(originalPost: Post, maxResults: number = 4): Promise<Post[]> {
   const allPosts = await fetchPosts();
+  const originalTagsSet = new Set(originalPost.tags ? originalPost.tags.map((tag) => tag.slug) : []);
+
+  const postsWithScores = allPosts.reduce((acc: { post: Post; score: number }[], iteratedPost: Post) => {
+    if (iteratedPost.slug === originalPost.slug) return acc;
+
+    let score = 0;
+    if (iteratedPost.category && originalPost.category && iteratedPost.category.slug === originalPost.category.slug) {
+      score += 5;
+    }
+
+    if (iteratedPost.tags) {
+      iteratedPost.tags.forEach((tag) => {
+        if (originalTagsSet.has(tag.slug)) {
+          score += 1;
+        }
+      });
+    }
+
+    acc.push({ post: iteratedPost, score });
+    return acc;
+  }, []);
+
+  postsWithScores.sort((a, b) => b.score - a.score);
+
+  const selectedPosts: Post[] = [];
+  let i = 0;
+  while (selectedPosts.length < maxResults && i < postsWithScores.length) {
+    selectedPosts.push(postsWithScores[i].post);
+    i++;
+  }
+
+  return selectedPosts;
+}
+
+/** */
+export async function getRelatedPostsByLocale(originalPost: Post, locale: string = 'en', maxResults: number = 4): Promise<Post[]> {
+  const allPosts = await fetchPostsByLocale(locale);
   const originalTagsSet = new Set(originalPost.tags ? originalPost.tags.map((tag) => tag.slug) : []);
 
   const postsWithScores = allPosts.reduce((acc: { post: Post; score: number }[], iteratedPost: Post) => {

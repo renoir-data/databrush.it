@@ -3,7 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import BlogList from '~/components/blog/List.astro';
 import Headline from '~/components/blog/Headline.astro';
 import Pagination from '~/components/blog/Pagination.astro';
-import { blogCategoryRobots, fetchPosts, blogPostsPerPage } from '~/utils/blog';
+import { blogCategoryRobots, fetchPostsByLocale, blogPostsPerPage } from '~/utils/blog';
 import { CATEGORY_BASE } from '~/utils/permalinks';
 
 export const prerender = false;
@@ -13,8 +13,8 @@ const categorySlug = Astro.params.page;
 const currentPageParam = Astro.url.searchParams.get('page');
 const currentPage = currentPageParam ? parseInt(currentPageParam) : 1;
 
-// Fetch all posts and filter by category
-const allPosts = await fetchPosts();
+// Fetch all posts and filter by category (Italian locale)
+const allPosts = await fetchPostsByLocale('it');
 const category = { slug: categorySlug, title: categorySlug };
 
 const categoryPosts = allPosts.filter((post) => 
