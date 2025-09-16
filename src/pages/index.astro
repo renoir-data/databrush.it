@@ -18,6 +18,7 @@ import brush_large from '~/assets/images/brush/large.svg?raw';
 import brush_xlarge from '~/assets/images/brush/xlarge.svg?raw';
 import Content_dinamic from '~/components/widgets/Content_dinamic.astro';
 import * as m from '~/paraglide/messages';
+import TypedCodeImage from '~/components/widgets/TypedCodeImage.astro';
 
 const metadata = {
   title: 'Databrush',
@@ -74,8 +75,7 @@ const metadata = {
 
   <!-- Stats Widget ****************** -->
 
-  <!-- <TypedCodeImage /> -->
-  <!-- <IndustrialMonitoring/> -->
+  <TypedCodeImage />
 
   <Stats
     title={m.stats_title()}

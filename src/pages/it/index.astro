@@ -18,6 +18,8 @@ import brush_large from '~/assets/images/brush/large.svg?raw';
 import brush_xlarge from '~/assets/images/brush/xlarge.svg?raw';
 import Content_dinamic from '~/components/widgets/Content_dinamic.astro';
 import * as m from '~/paraglide/messages';
+import TypedCodeImage from '~/components/widgets/TypedCodeImage.astro';
+import IndustrialMonitoringGif from '~/components/widgets/IndustrialMonitoringGif.astro';
 
 const metadata = {
   title: 'Databrush — La Tua Infrastruttura Dati',
@@ -74,8 +76,10 @@ const metadata = {
 
   <!-- Stats Widget ****************** -->
 
-  <!-- <TypedCodeImage /> -->
-  <!-- <IndustrialMonitoring/> -->
+  <TypedCodeImage />
+
+  <!-- Industrial Monitoring GIF Component (shown after TypedCodeImage animation completes) -->
+  <!-- <IndustrialMonitoringGif /> -->
 
   <Stats
     title={m.stats_title()}

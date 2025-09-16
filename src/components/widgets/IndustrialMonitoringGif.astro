@@ -1,0 +1,160 @@
+---
+// Component for displaying the industrial monitoring GIF after TypedCodeImage animation completes
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class={`monitoring-wrapper ${className}`}>
+  <div class="monitoring-content">
+    <div class="gif-container">
+      <img 
+        src="/src/assets/images/use_cases/industrial_monitoring.webp" 
+        alt="Industrial Monitoring Dashboard Animation" 
+        class="monitoring-gif"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</div>
+
+<style>
+  .monitoring-wrapper {
+    display: none; /* Hidden by default, shown by TypedCodeImage */
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    min-height: 400px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .monitoring-wrapper.expanding-from-box {
+    /* Start as small box to match the shrinking animation */
+    transform: scale(0.1) translateY(0);
+    opacity: 1;
+    min-height: 80px;
+    padding: 0;
+  }
+
+  .monitoring-wrapper.expanding-from-box .monitoring-content {
+    transform: scale(0.1);
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .monitoring-wrapper.expanding-from-box .gif-container {
+    opacity: 0;
+  }
+
+  .monitoring-wrapper.active {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    min-height: 400px;
+    padding: 2rem 1rem;
+  }
+
+  .monitoring-wrapper.active .monitoring-content {
+    transform: scale(1);
+    border-radius: 0;
+  }
+
+  .monitoring-wrapper.active .gif-container {
+    opacity: 1;
+    transition: opacity 0.4s ease 0.4s; /* Delay to allow container to expand first */
+  }
+
+  .monitoring-content {
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .gif-container {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 
+      0 25px 50px -12px rgba(0, 0, 0, 0.5),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .monitoring-gif {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+  }
+
+  .monitoring-gif:hover {
+    transform: scale(1.02);
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .monitoring-wrapper {
+      padding: 1rem 0.5rem;
+      min-height: 300px;
+    }
+    
+    .monitoring-content {
+      max-width: 100%;
+    }
+  }
+
+  /* Dark mode enhancements */
+  @media (prefers-color-scheme: dark) {
+    .gif-container {
+      box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(255, 255, 255, 0.15);
+    }
+  }
+
+  /* Animation for when the component becomes active */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .monitoring-wrapper.active .gif-container {
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+  }
+</style>
+
+<script>
+  // Additional interaction enhancements
+  document.addEventListener('DOMContentLoaded', () => {
+    const monitoringWrapper = document.querySelector('.monitoring-wrapper');
+    
+    if (monitoringWrapper) {
+      // Add intersection observer for additional effects when scrolling
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && entry.target.classList.contains('active')) {
+            // Add any additional effects when the component is fully in view
+            (entry.target as HTMLElement).style.transform = 'scale(1)';
+          }
+        });
+      }, {
+        threshold: 0.5
+      });
+
+      observer.observe(monitoringWrapper);
+    }
+  });
+</script>

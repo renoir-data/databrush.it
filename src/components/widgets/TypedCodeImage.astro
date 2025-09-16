@@ -27,7 +27,7 @@ let mut data_from_sensors = env.stream(source_gen)
   `,
   lang = 'rust',
   fileName = 'data_source.rs',
-  typeSpeed = 40,
+  typeSpeed = 8, // Much faster typing
   runDelay = 1000,
   loadDelay = 500,
 } = Astro.props;
@@ -76,6 +76,18 @@ const highlightedHtml = await codeToHtml(code.trim(), {
       <svg class="spinner" viewBox="0 0 50 50">
         <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
       </svg>
+      
+      <!-- STATE 3: Monitoring GIF (Inside the box) -->
+      <div class="monitoring-content">
+        <div class="gif-container">
+          <img 
+            src="/src/assets/images/use_cases/industrial_monitoring.webp" 
+            alt="Industrial Monitoring Dashboard Animation" 
+            class="monitoring-gif"
+            loading="lazy"
+          />
+        </div>
+      </div>
   </div>
 </div>
 
@@ -86,9 +98,24 @@ const highlightedHtml = await codeToHtml(code.trim(), {
     justify-content: center;
     align-items: center;
     padding: 3rem 1rem;
-    background: #111;
+    background: transparent;
     /* Ensure the wrapper maintains its height during transition */
-    min-height: 400px; 
+    min-height: 600px; /* Increased to accommodate larger video box */
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .code-window-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #f0f8ff;
+    z-index: -1;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .code-window-wrapper::before {
+      background: transparent;
+    }
   }
 
   .code-window {
@@ -99,6 +126,8 @@ const highlightedHtml = await codeToHtml(code.trim(), {
     width: 100%;
     max-width: 650px;
     overflow: hidden;
+    position: absolute;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   .header {
@@ -205,23 +234,61 @@ const highlightedHtml = await codeToHtml(code.trim(), {
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 650px;
-    min-height: 334px; /* Match code window height */
+    max-width: 900px; /* Larger container for video */
+    min-height: 500px; /* Larger height to better fit video */
     background-color: #262335;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
+    position: absolute;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    aspect-ratio: 16/10; /* Match video aspect ratio approximately */
   }
 
   .spinner {
     animation: rotate 2s linear infinite;
     width: 50px;
     height: 50px;
+    transition: opacity 0.3s ease;
   }
 
   .spinner .path {
     stroke: #4caf50;
     stroke-linecap: round;
     animation: dash 1.5s ease-in-out infinite;
+  }
+
+  /* --- Monitoring Content Styles (Inside Loading State) --- */
+  .monitoring-content {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  .gif-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .monitoring-gif {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This will properly scale the 2560x1600 image */
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+  }
+
+  .monitoring-gif:hover {
+    transform: scale(1.02);
   }
 
   @keyframes rotate { 100% { transform: rotate(360deg); } }
@@ -237,9 +304,126 @@ const highlightedHtml = await codeToHtml(code.trim(), {
   }
   .code-window-wrapper.loading .loading-state {
     display: flex;
+    /* Keep original smaller dimensions during loading phase */
+    max-width: 650px;
+    min-height: 334px;
+    aspect-ratio: initial;
   }
   .code-window-wrapper.loading .mouse-cursor {
     opacity: 0;
+  }
+
+  /* --- Shrinking Animation (Small Box) --- */
+  .code-window-wrapper.shrinking .code-window {
+    display: none;
+  }
+  .code-window-wrapper.shrinking .loading-state {
+    display: flex;
+    transform: scale(0.1);
+    border-radius: 50%;
+    max-height: 80px;
+    min-height: 80px;
+    max-width: 80px;
+    margin: 0 auto;
+    background: #262335;
+    aspect-ratio: 1;
+  }
+
+  .code-window-wrapper.shrinking .loading-state .spinner {
+    opacity: 0;
+  }
+
+  .code-window-wrapper.shrinking .mouse-cursor {
+    opacity: 0; /* Hide mouse cursor during shrinking */
+  }
+
+  /* --- Expanding Box State (Intermediate) --- */
+  .code-window-wrapper.expanding-box .code-window {
+    display: none; /* Keep code window hidden during expansion */
+  }
+
+  .code-window-wrapper.expanding-box .loading-state {
+    display: flex;
+    transform: scale(1);
+    border-radius: 12px;
+    min-height: 500px; /* Larger height */
+    max-width: 900px; /* Larger width */
+    background: rgba(38, 35, 53, 0.8);
+    backdrop-filter: blur(10px);
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative; /* For absolute positioning of content */
+    aspect-ratio: 16/10; /* Maintain video aspect ratio */
+  }
+
+  .code-window-wrapper.expanding-box .loading-state .spinner {
+    opacity: 0;
+  }
+
+  .code-window-wrapper.expanding-box .monitoring-content {
+    display: none; /* Keep video hidden during box expansion */
+  }
+
+  .code-window-wrapper.expanding-box .mouse-cursor {
+    opacity: 0; /* Keep mouse cursor hidden during expansion */
+  }
+
+  /* --- Final State (Monitoring GIF) --- */
+  .code-window-wrapper.showing-monitoring .loading-state {
+    display: flex; /* Keep the box visible as container */
+    transform: scale(1);
+    border-radius: 12px;
+    min-height: 500px; /* Larger height */
+    max-width: 900px; /* Larger width */
+    background: rgba(38, 35, 53, 0.8);
+    backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    padding: 0; /* Remove padding since content is now positioned absolutely inside */
+    aspect-ratio: 16/10; /* Maintain video aspect ratio */
+  }
+
+  .code-window-wrapper.showing-monitoring .loading-state .spinner {
+    opacity: 0; /* Keep spinner hidden */
+  }
+
+  .code-window-wrapper.showing-monitoring .monitoring-content {
+    display: block;
+    opacity: 1; /* Fade in the video content */
+  }
+
+  .code-window-wrapper.showing-monitoring {
+    background: transparent;
+    padding: 2rem 1rem;
+  }
+
+  .code-window-wrapper.expanding-box {
+    background: transparent;
+    padding: 2rem 1rem;
+  }
+
+  .code-window-wrapper.showing-monitoring::before,
+  .code-window-wrapper.expanding-box::before {
+    background: #f0f8ff;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .code-window-wrapper.showing-monitoring::before,
+    .code-window-wrapper.expanding-box::before {
+      background: transparent;
+    }
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .code-window-wrapper.showing-monitoring {
+      padding: 1rem 0.5rem;
+      min-height: 300px;
+    }
+    
+    .monitoring-content {
+      max-width: 100%;
+    }
   }
 </style>
 
@@ -365,16 +549,42 @@ const highlightedHtml = await codeToHtml(code.trim(), {
       // 6. Switch to the loading state
       this.wrapperEl.classList.add('loading');
     
-      await this.wait(2000); // The 2-second spinner duration you requested.
+      await this.wait(2000); // The 2-second spinner duration
 
-      const monitoringComponent = document.querySelector('.monitoring-wrapper');
-      if (monitoringComponent) {
-        // Hide this code window
-        this.wrapperEl.style.display = 'none';
-        // Show and activate the monitoring graph component
-        monitoringComponent.style.display = 'flex';
-        monitoringComponent.classList.add('active');
-      }
+      // 7. Shrink to small box
+      await this.shrinkToSmallBox();
+
+      await this.wait(2000); // Small delay before expanding
+
+      // 8. Transform small box into monitoring gif
+      await this.expandToMonitoringGif();
+    }
+
+    async shrinkToSmallBox() {
+      // Hide mouse cursor immediately when starting to shrink
+      this.mouseCursor.classList.remove('visible');
+      
+      // Add shrinking class to trigger the animation
+      this.wrapperEl.classList.add('shrinking');
+      
+      // Wait for the shrinking animation to complete
+      await this.wait(600);
+    }
+
+    async expandToMonitoringGif() {
+      // Stage 1: Start expanding the box but keep video hidden
+      this.wrapperEl.classList.remove('loading', 'shrinking');
+      this.wrapperEl.classList.add('expanding-box');
+      
+      // Wait for the box to expand to full size
+      await this.wait(600);
+      
+      // Stage 2: Now show the video content
+      this.wrapperEl.classList.remove('expanding-box');
+      this.wrapperEl.classList.add('showing-monitoring');
+      
+      // Wait for the video fade-in to complete
+      await this.wait(400);
     }
   }
 
