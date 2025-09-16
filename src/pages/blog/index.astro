@@ -3,7 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import BlogList from '~/components/blog/List.astro';
 import Headline from '~/components/blog/Headline.astro';
 import Pagination from '~/components/blog/Pagination.astro';
-
+import * as m from '~/paraglide/messages';
 import { blogListRobots, fetchPosts, blogPostsPerPage } from '~/utils/blog';
 import { BLOG_BASE } from '~/utils/permalinks';
 import type { MetaData } from '~/types';
@@ -41,7 +41,7 @@ const metadata: MetaData = {
     <Headline
       subtitle="Blog"
     >
-      Insights, case studies, and tutorials on data integration and AI.
+      {m.blog_slogan()}
     </Headline>
     <BlogList posts={page.data} />
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
