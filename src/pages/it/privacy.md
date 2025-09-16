@@ -1,397 +1,387 @@
+
 ---
-title: 'Privacy Policy'
+title: 'Informativa sulla Privacy'
 layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 
-**Last updated February 11, 2025**
+**Ultimo aggiornamento 11 febbraio 2025**
 
 
-This Privacy Notice for databrush ('**we**', '**us**', or '**our**'), describes how and why we might access, collect, store, use, and/or share ('**process**') your personal information when you use our services ('**Services**'), including when you:
+Questa Informativa sulla Privacy per databrush ('**noi**', o '**nostro**'), descrive come e perché potremmo accedere, raccogliere, archiviare, utilizzare e/o condividere ('**trattare**') i tuoi dati personali quando utilizzi i nostri servizi ('**Servizi**'), incluso quando:
 
-*   Visit our website at [https://databrush.it](https://databrush.it), or any website of ours that links to this Privacy Notice
+*   Visiti il nostro sito web all'indirizzo [https://databrush.it](https://databrush.it), o qualsiasi nostro sito web che rimanda a questa Informativa sulla Privacy
 
-*   Engage with us in other related ways, including any sales, marketing, or events
+*   Interagisci con noi in altri modi correlati, incluse vendite, marketing o eventi
 
-**Questions or concerns?** Reading this Privacy Notice will help you understand your privacy rights and choices. We are responsible for making decisions about how your personal information is processed. If you do not agree with our policies and practices, please do not use our Services.
-
-  
+**Domande o dubbi?** Leggere questa Informativa sulla Privacy ti aiuterà a comprendere i tuoi diritti e le tue scelte in materia di privacy. Siamo responsabili di prendere decisioni su come vengono trattati i tuoi dati personali. Se non sei d'accordo con le nostre politiche e pratiche, ti preghiamo di non utilizzare i nostri Servizi.
 
   
 
-SUMMARY OF KEY POINTS
+  
+
+SINTESI DEI PUNTI CHIAVE
 ---------------------
 
-**_This summary provides key points from our Privacy Notice, but you can find out more details about any of these topics by clicking the link following each key point or by using our_** [**_table of contents_**](#toc) **_below to find the section you are looking for._**
+**_Questa sintesi fornisce i punti chiave della nostra Informativa sulla Privacy, ma puoi trovare maggiori dettagli su uno qualsiasi di questi argomenti cliccando sul link che segue ogni punto chiave o utilizzando il nostro_** [**_indice_**](#toc) **_sottostante per trovare la sezione che stai cercando._**
 
   
 
-**What personal information do we process?** When you visit, use, or navigate our Services, we may process personal information depending on how you interact with us and the Services, the choices you make, and the products and features you use. Learn more about [personal information you disclose to us](#personalinfo).
+**Quali dati personali trattiamo?** Quando visiti, utilizzi o navighi nei nostri Servizi, potremmo trattare dati personali a seconda di come interagisci con noi e con i Servizi, delle scelte che fai e dei prodotti e delle funzionalità che utilizzi. Scopri di più sui [dati personali che ci fornisci](#personalinfo).
 
   
 
-**Do we process any sensitive personal information?** Some of the information may be considered 'special' or 'sensitive' in certain jurisdictions, for example your racial or ethnic origins, sexual orientation, and religious beliefs. We do not process sensitive personal information.
+**Trattiamo dati personali sensibili?** Alcune delle informazioni potrebbero essere considerate 'speciali' o 'sensibili' in determinate giurisdizioni, ad esempio le tue origini razziali o etniche, l'orientamento sessuale e le credenze religiose. Non trattiamo dati personali sensibili.
 
   
 
-**Do we collect any information from third parties?** We do not collect any information from third parties.
+**Raccogliamo informazioni da terze parti?** Non raccogliamo alcuna informazione da terze parti.
 
   
 
-**How do we process your information?** We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law. We may also process your information for other purposes with your consent. We process your information only when we have a valid legal reason to do so. Learn more about [how we process your information](#infouse).
+**Come trattiamo i tuoi dati?** Trattiamo i tuoi dati per fornire, migliorare e amministrare i nostri Servizi, comunicare con te, per la sicurezza e la prevenzione delle frodi e per rispettare la legge. Potremmo anche trattare i tuoi dati per altri scopi con il tuo consenso. Trattiamo i tuoi dati solo quando abbiamo una valida ragione legale per farlo. Scopri di più su [come trattiamo i tuoi dati](#infouse).
 
   
 
-**In what situations and with which parties do we share personal information?** We may share information in specific situations and with specific third parties. Learn more about [when and with whom we share your personal information](#whoshare).
+**In quali situazioni e con quali parti condividiamo i dati personali?** Potremmo condividere informazioni in situazioni specifiche e con terze parti specifiche. Scopri di più su [quando e con chi condividiamo i tuoi dati personali](#whoshare).
 
   
 
-**How do we keep your information safe?** We have adequate organisational and technical processes and procedures in place to protect your personal information. However, no electronic transmission over the internet or information storage technology can be guaranteed to be 100% secure, so we cannot promise or guarantee that hackers, cybercriminals, or other unauthorised third parties will not be able to defeat our security and improperly collect, access, steal, or modify your information. Learn more about [how we keep your information safe](#infosafe).
+**Come manteniamo sicuri i tuoi dati?** Abbiamo implementato processi e procedure organizzative e tecniche adeguate per proteggere i tuoi dati personali. Tuttavia, nessuna trasmissione elettronica su Internet o tecnologia di archiviazione delle informazioni può essere garantita al 100% sicura, quindi non possiamo promettere o garantire che hacker, criminali informatici o altre terze parti non autorizzate non saranno in grado di sconfiggere la nostra sicurezza e raccogliere, accedere, rubare o modificare impropriamente i tuoi dati. Scopri di più su [come manteniamo sicuri i tuoi dati](#infosafe).
 
   
 
-**What are your rights?** Depending on where you are located geographically, the applicable privacy law may mean you have certain rights regarding your personal information. Learn more about [your privacy rights](#privacyrights).
+**Quali sono i tuoi diritti?** A seconda di dove ti trovi geograficamente, la legge sulla privacy applicabile potrebbe significare che hai determinati diritti riguardo ai tuoi dati personali. Scopri di più sui [tuoi diritti sulla privacy](#privacyrights).
 
   
 
-**How do you exercise your rights?** The easiest way to exercise your rights is by submitting a [data subject access request](https://app.termly.io/notify/964e59af-b601-4e40-98bc-c5ad32026bac), or by contacting us. We will consider and act upon any request in accordance with applicable data protection laws.
+**Come puoi esercitare i tuoi diritti?** Il modo più semplice per esercitare i tuoi diritti è inviare una [richiesta di accesso ai dati](https://app.termly.io/notify/964e59af-b601-4e40-98bc-c5ad32026bac), o contattandoci. Esamineremo e agiremo su qualsiasi richiesta in conformità con le leggi applicabili sulla protezione dei dati.
 
   
 
-Want to learn more about what we do with any information we collect? [Review the Privacy Notice in full](#toc).
+Vuoi saperne di più su cosa facciamo con le informazioni che raccogliamo? [Leggi l'Informativa sulla Privacy per intero](#toc).
 
   
 
   
 
-TABLE OF CONTENTS
+INDICE
 -----------------
 
 
-[1\. WHAT INFORMATION DO WE COLLECT?](#infocollect)
+[1\. QUALI INFORMAZIONI RACCOGLIAMO?](#infocollect)
 
-[2\. HOW DO WE PROCESS YOUR INFORMATION?](#infouse)
+[2\. COME TRATTIAMO I TUOI DATI?](#infouse)
 
-[3\. WHAT LEGAL BASES DO WE RELY ON TO PROCESS YOUR PERSONAL INFORMATION?](#legalbases)
+[3\. SU QUALI BASI GIURIDICHE CI BASIAMO PER TRATTARE I TUOI DATI PERSONALI?](#legalbases)
 
-[4\. WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?](#whoshare)
+[4\. QUANDO E CON CHI CONDIVIDIAMO I TUOI DATI PERSONALI?](#whoshare)
 
-[5\. DO WE USE COOKIES AND OTHER TRACKING TECHNOLOGIES?](#cookies)
+[5\. UTILIZZIAMO COOKIE E ALTRE TECNOLOGIE DI TRACCIAMENTO?](#cookies)
 
-[6\. HOW LONG DO WE KEEP YOUR INFORMATION?](#inforetain)
+[6\. PER QUANTO TEMPO CONSERVIAMO I TUOI DATI?](#inforetain)
 
-[7\. HOW DO WE KEEP YOUR INFORMATION SAFE?](#infosafe)
+[7\. COME MANTENIAMO SICURI I TUOI DATI?](#infosafe)
 
-[8\. DO WE COLLECT INFORMATION FROM MINORS?](#infominors)
+[8\. RACCOGLIAMO INFORMAZIONI DA MINORI?](#infominors)
 
-[9\. WHAT ARE YOUR PRIVACY RIGHTS?](#privacyrights)
+[9\. QUALI SONO I TUOI DIRITTI SULLA PRIVACY?](#privacyrights)
 
-[10\. CONTROLS FOR DO-NOT-TRACK FEATURES](#DNT)
+[10\. CONTROLLI PER LE FUNZIONALITÀ DO-NOT-TRACK](#DNT)
 
-[11\. DO UNITED STATES RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?](#uslaws)
+[11\. I RESIDENTI NEGLI STATI UNITI HANNO DIRITTI SPECIFICI SULLA PRIVACY?](#uslaws)
 
-[12\. DO WE MAKE UPDATES TO THIS NOTICE?](#policyupdates)
+[12\. APPORTIAMO AGGIORNAMENTI A QUESTA INFORMATIVA?](#policyupdates)
 
-[13\. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?](#contact)
+[13\. COME PUOI CONTATTARCI RIGUARDO A QUESTA INFORMATIVA?](#contact)
 
-[14\. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?](#request)
-
-  
+[14\. COME PUOI RIVEDERE, AGGIORNARE O CANCELLARE I DATI CHE RACCOGLIAMO SU DI TE?](#request)
 
   
 
+  
 
-1\. WHAT INFORMATION DO WE COLLECT?
+
+1\. QUALI INFORMAZIONI RACCOGLIAMO?
 -----------------------------------
 
 
-### Personal information you disclose to us
+### Dati personali che ci fornisci
 
-**_In Short:_** _We collect personal information that you provide to us._
-
-  
-
-We collect personal information that you voluntarily provide to us when you express an interest in obtaining information about us or our products and Services, when you participate in activities on the Services, or otherwise when you contact us.
+**_In breve:_** _Raccogliamo i dati personali che ci fornisci._
 
   
 
-**Personal Information Provided by You.** The personal information that we collect depends on the context of your interactions with us and the Services, the choices you make, and the products and features you use. The personal information we collect may include the following:
-
-*   email addresses
-
-*   names
-
-**Sensitive Information.** We do not process sensitive information.
+Raccogliamo i dati personali che ci fornisci volontariamente quando manifesti interesse a ottenere informazioni su di noi o sui nostri prodotti e Servizi, quando partecipi ad attività sui Servizi, o altrimenti quando ci contatti.
 
   
 
-All personal information that you provide to us must be true, complete, and accurate, and you must notify us of any changes to such personal information.
+**Dati Personali Forniti da Te.** I dati personali che raccogliamo dipendono dal contesto delle tue interazioni con noi e con i Servizi, dalle scelte che fai e dai prodotti e funzionalità che utilizzi. I dati personali che raccogliamo possono includere quanto segue:
 
+*   indirizzi email
 
-### Information automatically collected
+*   nomi
 
-**_In Short:_** _Some information — such as your Internet Protocol (IP) address and/or browser and device characteristics — is collected automatically when you visit our Services._
-
-  
-
-We automatically collect certain information when you visit, use, or navigate the Services. This information does not reveal your specific identity (like your name or contact information) but may include device and usage information, such as your IP address, browser and device characteristics, operating system, language preferences, referring URLs, device name, country, location, information about how and when you use our Services, and other technical information. This information is primarily needed to maintain the security and operation of our Services, and for our internal analytics and reporting purposes.
+**Dati Sensibili.** Non trattiamo dati sensibili.
 
   
 
-Like many businesses, we also collect information through cookies and similar technologies.
+Tutti i dati personali che ci fornisci devono essere veri, completi e accurati, e devi notificarci qualsiasi modifica a tali dati personali.
+
+
+### Informazioni raccolte automaticamente
+
+**_In breve:_** _Alcune informazioni — come il tuo indirizzo di Protocollo Internet (IP) e/o le caratteristiche del browser e del dispositivo — vengono raccolte automaticamente quando visiti i nostri Servizi._
 
   
 
-The information we collect includes:
+Raccogliamo automaticamente determinate informazioni quando visiti, utilizzi o navighi nei Servizi. Queste informazioni non rivelano la tua identità specifica (come il tuo nome o le informazioni di contatto) ma possono includere informazioni sul dispositivo e sull'utilizzo, come il tuo indirizzo IP, le caratteristiche del browser e del dispositivo, il sistema operativo, le preferenze linguistiche, gli URL di riferimento, il nome del dispositivo, il paese, la posizione, informazioni su come e quando utilizzi i nostri Servizi e altre informazioni tecniche. Queste informazioni sono principalmente necessarie per mantenere la sicurezza e il funzionamento dei nostri Servizi, e per i nostri scopi interni di analisi e reporting.
 
-*   _Log and Usage Data._ Log and usage data is service-related, diagnostic, usage, and performance information our servers automatically collect when you access or use our Services and which we record in log files. Depending on how you interact with us, this log data may include your IP address, device information, browser type, and settings and information about your activity in the Services (such as the date/time stamps associated with your usage, pages and files viewed, searches, and other actions you take such as which features you use), device event information (such as system activity, error reports (sometimes called 'crash dumps'), and hardware settings).
+  
+
+Come molte aziende, raccogliamo informazioni anche tramite cookie e tecnologie simili.
+
+  
+
+Le informazioni che raccogliamo includono:
+
+*   _Dati di Log e di Utilizzo._ I dati di log e di utilizzo sono informazioni relative al servizio, diagnostiche, di utilizzo e di performance che i nostri server raccolgono automaticamente quando accedi o utilizzi i nostri Servizi e che registriamo nei file di log. A seconda di come interagisci con noi, questi dati di log possono includere il tuo indirizzo IP, informazioni sul dispositivo, tipo di browser e impostazioni e informazioni sulla tua attività nei Servizi (come i timestamp di data/ora associati al tuo utilizzo, pagine e file visualizzati, ricerche e altre azioni che intraprendi come quali funzionalità utilizzi), informazioni sugli eventi del dispositivo (come attività di sistema, rapporti di errore (a volte chiamati 'crash dump') e impostazioni hardware).
 
   
 
 
-2\. HOW DO WE PROCESS YOUR INFORMATION?
+2\. COME TRATTIAMO I TUOI DATI?
 ---------------------------------------
 
-**_In Short:_** _We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law. We may also process your information for other purposes with your consent._
+**_In breve:_** _Trattiamo i tuoi dati per fornire, migliorare e amministrare i nostri Servizi, comunicare con te, per la sicurezza e la prevenzione delle frodi e per rispettare la legge. Potremmo anche trattare i tuoi dati per altri scopi con il tuo consenso._
 
   
 
-**We process your personal information for a variety of reasons, depending on how you interact with our Services, including:**
+**Trattiamo i tuoi dati personali per una varietà di ragioni, a seconda di come interagisci con i nostri Servizi, tra cui:**
 
-*   **To save or protect an individual's vital interest.** We may process your information when necessary to save or protect an individual’s vital interest, such as to prevent harm.
+*   **Per salvare o proteggere l'interesse vitale di un individuo.** Potremmo trattare i tuoi dati quando necessario per salvare o proteggere l'interesse vitale di un individuo, come per prevenire un danno.
 
   
 
 
-3\. WHAT LEGAL BASES DO WE RELY ON TO PROCESS YOUR INFORMATION?
+3\. SU QUALI BASI GIURIDICHE CI BASIAMO PER TRATTARE I TUOI DATI?
 ---------------------------------------------------------------
 
-**_**In Short:** We only process your personal information when we believe it is necessary and we have a valid legal reason (i.e. legal basis) to do so under applicable law, like with your consent, to comply with laws, to provide you with services to enter into or fulfil our contractual obligations, to protect your rights, or to fulfil our legitimate business interests._
+**_**In breve:** Trattiamo i tuoi dati personali solo quando riteniamo che sia necessario e abbiamo una valida ragione legale (cioè una base giuridica) per farlo ai sensi della legge applicabile, come con il tuo consenso, per rispettare le leggi, per fornirti servizi per stipulare o adempiere ai nostri obblighi contrattuali, per proteggere i tuoi diritti o per soddisfare i nostri legittimi interessi commerciali._
 
   
 
-**If you are located in the EU or UK, this section applies to you.**
+**Se ti trovi nell'UE o nel Regno Unito, questa sezione si applica a te.**
 
   
 
-The General Data Protection Regulation (GDPR) and UK GDPR require us to explain the valid legal bases we rely on in order to process your personal information. As such, we may rely on the following legal bases to process your personal information:
+Il Regolamento Generale sulla Protezione dei Dati (GDPR) e il GDPR del Regno Unito ci impongono di spiegare le valide basi giuridiche su cui ci basiamo per trattare i tuoi dati personali. In quanto tali, possiamo fare affidamento sulle seguenti basi giuridiche per trattare i tuoi dati personali:
 
-*   **Consent.** We may process your information if you have given us permission (i.e. consent) to use your personal information for a specific purpose. You can withdraw your consent at any time. Learn more about [withdrawing your consent](#withdrawconsent).
+*   **Consenso.** Potremmo trattare i tuoi dati se ci hai dato il permesso (cioè il consenso) di utilizzare i tuoi dati personali per uno scopo specifico. Puoi ritirare il tuo consenso in qualsiasi momento. Scopri di più su [come ritirare il tuo consenso](#withdrawconsent).
 
-*   **Legal Obligations.** We may process your information where we believe it is necessary for compliance with our legal obligations, such as to cooperate with a law enforcement body or regulatory agency, exercise or defend our legal rights, or disclose your information as evidence in litigation in which we are involved.  
+*   **Obblighi di Legge.** Potremmo trattare i tuoi dati laddove riteniamo sia necessario per il rispetto dei nostri obblighi legali, come cooperare con un'autorità di contrasto o un'agenzia di regolamentazione, esercitare o difendere i nostri diritti legali, o divulgare i tuoi dati come prova in contenziosi in cui siamo coinvolti.  
     
 
-*   **Vital Interests.** We may process your information where we believe it is necessary to protect your vital interests or the vital interests of a third party, such as situations involving potential threats to the safety of any person.
+*   **Interessi Vitali.** Potremmo trattare i tuoi dati laddove riteniamo sia necessario per proteggere i tuoi interessi vitali o gli interessi vitali di una terza parte, come situazioni che comportano potenziali minacce alla sicurezza di qualsiasi persona.
 
-**_If you are located in Canada, this section applies to you._**
-
-  
-
-We may process your information if you have given us specific permission (i.e. express consent) to use your personal information for a specific purpose, or in situations where your permission can be inferred (i.e. implied consent). You can [withdraw your consent](#withdrawconsent) at any time.
+**_Se ti trovi in Canada, questa sezione si applica a te._**
 
   
 
-In some exceptional cases, we may be legally permitted under applicable law to process your information without your consent, including, for example:
+Potremmo trattare i tuoi dati se ci hai dato un permesso specifico (cioè un consenso esplicito) di utilizzare i tuoi dati personali per uno scopo specifico, o in situazioni in cui il tuo permesso può essere dedotto (cioè un consenso implicito). Puoi [ritirare il tuo consenso](#withdrawconsent) in qualsiasi momento.
 
-*   If collection is clearly in the interests of an individual and consent cannot be obtained in a timely way
+  
 
-*   For investigations and fraud detection and prevention
+In alcuni casi eccezionali, potremmo essere legalmente autorizzati ai sensi della legge applicabile a trattare i tuoi dati senza il tuo consenso, inclusi, ad esempio:
 
-*   For business transactions provided certain conditions are met
+*   Se la raccolta è chiaramente nell'interesse di un individuo e il consenso non può essere ottenuto in modo tempestivo
 
-*   If it is contained in a witness statement and the collection is necessary to assess, process, or settle an insurance claim
+*   Per indagini e prevenzione e rilevamento di frodi
 
-*   For identifying injured, ill, or deceased persons and communicating with next of kin
+*   Per transazioni commerciali a condizione che siano soddisfatte determinate condizioni
 
-*   If we have reasonable grounds to believe an individual has been, is, or may be victim of financial abuse
+*   Se è contenuto in una dichiarazione testimoniale e la raccolta è necessaria per valutare, elaborare o risolvere una richiesta di risarcimento assicurativo
 
-*   If it is reasonable to expect collection and use with consent would compromise the availability or the accuracy of the information and the collection is reasonable for purposes related to investigating a breach of an agreement or a contravention of the laws of Canada or a province
+*   Per identificare persone ferite, malate o decedute e comunicare con i parenti prossimi
 
-*   If disclosure is required to comply with a subpoena, warrant, court order, or rules of the court relating to the production of records
+*   Se abbiamo motivi ragionevoli per credere che un individuo sia stato, sia o possa essere vittima di abuso finanziario
 
-*   If it was produced by an individual in the course of their employment, business, or profession and the collection is consistent with the purposes for which the information was produced
+*   Se è ragionevole aspettarsi che la raccolta e l'uso con il consenso comprometterebbero la disponibilità o l'accuratezza delle informazioni e la raccolta è ragionevole per scopi correlati all'indagine di una violazione di un accordo o di una contravvenzione alle leggi del Canada or di una provincia
 
-*   If the collection is solely for journalistic, artistic, or literary purposes
+*   Se la divulgazione è richiesta per conformarsi a una citazione, un mandato, un'ordinanza del tribunale o alle regole del tribunale relative alla produzione di documenti
 
-*   If the information is publicly available and is specified by the regulations
+*   Se è stato prodotto da un individuo nel corso del suo impiego, attività commerciale o professione e la raccolta è coerente con gli scopi per cui l'informazione è stata prodotta
+
+*   Se la raccolta è esclusivamente per scopi giornalistici, artistici o letterari
+
+*   Se l'informazione è pubblicamente disponibile e specificata dai regolamenti
 
   
 
 
-4\. WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?
+4\. QUANDO E CON CHI CONDIVIDIAMO I TUOI DATI PERSONALI?
 -------------------------------------------------------------
 
-**_In Short:_** _We may share information in specific situations described in this section and/or with the following third parties._
+**_In breve:_** _Potremmo condividere informazioni in situazioni specifiche descritte in questa sezione e/o con le seguenti terze parti._
 
   
 
-We may need to share your personal information in the following situations:
+Potremmo aver bisogno di condividere i tuoi dati personali nelle seguenti situazioni:
 
-*   **Business Transfers.** We may share or transfer your information in connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company.
+*   **Trasferimenti d'Azienda.** Potremmo condividere o trasferire i tuoi dati in relazione a, o durante le negoziazioni di, qualsiasi fusione, vendita di beni aziendali, finanziamento o acquisizione di tutta o parte della nostra attività a un'altra società.
 
   
 
 
-5\. DO WE USE COOKIES AND OTHER TRACKING TECHNOLOGIES?
+5\. UTILIZZIAMO COOKIE E ALTRE TECNOLOGIE DI TRACCIAMENTO?
 ------------------------------------------------------
 
-**_In Short:_** _We may use cookies and other tracking technologies to collect and store your information._
+**_In breve:_** _Potremmo utilizzare cookie e altre tecnologie di tracciamento per raccogliere e archiviare i tuoi dati._
 
   
 
-We may use cookies and similar tracking technologies (like web beacons and pixels) to gather information when you interact with our Services. Some online tracking technologies help us maintain the security of our Services, prevent crashes, fix bugs, save your preferences, and assist with basic site functions.
+Potremmo utilizzare cookie e tecnologie di tracciamento simili (come web beacon e pixel) per raccogliere informazioni quando interagisci con i nostri Servizi. Alcune tecnologie di tracciamento online ci aiutano a mantenere la sicurezza dei nostri Servizi, prevenire crash, correggere bug, salvare le tue preferenze e assistere con le funzioni di base del sito.
 
   
 
-We also permit third parties and service providers to use online tracking technologies on our Services for analytics and advertising, including to help manage and display advertisements, to tailor advertisements to your interests, or to send abandoned shopping cart reminders (depending on your communication preferences). The third parties and service providers use their technology to provide advertising about products and services tailored to your interests which may appear either on our Services or on other websites.
+Permettiamo anche a terze parti e fornitori di servizi di utilizzare tecnologie di tracciamento online sui nostri Servizi per analisi e pubblicità, incluso per aiutare a gestire e visualizzare annunci pubblicitari, per personalizzare gli annunci ai tuoi interessi o per inviare promemoria di carrelli della spesa abbandonati (a seconda delle tue preferenze di comunicazione). Le terze parti e i fornitori di servizi utilizzano la loro tecnologia per fornire pubblicità su prodotti e servizi su misura per i tuoi interessi che possono apparire sia sui nostri Servizi che su altri siti web.
 
   
 
-To the extent these online tracking technologies are deemed to be a 'sale'/'sharing' (which includes targeted advertising, as defined under the applicable laws) under applicable US state laws, you can opt out of these online tracking technologies by submitting a request as described below under section '[DO UNITED STATES RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?](#uslaws)'
+Nella misura in cui queste tecnologie di tracciamento online sono considerate una 'vendita'/'condivisione' (che include la pubblicità mirata, come definita dalle leggi statali statunitensi applicabili), puoi scegliere di non partecipare a queste tecnologie di tracciamento online inviando una richiesta come descritto di seguito nella sezione '[I RESIDENTI NEGLI STATI UNITI HANNO DIRITTI SPECIFICI SULLA PRIVACY?](#uslaws)'
 
   
 
-Specific information about how we use such technologies and how you can refuse certain cookies is set out in our Cookie Notice.
+Informazioni specifiche su come utilizziamo tali tecnologie e su come puoi rifiutare determinati cookie sono stabilite nella nostra Informativa sui Cookie.
 
   
 
 
-6\. HOW LONG DO WE KEEP YOUR INFORMATION?
+6\. PER QUANTO TEMPO CONSERVIAMO I TUOI DATI?
 -----------------------------------------
 
-**_In Short:_** _We keep your information for as long as necessary to fulfil the purposes outlined in this Privacy Notice unless otherwise required by law._
+**_In breve:_** _Conserviamo i tuoi dati per il tempo necessario a soddisfare gli scopi descritti in questa Informativa sulla Privacy, a meno che non sia richiesto diversamente dalla legge._
 
   
 
-We will only keep your personal information for as long as it is necessary for the purposes set out in this Privacy Notice, unless a longer retention period is required or permitted by law (such as tax, accounting, or other legal requirements).
+Conserveremo i tuoi dati personali solo per il tempo necessario per gli scopi stabiliti in questa Informativa sulla Privacy, a meno che un periodo di conservazione più lungo non sia richiesto o consentito dalla legge (come requisiti fiscali, contabili o altri requisiti legali).
 
   
 
-When we have no ongoing legitimate business need to process your personal information, we will either delete or anonymise such information, or, if this is not possible (for example, because your personal information has been stored in backup archives), then we will securely store your personal information and isolate it from any further processing until deletion is possible.
+Quando non avremo più una necessità commerciale legittima in corso per trattare i tuoi dati personali, li cancelleremo o li renderemo anonimi, o, se ciò non fosse possibile (ad esempio, perché i tuoi dati personali sono stati archiviati in archivi di backup), li conserveremo in modo sicuro e li isoleremo da qualsiasi ulteriore trattamento fino a quando la cancellazione non sarà possibile.
 
   
 
 
-7\. HOW DO WE KEEP YOUR INFORMATION SAFE?
+7\. COME MANTENIAMO SICURI I TUOI DATI?
 -----------------------------------------
 
-**_In Short:_** _We aim to protect your personal information through a system of organisational and technical security measures._
+**_In breve:_** _Miriamo a proteggere i tuoi dati personali attraverso un sistema di misure di sicurezza organizzative e tecniche._
 
   
 
-We have implemented appropriate and reasonable technical and organisational security measures designed to protect the security of any personal information we process. However, despite our safeguards and efforts to secure your information, no electronic transmission over the Internet or information storage technology can be guaranteed to be 100% secure, so we cannot promise or guarantee that hackers, cybercriminals, or other unauthorised third parties will not be able to defeat our security and improperly collect, access, steal, or modify your information. Although we will do our best to protect your personal information, transmission of personal information to and from our Services is at your own risk. You should only access the Services within a secure environment.
+Abbiamo implementato misure di sicurezza tecniche e organizzative appropriate e ragionevoli, progettate per proteggere la sicurezza di qualsiasi dato personale che trattiamo. Tuttavia, nonostante le nostre garanzie e i nostri sforzi per proteggere i tuoi dati, nessuna trasmissione elettronica su Internet o tecnologia di archiviazione delle informazioni può essere garantita al 100% sicura, quindi non possiamo promettere o garantire che hacker, criminali informatici o altre terze parti non autorizzate non saranno in grado di sconfiggere la nostra sicurezza e raccogliere, accedere, rubare o modificare impropriamente i tuoi dati. Sebbene faremo del nostro meglio per proteggere i tuoi dati personali, la trasmissione di dati personali da e verso i nostri Servizi è a tuo rischio. Dovresti accedere ai Servizi solo all'interno di un ambiente sicuro.
 
   
 
 
-8\. DO WE COLLECT INFORMATION FROM MINORS?
+8\. RACCOGLIAMO INFORMAZIONI DA MINORI?
 ------------------------------------------
 
-**_In Short:_** _We do not knowingly collect data from or market to children under 18 years of age._
+**_In breve:_** _Non raccogliamo consapevolmente dati da né commercializziamo a bambini di età inferiore ai 18 anni._
 
   
 
-We do not knowingly collect, solicit data from, or market to children under 18 years of age, nor do we knowingly sell such personal information. By using the Services, you represent that you are at least 18 or that you are the parent or guardian of such a minor and consent to such minor dependent’s use of the Services. If we learn that personal information from users less than 18 years of age has been collected, we will deactivate the account and take reasonable measures to promptly delete such data from our records. If you become aware of any data we may have collected from children under age 18, please contact us at info@databush.it.
+Non raccogliamo consapevolmente, sollecitiamo dati da, né commercializziamo a bambini di età inferiore ai 18 anni, né vendiamo consapevolmente tali dati personali. Utilizzando i Servizi, dichiari di avere almeno 18 anni o di essere il genitore o tutore di tale minore e acconsenti all'uso dei Servizi da parte di tale minore dipendente. Se veniamo a conoscenza che sono stati raccolti dati personali da utenti di età inferiore ai 18 anni, disattiveremo l'account e prenderemo misure ragionevoli per cancellare tempestivamente tali dati dai nostri archivi. Se vieni a conoscenza di qualsiasi dato che potremmo aver raccolto da bambini di età inferiore ai 18 anni, ti preghiamo di contattarci all'indirizzo info@databush.it.
 
   
 
 
-9\. WHAT ARE YOUR PRIVACY RIGHTS?
+9\. QUALI SONO I TUOI DIRITTI SULLA PRIVACY?
 ---------------------------------
 
-**_In Short:_** _Depending on your state of residence in the US or in some regions, such as the European Economic Area (EEA), United Kingdom (UK), Switzerland, and Canada, you have rights that allow you greater access to and control over your personal information. You may review, change, or terminate your account at any time, depending on your country, province, or state of residence._
+**_In breve:_** _A seconda del tuo stato di residenza negli Stati Uniti o in alcune regioni, come lo Spazio Economico Europeo (SEE), il Regno Unito (UK), la Svizzera e il Canada, hai diritti che ti consentono un maggiore accesso e controllo sui tuoi dati personali. Puoi rivedere, modificare o chiudere il tuo account in qualsiasi momento, a seconda del tuo paese, provincia o stato di residenza._
 
   
 
-In some regions (like the EEA, UK, Switzerland, and Canada), you have certain rights under applicable data protection laws. These may include the right (i) to request access and obtain a copy of your personal information, (ii) to request rectification or erasure; (iii) to restrict the processing of your personal information; (iv) if applicable, to data portability; and (v) not to be subject to automated decision-making. In certain circumstances, you may also have the right to object to the processing of your personal information. You can make such a request by contacting us by using the contact details provided in the section '[HOW CAN YOU CONTACT US ABOUT THIS NOTICE?](#contact)' below.
+In alcune regioni (come il SEE, il Regno Unito, la Svizzera e il Canada), hai determinati diritti ai sensi delle leggi applicabili sulla protezione dei dati. Questi possono includere il diritto (i) di richiedere l'accesso e ottenere una copia dei tuoi dati personali, (ii) di richiedere la rettifica o la cancellazione; (iii) di limitare il trattamento dei tuoi dati personali; (iv) se applicabile, alla portabilità dei dati; e (v) di non essere soggetto a decisioni automatizzate. In determinate circostanze, potresti anche avere il diritto di opporti al trattamento dei tuoi dati personali. Puoi fare tale richiesta contattandoci utilizzando i dettagli di contatto forniti nella sezione '[COME PUOI CONTATTARCI RIGUARDO A QUESTA INFORMATIVA?](#contact)' di seguito.
 
   
 
-We will consider and act upon any request in accordance with applicable data protection laws.
-
-If you are located in the EEA or UK and you believe we are unlawfully processing your personal information, you also have the right to complain to your [Member State data protection authority](https://ec.europa.eu/justice/data-protection/bodies/authorities/index_en.htm) or [UK data protection authority](https://ico.org.uk/make-a-complaint/data-protection-complaints/data-protection-complaints/).
-
-  
-
-If you are located in Switzerland, you may contact the [Federal Data Protection and Information Commissioner](https://www.edoeb.admin.ch/edoeb/en/home.html).
+Esamineremo e agiremo su qualsiasi richiesta in conformità con le leggi applicabili sulla protezione dei dati.
+Se ti trovi nel SEE o nel Regno Unito e ritieni che stiamo trattando illegalmente i tuoi dati personali, hai anche il diritto di presentare un reclamo alla tua [autorità di protezione dei dati dello Stato membro](https://ec.europa.eu/justice/data-protection/bodies/authorities/index_en.htm) o all' [autorità di protezione dei dati del Regno Unito](https://ico.org.uk/make-a-complaint/data-protection-complaints/data-protection-complaints/).
 
   
 
-**Withdrawing your consent:** If we are relying on your consent to process your personal information, which may be express and/or implied consent depending on the applicable law, you have the right to withdraw your consent at any time. You can withdraw your consent at any time by contacting us by using the contact details provided in the section '[HOW CAN YOU CONTACT US ABOUT THIS NOTICE?](#contact)' below.
+Se ti trovi in Svizzera, puoi contattare l'[Incaricato federale della protezione dei dati e della trasparenza](https://www.edoeb.admin.ch/edoeb/en/home.html).
 
   
 
-However, please note that this will not affect the lawfulness of the processing before its withdrawal nor, when applicable law allows, will it affect the processing of your personal information conducted in reliance on lawful processing grounds other than consent.
+**Ritiro del consenso:** Se ci basiamo sul tuo consenso per trattare i tuoi dati personali, che può essere un consenso esplicito e/o implicito a seconda della legge applicabile, hai il diritto di ritirare il tuo consenso in qualsiasi momento. Puoi ritirare il tuo consenso in qualsiasi momento contattandoci utilizzando i dettagli di contatto forniti nella sezione '[COME PUOI CONTATTARCI RIGUARDO A QUESTA INFORMATIVA?](#contact)' di seguito.
 
   
 
-**Cookies and similar technologies:** Most Web browsers are set to accept cookies by default. If you prefer, you can usually choose to set your browser to remove cookies and to reject cookies. If you choose to remove cookies or reject cookies, this could affect certain features or services of our Services.
+Tuttavia, si prega di notare che ciò non influirà sulla liceità del trattamento prima del suo ritiro né, quando la legge applicabile lo consente, influirà sul trattamento dei tuoi dati personali condotto sulla base di motivi di trattamento leciti diversi dal consenso.
+
+  
+
+**Cookie e tecnologie simili:** La maggior parte dei browser Web è impostata per accettare i cookie per impostazione predefinita. Se preferisci, di solito puoi scegliere di impostare il tuo browser per rimuovere i cookie e per rifiutare i cookie. Se scegli di rimuovere i cookie o di rifiutare i cookie, ciò potrebbe influire su determinate funzionalità o servizi dei nostri Servizi.
 
   
 
 
-10\. CONTROLS FOR DO-NOT-TRACK FEATURES
+10\. CONTROLLI PER LE FUNZIONALITÀ DO-NOT-TRACK
 ---------------------------------------
 
-Most web browsers and some mobile operating systems and mobile applications include a Do-Not-Track ('DNT') feature or setting you can activate to signal your privacy preference not to have data about your online browsing activities monitored and collected. At this stage, no uniform technology standard for recognising and implementing DNT signals has been finalised. As such, we do not currently respond to DNT browser signals or any other mechanism that automatically communicates your choice not to be tracked online. If a standard for online tracking is adopted that we must follow in the future, we will inform you about that practice in a revised version of this Privacy Notice.
+La maggior parte dei browser web e alcuni sistemi operativi mobili e applicazioni mobili includono una funzione o un'impostazione Do-Not-Track ('DNT') che puoi attivare per segnalare la tua preferenza sulla privacy di non far monitorare e raccogliere dati sulle tue attività di navigazione online. A questo stadio, non è stato finalizzato alcuno standard tecnologico uniforme per il riconoscimento e l'implementazione dei segnali DNT. Pertanto, al momento non rispondiamo ai segnali DNT del browser o a qualsiasi altro meccanismo che comunichi automaticamente la tua scelta di non essere tracciato online. Se in futuro verrà adottato uno standard per il tracciamento online che dovremo seguire, ti informeremo su tale pratica in una versione rivista di questa Informativa sulla Privacy.
 
   
 
-California law requires us to let you know how we respond to web browser DNT signals. Because there currently is not an industry or legal standard for recognising or honouring DNT signals, we do not respond to them at this time.
+La legge della California ci impone di farti sapere come rispondiamo ai segnali DNT del browser web. Poiché al momento non esiste uno standard industriale o legale per il riconoscimento o l'onore dei segnali DNT, al momento non rispondiamo ad essi.
 
   
 
 
-11\. DO UNITED STATES RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?
+11\. I RESIDENTI NEGLI STATI UNITI HANNO DIRITTI SPECIFICI SULLA PRIVACY?
 -------------------------------------------------------------
 
-**_In Short:_** _If you are a resident of California, Colorado, Connecticut, Delaware, Florida, Indiana, Iowa, Kentucky, Minnesota, Montana, Nebraska, New Hampshire, New Jersey, Oregon, Tennessee, Texas, Utah, or Virginia, you may have the right to request access to and receive details about the personal information we maintain about you and how we have processed it, correct inaccuracies, get a copy of, or delete your personal information. You may also have the right to withdraw your consent to our processing of your personal information. These rights may be limited in some circumstances by applicable law. More information is provided below._**
+**_In breve:_** _Se sei residente in California, Colorado, Connecticut, Delaware, Florida, Indiana, Iowa, Kentucky, Minnesota, Montana, Nebraska, New Hampshire, New Jersey, Oregon, Tennessee, Texas, Utah o Virginia, potresti avere il diritto di richiedere l'accesso e ricevere dettagli sui dati personali che conserviamo su di te e su come li abbiamo trattati, correggere inesattezze, ottenere una copia o cancellare i tuoi dati personali. Potresti anche avere il diritto di ritirare il tuo consenso al nostro trattamento dei tuoi dati personali. Questi diritti possono essere limitati in alcune circostanze dalla legge applicabile. Ulteriori informazioni sono fornite di seguito._**
 
-### Categories of Personal Information We Collect
+### Categorie di Dati Personali che Raccogliamo
 
-We have collected the following categories of personal information in the past twelve (12) months:
-
-  
-
-**Category**
-
-**Examples**
-
-**Collected**
-
-A. Identifiers
-
-Contact details, such as real name, alias, postal address, telephone or mobile contact number, unique personal identifier, online identifier, Internet Protocol address, email address, and account name
+Negli ultimi dodici (12) mesi abbiamo raccolto le seguenti categorie di dati personali:
 
   
 
-YES
+**Categoria**
+
+**Esempi**
+
+**Raccolti**
+
+A. Identificatori
+
+Dettagli di contatto, come nome reale, alias, indirizzo postale, numero di telefono o di cellulare, identificatore personale unico, identificatore online, indirizzo di Protocollo Internet, indirizzo email e nome account
 
   
 
-B. Personal information as defined in the California Customer Records statute
-
-Name, contact information, education, employment, employment history, and financial information
+SÌ
 
   
 
-YES
+B. Dati personali come definiti nello statuto California Customer Records
+
+Nome, informazioni di contatto, istruzione, occupazione, storico lavorativo e informazioni finanziarie
 
   
 
-C. Protected classification characteristics under state or federal law
-
-Gender, age, date of birth, race and ethnicity, national origin, marital status, and other demographic data
+SÌ
 
   
 
-NO
+C. Caratteristiche di classificazione protetta ai sensi della legge statale o federale
 
-  
-
-D. Commercial information
-
-Transaction information, purchase history, financial details, and payment information
+Genere, età, data di nascita, razza ed etnia, origine nazionale, stato civile e altri dati demografici
 
   
 
@@ -399,19 +389,9 @@ NO
 
   
 
-E. Biometric information
+D. Informazioni commerciali
 
-Fingerprints and voiceprints
-
-  
-
-NO
-
-  
-
-F. Internet or other similar network activity
-
-Browsing history, search history, online behaviour, interest data, and interactions with our and other websites, applications, systems, and advertisements
+Informazioni sulle transazioni, storico degli acquisti, dettagli finanziari e informazioni di pagamento
 
   
 
@@ -419,19 +399,9 @@ NO
 
   
 
-G. Geolocation data
+E. Informazioni biometriche
 
-Device location
-
-  
-
-NO
-
-  
-
-H. Audio, electronic, sensory, or similar information
-
-Images and audio, video or call recordings created in connection with our business activities
+Impronte digitali e vocali
 
   
 
@@ -439,19 +409,9 @@ NO
 
   
 
-I. Professional or employment-related information
+F. Attività su Internet o altre reti simili
 
-Business contact details in order to provide you our Services at a business level or job title, work history, and professional qualifications if you apply for a job with us
-
-  
-
-NO
-
-  
-
-J. Education Information
-
-Student records and directory information
+Cronologia di navigazione, cronologia di ricerca, comportamento online, dati di interesse e interazioni con i nostri e altri siti web, applicazioni, sistemi e pubblicità
 
   
 
@@ -459,17 +419,9 @@ NO
 
   
 
-K. Inferences drawn from collected personal information
+G. Dati di geolocalizzazione
 
-Inferences drawn from any of the collected personal information listed above to create a profile or summary about, for example, an individual’s preferences and characteristics
-
-  
-
-NO
-
-  
-
-L. Sensitive personal Information
+Posizione del dispositivo
 
   
 
@@ -477,127 +429,175 @@ NO
 
   
 
-  
+H. Informazioni audio, elettroniche, sensoriali o simili
 
-We may also collect other personal information outside of these categories through instances where you interact with us in person, online, or by phone or mail in the context of:
-
-*   Receiving help through our customer support channels;
-
-*   Participation in customer surveys or contests; and
-
-*   Facilitation in the delivery of our Services and to respond to your inquiries.
-
-We will use and retain the collected personal information as needed to provide the Services or for:
-
-*   Category A - 1 year
-
-*   Category B - 1 year
-
-*   Category H - 1 year
-
-
-### Sources of Personal Information
-
-**Learn more about the sources of personal information we collect in '[WHAT INFORMATION DO WE COLLECT?](#infocollect)'**
-
-### How We Use and Share Personal Information
-
-Learn more about how we use your personal information in the section, '[HOW DO WE PROCESS YOUR INFORMATION?](#infouse)'
+Immagini e registrazioni audio, video o di chiamate create in connessione con le nostre attività commerciali
 
   
 
-**Will your information be shared with anyone else?**
+NO
 
   
 
-We may disclose your personal information with our service providers pursuant to a written contract between us and each service provider. Learn more about how we disclose personal information to in the section, '[WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?](#whoshare)'
+I. Informazioni professionali o relative all'impiego
+
+Dettagli di contatto aziendali per fornirti i nostri Servizi a livello aziendale o titolo di lavoro, storico lavorativo e qualifiche professionali se ti candidi per un lavoro con noi
 
   
 
-We may use your personal information for our own business purposes, such as for undertaking internal research for technological development and demonstration. This is not considered to be 'selling' of your personal information.
+NO
 
   
 
-We have not disclosed, sold, or shared any personal information to third parties for a business or commercial purpose in the preceding twelve (12) months. We will not sell or share personal information in the future belonging to website visitors, users, and other consumers.**
+J. Informazioni sull'istruzione
 
-### Your Rights
-
-You have rights under certain US state data protection laws. However, these rights are not absolute, and in certain cases, we may decline your request as permitted by law. These rights include:
-
-*   **Right to know** whether or not we are processing your personal data
-
-*   **Right to access** your personal data
-
-*   **Right to correct** inaccuracies in your personal data
-
-*   **Right to request** the deletion of your personal data
-
-*   **Right to obtain a copy** of the personal data you previously shared with us
-
-*   **Right to non-discrimination** for exercising your rights
-
-*   **Right to opt out** of the processing of your personal data if it is used for targeted advertising (or sharing as defined under California’s privacy law), the sale of personal data, or profiling in furtherance of decisions that produce legal or similarly significant effects ('profiling')
-
-Depending upon the state where you live, you may also have the following rights:
-
-*   Right to access the categories of personal data being processed (as permitted by applicable law, including Minnesota’s privacy law)
-
-*   Right to obtain a list of the categories of third parties to which we have disclosed personal data (as permitted by applicable law, including California's and Delaware's privacy law)
-
-*   Right to obtain a list of specific third parties to which we have disclosed personal data (as permitted by applicable law, including Minnesota's and Oregon's privacy law)
-
-*   Right to review, understand, question, and correct how personal data has been profiled (as permitted by applicable law, including Minnesota’s privacy law)
-
-*   Right to limit use and disclosure of sensitive personal data (as permitted by applicable law, including California’s privacy law)
-
-*   Right to opt out of the collection of sensitive data and personal data collected through the operation of a voice or facial recognition feature (as permitted by applicable law, including Florida’s privacy law)
-
-
-
-### How to Exercise Your Rights
-
-To exercise these rights, you can contact us by submitting a [data subject access request](https://app.termly.io/notify/964e59af-b601-4e40-98bc-c5ad32026bac), by emailing us at info@databrush.it, or by referring to the contact details at the bottom of this document.
+Registri degli studenti e informazioni di repertorio
 
   
 
-Under certain US state data protection laws, you can designate an authorised agent to make a request on your behalf. We may deny a request from an authorised agent that does not submit proof that they have been validly authorised to act on your behalf in accordance with applicable laws.  
-
-
-### Request Verification
-
-Upon receiving your request, we will need to verify your identity to determine you are the same person about whom we have the information in our system. We will only use personal information provided in your request to verify your identity or authority to make the request. However, if we cannot verify your identity from the information already maintained by us, we may request that you provide additional information for the purposes of verifying your identity and for security or fraud-prevention purposes.
+NO
 
   
 
-If you submit the request through an authorised agent, we may need to collect additional information to verify your identity before processing your request and the agent will need to provide a written and signed permission from you to submit such request on your behalf.**
+K. Inferenze tratte dai dati personali raccolti
 
-### Appeals
+Inferenze tratte da uno qualsiasi dei dati personali raccolti elencati sopra per creare un profilo o un riassunto, ad esempio, sulle preferenze e le caratteristiche di un individuo
 
-**Under certain US state data protection laws, if we decline to take action regarding your request, you may appeal our decision by emailing us at \_\_\_\_\_\_\_\_\_\_. We will inform you in writing of any action taken or not taken in response to the appeal, including a written explanation of the reasons for the decisions. If your appeal is denied, you may submit a complaint to your state attorney general.**
+  
 
-### California 'Shine The Light' Law
+NO
 
-California Civil Code Section 1798.83, also known as the 'Shine The Light' law, permits our users who are California residents to request and obtain from us, once a year and free of charge, information about categories of personal information (if any) we disclosed to third parties for direct marketing purposes and the names and addresses of all third parties with which we shared personal information in the immediately preceding calendar year. If you are a California resident and would like to make such a request, please submit your request in writing to us by using the contact details provided in the section '[HOW CAN YOU CONTACT US ABOUT THIS NOTICE?](#contact)'
+  
+
+L. Dati Personali Sensibili
+
+  
+
+NO
+
+  
+
+  
+
+Potremmo anche raccogliere altri dati personali al di fuori di queste categorie tramite casi in cui interagisci con noi di persona, online, o per telefono o posta nel contesto di:
+
+*   Ricevere aiuto attraverso i nostri canali di supporto clienti;
+
+*   Partecipazione a sondaggi o concorsi per clienti; e
+
+*   Facilitazione nella fornitura dei nostri Servizi e per rispondere alle tue richieste.
+
+Utilizzeremo e conserveremo i dati personali raccolti secondo necessità per fornire i Servizi o per:
+
+*   Categoria A - 1 anno
+
+*   Categoria B - 1 anno
+
+*   Categoria H - 1 anno
+
+
+### Fonti dei Dati Personali
+
+**Scopri di più sulle fonti dei dati personali che raccogliamo in '[QUALI INFORMAZIONI RACCOGLIAMO?](#infocollect)'**
+
+### Come Utilizziamo e Condividiamo i Dati Personali
+
+Scopri di più su come utilizziamo i tuoi dati personali nella sezione, '[COME TRATTIAMO I TUOI DATI?](#infouse)'
+
+  
+
+**I tuoi dati saranno condivisi con qualcun altro?**
+
+  
+
+Potremmo divulgare i tuoi dati personali ai nostri fornitori di servizi in base a un contratto scritto tra noi e ciascun fornitore di servizi. Scopri di più su come divulghiamo i dati personali nella sezione, '[QUANDO E CON CHI CONDIVIDIAMO I TUOI DATI PERSONALI?](#whoshare)'
+
+  
+
+Potremmo utilizzare i tuoi dati personali per i nostri scopi commerciali, come per intraprendere ricerche interne per lo sviluppo e la dimostrazione tecnologica. Questo non è considerato 'vendita' dei tuoi dati personali.
+
+  
+
+Non abbiamo divulgato, venduto o condiviso alcun dato personale a terzi per scopi commerciali o di business nei dodici (12) mesi precedenti. Non venderemo né condivideremo in futuro dati personali appartenenti a visitatori del sito web, utenti e altri consumatori.**
+
+### I Tuoi Diritti
+
+Hai diritti ai sensi di alcune leggi statali statunitensi sulla protezione dei dati. Tuttavia, questi diritti non sono assoluti e, in alcuni casi, potremmo rifiutare la tua richiesta come consentito dalla legge. Questi diritti includono:
+
+*   **Diritto di sapere** se stiamo trattando o meno i tuoi dati personali
+
+*   **Diritto di accesso** ai tuoi dati personali
+
+*   **Diritto di correggere** inesattezze nei tuoi dati personali
+
+*   **Diritto di richiedere** la cancellazione dei tuoi dati personali
+
+*   **Diritto di ottenere una copia** dei dati personali che ci hai precedentemente fornito
+
+*   **Diritto alla non discriminazione** per l'esercizio dei tuoi diritti
+
+*   **Diritto di opposizione (opt out)** al trattamento dei tuoi dati personali se vengono utilizzati per pubblicità mirata (o condivisione come definita dalla legge sulla privacy della California), la vendita di dati personali o la profilazione a sostegno di decisioni che producono effetti legali o similmente significativi ('profilazione')
+
+A seconda dello stato in cui vivi, potresti anche avere i seguenti diritti:
+
+*   Diritto di accedere alle categorie di dati personali in fase di trattamento (come consentito dalla legge applicabile, inclusa la legge sulla privacy del Minnesota)
+
+*   Diritto di ottenere un elenco delle categorie di terze parti a cui abbiamo divulgato dati personali (come consentito dalla legge applicabile, incluse le leggi sulla privacy della California e del Delaware)
+
+*   Diritto di ottenere un elenco di terze parti specifiche a cui abbiamo divulgato dati personali (come consentito dalla legge applicabile, incluse le leggi sulla privacy del Minnesota e dell'Oregon)
+
+*   Diritto di rivedere, comprendere, interrogare e correggere come i dati personali sono stati profilati (come consentito dalla legge applicabile, inclusa la legge sulla privacy del Minnesota)
+
+*   Diritto di limitare l'uso e la divulgazione di dati personali sensibili (come consentito dalla legge applicabile, inclusa la legge sulla privacy della California)
+
+*   Diritto di opporsi (opt out) alla raccolta di dati sensibili e dati personali raccolti tramite l'operazione di una funzione di riconoscimento vocale o facciale (come consentito dalla legge applicabile, inclusa la legge sulla privacy della Florida)
+
+
+
+### Come Esercitare i Tuoi Diritti
+
+Per esercitare questi diritti, puoi contattarci inviando una [richiesta di accesso ai dati](https://app.termly.io/notify/964e59af-b601-4e40-98bc-c5ad32026bac), inviandoci un'email a info@databrush.it, o facendo riferimento ai dettagli di contatto in fondo a questo documento.
+
+  
+
+Ai sensi di alcune leggi statali statunitensi sulla protezione dei dati, puoi designare un agente autorizzato a presentare una richiesta per tuo conto. Potremmo negare una richiesta da un agente autorizzato che non presenti la prova di essere stato validamente autorizzato ad agire per tuo conto in conformità con le leggi applicabili.
+
+
+### Verifica della Richiesta
+
+Dopo aver ricevuto la tua richiesta, dovremo verificare la tua identità per determinare che sei la stessa persona di cui abbiamo le informazioni nel nostro sistema. Utilizzeremo solo i dati personali forniti nella tua richiesta per verificare la tua identità o l'autorità per effettuare la richiesta. Tuttavia, se non possiamo verificare la tua identità dalle informazioni già in nostro possesso, potremmo richiederti di fornire informazioni aggiuntive allo scopo di verificare la tua identità e per scopi di sicurezza o prevenzione delle frodi.
+
+  
+
+Se presenti la richiesta tramite un agente autorizzato, potremmo aver bisogno di raccogliere informazioni aggiuntive per verificare la tua identità prima di elaborare la tua richiesta e l'agente dovrà fornire un'autorizzazione scritta e firmata da te per presentare tale richiesta per tuo conto.**
+
+### Appelli
+
+**Ai sensi di alcune leggi statali statunitensi sulla protezione dei dati, se rifiutiamo di agire in merito alla tua richiesta, puoi presentare appello contro la nostra decisione inviandoci un'email a \_\_\_\_\_\_\_\_\_\_. Ti informeremo per iscritto di qualsiasi azione intrapresa o non intrapresa in risposta all'appello, inclusa una spiegazione scritta delle ragioni delle decisioni. Se il tuo appello viene respinto, puoi presentare un reclamo al procuratore generale del tuo stato.**
+
+### Legge "Shine The Light" della California
+
+La Sezione 1798.83 del Codice Civile della California, nota anche come legge 'Shine The Light', consente ai nostri utenti che sono residenti in California di richiederci e ottenere da noi, una volta all'anno e gratuitamente, informazioni sulle categorie di dati personali (se presenti) che abbiamo divulgato a terzi per scopi di marketing diretto e i nomi e gli indirizzi di tutte le terze parti con cui abbiamo condiviso dati personali nell'anno solare immediatamente precedente. Se sei un residente in California e desideri fare tale richiesta, ti preghiamo di inviare la tua richiesta per iscritto utilizzando i dettagli di contatto forniti nella sezione '[COME PUOI CONTATTARCI RIGUARDO A QUESTA INFORMATIVA?](#contact)'
 
   
 
 
-12\. DO WE MAKE UPDATES TO THIS NOTICE?
+12\. APPORTIAMO AGGIORNAMENTI A QUESTA INFORMATIVA?
 ---------------------------------------
 
-**_**In Short:** Yes, we will update this notice as necessary to stay compliant with relevant laws._
+**_**In breve:** Sì, aggiorneremo questa informativa se necessario per rimanere conformi alle leggi pertinenti._
 
   
 
-We may update this Privacy Notice from time to time. The updated version will be indicated by an updated 'Revised' date at the top of this Privacy Notice. If we make material changes to this Privacy Notice, we may notify you either by prominently posting a notice of such changes or by directly sending you a notification. We encourage you to review this Privacy Notice frequently to be informed of how we are protecting your information.
+Potremmo aggiornare questa Informativa sulla Privacy di tanto in tanto. La versione aggiornata sarà indicata da una data 'Revisionata' aggiornata in cima a questa Informativa sulla Privacy. Se apportiamo modifiche sostanziali a questa Informativa sulla Privacy, potremmo notificartelo pubblicando in modo prominente un avviso di tali modifiche o inviandoti direttamente una notifica. Ti incoraggiamo a rivedere frequentemente questa Informativa sulla Privacy per essere informato su come stiamo proteggendo i tuoi dati.
 
   
 
 
-13\. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?
+13\. COME PUOI CONTATTARCI RIGUARDO A QUESTA INFORMATIVA?
 ----------------------------------------------
 
-If you have questions or comments about this notice, you may email us at info@databush.it or contact us by post at:
+Se hai domande o commenti su questa informativa, puoi inviarci un'email a info@databush.it o contattarci per posta a:
 
   
 
@@ -610,7 +610,7 @@ databrush
   
 
 
-14\. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?
+14\. COME PUOI RIVEDERE, AGGIORNARE O CANCELLARE I DATI CHE RACCOGLIAMO SU DI TE?
 ------------------------------------------------------------------------
 
-Based on the applicable laws of your country or state of residence in the US, you may have the right to request access to the personal information we collect from you, details about how we have processed it, correct inaccuracies, or delete your personal information. You may also have the right to withdraw your consent to our processing of your personal information. These rights may be limited in some circumstances by applicable law. To request to review, update, or delete your personal information, please fill out and submit a [data subject access request](https://app.termly.io/notify/964e59af-b601-4e40-98bc-c5ad32026bac).
+In base alle leggi applicabili del tuo paese o stato di residenza negli Stati Uniti, potresti avere il diritto di richiedere l'accesso ai dati personali che raccogliamo su di te, dettagli su come li abbiamo trattati, correggere inesattezze o cancellare i tuoi dati personali. Potresti anche avere il diritto di ritirare il tuo consenso al nostro trattamento dei tuoi dati personali. Questi diritti possono essere limitati in alcune circostanze dalla legge applicabile. Per richiedere di rivedere, aggiornare o cancellare i tuoi dati personali, ti preghiamo di compilare e inviare una [richiesta di accesso ai dati](https://app.termly.io/notify/964e59af-b601-4e40-98bc-c5ad32026bac).

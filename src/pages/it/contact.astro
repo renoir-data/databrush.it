@@ -3,73 +3,70 @@ import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import ContactUs from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+import * as m from '~/paraglide/messages';
 
 const metadata = {
-  title: 'Contact',
+  title: m.contact_page_title(),
 };
 ---
 
 <Layout metadata={metadata}>
   <!-- HeroText Widget ******************* -->
 
-  <HeroText tagline="Contact" title="Let's Connect!" subtitle="In Databrush we are always open to new partnerships, collaborations, and opportunities. We are here to help you with any questions you may have."/>
+  <HeroText 
+    tagline={m.contact_tagline()} 
+    title={m.contact_hero_title()} 
+    subtitle={m.contact_hero_subtitle()}
+  />
 
   <ContactUs
     id="form"
-    title="Drop us a message today!"
+    title={m.contact_title()}
     inputs={[
       {
         type: 'text',
         name: 'name',
-        label: 'Name',
-        placeholder: 'John Doe',
+        label: m.contact_input_name_label(),
+        placeholder: m.contact_input_name_placeholder(),
       },
       {
         type: 'email',
         name: 'email',
-        label: 'Email',
-        placeholder: 'jonh.doe@mail.com'
+        label: m.contact_input_email_label(),
+        placeholder: m.contact_input_email_placeholder(),
       },
     ]}
     textarea={{
-      label: 'Message',
-      placeholder: 'HI, I would like to know more about Renoir and how it can help my company.',
+      label: m.contact_textarea_label(),
+      placeholder: m.contact_textarea_placeholder(),
     }}
     disclaimer={{
-      label:
-        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
+      label: m.contact_disclaimer_label(),
     }}
-    description="Our support team typically responds within 24 business hours."
-    button='Send Message'
+    description={m.contact_description()}
+    button={m.contact_button()}
     method='post'
     action="https://forms.un-static.com/forms/f92a74143ea36998a842bb838854714e148f4379"
-  
   >
-
-  <Fragment slot="subtitle">
-    For quicker answers, explore our <a href="/#FAQ" class="highlight underline">FAQs</a> section. You may find the solution you're looking  for right there! If not, the Databrush team is delighted to help you.
-    Use the form below or write to us at <a href="mailto:info@databrush.it" class="highlight underline">info@databrush.it</a>
-  </Fragment>
+    <Fragment slot="subtitle" set:html={m.contact_form_subtitle()} />
   </ContactUs>
 
   <!-- Features2 Widget ************** -->
 
   <Features2
-    title="We are here to help!"
+    title={m.contact_support_title()}
     items={[
       {
-        title: 'General support',
-        description: `Chat with us for general questions, feedback, suggestions, or any other inquiries not covered by the other support categories.`,
+        title: m.contact_support_item_1_title(),
+        description: m.contact_support_item_1_description(),
       },
       {
-        title: 'Contact sales',
-        description:
-          'Chat with us for sales inquiries, custom projects, partnerships, or other business-related matters.',
+        title: m.contact_support_item_2_title(),
+        description: m.contact_support_item_2_description(),
       },
       {
-        title: 'Technical support',
-        description:
-          'Chat with us for technical issues, bugs, feature requests, or any other technical inquiries.',
+        title: m.contact_support_item_3_title(),
+        description: m.contact_support_item_3_description(),
       },
     ]}
   />

@@ -1,14 +1,14 @@
 ---
-title: 'Cookie Policy'
+title: 'Informativa sui Cookie'
 layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 
-**COOKIE POLICY**
+**INFORMATIVA SUI COOKIE**
 
   
 
-**Last updated February 11, 2025**
+**Ultimo aggiornamento 11 febbraio 2025**
 
   
 
@@ -16,83 +16,83 @@ layout: '~/layouts/MarkdownLayout.astro'
 
   
 
-This Cookie Policy explains how databrush ("**Company**," "**we**," "**us**," and "**our**") uses cookies and similar technologies to recognize you when you visit our website at [https://databrush.it](https://databrush.it) ("**Website**"). It explains what these technologies are and why we use them, as well as your rights to control our use of them.
+Questa Informativa sui Cookie spiega come databrush ("**Azienda**," "**noi**," e "**nostro**") utilizza i cookie e tecnologie simili per riconoscerti quando visiti il nostro sito web all'indirizzo [https://databrush.it](https://databrush.it) ("**Sito Web**"). Spiega cosa sono queste tecnologie e perché le utilizziamo, nonché i tuoi diritti di controllare il nostro uso di esse.
 
   
 
-In some cases we may use cookies to collect personal information, or that becomes personal information if we combine it with other information.
+In alcuni casi potremmo utilizzare i cookie per raccogliere informazioni personali, o che diventano informazioni personali se le combiniamo con altre informazioni.
 
   
 
-**What are cookies?**
+**Cosa sono i cookie?**
 
   
 
-Cookies are small data files that are placed on your computer or mobile device when you visit a website. Cookies are widely used by website owners in order to make their websites work, or to work more efficiently, as well as to provide reporting information.
+I cookie sono piccoli file di dati che vengono inseriti sul tuo computer o dispositivo mobile quando visiti un sito web. I cookie sono ampiamente utilizzati dai proprietari di siti web per far funzionare i loro siti, o per farli funzionare in modo più efficiente, nonché per fornire informazioni di reporting.
 
   
 
-Cookies set by the website owner (in this case, databrush) are called "first-party cookies." Cookies set by parties other than the website owner are called "third-party cookies." Third-party cookies enable third-party features or functionality to be provided on or through the website (e.g., advertising, interactive content, and analytics). The parties that set these third-party cookies can recognize your computer both when it visits the website in question and also when it visits certain other websites.
+I cookie impostati dal proprietario del sito web (in questo caso, databrush) sono chiamati "cookie di prima parte". I cookie impostati da parti diverse dal proprietario del sito web sono chiamati "cookie di terze parti". I cookie di terze parti abilitano funzionalità o funzionalità di terze parti da fornire su o attraverso il sito web (ad es. pubblicità, contenuti interattivi e analisi). Le parti che impostano questi cookie di terze parti possono riconoscere il tuo computer sia quando visita il sito web in questione sia quando visita determinati altri siti web.
 
   
 
-**Why do we use cookies?**
+**Perché utilizziamo i cookie?**
 
   
 
-We use first- and third-party cookies for several reasons. Some cookies are required for technical reasons in order for our Website to operate, and we refer to these as "essential" or "strictly necessary" cookies. Other cookies also enable us to track and target the interests of our users to enhance the experience on our Online Properties. Third parties serve cookies through our Website for advertising, analytics, and other purposes. This is described in more detail below.
+Utilizziamo cookie di prima e terza parte per diverse ragioni. Alcuni cookie sono richiesti per motivi tecnici affinché il nostro Sito Web funzioni, e ci riferiamo a questi come cookie "essenziali" o "strettamente necessari". Altri cookie ci consentono anche di tracciare e mirare agli interessi dei nostri utenti per migliorare l'esperienza sulle nostre Proprietà Online. Terze parti servono cookie attraverso il nostro Sito Web per pubblicità, analisi e altri scopi. Questo è descritto più in dettaglio di seguito.
 
   
 
-**How can I control cookies?**
+**Come posso controllare i cookie?**
 
   
 
-You have the right to decide whether to accept or reject cookies. You can exercise your cookie rights by setting your preferences in the Cookie Consent Manager. The Cookie Consent Manager allows you to select which categories of cookies you accept or reject. Essential cookies cannot be rejected as they are strictly necessary to provide you with services.
+Hai il diritto di decidere se accettare o rifiutare i cookie. Puoi esercitare i tuoi diritti sui cookie impostando le tue preferenze nel Manager del Consenso ai Cookie. Il Manager del Consenso ai Cookie ti permette di selezionare quali categorie di cookie accetti o rifiuti. I cookie essenziali non possono essere rifiutati in quanto sono strettamente necessari per fornirti i servizi.
 
   
 
-The Cookie Consent Manager can be found in the notification banner and on our Website. If you choose to reject cookies, you may still use our Website though your access to some functionality and areas of our Website may be restricted. You may also set or amend your web browser controls to accept or refuse cookies.
+Il Manager del Consenso ai Cookie si trova nel banner di notifica e sul nostro Sito Web. Se scegli di rifiutare i cookie, potrai comunque utilizzare il nostro Sito Web anche se il tuo accesso ad alcune funzionalità e aree del nostro Sito Web potrebbe essere limitato. Puoi anche impostare o modificare i controlli del tuo browser web per accettare o rifiutare i cookie.
 
   
 
-The specific types of first- and third-party cookies served through our Website and the purposes they perform are described in the table below (please note that the specific cookies served may vary depending on the specific Online Properties you visit):
+I tipi specifici di cookie di prima e terza parte serviti attraverso il nostro Sito Web e gli scopi che svolgono sono descritti nella tabella sottostante (si prega di notare che i cookie specifici serviti possono variare a seconda delle specifiche Proprietà Online che visiti):
 
-**Analytics and customization cookies:**
+**Cookie di analisi e personalizzazione:**
 
-These cookies collect information that is used either in aggregate form to help us understand how our Website is being used or how effective our marketing campaigns are, or to help us customize our Website for you.
+Questi cookie raccolgono informazioni che vengono utilizzate sia in forma aggregata per aiutarci a capire come viene utilizzato il nostro Sito Web o quanto sono efficaci le nostre campagne di marketing, sia per aiutarci a personalizzare il nostro Sito Web per te.
 
-Name:
+Nome:
 
 s7
 
-Purpose:
+Scopo:
 
-Gather data regarding site usage and user behavior on the website.
+Raccogliere dati sull'utilizzo del sito e sul comportamento degli utenti sul sito web.
 
-Provider:
+Fornitore:
 
 .databrush.it
 
-Service:
+Servizio:
 
 Adobe Analytics
 
-Type:
+Tipo:
 
-http\_cookie
+http_cookie
 
-Expires in:
+Scade tra:
 
-11 months 30 days
-
-  
-
-**How can I control cookies on my browser?**
+11 mesi 30 giorni
 
   
 
-As the means by which you can refuse cookies through your web browser controls vary from browser to browser, you should visit your browser's help menu for more information. The following is information about how to manage cookies on the most popular browsers:
+**Come posso controllare i cookie sul mio browser?**
+
+  
+
+Poiché i mezzi con cui è possibile rifiutare i cookie tramite i controlli del browser web variano da browser a browser, è necessario visitare il menu di aiuto del proprio browser per ulteriori informazioni. Di seguito sono riportate le informazioni su come gestire i cookie sui browser più popolari:
 
 *   [Chrome](https://support.google.com/chrome/answer/95647#zippy=%2Callow-or-block-cookies)
     
@@ -107,7 +107,7 @@ As the means by which you can refuse cookies through your web browser controls v
 *   [Opera](https://help.opera.com/en/latest/web-preferences/)
     
 
-In addition, most advertising networks offer you a way to opt out of targeted advertising. If you would like to find out more information, please visit:
+Inoltre, la maggior parte delle reti pubblicitarie offre un modo per rinunciare alla pubblicità mirata. Se desideri avere maggiori informazioni, visita:
 
 *   [Digital Advertising Alliance](http://www.aboutads.info/choices/)
     
@@ -118,55 +118,55 @@ In addition, most advertising networks offer you a way to opt out of targeted ad
 
   
 
-**What about other tracking technologies, like web beacons?**
+**E le altre tecnologie di tracciamento, come i web beacon?**
 
   
 
-Cookies are not the only way to recognize or track visitors to a website. We may use other, similar technologies from time to time, like web beacons (sometimes called "tracking pixels" or "clear gifs"). These are tiny graphics files that contain a unique identifier that enables us to recognize when someone has visited our Website or opened an email including them. This allows us, for example, to monitor the traffic patterns of users from one page within a website to another, to deliver or communicate with cookies, to understand whether you have come to the website from an online advertisement displayed on a third-party website, to improve site performance, and to measure the success of email marketing campaigns. In many instances, these technologies are reliant on cookies to function properly, and so declining cookies will impair their functioning.
+I cookie non sono l'unico modo per riconoscere o tracciare i visitatori di un sito web. Potremmo utilizzare altre tecnologie simili di tanto in tanto, come i web beacon (talvolta chiamati "pixel di tracciamento" o "clear gif"). Si tratta di piccoli file grafici che contengono un identificatore univoco che ci consente di riconoscere quando qualcuno ha visitato il nostro Sito Web o aperto un'email che li include. Questo ci permette, ad esempio, di monitorare i modelli di traffico degli utenti da una pagina all'altra di un sito web, di consegnare o comunicare con i cookie, di capire se sei arrivato al sito web da una pubblicità online visualizzata su un sito web di terzi, di migliorare le prestazioni del sito e di misurare il successo delle campagne di email marketing. In molti casi, queste tecnologie dipendono dai cookie per funzionare correttamente, e quindi il rifiuto dei cookie ne comprometterà il funzionamento.
 
   
 
-**Do you use Flash cookies or Local Shared Objects?**
+**Utilizzate i cookie Flash o gli Oggetti Condivisi Locali (Local Shared Objects)?**
 
   
 
-Websites may also use so-called "Flash Cookies" (also known as Local Shared Objects or "LSOs") to, among other things, collect and store information about your use of our services, fraud prevention, and for other site operations.
+I siti web possono anche utilizzare i cosiddetti "Cookie Flash" (noti anche come Oggetti Condivisi Locali o "LSO") per, tra le altre cose, raccogliere e memorizzare informazioni sul tuo utilizzo dei nostri servizi, sulla prevenzione delle frodi e per altre operazioni del sito.
 
   
 
-If you do not want Flash Cookies stored on your computer, you can adjust the settings of your Flash player to block Flash Cookies storage using the tools contained in the [Website Storage Settings Panel](http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager07.html). You can also control Flash Cookies by going to the [Global Storage Settings Panel](http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager03.html) and following the instructions (which may include instructions that explain, for example, how to delete existing Flash Cookies (referred to "information" on the Macromedia site), how to prevent Flash LSOs from being placed on your computer without your being asked, and (for Flash Player 8 and later) how to block Flash Cookies that are not being delivered by the operator of the page you are on at the time).
+Se non desideri che i Cookie Flash siano memorizzati sul tuo computer, puoi regolare le impostazioni del tuo lettore Flash per bloccare la memorizzazione dei Cookie Flash utilizzando gli strumenti contenuti nel [Pannello delle Impostazioni di Archiviazione del Sito Web](http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager07.html). Puoi anche controllare i Cookie Flash andando al [Pannello delle Impostazioni di Archiviazione Globale](http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager03.html) e seguendo le istruzioni (che possono includere istruzioni che spiegano, ad esempio, come eliminare i Cookie Flash esistenti (indicati come "informazioni" sul sito Macromedia), come impedire che gli LSO Flash vengano inseriti sul tuo computer senza che ti venga chiesto, e (per Flash Player 8 e successivi) come bloccare i Cookie Flash che non vengono consegnati dall'operatore della pagina in cui ti trovi in quel momento).
 
   
 
-Please note that setting the Flash Player to restrict or limit acceptance of Flash Cookies may reduce or impede the functionality of some Flash applications, including, potentially, Flash applications used in connection with our services or online content.
+Si prega di notare che l'impostazione del Flash Player per limitare o ridurre l'accettazione dei Cookie Flash può ridurre o impedire la funzionalità di alcune applicazioni Flash, incluse, potenzialmente, le applicazioni Flash utilizzate in connessione con i nostri servizi o contenuti online.
 
   
 
-**Do you serve targeted advertising?**
+**Pubblicate pubblicità mirata?**
 
   
 
-Third parties may serve cookies on your computer or mobile device to serve advertising through our Website. These companies may use information about your visits to this and other websites in order to provide relevant advertisements about goods and services that you may be interested in. They may also employ technology that is used to measure the effectiveness of advertisements. They can accomplish this by using cookies or web beacons to collect information about your visits to this and other sites in order to provide relevant advertisements about goods and services of potential interest to you. The information collected through this process does not enable us or them to identify your name, contact details, or other details that directly identify you unless you choose to provide these.
+Terze parti possono servire cookie sul tuo computer o dispositivo mobile per pubblicare annunci pubblicitari attraverso il nostro Sito Web. Queste aziende possono utilizzare informazioni sulle tue visite a questo e ad altri siti web per fornire annunci pertinenti su beni e servizi che potrebbero interessarti. Possono anche impiegare tecnologie utilizzate per misurare l'efficacia degli annunci pubblicitari. Possono farlo utilizzando cookie o web beacon per raccogliere informazioni sulle tue visite a questo e ad altri siti al fine di fornire annunci pertinenti su beni e servizi di potenziale interesse per te. Le informazioni raccolte attraverso questo processo non consentono a noi o a loro di identificare il tuo nome, i dettagli di contatto o altri dettagli che ti identificano direttamente, a meno che tu non scelga di fornirli.
 
   
 
-**How often will you update this Cookie Policy?**
+**Con quale frequenza aggiornerete questa Informativa sui Cookie?**
 
   
 
-We may update this Cookie Policy from time to time in order to reflect, for example, changes to the cookies we use or for other operational, legal, or regulatory reasons. Please therefore revisit this Cookie Policy regularly to stay informed about our use of cookies and related technologies.
+Potremmo aggiornare questa Informativa sui Cookie di tanto in tanto per riflettere, ad esempio, modifiche ai cookie che utilizziamo o per altre ragioni operative, legali o normative. Si prega pertanto di rivisitare regolarmente questa Informativa sui Cookie per rimanere informati sul nostro uso di cookie e tecnologie correlate.
 
   
 
-The date at the top of this Cookie Policy indicates when it was last updated.
+La data in cima a questa Informativa sui Cookie indica quando è stata aggiornata l'ultima volta.
 
   
 
-**Where can I get further information?**
+**Dove posso ottenere ulteriori informazioni?**
 
   
 
-If you have any questions about our use of cookies or other technologies, please email us at info@datarbush.it or by post to:
+Se hai domande sul nostro uso di cookie o altre tecnologie, ti preghiamo di inviarci un'email a info@datarbush.it o per posta a:
 
   
 

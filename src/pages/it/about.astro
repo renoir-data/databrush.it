@@ -4,9 +4,10 @@ import Hero from '~/components/widgets/Hero.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
 import Layout from '~/layouts/PageLayout.astro';
 import team2 from '~/assets/images/team.png';
+import * as m from '~/paraglide/messages';
 
 const metadata = {
-  title: 'About us',
+  title: m.about_page_title(),
 };
 ---
 
@@ -14,211 +15,59 @@ const metadata = {
   <!-- Hero Widget ******************* -->
 
   <Hero
-    tagline="About us"
+    tagline={m.about_tagline()}
     image={{
       src: team2,
-      alt: 'Databrush  Team',
+      alt: 'Databrush Team',
     }}
   >
-    <Fragment slot="title">
-      Decades of experience in  <br />
-      <span class="text-accent dark:text-white highlight"> Data Infrastructures</span>
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      Databrush is built on decades of expertise in designing distributed infrastructures for data analytics. Led by <span class="text-accent dark:text-white highlight">Davide, Luca, and Fabio</span>, and supported by <span class="text-accent dark:text-white highlight">Gianpaolo and Alessandro</span> from Politecnico di Milano it combines technological innovation and strategic vision to tackle the most complex challenges.
-    </Fragment>
+    <Fragment slot="title" set:html={m.about_hero_title()} />
+    <Fragment slot="subtitle" set:html={m.about_hero_subtitle()} />
   </Hero>
-
-  <!-- Stats Widget ****************** -->
-
-  <!-- <Stats
-    title="Statistics about us"
-    stats={[
-      { title: 'Offices', amount: '4' },
-      { title: 'Employees', amount: '248' },
-      { title: 'Templates', amount: '12' },
-      { title: 'Awards', amount: '24' },
-    ]}
-  /> -->
 
   <!-- Features3 Widget ************** -->
 
   <Features3
-    title="Our Strengths"
-    subtitle="We are a team of experts in data infrastructures, data analytics, and distributed systems. Born from the Politecnico di Milano, our team is based on years of intense research and development in the field of data analytics. Always up to date with the latest technologies, we are ready to face any challenge."
+    title={m.about_strengths_title()}
+    subtitle={m.about_strengths_subtitle()}
     columns={3}
     items={[
       {
-        title: 'Infrastructure',
-        description:
-          'We design and implement distributed infrastructures for data analytics. Thanks to our expertise, we can provide the best solutions for your business whether you are a small company or a large corporation.',
+        title: m.about_strength_1_title(),
+        description: m.about_strength_1_description(),
         icon: 'tabler:stack-back',
       },
       {
-        title: 'Data Analytics',
-        description:
-          'We know how to extract value from your data. Our team of experts will help you to understand your data and to make the best decisions for your business.',
+        title: m.about_strength_2_title(),
+        description: m.about_strength_2_description(),
         icon: 'tabler:chart-covariate',
       },
       {
-        title: 'Speeeeed',
-        description:
-          'We know how to make your data fly. Our solutions are designed to be fast and efficient, so you can get the most out of your data in the shortest time possible.',
+        title: m.about_strength_3_title(),
+        description: m.about_strength_3_description(),
         icon: 'tabler:brand-speedtest',
       },
     ]}
   />
 
-  <!-- Features3 Widget ************** -->
-
-  <!-- <Features3
-    columns={3}
-    isAfterContent={true}
-    items={[
-      {
-        title: 'E-commerce',
-        description:
-          'Rutrum non odio at vehicula. Proin ipsum justo, dignissim in vehicula sit amet, dignissim id quam. Sed ac tincidunt sapien.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Blog',
-        description:
-          'Nullam efficitur volutpat sem sed fringilla. Suspendisse et enim eu orci volutpat laoreet ac vitae libero.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Business',
-        description:
-          'Morbi et elit finibus, facilisis justo ut, pharetra ipsum. Donec efficitur, ipsum quis congue luctus, mauris magna.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Branding',
-        description:
-          'Suspendisse vitae nisi eget tortor luctus maximus sed non lectus. Cras malesuada pretium placerat. Nullam venenatis dolor a ante rhoncus.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Medical',
-        description:
-          'Vestibulum malesuada lacus id nibh posuere feugiat. Nam volutpat nulla a felis ultrices, id suscipit mauris congue. In hac habitasse platea dictumst.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Fashion Design',
-        description:
-          'Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus.',
-        icon: 'tabler:template',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      alt: 'Colorful Image',
-    }}
-  /> -->
-
   <!-- Steps2 Widget ****************** -->
 
   <Steps2
-    title="Our values"
-    subtitle="We are committed to providing the best solutions for your business. Our values are the foundation of our success and the key to our future growth."
+    title={m.about_values_title()}
+    subtitle={m.about_values_subtitle()}
     items={[
       {
-        title: 'Customer-centric approach',
-        description:
-          'We based our business on the needs of our customers. We are always looking for new ways to improve our services and to provide the best solutions for your business.',
+        title: m.about_value_1_title(),
+        description: m.about_value_1_description(),
       },
       {
-        title: 'Constant Improvement',
-        description:
-          'We are and always be researcher at heart. We are always looking for new technologies and new ways to improve our services.',
+        title: m.about_value_2_title(),
+        description: m.about_value_2_description(),
       },
       {
-        title: 'Open Source',
-        description:
-          'We believe in the power of open source. We are always looking for new ways to contribute to the community and to share our knowledge with others.',
+        title: m.about_value_3_title(),
+        description: m.about_value_3_description(),
       },
     ]}
   />
-
-  <!-- Steps2 Widget ****************** -->
-<!-- 
-  <Steps2
-    title="Achievements"
-    subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla, sed porttitor est nibh at nulla."
-    isReversed={true}
-    callToAction={{
-      text: 'See more',
-      href: '/',
-    }}
-    items={[
-      {
-        title: 'Global reach',
-        description: 'Nam malesuada urna in enim imperdiet tincidunt. Phasellus non tincidunt nisi, at elementum mi.',
-        icon: 'tabler:globe',
-      },
-      {
-        title: 'Positive customer feedback and reviews',
-        description:
-          'Cras semper nulla leo, eget laoreet erat cursus sed. Praesent faucibus massa in purus iaculis dictum.',
-        icon: 'tabler:message-star',
-      },
-      {
-        title: 'Awards and recognition as industry experts',
-        description:
-          'Phasellus lacinia cursus velit, eu malesuada magna pretium eu. Etiam aliquet tellus purus, blandit lobortis ex rhoncus vitae.',
-        icon: 'tabler:award',
-      },
-    ]}
-  /> -->
-
-  <!-- Features2 Widget ************** -->
-<!-- 
-  <Features2
-    title="Our locations"
-    tagline="Find us"
-    columns={4}
-    items={[
-      {
-        title: 'EE.UU',
-        description: '1234 Lorem Ipsum St, 12345, Miami',
-      },
-      {
-        title: 'Spain',
-        description: '5678 Lorem Ipsum St, 56789, Madrid',
-      },
-      {
-        title: 'Australia',
-        description: '9012 Lorem Ipsum St, 90123, Sydney',
-      },
-      {
-        title: 'Brazil',
-        description: '3456 Lorem Ipsum St, 34567, São Paulo',
-      },
-    ]}
-  /> -->
-
-  <!-- Features2 Widget ************** -->
-<!-- 
-  <Features2
-    title="Technical Support"
-    tagline="Contact us"
-    columns={2}
-    items={[
-      {
-        title: 'Chat with us',
-        description:
-          'Integer luctus laoreet libero, auctor varius purus rutrum sit amet. Ut nec molestie nisi, quis eleifend mi.',
-        icon: 'tabler:messages',
-      },
-      {
-        title: 'Call us',
-        description:
-          'Mauris faucibus finibus orci, in posuere elit viverra non. In hac habitasse platea dictumst. Cras lobortis metus a hendrerit congue.',
-        icon: 'tabler:headset',
-      },
-    ]}
-  />
-</Layout> -->
+</Layout>
