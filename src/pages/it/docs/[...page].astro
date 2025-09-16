@@ -5,7 +5,11 @@ import SideNavMenu from '~/components/docs/SideNavMenu.astro';
 import TableofContent from '~/components/docs/TableofContent.astro';
 import type { MenuItem } from '~/doc_types';
 import PageLayout from '~/layouts/PageLayout.astro';
-import { fetchBookByLocale, getLocalizedDocsEntry, next, previous } from '~/utils/docs';
+import { fetchBookByLocale, getLocalizedDocsEntry, next, previous, getStaticPathsDocsByLocale } from '~/utils/docs';
+
+export async function getStaticPaths() {
+  return await getStaticPathsDocsByLocale('it');
+}
 
 const { page } = Astro.params;
 

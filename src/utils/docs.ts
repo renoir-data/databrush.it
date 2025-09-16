@@ -95,6 +95,27 @@ export const getStaticPathsDocs = async () => {
   return pages;
 };
 
+export const getStaticPathsDocsByLocale = async (locale: string = 'en') => {
+  const docs = await fetchDocsByLocale(locale);
+  const headings: MarkdownHeading[][] = await Promise.all(
+    docs.map((entry) => render(entry).then((data: { headings }) => data.headings))
+  );
+
+  const pages = docs.map((entry, index) => {
+    // Remove locale prefix from entry.id for the page param
+    const pageParam = locale !== 'en' && entry.id.startsWith(`${locale}/`) 
+      ? entry.id.slice(locale.length + 1) 
+      : entry.id;
+    
+    return {
+      params: { page: pageParam },
+      props: { entry, headings: headings[index], page: pageParam },
+    };
+  });
+
+  return pages;
+};
+
 export const getLocalizedDocsEntry = async (path: string, locale: string = 'en') => {
   // Try to get localized version first
   const localizedPath = locale === 'en' ? path : `${locale}/${path}`;
