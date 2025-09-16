@@ -1,0 +1,53 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import BlogList from '~/components/blog/List.astro';
+import Headline from '~/components/blog/Headline.astro';
+import Pagination from '~/components/blog/Pagination.astro';
+import { blogCategoryRobots, fetchPostsByLocale, blogPostsPerPage } from '~/utils/blog';
+import { CATEGORY_BASE } from '~/utils/permalinks';
+
+export const prerender = false;
+
+// Get category slug from URL params
+const categorySlug = Astro.params.page;
+const currentPageParam = Astro.url.searchParams.get('page');
+const currentPage = currentPageParam ? parseInt(currentPageParam) : 1;
+
+// Fetch all posts and filter by category
+const allPosts = await fetchPostsByLocale('en');
+const category = { slug: categorySlug, title: categorySlug };
+
+const categoryPosts = allPosts.filter((post) => 
+  post.category && post.category.slug === categorySlug
+);
+
+const totalPages = Math.ceil(categoryPosts.length / blogPostsPerPage);
+const start = (currentPage - 1) * blogPostsPerPage;
+const end = start + blogPostsPerPage;
+const posts = categoryPosts.slice(start, end);
+
+const page = {
+  data: posts,
+  currentPage: currentPage,
+  url: {
+    prev: currentPage > 1 ? `/${CATEGORY_BASE}/${categorySlug}?page=${currentPage - 1}` : undefined,
+    next: currentPage < totalPages ? `/${CATEGORY_BASE}/${categorySlug}?page=${currentPage + 1}` : undefined,
+  },
+};
+
+const metadata = {
+  title: `Posts in category '${category.title}'${currentPage > 1 ? ` — Page ${currentPage} ` : ''}`,
+  robots: {
+    index: blogCategoryRobots?.index,
+    follow: blogCategoryRobots?.follow,
+  },
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="px-4 md:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
+    <Headline>Category: {category.title}</Headline>
+    <BlogList posts={page.data} />
+    <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+  </section>
+</Layout>

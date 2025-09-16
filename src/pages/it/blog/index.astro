@@ -1,0 +1,49 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import BlogList from '~/components/blog/List.astro';
+import Headline from '~/components/blog/Headline.astro';
+import Pagination from '~/components/blog/Pagination.astro';
+import * as m from '~/paraglide/messages';
+import { blogListRobots, fetchPostsByLocale, blogPostsPerPage } from '~/utils/blog';
+import { BLOG_BASE } from '~/utils/permalinks';
+import type { MetaData } from '~/types';
+
+export const prerender = false;
+
+const currentPage = 1;
+const allPosts = await fetchPostsByLocale('it');
+const totalPages = Math.ceil(allPosts.length / blogPostsPerPage);
+
+const start = 0;
+const end = blogPostsPerPage;
+const posts = allPosts.slice(start, end);
+
+const page = {
+  data: posts,
+  currentPage: currentPage,
+  url: {
+    prev: undefined,
+    next: currentPage < totalPages ? `/${BLOG_BASE}/2` : undefined,
+  },
+};
+
+const metadata: MetaData = {
+  title: 'Blog',
+  robots: {
+    index: blogListRobots?.index,
+    follow: blogListRobots?.follow,
+  },
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="px-4 md:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
+    <Headline
+      subtitle="Blog"
+    >
+      {m.blog_slogan()}
+    </Headline>
+    <BlogList posts={page.data} />
+    <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+  </section>
+</Layout>

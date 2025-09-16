@@ -1,0 +1,284 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Header from '~/components/widgets/Header.astro';
+import Hero2 from '~/components/widgets/Hero2.astro';
+import Features from '~/components/widgets/Features.astro';
+import Steps2 from '~/components/widgets/Steps2.astro';
+import Content from '~/components/widgets/Content.astro';
+import Pricing from '~/components/widgets/Pricing.astro';
+
+import FAQs from '~/components/widgets/FAQs.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+
+import * as m from '~/paraglide/messages';
+
+import renoir from "~/assets/images/renoir.png";
+
+import data from '~/assets/images/use_cases/data_company.jpg';
+import processes from '~/assets/images/use_cases/processes.jpg';
+import value from '~/assets/images/use_cases/datavalue.jpg';
+
+const metadata = {
+  title: m.renoir_overview_title(),
+};
+---
+
+<Layout metadata={metadata}>
+
+  <!-- Hero2 Widget ******************* -->
+
+  <Hero2
+    tagline="Databrush"
+    actions={[
+      { variant: 'primary', target: '_blank', text: m.renoir_hero_action_1(), href: '/it/docs/renoir' },
+      { text: m.renoir_hero_action_2(), href: '#features' },
+    ]}
+    image={{
+      src: renoir,
+      alt: 'AstroWind Hero Image',
+    }}
+  >
+    <Fragment slot="title">
+      {m.renoir_hero_title()}
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="hidden sm:inline">
+        {m.renoir_hero_subtitle()}
+      </span>
+    </Fragment>
+  </Hero2>
+
+  <!-- Features Widget *************** -->
+
+  <Features
+    id="features"
+    title={m.renoir_features_title()}
+    subtitle={m.renoir_features_subtitle()}
+    columns={2}
+     items={[
+      {
+        title: m.renoir_features_item_1_title(),
+        description: m.renoir_features_item_1_description(),
+        icon: 'tabler:artboard',
+      },
+      {
+        title: m.renoir_features_item_2_title(),
+        description: m.renoir_features_item_2_description(),
+        icon: 'tabler:picture-in-picture',
+      },
+      {
+        title: m.renoir_features_item_3_title(),
+        description: m.renoir_features_item_3_description(),
+        icon: 'tabler:adjustments-horizontal',
+      },
+      {
+        title: m.renoir_features_item_4_title(),
+        description: m.renoir_features_item_4_description(),
+        icon: 'tabler:rocket',
+      },
+      {
+        title: m.renoir_features_item_5_title(),
+        description: m.renoir_features_item_5_description(),
+        icon: 'tabler:arrows-right-left',
+      },
+      {
+        title: m.renoir_features_item_6_title(),
+        description: m.renoir_features_item_6_description(),
+        icon: 'tabler:plug-connected',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    title={m.renoir_use_cases_title()}
+    subtitle={m.renoir_use_cases_subtitle()}
+    isReversed
+    items={[
+      {
+        title: 'Description:',
+        description: m.renoir_use_case_1_description(),
+      },
+      {
+        title: 'Examples:',
+        description: m.renoir_use_case_1_examples(),
+      },
+    ]}
+    image={{
+      src: data,
+      alt: 'Startup Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        {m.renoir_use_case_1_title()}
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Description:',
+        description: m.renoir_use_case_2_description(),
+      },
+      {
+        title: 'Examples:',
+        description: m.renoir_use_case_2_examples(),
+      },
+    ]}
+    image={{
+      src: processes,
+      alt: 'SaaS Businesses Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        {m.renoir_use_case_2_title()}
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Description:',
+        description: m.renoir_use_case_3_description(),
+      },
+      {
+        title: 'Examples:',
+        description: m.renoir_use_case_3_examples(),
+      },
+    ]}
+    image={{
+      src: value,
+      alt: 'Portfolio Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        {m.renoir_use_case_3_title()}
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Pricing Widget ******************* -->
+
+  <Pricing
+    title={m.renoir_pricing_title()}
+    prices={[
+      {
+        title: m.renoir_pricing_open_source_title(),
+        subtitle: m.renoir_pricing_open_source_subtitle(),
+        price: m.renoir_pricing_open_source_price(),
+        period: m.renoir_pricing_open_source_period(),
+        callToAction: {
+          target: '_blank',
+          text: m.renoir_pricing_open_source_cta(),
+          href: '/it/docs/renoir',
+        },
+      },
+      {
+        title: m.renoir_pricing_enterprise_title(),
+        subtitle: m.renoir_pricing_enterprise_subtitle(),
+        price: m.renoir_pricing_enterprise_price(),
+        period: m.renoir_pricing_enterprise_period(),
+        callToAction: {
+          target: '_blank',
+          text: m.renoir_pricing_enterprise_cta(),
+          href: '/it/contact',
+        },
+        hasRibbon: true,
+      },
+      {
+        title: m.renoir_pricing_cloud_title(),
+        subtitle: m.renoir_pricing_cloud_subtitle(),
+        price: m.renoir_pricing_cloud_price(),
+        sign: '',
+        period: m.renoir_pricing_cloud_period(),
+      },
+    ]}
+  />
+
+  <!-- FAQs Widget ******************* -->
+
+  <FAQs
+    id='FAQ'
+    title={m.renoir_faq_title()}
+    items={[
+      {
+        title: m.renoir_faq_item_1_title(),
+        description: m.renoir_faq_item_1_description(),
+      },
+      {
+        title: m.renoir_faq_item_2_title(),
+        description: m.renoir_faq_item_2_description(),
+      },
+      {
+        title: m.renoir_faq_item_3_title(),
+        description: m.renoir_faq_item_3_description(),
+      },
+      {
+        title: m.renoir_faq_item_4_title(),
+        description: m.renoir_faq_item_4_description(),
+      },
+    ]}
+  />
+
+  <!-- Steps2 Widget ****************** -->
+
+  <Steps2
+    title={m.renoir_contact_title()}
+    subtitle={m.renoir_contact_subtitle()}
+    callToAction={{
+      text: m.renoir_contact_cta(),
+      href: '/it/contact',
+    }}
+    items={[
+      {
+        title: m.renoir_contact_email_title(),
+        description: m.renoir_contact_email_description(),
+        icon: 'tabler:mail',
+      },
+      {
+        title: m.renoir_contact_follow_title(),
+        description: m.renoir_contact_follow_description(),
+        icon: 'tabler:brand-linkedin',
+      },
+    ]}
+  />
+
+  <!-- BlogLatestPost Widget **************** -->
+
+  <BlogLatestPosts
+    id="blog"
+    title={m.renoir_blog_title()}
+    information={m.renoir_blog_description()}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </BlogLatestPosts>
+</Layout>

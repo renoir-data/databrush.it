@@ -308,7 +308,7 @@ export interface Steps extends Omit<Headline, 'classes'>, Widget {
     description?: string;
     icon?: string;
     classes?: Record<string, string>;
-    year: number;
+    year?: number;
   }>;
   callToAction?: string | CallToAction;
   image?: string | Image;

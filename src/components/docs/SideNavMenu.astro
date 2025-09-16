@@ -1,6 +1,7 @@
 ---
 import { type SideNavMenuProps } from '~/doc_types';
 import { capitalizeFirstLetter } from '~/utils/utils';
+import { localizeHref } from '~/paraglide/runtime.js';
 
 const { items } = Astro.props as SideNavMenuProps;
 const pathname: string = new URL(Astro.request.url).pathname;
@@ -16,7 +17,7 @@ const pathname: string = new URL(Astro.request.url).pathname;
       `.trim();
       return (
         <li class="w-full m-2">
-          <a href={`/${item.permalink}`} class={`${className} leading-normal w-full`}>
+          <a href={localizeHref(`/${item.permalink}`)} class={`${className} leading-normal w-full`}>
             {label}
           </a>
           {item.children.length > 0 && <Astro.self items={item.children} />}
