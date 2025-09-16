@@ -4,6 +4,7 @@ import type { CollectionEntry } from 'astro:content';
 import type { Post } from '~/types';
 import { APP_BLOG } from 'astrowind:config';
 import { cleanSlug, trimSlash, BLOG_BASE, POST_PERMALINK_PATTERN, CATEGORY_BASE, TAG_BASE } from './permalinks';
+import { getLocalizedContent, extractLocaleFromPath } from './localization';
 
 const generatePermalink = async ({
   id,
@@ -111,6 +112,17 @@ const load = async function (): Promise<Array<Post>> {
   return results;
 };
 
+const loadByLocale = async function (locale: string = 'en'): Promise<Array<Post>> {
+  const localizedPosts = await getLocalizedContent('post', locale);
+  const normalizedPosts = localizedPosts.map(async (localizedPost) => await getNormalizedPost(localizedPost.content));
+
+  const results = (await Promise.all(normalizedPosts))
+    .sort((a, b) => b.publishDate.valueOf() - a.publishDate.valueOf())
+    .filter((post) => !post.draft);
+
+  return results;
+};
+
 let _posts: Array<Post>;
 
 /** */
@@ -135,6 +147,11 @@ export const fetchPosts = async (): Promise<Array<Post>> => {
   }
 
   return _posts;
+};
+
+/** */
+export const fetchPostsByLocale = async (locale: string = 'en'): Promise<Array<Post>> => {
+  return await loadByLocale(locale);
 };
 
 /** */
