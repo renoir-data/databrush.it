@@ -81,5 +81,3 @@ cargo run -- --remote percorso/al/config.toml
 ``` 
 
 <!-- CUSTOM ENV -->
-
-````

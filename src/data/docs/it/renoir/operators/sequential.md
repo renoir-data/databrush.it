@@ -61,4 +61,3 @@ Per aiutare l'utente a scrivere codice pulito e leggibile, **Renoir** offre una 
 Da concatenazioni semplici come `flat_map` dove il risultato di una map viene appiattito, a quelle più complesse come `rich_filter_map` dove l'utente può eseguire una map e filter stateful in una singola operazione.
 
 Per una lista completa degli operatori vedi la [documentazione API](https://docs.rs/renoir/latest/renoir/struct.Stream.html).
-````

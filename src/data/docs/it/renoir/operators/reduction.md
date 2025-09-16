@@ -66,5 +66,3 @@ env.execute_blocking();
 
 assert_eq!(res.get().unwrap(), vec![0 + 1 + 2 + 3 + 4]);
 ```
-
-````

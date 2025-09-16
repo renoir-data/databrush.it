@@ -49,5 +49,3 @@ cargo add renoir --git https://github.com/deib-polimi/renoir
 Ora puoi aprire il progetto nel tuo editor preferito e iniziare a scrivere la tua applicazione usando Renoir!
 
 > Suggerimento Bonus: [Ambiente di Sviluppo](/book/appendix/editor)
-
-````

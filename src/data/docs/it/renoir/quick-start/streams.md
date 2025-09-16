@@ -151,5 +151,3 @@ ctx.stream_par_iter(
  .map(|(_key, x)| x * 2)
  .collect_vec();
 ```
-
-````
