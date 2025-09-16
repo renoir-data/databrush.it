@@ -1,6 +1,7 @@
 import slugify from 'limax';
 
 import { SITE, APP_BLOG, APP_DOCS } from 'astrowind:config';
+import { localizeHref } from '~/paraglide/runtime.js';
 
 import { trim } from '~/utils/utils';
 
@@ -87,14 +88,16 @@ export const getPermalink = (slug = '', type = 'page'): string => {
       break;
   }
 
-  return definitivePermalink(permalink);
+  const basePermalink = definitivePermalink(permalink);
+  // Localize the URL for the current locale
+  return localizeHref(basePermalink);
 };
 
 /** */
-export const getHomePermalink = (): string => getPermalink('/');
+export const getHomePermalink = (): string => localizeHref(definitivePermalink('/'));
 
 /** */
-export const getBlogPermalink = (): string => getPermalink(BLOG_BASE);
+export const getBlogPermalink = (): string => localizeHref(definitivePermalink(createPath(BLOG_BASE)));
 
 /** */
 export const getAsset = (path: string): string =>

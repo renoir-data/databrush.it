@@ -1,0 +1,303 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+import Features2 from '~/components/widgets/Features2.astro';
+import Features from '~/components/widgets/Features.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+
+import ContactUs from '~/components/widgets/Contact.astro';
+
+import brush_small from '~/assets/images/brush/small.svg?raw';
+import brush_medium from '~/assets/images/brush/medium.svg?raw';
+import brush_large from '~/assets/images/brush/large.svg?raw';
+import brush_xlarge from '~/assets/images/brush/xlarge.svg?raw';
+import Content_dinamic from '~/components/widgets/Content_dinamic.astro';
+import * as m from '~/paraglide/messages';
+
+const metadata = {
+  title: 'Databrush — La Tua Infrastruttura Dati',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    tagline="Databrush"
+    actions={[
+      {
+        variant: 'primary',
+        target: '_blank',
+        text: m.hero_action_1(),
+        href: '/docs/renoir',
+        icon: 'tabler:download',
+      },
+      { text: m.hero_action_2(), href: '#features', variant: 'secondary' },
+    ]}
+  >
+    <Fragment slot="title" set:html={m.hero_title()} />
+
+    <Fragment slot="subtitle" set:html={m.hero_subtitle()} />
+
+    <Fragment slot="bg">
+      <div class="flex justify-center items-center -z-30 overflow-x-hidden">
+        <div class="sm:hidden w-full">
+          <Fragment set:html={brush_small} class:list="" />
+        </div>
+        <div class="hidden sm:max-lg:block min-[768px]:mt-20 w-full">
+          <Fragment set:html={brush_medium} />
+        </div>
+        <div class="hidden lg:max-2xl:block mt-20">
+          <Fragment set:html={brush_large} />
+        </div>
+        <div class="hidden 2xl:block -mt-16">
+          <Fragment set:html={brush_xlarge} />
+        </div>
+      </div>
+    </Fragment>
+  </Hero>
+
+  <!-- Features2 Widget ************** -->
+
+  <Features3 title={m.about_us_title()} isBeforeContent={true}>
+    <Fragment slot="subtitle" set:html={m.about_us_subtitle()} />
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features3>
+
+  <!-- Stats Widget ****************** -->
+
+  <!-- <TypedCodeImage /> -->
+  <!-- <IndustrialMonitoring/> -->
+
+  <Stats
+    title={m.stats_title()}
+    subtitle={m.stats_subtitle()}
+    stats={[
+      { title: m.stats_item_1_title(), amount: '1º' },
+      { title: m.stats_item_2_title(), amount: '>1000' },
+      { title: m.stats_item_3_title(), amount: '83' },
+      { title: m.stats_item_4_title(), amount: '4' },
+    ]}
+  />
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title={m.services_title()}
+    subtitle={m.services_subtitle()}
+    items={[
+      {
+        title: m.services_item_1_title(),
+        description: m.services_item_1_description(),
+        icon: 'tabler:stack-front',
+        callToAction: {
+          target: '_blank',
+          text: m.services_item_1_cta(),
+          href: '/docs/renoir',
+        },
+        classes: {
+          panel: 'flex justify-between',
+        },
+      },
+      {
+        title: m.services_item_2_title(),
+        description: m.services_item_2_description(),
+        icon: 'tabler:chart-covariate',
+        callToAction: {
+          target: '_blank',
+          text: m.services_item_2_cta(),
+          href: '/contact',
+        },
+        classes: {
+          panel: 'flex justify-between',
+        },
+      },
+      {
+        title: m.services_item_3_title(),
+        description: m.services_item_3_description(),
+        icon: 'tabler:cloud',
+        callToAction: {
+          target: '_blank',
+          text: m.services_item_3_cta(),
+          href: '/renoir/overview',
+        },
+        classes: {
+          panel: 'flex justify-between',
+        },
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- Features Widget *************** -->
+
+  <Features
+    id="features"
+    title={m.features_title()}
+    subtitle={m.features_subtitle()}
+    columns={3}
+    items={[
+      {
+        title: m.features_item_1_title(),
+        description: m.features_item_1_description(),
+        icon: 'tabler:artboard',
+      },
+      {
+        title: m.features_item_2_title(),
+        description: m.features_item_2_description(),
+        icon: 'tabler:picture-in-picture',
+      },
+      {
+        title: m.features_item_3_title(),
+        description: m.features_item_3_description(),
+        icon: 'tabler:adjustments-horizontal',
+      },
+      {
+        title: m.features_item_4_title(),
+        description: m.features_item_4_description(),
+        icon: 'tabler:rocket',
+      },
+      {
+        title: m.features_item_5_title(),
+        description: m.features_item_5_description(),
+        icon: 'tabler:arrows-right-left',
+      },
+      {
+        title: m.features_item_6_title(),
+        description: m.features_item_6_description(),
+        icon: 'tabler:plug-connected',
+      },
+    ]}
+  />
+
+  <!-- Use Cases -->
+
+  <Content_dinamic
+    isReversed
+    items={[
+      {
+        title: m.use_cases_item_1_title(),
+        description: m.use_cases_item_1_description(),
+        icon: 'tabler:presentation',
+        data: { 'data-index': '0' },
+      },
+      {
+        title: m.use_cases_item_2_title(),
+        description: m.use_cases_item_2_description(),
+        icon: 'tabler:settings',
+        data: { 'data-index': '1' },
+      },
+      {
+        title: m.use_cases_item_3_title(),
+        description: m.use_cases_item_3_description(),
+        icon: 'tabler:wand',
+        data: { 'data-index': '2' },
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+      alt: 'Features Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-4xl text-center font-bold tracking-tight dark:text-white sm:text-3xl mb-2" set:html={m.use_cases_title()}/>
+    </Fragment>
+  </Content_dinamic>
+
+  <!-- FAQs Widget ******************* -->
+
+  <FAQs
+    id="FAQ"
+    title={m.faq_title()}
+    items={[
+      {
+        title: m.faq_item_1_title(),
+        description: m.faq_item_1_description(),
+      },
+      {
+        title: m.faq_item_2_title(),
+        description: m.faq_item_2_description(),
+      },
+      {
+        title: m.faq_item_3_title(),
+        description: m.faq_item_3_description(),
+      },
+      {
+        title: m.faq_item_4_title(),
+        description: m.faq_item_4_description(),
+      },
+      {
+        title: m.faq_item_5_title(),
+        description: m.faq_item_5_description(),
+      },
+      {
+        title: m.faq_item_6_title(),
+        description: m.faq_item_6_description(),
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </FAQs>
+
+  <ContactUs
+    id="form"
+    title={m.contact_title()}
+    subtitle={m.contact_subtitle()}
+    inputs={[
+      {
+        type: 'text',
+        name: 'name',
+        label: m.contact_input_name_label(),
+        placeholder: m.contact_input_name_placeholder(),
+      },
+      {
+        type: 'email',
+        name: 'email',
+        label: m.contact_input_email_label(),
+        placeholder: m.contact_input_email_placeholder(),
+      },
+    ]}
+    textarea={{
+      label: m.contact_textarea_label(),
+      placeholder: m.contact_textarea_placeholder(),
+    }}
+    disclaimer={{
+      label: m.contact_disclaimer_label(),
+    }}
+    description={m.contact_description()}
+    button={m.contact_button()}
+    method="post"
+    action="https://forms.un-static.com/forms/f92a74143ea36998a842bb838854714e148f4379"
+  />
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        target: '_blank',
+        text: m.hero_action_1(),
+        href: '/docs/renoir',
+        icon: 'tabler:download',
+      },
+    ]}
+  >
+    <Fragment slot="title" set:html={m.cta_title()} />
+
+    <Fragment slot="subtitle" set:html={m.cta_subtitle()} />
+  </CallToAction>
+</Layout>

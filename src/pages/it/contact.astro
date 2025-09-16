@@ -1,0 +1,77 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import ContactUs from '~/components/widgets/Contact.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+
+const metadata = {
+  title: 'Contact',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- HeroText Widget ******************* -->
+
+  <HeroText tagline="Contact" title="Let's Connect!" subtitle="In Databrush we are always open to new partnerships, collaborations, and opportunities. We are here to help you with any questions you may have."/>
+
+  <ContactUs
+    id="form"
+    title="Drop us a message today!"
+    inputs={[
+      {
+        type: 'text',
+        name: 'name',
+        label: 'Name',
+        placeholder: 'John Doe',
+      },
+      {
+        type: 'email',
+        name: 'email',
+        label: 'Email',
+        placeholder: 'jonh.doe@mail.com'
+      },
+    ]}
+    textarea={{
+      label: 'Message',
+      placeholder: 'HI, I would like to know more about Renoir and how it can help my company.',
+    }}
+    disclaimer={{
+      label:
+        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
+    }}
+    description="Our support team typically responds within 24 business hours."
+    button='Send Message'
+    method='post'
+    action="https://forms.un-static.com/forms/f92a74143ea36998a842bb838854714e148f4379"
+  
+  >
+
+  <Fragment slot="subtitle">
+    For quicker answers, explore our <a href="/#FAQ" class="highlight underline">FAQs</a> section. You may find the solution you're looking  for right there! If not, the Databrush team is delighted to help you.
+    Use the form below or write to us at <a href="mailto:info@databrush.it" class="highlight underline">info@databrush.it</a>
+  </Fragment>
+  </ContactUs>
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="We are here to help!"
+    items={[
+      {
+        title: 'General support',
+        description: `Chat with us for general questions, feedback, suggestions, or any other inquiries not covered by the other support categories.`,
+      },
+      {
+        title: 'Contact sales',
+        description:
+          'Chat with us for sales inquiries, custom projects, partnerships, or other business-related matters.',
+      },
+      {
+        title: 'Technical support',
+        description:
+          'Chat with us for technical issues, bugs, feature requests, or any other technical inquiries.',
+      },
+    ]}
+  />
+
+</Layout>

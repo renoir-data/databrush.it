@@ -1,5 +1,4 @@
 import { getPermalink, getBlogPermalink } from './utils/permalinks';
-import type * as m from './paraglide/messages';
 
 export const getHeaderData = (m: typeof import('./paraglide/messages')) => ({
   links: [
@@ -26,11 +25,11 @@ export const getHeaderData = (m: typeof import('./paraglide/messages')) => ({
     },
     {
       text: m.nav_contact(),
-      href: '/contact',
+      href: getPermalink('/contact'),
     },
     {
       text: m.nav_about_us(),
-      href: '/about',
+      href: getPermalink('/about'),
     },
   ],
   actions: [{ text: m.nav_download(), href: 'https://github.com/deib-polimi/renoir', target: '_blank' }],
@@ -41,8 +40,8 @@ export const getFooterData = (m: typeof import('./paraglide/messages')) => ({
     {
       title: m.nav_renoir(),
       links: [
-        { text: m.nav_overview(), href: '/renoir/overview' },
-        { text: m.nav_documentation(), href: '/docs/renoir' },
+        { text: m.nav_overview(), href: getPermalink('/renoir/overview') },
+        { text: m.nav_documentation(), href: getPermalink('/docs/renoir') },
         { text: m.footer_reference(), href: 'https://github.com/deib-polimi/renoir' },
       ],
     },
@@ -50,15 +49,15 @@ export const getFooterData = (m: typeof import('./paraglide/messages')) => ({
       title: m.footer_community(),
       links: [
         { text: m.nav_blog(), href: getBlogPermalink() },
-        { text: m.nav_roadmap(), href: '/roadmap' },
-        { text: m.nav_contact(), href: '/contact' },
+        { text: m.nav_roadmap(), href: getPermalink('/roadmap') },
+        { text: m.nav_contact(), href: getPermalink('/contact') },
       ],
     },
     {
       title: m.footer_databrush(),
       links: [
-        { text: m.footer_about(), href: '/about' },
-        { text: m.nav_contact(), href: '/contact' },
+        { text: m.footer_about(), href: getPermalink('/about') },
+        { text: m.nav_contact(), href: getPermalink('/contact') },
       ],
     },
   ],

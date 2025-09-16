@@ -28,6 +28,15 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
 export default defineConfig({
   output: 'server',
   adapter: node({ mode: 'standalone' }),
+  trailingSlash: 'ignore',
+  
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'it'],
+    routing: {
+      prefixDefaultLocale: false
+    }
+  },
 
   integrations: [
     tailwind({
@@ -93,6 +102,7 @@ export default defineConfig({
       paraglideVitePlugin({
         project: './project.inlang',
         outdir: './src/paraglide',
+        strategy: ['url', 'cookie', 'localStorage', 'baseLocale'],
       }),
     ],
   },

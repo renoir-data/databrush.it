@@ -1,0 +1,290 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Header from '~/components/widgets/Header.astro';
+import Hero2 from '~/components/widgets/Hero2.astro';
+import Features from '~/components/widgets/Features.astro';
+import Steps2 from '~/components/widgets/Steps2.astro';
+import Content from '~/components/widgets/Content.astro';
+import Pricing from '~/components/widgets/Pricing.astro';
+
+import FAQs from '~/components/widgets/FAQs.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+
+import renoir from "~/assets/images/renoir.png";
+
+import data from '~/assets/images/use_cases/data_company.jpg';
+import processes from '~/assets/images/use_cases/processes.jpg';
+import value from '~/assets/images/use_cases/datavalue.jpg';
+
+const metadata = {
+  title: 'Databrush Renoir Overview',
+};
+---
+
+<Layout metadata={metadata}>
+
+  <!-- Hero2 Widget ******************* -->
+
+  <Hero2
+    tagline="Databrush"
+    actions={[
+      { variant: 'primary', target: '_blank', text: 'Get Started', href: '/docs/renoir' },
+      { text: 'Learn more', href: '#features' },
+    ]}
+    image={{
+      src: renoir,
+      alt: 'AstroWind Hero Image',
+    }}
+  >
+    <Fragment slot="title">
+      Renoir is a distributed data processing platform
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="hidden sm:inline">
+        Based on the dataflow paradigm Renoir provides an ergonomic programming interface, similar to that of Apache Flink, but has much better performance characteristics
+      </span>
+    </Fragment>
+  </Hero2>
+
+  <!-- Features Widget *************** -->
+
+  <Features
+    id="features"
+    title="Why choose Renoir?"
+    subtitle="Discover the key features that make Renoir the ideal choice for your data processing needs."
+    columns={2}
+     items={[
+      {
+        title: 'Design with the Latest Technologies',
+        description:
+          'Built with Rust, ensuring high performance and reliability. Renoir is designed to perform even in the most critical tasks.',
+        icon: 'tabler:artboard',
+      },
+      {
+        title: 'Streaming Real Time',
+        description: 'Design to handle real-time data streams, Renoir is the perfect choice for companies that need to process data when they are generated.',
+        icon: 'tabler:picture-in-picture',
+      },
+      {
+        title: 'Customizability',
+        description:
+          'Easily customizable to perform even the most complex tasks for every vertical scenario, making it the ultimate solution for your needs.',
+        icon: 'tabler:adjustments-horizontal',
+      },
+      {
+        title: 'Lighting Fast',
+        description: 'Optimized for speed and performance to ensure insights are delivered quickly and efficiently.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Easy to Use',
+        description:
+          'Designed with user-friendliness in mind, thanks to its high-level API, Renoir is easy to use and integrate with your existing infrastructure.',
+        icon: 'tabler:arrows-right-left',
+      },
+      {
+        title: 'Open Source',
+        description: 'The engine of Renoir is open source, allowing the community to contribute and improve the platform.',
+        icon: 'tabler:plug-connected',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    title="Use cases"
+    subtitle="Discover how Renoir can be used in different scenarios to solve complex problems."
+    isReversed
+    items={[
+      {
+        title: 'Description:',
+        description:
+          "Renoir is the perfect solution for data-driven companies looking to <span class=' dark:text-white text-accent'>streamline their data processing workflows</span>. Optimize you decision and forecast your trends by analyzing <span class=' dark:text-white text-accent'>billions of data in real-time all without the high cost of traditional infrastructure</span>. Renoir offers the tools and capabilities to help you achieve your goals.",
+      },
+      {
+        title: 'Examples:',
+        description: "<span class=' dark:text-white text-accent'>E-commerce companies</span> analyzing large volumes of transactions to optimize pricing strategies and predict market trends.<br /> <span class=' dark:text-white text-accent'>Insurance companies</span> analyzing customer profiles to personalize policies and identify risks.<br /> <span class=' dark:text-white text-accent'>Telecommunications</span> companies analyzing data from millions of devices for network monitoring and fault identification."
+      },
+    ]}
+    image={{
+      src: data,
+      alt: 'Startup Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Data-driven Companies
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Description:',
+        description: `Renoir is the ideal solution for Industry 4.0 companies looking to <span class=' dark:text-white text-accent'>optimize their monitoring processes</span>. Reduce downtime and maximize efficiency with continuous machine monitoring and <span class=' dark:text-white text-accent'>real-time data analysis</span>, ensuring smooth and efficient operations. With Renoir, Industry 4.0 companies can achieve <span class=' dark:text-white text-accent'>new levels of efficiency and productivity</span>.`,
+      },
+      {
+        title: 'Examples:',
+        description: `<span class=' dark:text-white text-accent'>Production plants</span> that continuously monitor machinery to optimize production and reduce downtime.<br/> <span class=' dark:text-white text-accent'>Energy sectors</span> that analyze consumption and production data in real-time to balance loads and reduce waste.`,
+      },
+    ]}
+    image={{
+      src: processes,
+      alt: 'SaaS Businesses Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Industry 4.0: Monitoring Processes
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Description:',
+        description: `Leverage Renoir and our expertise in the field to <span class=' dark:text-white text-accent'>uncover new opportunities and optimize business strategies</span>, even with limited existing infrastructure. With Renoir, you can transform your data into actionable insights and <span class=' dark:text-white text-accent'>drive your business forward</span>.`,
+      },
+      {
+        title: 'Examples:',
+        description: `<span class=' dark:text-white text-accent'>Small and medium-sized enterprises</span> collecting data from CRM and social media but not utilizing it to identify market opportunities or optimize campaigns.<br/> <span class=' dark:text-white text-accent'>Public entities</span> with archives of historical data not leveraged for predictive analysis or public service improvements.`,
+      },
+    ]}
+    image={{
+      src: value,
+      alt: 'Portfolio Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Transform Data into Value
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Pricing Widget ******************* -->
+
+  <Pricing
+    title="Flexible pricing plans"
+    prices={[
+      {
+        title: 'Open Source',
+        subtitle: 'The Renoir Engine is and always will be open source',
+        price: '0',
+        period: '/ month',
+        callToAction: {
+          target: '_blank',
+          text: 'Get Started for Free',
+          href: '/docs/renoir',
+        },
+      },
+      {
+        title: 'Enterprise',
+        subtitle: 'Premium features for large-scale projects, tailored support',
+        price: 'Contact Sales',
+        period: ' ',
+        callToAction: {
+          target: '_blank',
+          text: 'Contact Us',
+          href: '/contact',
+        },
+        hasRibbon: true,
+      },
+      {
+        title: 'Cloud',
+        subtitle: 'Hosted solution with additional features',
+        price: "Coming Soon",
+        sign: '',
+        period: ' ',
+      },
+    ]}
+  />
+
+  <!-- FAQs Widget ******************* -->
+
+  <FAQs
+    id='FAQ'
+    title="Frequently Asked Questions"
+    items={[
+      {
+        title: 'How do I start using Renoir?',
+        description:
+          'You can start usign Renoir following the quick start guide in the documentation. It is easier than you think. If you need help, you can reach out to our support team.',
+      },
+      {
+        title: 'Why should I use Renoir?',
+        description:
+          'Renoir is a powerful and flexible platform it is designed to scale with your company and adapt to your needs. This means that you can focus on what really matters: your business. It cuts down the time to market, operetional cost and allows you to make data-driven decisions.',
+      },
+      {
+        title: 'Can I try Renoir before buying?',
+        description:
+          'Yes, the engine of Renoir is and always will be open source. You can try it and use it for free. Be part of our community and help us to improve the platform. If you need more from Renoir, you can always upgrade to the enterprise version.',
+      },
+      {
+        title: 'Why Renoir was created?',
+        description:
+          "Renoir is born after years of experience in designing distributed infrastructures for data analytics. We saw that there was a need for a real-time streaming framework that was easy to use, scalable and reliable; withouth reducing the performance. Renoir is the answer to that need. It is designed to be the ultimate solution for your data infrastructure.",
+      },
+    ]}
+  />
+
+  <!-- Steps2 Widget ****************** -->
+
+  <Steps2
+    title="Reach out to us"
+    subtitle="Have questions? Feel free to contact us using the form below. We're here to help!"
+    callToAction={{
+      text: 'Contact us',
+      href: '/contact',
+    }}
+    items={[
+      {
+        title: 'Email us',
+        description: 'info@databrush.it',
+        icon: 'tabler:mail',
+      },
+      {
+        title: 'Follow us',
+        description: '@databrush-it',
+        icon: 'tabler:brand-linkedin',
+      },
+    ]}
+  />
+
+  <!-- BlogLatestPost Widget **************** -->
+
+  <BlogLatestPosts
+    id="blog"
+    title="Stay informed with Databrush's blog"
+    information={`Read the latest articles and stay up to date with the latest trends in data analytics and distributed systems.`}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </BlogLatestPosts>
+</Layout>

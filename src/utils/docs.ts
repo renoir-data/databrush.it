@@ -53,7 +53,7 @@ const buildBooks = async (): Promise<MenuItem[]> => {
         item.permalink = generatePermalink(entry.id);
       }
       current.sort((a, b) => a.order - b.order);
-      current = item.children;
+      current = item.children || [];
     }
   });
 
@@ -87,17 +87,22 @@ export const getStaticPathsDocs = async () => {
 
 export const fetchBook = async (slug: string): Promise<MenuItem[]> => {
   const books = await fetchBooks();
-  return [books.find((book) => book.slug === slug)!];
+  const book = books.find((book) => book.slug === slug);
+  return book ? [book] : [];
 };
 
 export const previous = async (path: string): Promise<MenuItem | undefined> => {
   const [book] = path.replace(`/${DOCS_BASE}/`, '').split('/');
   const root = await fetchBook(book);
 
+  if (!root || root.length === 0) {
+    return undefined;
+  }
+
   const all_docs: MenuItem[] = [];
   const traverse = (items: MenuItem[]) => {
     items.forEach((item) => {
-      if (item.children.length > 0) {
+      if (item.children && item.children.length > 0) {
         traverse(item.children);
       } else {
         all_docs.push(item);
@@ -119,10 +124,14 @@ export const next = async (path: string): Promise<MenuItem | undefined> => {
   const [book] = path.replace(`/${DOCS_BASE}/`, '').split('/');
   const root = await fetchBook(book);
 
+  if (!root || root.length === 0) {
+    return undefined;
+  }
+
   const all_docs: MenuItem[] = [];
   const traverse = (items: MenuItem[]) => {
     items.forEach((item) => {
-      if (item.children.length > 0) {
+      if (item.children && item.children.length > 0) {
         traverse(item.children);
       } else {
         all_docs.push(item);
