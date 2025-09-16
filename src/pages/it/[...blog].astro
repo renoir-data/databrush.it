@@ -19,7 +19,7 @@ const allPosts = await fetchPosts();
 const post = allPosts.find(p => p.permalink === blogSlug);
 
 if (!post) {
-  return Astro.redirect('/blog');
+  return Astro.redirect('/it/404');
 }
 
 const url = getCanonical(getPermalink(post.permalink, 'post'));
