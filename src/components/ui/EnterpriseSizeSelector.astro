@@ -50,9 +50,9 @@ const {
   class?: string;
 };
 
-const labelSmall = labels.small ?? 'Small Teams';
-const labelMedium = labels.medium ?? 'Mid-size';
-const labelLarge = labels.large ?? 'Enterprise';
+const labelSmall = labels.small ?? 'Small';
+const labelMedium = labels.medium ?? 'Medium';
+const labelLarge = labels.large ?? 'Large';
 
 const options = [
   { key: 'small', label: labelSmall, description: '1-50 employees' },
@@ -104,12 +104,15 @@ const initialIndex = Math.max(0, options.findIndex(o => o.key === value));
         </label>
       ))}
     </div>
+    
+    <!-- Expanding line indicator -->
+    <div class="expanding-line" data-expanding-line></div>
   </div>
 </div>
 
 
   <script>
-    // Modern radio button interaction
+    // Modern radio button interaction with expanding line animation
     document.addEventListener('DOMContentLoaded', () => {
       const selectors = document.querySelectorAll('.selector-container');
       
@@ -117,13 +120,37 @@ const initialIndex = Math.max(0, options.findIndex(o => o.key === value));
         const radioInputs = Array.from(
           container.querySelectorAll<HTMLInputElement>('input[type="radio"]')
         );
+        const expandingLine = container.querySelector('[data-expanding-line]') as HTMLElement;
+
+        // Color mapping for each option
+        const colorMap = {
+          small: '#00a6ff',
+          medium: '#e900ff',
+          large: '#00ffc2'
+        };
 
         // Listen for radio button changes
         radioInputs.forEach((radio) => {
           radio.addEventListener('change', (e) => {
             if ((e.target as HTMLInputElement).checked) {
-              const detail = { value: (e.target as HTMLInputElement).value };
+              const value = (e.target as HTMLInputElement).value as keyof typeof colorMap;
+              const detail = { value };
               container.dispatchEvent(new CustomEvent('change', { bubbles: true, detail }));
+              
+              // Trigger expanding line animation
+              if (expandingLine) {
+                const color = colorMap[value];
+                expandingLine.style.setProperty('--line-color', color);
+                expandingLine.classList.remove('animate');
+                // Force reflow
+                void expandingLine.offsetHeight;
+                expandingLine.classList.add('animate');
+                
+                // Remove animation class after completion
+                setTimeout(() => {
+                  expandingLine.classList.remove('animate');
+                }, 1500);
+              }
             }
           });
         });
@@ -150,6 +177,7 @@ const initialIndex = Math.max(0, options.findIndex(o => o.key === value));
     align-items: center;
     justify-content: center;
     width: 100%;
+    position: relative;
   }
 
   .radio-group-container {
@@ -239,7 +267,7 @@ const initialIndex = Math.max(0, options.findIndex(o => o.key === value));
     font-weight: 600;
     color: #c1c3d9;
     transition: color 0.3s ease;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     line-height: 1.3;
     height: 1.4em;
     display: flex;
@@ -287,7 +315,6 @@ const initialIndex = Math.max(0, options.findIndex(o => o.key === value));
   .radio-input:checked + .radio-custom[data-color="small"]::after {
     opacity: 1;
     transform: scale(1.3);
-    animation: orbit 2.5s infinite linear;
     border-top-color: #00a6ff;
     box-shadow:
       0 0 30px #00a6ff,
@@ -308,7 +335,6 @@ const initialIndex = Math.max(0, options.findIndex(o => o.key === value));
   .radio-input:checked + .radio-custom[data-color="medium"]::after {
     opacity: 1;
     transform: scale(1.3);
-    animation: orbit 2.5s infinite linear;
     border-top-color: #e900ff;
     box-shadow:
       0 0 30px #e900ff,
@@ -329,7 +355,6 @@ const initialIndex = Math.max(0, options.findIndex(o => o.key === value));
   .radio-input:checked + .radio-custom[data-color="large"]::after {
     opacity: 1;
     transform: scale(1.3);
-    animation: orbit 2.5s infinite linear;
     border-top-color: #00ffc2;
     box-shadow:
       0 0 30px #00ffc2,
@@ -347,12 +372,48 @@ const initialIndex = Math.max(0, options.findIndex(o => o.key === value));
     font-weight: 500;
   }
 
-  @keyframes orbit {
-    from {
-      transform: rotate(0deg);
+  /* Expanding Line Animation */
+  .expanding-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 3px;
+    width: 0;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      var(--line-color, #26E9AF) 50%, 
+      transparent 100%);
+    border-radius: 1.5px;
+    opacity: 0;
+    transition: none;
+    z-index: 5;
+    box-shadow: 0 0 20px var(--line-color, #26E9AF);
+  }
+
+  .expanding-line.animate {
+    animation: expandLine 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  @keyframes expandLine {
+    0% {
+      width: 0;
+      opacity: 0;
     }
-    to {
-      transform: rotate(360deg);
+    20% {
+      opacity: 1;
+    }
+    50% {
+      width: 99vw;
+      opacity: 1;
+    }
+    70% {
+      width: 99vw;
+      opacity: 1;
+    }
+    100% {
+      width: 99vw;
+      opacity: 0;
     }
   }
 
@@ -434,6 +495,11 @@ const initialIndex = Math.max(0, options.findIndex(o => o.key === value));
     
     .radio-custom::after {
       animation: none !important;
+    }
+
+    .expanding-line.animate {
+      animation: none !important;
+      opacity: 0 !important;
     }
   }
 </style>
