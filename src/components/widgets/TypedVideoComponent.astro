@@ -1,0 +1,443 @@
+---
+// --- Component Props ---
+interface Props {
+  /** Delay in ms before starting the animation sequence. */
+  startDelay?: number;
+  /** Delay in ms after the initial state before transitioning. */
+  transitionDelay?: number;
+  /** Delay in ms after shrinking before expanding to monitoring video. */
+  expandDelay?: number;
+  /** Text content to display in the right column */
+  title?: string;
+  subtitle?: string;
+  description?: string;
+}
+
+// --- Default Props ---
+const {
+  startDelay = 1000,
+  transitionDelay = 3000,
+  expandDelay = 2000,
+  title = "Real-time Data Processing",
+  subtitle = "Stream Processing Made Simple",
+  description = "Watch your data flow through our processing pipeline in real-time. From raw sensor data to actionable insights, all visualized in an intuitive dashboard that adapts to your workflow."
+} = Astro.props;
+---
+
+<div class="video-component-wrapper">
+  <!-- STATE 1: Two-column layout with theme-aware video and text (Visible by default) -->
+  <div class="main-content">
+    <!-- Left Column: Video/Animation Area -->
+    <div class="video-column">
+      <div class="video-container">
+        <!-- Light theme image -->
+        <img 
+          src="/src/assets/images/use_cases/light.webp" 
+          alt="Light Theme Data Processing Animation" 
+          class="theme-image light-image"
+          loading="lazy"
+        />
+        
+        <!-- Dark theme image -->
+        <img 
+          src="/src/assets/images/use_cases/dark.webp" 
+          alt="Dark Theme Data Processing Animation" 
+          class="theme-image dark-image"
+          loading="lazy"
+        />
+      </div>
+
+      <!-- Loading State (Hidden by default, positioned in left column) -->
+      <div class="loading-state">
+          <!-- Monitoring Image (Inside the loading box) -->
+          <div class="monitoring-content">
+            <div class="gif-container">
+              <img 
+                src="/src/assets/images/use_cases/industrial_monitoring.webp" 
+                alt="Industrial Monitoring Dashboard Animation" 
+                class="monitoring-gif"
+                loading="lazy"
+              />
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Text Content (Always visible) -->
+    <div class="text-column">
+      <div class="text-content">
+        <h2 class="title">{title}</h2>
+        <h3 class="subtitle">{subtitle}</h3>
+        <p class="description">{description}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .video-component-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 1rem;
+    background: transparent;
+    min-height: 600px;
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .video-component-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #f0f8ff;
+    z-index: -1;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .video-component-wrapper::before {
+      background: transparent;
+    }
+  }
+
+  .main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    width: 100%;
+    max-width: 1200px;
+    align-items: center;
+    position: absolute;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .video-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .video-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 16/10;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 25px 20px -20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .theme-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Theme-based image visibility */
+  .light-image {
+    opacity: 1;
+  }
+
+  .dark-image {
+    opacity: 0;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .light-image {
+      opacity: 0;
+    }
+    
+    .dark-image {
+      opacity: 1;
+    }
+  }
+
+  .text-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .text-content {
+    max-width: 500px;
+  }
+
+  .title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #4a5568;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #718096;
+    margin: 0;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .title {
+      color: #f7fafc;
+    }
+    
+    .subtitle {
+      color: #e2e8f0;
+    }
+    
+    .description {
+      color: #a0aec0;
+    }
+  }
+
+  /* --- Loading State Styles --- */
+  .loading-state {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #262335;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* --- Monitoring Content Styles (Inside Loading State) --- */
+  .monitoring-content {
+    display: none;
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  .gif-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .monitoring-gif {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+  }
+
+  .monitoring-gif:hover {
+    transform: scale(1.02);
+  }
+
+  /* --- State Switching Logic --- */
+  /* Loading state: Hide video container, show loading state */
+  .video-component-wrapper.loading .video-container {
+    opacity: 0;
+  }
+  .video-component-wrapper.loading .loading-state {
+    display: flex;
+  }
+
+  /* Shrinking Animation: Scale down the loading state */
+  .video-component-wrapper.shrinking .video-container {
+    opacity: 0;
+  }
+  .video-component-wrapper.shrinking .loading-state {
+    display: flex;
+    transform: scale(0.15);
+    border-radius: 50%;
+    background: #262335;
+  }
+
+  /* Expanding Box State: Scale back to normal size */
+  .video-component-wrapper.expanding-box .video-container {
+    opacity: 0;
+  }
+  .video-component-wrapper.expanding-box .loading-state {
+    display: flex;
+    transform: scale(1);
+    border-radius: 12px;
+    background: rgba(38, 35, 53, 0.8);
+    backdrop-filter: blur(10px);
+  }
+  .video-component-wrapper.expanding-box .monitoring-content {
+    display: none;
+  }
+
+  /* Final State: Show monitoring image */
+  .video-component-wrapper.showing-monitoring .video-container {
+    opacity: 0;
+  }
+  .video-component-wrapper.showing-monitoring .loading-state {
+    display: flex;
+    transform: scale(1);
+    border-radius: 12px;
+    background: rgba(38, 35, 53, 0.8);
+    backdrop-filter: blur(10px);
+  }
+  .video-component-wrapper.showing-monitoring .monitoring-content {
+    display: block;
+    opacity: 1;
+  }
+
+  /* --- Responsive Design --- */
+  @media (max-width: 768px) {
+    .main-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .video-column {
+      order: -1;
+    }
+
+    .text-column {
+      padding: 1rem;
+    }
+
+    .title {
+      font-size: 2rem;
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+    }
+
+    .description {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .video-component-wrapper {
+      padding: 2rem 0.5rem;
+    }
+
+    .main-content {
+      gap: 1.5rem;
+    }
+
+    .title {
+      font-size: 1.75rem;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+    }
+  }
+</style>
+
+<script define:vars={{ startDelay, transitionDelay, expandDelay }}>
+  class VideoAnimator {
+    constructor(wrapperEl, delays) {
+      this.wrapperEl = wrapperEl;
+      this.mainContent = wrapperEl.querySelector('.main-content');
+      this.delays = delays;
+
+      if (!this.mainContent) {
+        console.error("Required elements for VideoAnimator not found.");
+        return;
+      }
+      this.init();
+    }
+
+    wait(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async init() {
+      await this.runAnimationSequence();
+    }
+
+    async runAnimationSequence() {
+      // 1. Wait for initial display
+      await this.wait(this.delays.start);
+
+
+      await this.wait(10160);
+
+      // 3. Switch to the loading state (no spinner, just transition)
+      this.wrapperEl.classList.add('loading');
+
+      // 4. Shrink to small box immediately
+      await this.shrinkToSmallBox();
+
+      await this.wait(this.delays.expand); // Delay before expanding
+
+      // 5. Transform small box into monitoring image
+      await this.expandToMonitoringImage();
+    }
+
+    async shrinkToSmallBox() {
+      // Add shrinking class to trigger the animation
+      this.wrapperEl.classList.add('shrinking');
+      
+      // Wait for the shrinking animation to complete
+      await this.wait(600);
+    }
+
+    async expandToMonitoringImage() {
+      // Stage 1: Start expanding the box but keep image hidden
+      this.wrapperEl.classList.remove('loading', 'shrinking');
+      this.wrapperEl.classList.add('expanding-box');
+      
+      // Wait for the box to expand to full size
+      await this.wait(600);
+      
+      // Stage 2: Now show the image content
+      this.wrapperEl.classList.remove('expanding-box');
+      this.wrapperEl.classList.add('showing-monitoring');
+      
+      // Wait for the image fade-in to complete
+      await this.wait(400);
+    }
+  }
+
+  // Use an IntersectionObserver to start the animation only when visible.
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const delays = { 
+          start: startDelay, 
+          transition: transitionDelay, 
+          expand: expandDelay 
+        };
+        new VideoAnimator(entry.target, delays);
+        observer.unobserve(entry.target); // Animate only once
+      }
+    });
+  });
+
+  observer.observe(document.querySelector('.video-component-wrapper'));
+</script>

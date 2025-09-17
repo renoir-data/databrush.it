@@ -20,6 +20,7 @@ import Content_dinamic from '~/components/widgets/Content_dinamic.astro';
 import * as m from '~/paraglide/messages';
 import TypedCodeImage from '~/components/widgets/TypedCodeImage.astro';
 import EnterpriseSizeSelector from '~/components/ui/EnterpriseSizeSelector.astro';
+import TypedVideoComponent from '~/components/widgets/TypedVideoComponent.astro';
 
 const metadata = {
   title: 'Databrush',
@@ -65,40 +66,14 @@ const metadata = {
     </Fragment>
   </Hero>
 
-  <div class="my-12 flex justify-center">
-    <!-- EnterpriseSizeSelector Widget ************** -->
-    <EnterpriseSizeSelector 
-      name="company_size" 
-      title="What's your company size?"
-      subtitle="Choose the option that best describes your business"
-    />
-  </div>
-
   <!-- Features2 Widget ************** -->
 
-  <Features3 title={m.about_us_title()} isBeforeContent={true}>
+  <Features3 title={m.about_us_title()} isBeforeContent={true} classes={{ container: '-mb-10' }}>
     <Fragment slot="subtitle" set:html={m.about_us_subtitle()} />
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Features3>
-
-  <!-- Stats Widget ****************** -->
-
-  <TypedCodeImage />
-
-  <Stats
-    title={m.stats_title()}
-    subtitle={m.stats_subtitle()}
-    stats={[
-      { title: m.stats_item_1_title(), amount: '1º' },
-      { title: m.stats_item_2_title(), amount: '>1000' },
-      { title: m.stats_item_3_title(), amount: '83' },
-      { title: m.stats_item_4_title(), amount: '4' },
-    ]}
-  />
-
-  <!-- Features2 Widget ************** -->
 
   <Features2
     title={m.services_title()}
@@ -149,6 +124,34 @@ const metadata = {
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Features2>
+
+  <EnterpriseSizeSelector/>
+
+  <TypedVideoComponent 
+  title="Real-time Data Processing"
+  subtitle="Stream Processing Made Simple"
+  description="Watch your data flow through our processing pipeline..."
+  startDelay={1000}
+  transitionDelay={3000}
+  expandDelay={2000}
+  />
+
+  <!-- Stats Widget ****************** -->
+
+  <TypedCodeImage />
+
+  <Stats
+    title={m.stats_title()}
+    subtitle={m.stats_subtitle()}
+    stats={[
+      { title: m.stats_item_1_title(), amount: '1º' },
+      { title: m.stats_item_2_title(), amount: '>1000' },
+      { title: m.stats_item_3_title(), amount: '83' },
+      { title: m.stats_item_4_title(), amount: '4' },
+    ]}
+  />
+
+  <!-- Features2 Widget ************** -->
 
   <!-- Features Widget *************** -->
 
@@ -217,7 +220,10 @@ const metadata = {
     ]}
   >
     <Fragment slot="content">
-      <h3 class="text-4xl text-center font-bold tracking-tight dark:text-white sm:text-3xl mb-2" set:html={m.use_cases_title()}/>
+      <h3
+        class="text-4xl text-center font-bold tracking-tight dark:text-white sm:text-3xl mb-2"
+        set:html={m.use_cases_title()}
+      />
     </Fragment>
   </Content_dinamic>
 
