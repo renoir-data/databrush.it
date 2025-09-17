@@ -129,6 +129,9 @@ const initialIndex = Math.max(0, options.findIndex(o => o.key === value));
           large: '#00ffc2'
         };
 
+        // Animation state management
+        let animationTimeout: ReturnType<typeof setTimeout> | null = null;
+
         // Listen for radio button changes
         radioInputs.forEach((radio) => {
           radio.addEventListener('change', (e) => {
@@ -139,16 +142,26 @@ const initialIndex = Math.max(0, options.findIndex(o => o.key === value));
               
               // Trigger expanding line animation
               if (expandingLine) {
+                // Clear any pending timeout from previous animation
+                if (animationTimeout) {
+                  clearTimeout(animationTimeout);
+                  animationTimeout = null;
+                }
+
                 const color = colorMap[value];
                 expandingLine.style.setProperty('--line-color', color);
+                
+                // Remove animation class and force reflow
                 expandingLine.classList.remove('animate');
-                // Force reflow
                 void expandingLine.offsetHeight;
+                
+                // Add animation class
                 expandingLine.classList.add('animate');
                 
-                // Remove animation class after completion
-                setTimeout(() => {
+                // Set new timeout to remove animation class after completion
+                animationTimeout = setTimeout(() => {
                   expandingLine.classList.remove('animate');
+                  animationTimeout = null;
                 }, 1500);
               }
             }
@@ -388,11 +401,30 @@ const initialIndex = Math.max(0, options.findIndex(o => o.key === value));
     opacity: 0;
     transition: none;
     z-index: 5;
-    box-shadow: 0 0 20px var(--line-color, #26E9AF);
+    box-shadow: 
+      0 0 20px var(--line-color, #26E9AF),
+      0 10px 40px rgba(0, 0, 0, 0.3),
+      0 20px 60px var(--line-color, #26E9AF);
   }
 
   .expanding-line.animate {
     animation: expandLine 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .expanding-line.animate::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(to bottom, 
+      var(--line-color, #26E9AF) 0%,
+      rgba(255, 255, 255, 0) 100%);
+    opacity: 0.3;
+    border-radius: 0 0 30px 30px;
+    animation: expandShadow 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: top center;
   }
 
   @keyframes expandLine {
@@ -414,6 +446,29 @@ const initialIndex = Math.max(0, options.findIndex(o => o.key === value));
     100% {
       width: 99vw;
       opacity: 0;
+    }
+  }
+
+  @keyframes expandShadow {
+    0% {
+      opacity: 0;
+      transform: scaleY(0);
+    }
+    20% {
+      opacity: 0.3;
+      transform: scaleY(0.3);
+    }
+    50% {
+      opacity: 0.4;
+      transform: scaleY(1);
+    }
+    70% {
+      opacity: 0.3;
+      transform: scaleY(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scaleY(0.8);
     }
   }
 
@@ -498,6 +553,11 @@ const initialIndex = Math.max(0, options.findIndex(o => o.key === value));
     }
 
     .expanding-line.animate {
+      animation: none !important;
+      opacity: 0 !important;
+    }
+
+    .expanding-line.animate::after {
       animation: none !important;
       opacity: 0 !important;
     }
