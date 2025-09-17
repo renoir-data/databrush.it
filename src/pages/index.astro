@@ -19,6 +19,7 @@ import brush_xlarge from '~/assets/images/brush/xlarge.svg?raw';
 import Content_dinamic from '~/components/widgets/Content_dinamic.astro';
 import * as m from '~/paraglide/messages';
 import TypedCodeImage from '~/components/widgets/TypedCodeImage.astro';
+import EnterpriseSizeSelector from '~/components/ui/EnterpriseSizeSelector.astro';
 
 const metadata = {
   title: 'Databrush',
@@ -63,6 +64,15 @@ const metadata = {
       </div>
     </Fragment>
   </Hero>
+
+  <div class="my-12 flex justify-center">
+    <!-- EnterpriseSizeSelector Widget ************** -->
+    <EnterpriseSizeSelector 
+      name="company_size" 
+      title="What's your company size?"
+      subtitle="Choose the option that best describes your business"
+    />
+  </div>
 
   <!-- Features2 Widget ************** -->
 

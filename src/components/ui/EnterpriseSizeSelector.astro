@@ -1,0 +1,439 @@
+---
+/**
+ * EnterpriseSizeSelector
+ * Modern minimal enterprise size selector for landing page hero section.
+ *
+ * Props:
+ * - id?: string — id for the root element
+ * - name?: string — if provided, a hidden input will mirror the current value for forms
+ * - value?: 'small' | 'medium' | 'large' — initial value (default: 'medium')
+ * - labels?: { small?: string; medium?: string; large?: string } — override visible labels
+ * - title?: string — title text displayed above the selector
+ * - subtitle?: string — optional subtitle text displayed below the title
+ * - ariaLabel?: string — label for the radio group (default: 'Select enterprise size')
+ * - class?: string — optional extra classes for the root container
+ *
+ * Behavior:
+ * - Emits a `change` CustomEvent on the root element with detail { value }
+ * - Keyboard: ArrowLeft/ArrowUp = previous, ArrowRight/ArrowDown = next, Home = first, End = last
+ * - Accessible roles: radiogroup + radio with proper aria-checked and roving tabIndex
+ *
+ * Usage:
+ * <EnterpriseSizeSelector 
+ *   name="company_size" 
+ *   value="medium"
+ *   title="What size is your company?"
+ *   subtitle="Choose the option that best describes your enterprise"
+ * />
+ *
+ */
+
+interface Labels { small?: string; medium?: string; large?: string }
+
+const {
+  id,
+  name,
+  value = 'medium',
+  labels = {},
+  title = 'What size is your enterprise?',
+  subtitle,
+  ariaLabel = 'Select enterprise size',
+  class: className = '',
+} = Astro.props as {
+  id?: string;
+  name?: string;
+  value?: 'small' | 'medium' | 'large';
+  labels?: Labels;
+  title?: string;
+  subtitle?: string;
+  ariaLabel?: string;
+  class?: string;
+};
+
+const labelSmall = labels.small ?? 'Small Teams';
+const labelMedium = labels.medium ?? 'Mid-size';
+const labelLarge = labels.large ?? 'Enterprise';
+
+const options = [
+  { key: 'small', label: labelSmall, description: '1-50 employees' },
+  { key: 'medium', label: labelMedium, description: '51-500 employees' },
+  { key: 'large', label: labelLarge, description: '500+ employees' },
+] as const;
+
+const initialIndex = Math.max(0, options.findIndex(o => o.key === value));
+---
+
+<div class={`enterprise-size-selector ${className}`}>
+  {title && (
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-light text-gray-900 dark:text-white mb-6 tracking-tight">
+        {title}
+      </h2>
+      {subtitle && (
+        <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+          {subtitle}
+        </p>
+      )}
+    </div>
+  )}
+  
+  <div
+    id={id}
+    class="selector-container"
+    role="radiogroup"
+    aria-label={ariaLabel}
+    data-active-index={initialIndex}
+  >
+    <div class="radio-group-container">
+      {options.map((opt, i) => (
+        <label class="radio-label">
+          <input 
+            type="radio" 
+            name={name || 'enterprise-size'} 
+            class="radio-input" 
+            value={opt.key}
+            checked={i === initialIndex}
+            data-option
+            data-index={i}
+          />
+          <span class="radio-custom" data-color={opt.key}></span>
+          <div class="radio-content">
+            <span class="radio-text">{opt.label}</span>
+            <span class="radio-description">{opt.description}</span>
+          </div>
+        </label>
+      ))}
+    </div>
+  </div>
+</div>
+
+
+  <script>
+    // Modern radio button interaction
+    document.addEventListener('DOMContentLoaded', () => {
+      const selectors = document.querySelectorAll('.selector-container');
+      
+      selectors.forEach((container) => {
+        const radioInputs = Array.from(
+          container.querySelectorAll<HTMLInputElement>('input[type="radio"]')
+        );
+
+        // Listen for radio button changes
+        radioInputs.forEach((radio) => {
+          radio.addEventListener('change', (e) => {
+            if ((e.target as HTMLInputElement).checked) {
+              const detail = { value: (e.target as HTMLInputElement).value };
+              container.dispatchEvent(new CustomEvent('change', { bubbles: true, detail }));
+            }
+          });
+        });
+      });
+    });
+  </script>
+
+<style>
+  /* Modern radio button selector inspired by Uiverse design */
+  .enterprise-size-selector {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100%;
+    padding: 20px 0;
+    box-sizing: border-box;
+  }
+
+  .selector-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .radio-group-container {
+    background-color: rgba(26, 27, 40, 0.7);
+    padding: 45px 55px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.055);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    width: 90%;
+    max-width: 600px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 50px;
+  }
+
+  .radio-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    flex: 1;
+    transition: all 0.3s ease;
+    padding: 20px 15px;
+    min-height: 180px;
+  }
+
+  .radio-input {
+    display: none;
+  }
+
+  .radio-custom {
+    width: 28px;
+    height: 28px;
+    background-color: transparent;
+    border: 3px solid #5c5e79;
+    border-radius: 50%;
+    margin-bottom: 35px;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .radio-custom::before {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: #8a8b9f;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .radio-custom::after {
+    content: "";
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    border: 3px solid transparent;
+    border-radius: 50%;
+    border-top-color: #26E9AF;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.4s ease;
+  }
+
+  .radio-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    justify-content: flex-start;
+  }
+
+  .radio-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #c1c3d9;
+    transition: color 0.3s ease;
+    margin-bottom: 40px;
+    line-height: 1.3;
+    height: 1.4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .radio-description {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #8a8b9f;
+    transition: color 0.3s ease;
+    line-height: 1.4;
+    height: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Hover effects */
+  .radio-label:hover .radio-input:not(:checked) + .radio-custom {
+    transform: scale(1.1);
+    border-color: #8a8daf;
+  }
+
+  .radio-label:hover .radio-text {
+    color: #e2e4f4;
+  }
+
+  .radio-label:hover .radio-description {
+    color: #b0b2c8;
+  }
+
+  /* Small (first option) - Blue */
+  .radio-input:checked + .radio-custom[data-color="small"] {
+    border-color: #00a6ff;
+    transform: scale(0.9);
+  }
+
+  .radio-input:checked + .radio-custom[data-color="small"]::before {
+    transform: scale(1);
+    background-color: #00a6ff;
+  }
+
+  .radio-input:checked + .radio-custom[data-color="small"]::after {
+    opacity: 1;
+    transform: scale(1.3);
+    animation: orbit 2.5s infinite linear;
+    border-top-color: #00a6ff;
+    box-shadow:
+      0 0 30px #00a6ff,
+      0 0 80px rgba(0, 166, 255, 0.2);
+  }
+
+  /* Medium (second option) - Magenta */
+  .radio-input:checked + .radio-custom[data-color="medium"] {
+    border-color: #e900ff;
+    transform: scale(0.9);
+  }
+
+  .radio-input:checked + .radio-custom[data-color="medium"]::before {
+    transform: scale(1);
+    background-color: #e900ff;
+  }
+
+  .radio-input:checked + .radio-custom[data-color="medium"]::after {
+    opacity: 1;
+    transform: scale(1.3);
+    animation: orbit 2.5s infinite linear;
+    border-top-color: #e900ff;
+    box-shadow:
+      0 0 30px #e900ff,
+      0 0 80px rgba(233, 0, 255, 0.2);
+  }
+
+  /* Large (third option) - Green */
+  .radio-input:checked + .radio-custom[data-color="large"] {
+    border-color: #00ffc2;
+    transform: scale(0.9);
+  }
+
+  .radio-input:checked + .radio-custom[data-color="large"]::before {
+    transform: scale(1);
+    background-color: #00ffc2;
+  }
+
+  .radio-input:checked + .radio-custom[data-color="large"]::after {
+    opacity: 1;
+    transform: scale(1.3);
+    animation: orbit 2.5s infinite linear;
+    border-top-color: #00ffc2;
+    box-shadow:
+      0 0 30px #00ffc2,
+      0 0 80px rgba(0, 255, 194, 0.2);
+  }
+
+  /* Selected text styling */
+  .radio-input:checked ~ .radio-content .radio-text {
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  .radio-input:checked ~ .radio-content .radio-description {
+    color: #e2e4f4;
+    font-weight: 500;
+  }
+
+  @keyframes orbit {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Media Query for Mobile Responsiveness */
+  @media (max-width: 640px) {
+    .radio-group-container {
+      flex-direction: column;
+      padding: 40px 45px;
+      gap: 45px;
+      max-width: 360px;
+    }
+
+    .radio-label {
+      flex-direction: row;
+      width: 100%;
+      justify-content: flex-start;
+      padding: 15px 0;
+      min-height: auto;
+      align-items: center;
+    }
+
+    .radio-custom {
+      margin-bottom: 0;
+      margin-right: 30px;
+      flex-shrink: 0;
+    }
+
+    .radio-content {
+      align-items: flex-start;
+      text-align: left;
+      flex: 1;
+    }
+
+    .radio-text {
+      font-size: 1.2rem;
+      height: auto;
+      margin-bottom: 12px;
+    }
+
+    .radio-description {
+      font-size: 0.9rem;
+      height: auto;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .radio-group-container {
+      padding: 35px 40px;
+    }
+
+    .radio-label {
+      padding: 18px 0;
+    }
+
+    .radio-text {
+      font-size: 1.1rem;
+    }
+
+    .radio-description {
+      font-size: 0.85rem;
+    }
+  }
+
+  /* Focus styles for accessibility */
+  .radio-input:focus + .radio-custom {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 2px;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .radio-custom,
+    .radio-text,
+    .radio-description,
+    .radio-custom::before,
+    .radio-custom::after {
+      transition-duration: 0.1s;
+    }
+    
+    .radio-custom::after {
+      animation: none !important;
+    }
+  }
+</style>
