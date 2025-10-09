@@ -125,18 +125,23 @@ const {
     aspect-ratio: 16/10;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 25px 20px -20px;
+    background-color: #262335;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 25px 20px -20px;
     transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    padding: 0.5rem;
   }
 
   .theme-image {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    width: calc(100% - 1rem);
+    height: calc(100% - 1rem);
     object-fit: cover;
+    border-radius: 8px;
     transition: opacity 0.3s ease;
   }
 
@@ -260,12 +265,15 @@ const {
   }
 
   /* --- State Switching Logic --- */
-  /* Loading state: Hide video container, show loading state */
+  /* Loading state: Hide video container, show loading state at full size */
   .video-component-wrapper.loading .video-container {
     opacity: 0;
   }
   .video-component-wrapper.loading .loading-state {
     display: flex;
+    transform: scale(1);
+    border-radius: 12px;
+    background: #262335;
   }
 
   /* Shrinking Animation: Scale down the loading state */
@@ -384,18 +392,20 @@ const {
       // 1. Wait for initial display
       await this.wait(this.delays.start);
 
-
       await this.wait(10160);
 
-      // 3. Switch to the loading state (no spinner, just transition)
+      // 3. Switch to the loading state (full size dark box)
       this.wrapperEl.classList.add('loading');
+      
+      // 4. Wait a moment to show the full size loading state
+      await this.wait(200);
 
-      // 4. Shrink to small box immediately
+      // 5. Shrink to small box with animation
       await this.shrinkToSmallBox();
 
       await this.wait(this.delays.expand); // Delay before expanding
 
-      // 5. Transform small box into monitoring image
+      // 6. Transform small box into monitoring image
       await this.expandToMonitoringImage();
     }
 
