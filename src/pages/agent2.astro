@@ -1,0 +1,279 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Content from '~/components/widgets/Content.astro';
+import Steps2 from '~/components/widgets/Steps2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+
+const metadata = {
+  title: 'Agent² - Intelligent Business Automation',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="Agent²"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get Started',
+        href: '#modules',
+      },
+      { 
+        text: 'Contact Sales', 
+        href: '/contact',
+        variant: 'secondary' 
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      Next-Generation Intelligent Business Automation
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Empower your business with Renoir across email, sales, and intelligence. 
+      The <span class="font-semibold">Agent²</span> package transforms how you interact with customers and analyze data.
+    </Fragment>
+  </Hero>
+
+  <!-- Overview Section -->
+  <Features3
+    title="What is Agent²?"
+    subtitle=""
+    columns={3}
+    items={[
+      {
+        title: 'Three products',
+        description: 'Designed to revolutionize business operations: Mail, Sales, and Intelligence',
+        icon: 'tabler:robot',
+      },
+      {
+        title: 'Cutting Edge Technology',
+        description: 'Thanks to Renoir, make data-driven decisions with advanced analytics.',
+        icon: 'tabler:brain',
+      },
+      {
+        title: 'Without leaving the walls of your business',
+        description: 'Everything will be managed internally, ensuring data privacy and security.',
+        icon: 'tabler:plug-connected',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features3>
+
+  <!-- Mail Module -->
+  <Content
+    id="modules"
+    isReversed
+    items={[
+      {
+        title: 'Email Processing',
+        description: 'Automatically categorize, prioritize, and route incoming emails based on content and context',
+        icon: 'tabler:inbox',
+      },
+      {
+        title: 'Retrive information',
+        description: 'Search in your company data the needed information',
+        icon: 'tabler:message-circle-2',
+      },
+      {
+        title: 'Relevant Responses',
+        description: 'Generate a report that gives you all the information you need to answer',
+        icon: 'tabler:inbox',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1596526131083-e8c633c948d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2574&q=80',
+      alt: 'Mail Module',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Mail Module
+      </h3>
+      <p class="text-muted dark:text-slate-400">
+        Transform your email management with local AI agents that know your business and give you the answers that you need, when you need them.
+      </p>
+    </Fragment>
+  </Content>
+
+  <!-- Sales Module -->
+  <Content
+    isAfterContent
+    items={[
+      {
+        title: 'Request analysis',
+        description: 'Based on your questions, the system will undestand the client and the context',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Document retrieval',
+        description: 'Quickly access relevant documents and information in your business data',
+        icon: 'tabler:chart-line',
+      },
+      {
+        title: 'Pre-meeting report',
+        description: 'Generate a comprehensive report with key insights and talking points before client meetings',
+        icon: 'tabler:crystal-ball',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2574&q=80',
+      alt: 'Sales Module',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Sales Module
+      </h3>
+      <p class="text-muted dark:text-slate-400">
+        Fai in modo che ai tuoi venditori non manchino mai le idee che gli servono.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Intelligence Module -->
+  <Content
+    isReversed
+    isAfterContent
+    items={[
+      {
+        title: 'Advanced Analytics',
+        description: 'Process and analyze large volumes of data to uncover hidden patterns and trends',
+        icon: 'tabler:chart-dots',
+      },
+      {
+        title: 'Predictive Modeling',
+        description: 'Use machine learning to forecast business outcomes and identify risks',
+        icon: 'tabler:chart-arrows',
+      },
+      {
+        title: 'Real-Time Insights',
+        description: 'Monitor key metrics and receive instant alerts on critical business events',
+        icon: 'tabler:bolt',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2570&q=80',
+      alt: 'Intelligence Module',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Intelligence Module
+      </h3>
+      <p class="text-muted dark:text-slate-400">
+        Tieni sottocchio la tua azienda, controlla e gestisci ogni settore così da non avere sorprese 
+      </p>
+    </Fragment>
+  </Content>
+  
+  <!-- Key Benefits -->
+  <Features3
+    title="Why Choose Agent²?"
+    subtitle="Experience the benefits of integrated intelligent automation"
+    columns={3}
+    items={[
+      {
+        title: 'Increased Efficiency',
+        description: 'Automate routine tasks and free up your team to focus on high-value activities',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Better Customer Experience',
+        description: 'Respond faster and more accurately to customer needs',
+        icon: 'tabler:users-group',
+      },
+      {
+        title: 'Data-Driven Decisions',
+        description: 'Make informed choices based on comprehensive analytics and predictive modeling',
+        icon: 'tabler:chart-infographic',
+      },
+      {
+        title: 'Scalable Solution',
+        description: 'Grow your automation capabilities as your business expands',
+        icon: 'tabler:trending-up',
+      },
+      {
+        title: 'Reduced Costs',
+        description: 'You don\'t have to pay for expensive cloud services, run it all internally',
+        icon: 'tabler:coin',
+      },
+      {
+        title: 'Competitive Advantage',
+        description: 'Stay ahead with cutting-edge technology and insights',
+        icon: 'tabler:trophy',
+      },
+    ]}
+  />
+
+  <!-- FAQs Widget ******************* -->
+  <FAQs
+    title="Frequently Asked Questions"
+    items={[
+      {
+        title: 'What is Agent²?',
+        description: 'Agent² is an intelligent business automation package that combines three powerful modules - Mail, Sales, and Intelligence - to streamline operations, enhance customer engagement, and provide actionable insights.',
+      },
+      {
+        title: 'How does Agent² integrate with existing systems?',
+        description: 'Renoir is designed with flexibility in mind and can integrate with most popular CRM systems, email platforms, and business tools through APIs and standard connectors. Our team can help with custom integrations for your specific needs.',
+      },
+      {
+        title: 'Is my data secure with Agent²?',
+        description: 'Yes, everythiong is run locally within your business infrastructure, ensuring maximum data privacy and security. No more cloud services.',
+      },
+      {
+        title: 'Can I use individual modules or do I need all three?',
+        description: 'While the modules work best together, you can start with individual modules based on your immediate needs and expand to the full platform as your requirements grow.',
+      },
+      {
+        title: 'What kind of support is available?',
+        description: 'We offer comprehensive support including onboarding assistance, training resources and technical documentation.',
+      },
+      {
+        title: 'How long does implementation take?',
+        description: 'Implementation time varies based on your specific requirements and existing infrastructure. A basic setup can be completed in a few weeks, while more complex, customized deployments may take 2-3 months.',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </FAQs>
+
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Schedule a Demo',
+        href: '/contact',
+      },
+      {
+        variant: 'secondary',
+        text: 'Learn More',
+        href: '#modules',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      Ready to Transform Your Business?
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Discover how Agent² can revolutionize your operations with intelligent automation.<br />
+      Contact us today for a personalized demonstration.
+    </Fragment>
+  </CallToAction>
+</Layout>
