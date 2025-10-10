@@ -1,0 +1,91 @@
+---
+import PageLayout from "~/layouts/PageLayout.astro";
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import salesImage from '~/assets/images/sales.png'
+import * as m from '~/paraglide/messages';
+
+const metadata = {
+  title: m.sales_page_title(),
+};
+---
+
+<PageLayout metadata={metadata}>
+  <Hero
+    actions={[{ text: m.sales_hero_action(), href: '/contact', variant: 'primary' }]}
+    image={{src: salesImage, alt: "Sales hero image"}}
+  >
+    <Fragment slot="title">{m.sales_page_title()}</Fragment>
+    <Fragment slot="subtitle">{m.sales_hero_subtitle()}</Fragment>
+  </Hero>
+
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <Features
+      title={m.sales_features_title()}
+      subtitle={m.sales_features_subtitle()}
+      columns={2}
+      items={[
+        {
+          title: m.sales_feature_1_title(),
+          description: m.sales_feature_1_description(),
+          icon: 'tabler:user-check',
+        },
+        {
+          title: m.sales_feature_2_title(),
+          description: m.sales_feature_2_description(),
+          icon: 'tabler:presentation',
+        },
+        {
+          title: m.sales_feature_3_title(),
+          description: m.sales_feature_3_description(),
+          icon: 'tabler:database',
+        },
+        {
+          title: m.sales_feature_4_title(),
+          description: m.sales_feature_4_description(),
+          icon: 'tabler:refresh',
+        },
+      ]}
+    />
+
+    <Features
+      title={m.sales_use_cases_title()}
+      subtitle={m.sales_use_cases_subtitle()}
+      columns={3}
+      items={[
+        {
+          title: m.sales_use_case_1_title(),
+          description: m.sales_use_case_1_description(),
+          icon: 'tabler:building-store',
+        },
+        {
+          title: m.sales_use_case_2_title(),
+          description: m.sales_use_case_2_description(),
+          icon: 'tabler:user-circle',
+        },
+        {
+          title: m.sales_use_case_3_title(),
+          description: m.sales_use_case_3_description(),
+          icon: 'tabler:bulb',
+        },
+      ]}
+      defaultIcon="tabler:check"
+    />
+
+    <div class="mt-8">
+      <CallToAction
+        actions={[
+          {
+            text: m.sales_hero_action(),
+            href: '/contact',
+            variant: 'primary',
+          },
+        ]}
+      >
+        <Fragment slot="title">{m.sales_cta_title()}</Fragment>
+        <Fragment slot="subtitle">{m.sales_cta_subtitle()}</Fragment>
+      </CallToAction>
+    </div>
+  </section>
+</PageLayout>
