@@ -12,6 +12,10 @@ export const getHeaderData = (m: typeof import('./paraglide/messages')) => ({
         {
           text: m.nav_sales(),
           href: getPermalink('/sales'),
+        },
+        {
+          text: m.nav_dashboard(),
+          href: getPermalink('/dashboard'),
         }
       ]
     },
