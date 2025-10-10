@@ -72,6 +72,46 @@ const metadata = {
     </Fragment>
   </Features3>
 
+  <!-- Agent² Section **************** -->
+  
+  <Features2
+    title={m.landing_agent_title()}
+    tagline={m.landing_agent_tagline()}
+    subtitle={m.landing_agent_subtitle()}
+    items={[
+      {
+        title: m.landing_agent_item_1_title(),
+        description: m.landing_agent_item_1_description(),
+        icon: 'tabler:mail',
+      },
+      {
+        title: m.landing_agent_item_2_title(),
+        description: m.landing_agent_item_2_description(),
+        icon: 'tabler:chart-line',
+      },
+      {
+        title: m.landing_agent_item_3_title(),
+        description: m.landing_agent_item_3_description(),
+        icon: 'tabler:brain',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+    <Fragment slot="footer">
+      <a
+        href="/agent2"
+        class="btn btn-primary inline-flex items-center gap-2 px-6 py-3 text-lg font-semibold text-white bg-primary hover:bg-primary-600 rounded-lg transition-colors"
+      >
+        {m.landing_agent_cta()}
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </Fragment>
+  </Features2>
+
   <!-- Stats Widget ****************** -->
 
   <!-- <TypedCodeImage /> -->

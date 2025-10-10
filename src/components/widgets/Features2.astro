@@ -35,4 +35,9 @@ const {
       ...((classes?.items as Record<string, never>) ?? {}),
     }}
   />
+  {Astro.slots.has('footer') && (
+    <div class="flex justify-center mt-8 md:mt-12">
+      <slot name="footer" />
+    </div>
+  )}
 </WidgetWrapper>

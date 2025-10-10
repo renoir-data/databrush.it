@@ -262,5 +262,16 @@
   "agent_cta_title": "Pronto a Trasformare la Tua Azienda?",
   "agent_cta_subtitle": "Scopri come Agent² può rivoluzionare le tue operazioni con l'automazione intelligente.<br />Contattaci oggi per una dimostrazione personalizzata.",
   "agent_cta_action_1": "Prenota una Demo",
-  "agent_cta_action_2": "Scopri di Più"
+  "agent_cta_action_2": "Scopri di Più",
+  "landing_agent_title": "Agent² - Automazione Intelligente per il Business",
+  "landing_agent_tagline": "Presentazione di Agent²",
+  "landing_agent_subtitle": "Trasforma le operazioni aziendali con l'automazione basata su AI per email, vendite e intelligence.",
+  "landing_agent_description": "Il pacchetto <span class=\"font-semibold\">Agent²</span> combina tre potenti moduli per rivoluzionare il modo in cui interagisci con i clienti e analizzi i dati. Costruito sull'infrastruttura robusta di Renoir, porta l'automazione intelligente direttamente nella tua azienda senza dipendere da servizi cloud.",
+  "landing_agent_item_1_title": "Modulo Mail",
+  "landing_agent_item_1_description": "Gestione email alimentata da AI che comprende il contesto della tua azienda",
+  "landing_agent_item_2_title": "Modulo Sales",
+  "landing_agent_item_2_description": "Potenzia il tuo team di vendita con insight istantanei e report completi",
+  "landing_agent_item_3_title": "Modulo Intelligence",
+  "landing_agent_item_3_description": "Analisi in tempo reale e modellazione predittiva per decisioni basate sui dati",
+  "landing_agent_cta": "Scopri Agent²"
 }
