@@ -15,7 +15,6 @@ import ContactUs from '~/components/widgets/Contact.astro';
 import brush_small from '~/assets/images/brush/small.svg?raw';
 import brush_medium from '~/assets/images/brush/medium.svg?raw';
 import brush_large from '~/assets/images/brush/large.svg?raw';
-import brush_xlarge from '~/assets/images/brush/xlarge.svg?raw';
 import Content_dinamic from '~/components/widgets/Content_dinamic.astro';
 import * as m from '~/paraglide/messages';
 
@@ -26,42 +25,40 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
-
-  <Hero
-    tagline="Databrush"
-    actions={[
-      {
-        variant: 'primary',
-        target: '_blank',
-        text: m.hero_action_1(),
-        href: '/docs/renoir',
-        icon: 'tabler:download',
-      },
-      { text: m.hero_action_2(), href: '#features', variant: 'secondary' },
-    ]}
-  >
-    <Fragment slot="title" set:html={m.hero_title()} />
-
-    <Fragment slot="subtitle" set:html={m.hero_subtitle()} />
-
-    <Fragment slot="bg">
-      <div class="flex justify-center items-center -z-30 overflow-x-hidden">
-        <div class="sm:hidden w-full">
-          <Fragment set:html={brush_small} class:list="" />
-        </div>
-        <div class="hidden sm:max-lg:block min-[768px]:mt-20 w-full">
-          <Fragment set:html={brush_medium} />
-        </div>
-        <div class="hidden lg:max-2xl:block mt-20">
-          <Fragment set:html={brush_large} />
-        </div>
-        <div class="hidden 2xl:block -mt-16">
-          <Fragment set:html={brush_xlarge} />
-        </div>
+  <!-- Hero Section with Background ******************* -->
+  
+  <div class="relative min-h-screen flex items-center justify-center">
+    <!-- Background -->
+    <div class="absolute inset-0 flex justify-center items-center -z-30 overflow-hidden">
+      <div class="sm:hidden w-full h-full [&>svg]:w-full [&>svg]:h-full [&>svg]:object-cover">
+        <Fragment set:html={brush_small} class:list="" />
       </div>
-    </Fragment>
-  </Hero>
+      <div class="hidden sm:max-lg:block min-[768px]:mt-20 w-full h-full [&>svg]:w-full [&>svg]:h-full [&>svg]:object-cover">
+        <Fragment set:html={brush_medium} />
+      </div>
+      <div class="hidden lg:block mt-20 w-full h-full [&>svg]:w-full [&>svg]:h-full [&>svg]:object-cover">
+        <Fragment set:html={brush_large} />
+      </div>
+    </div>
+    
+    <!-- Hero Content -->
+    <Hero
+      tagline="Databrush"
+      actions={[
+        {
+          variant: 'primary',
+          target: '_blank',
+          text: m.hero_action_1(),
+          href: '/docs/renoir',
+          icon: 'tabler:download',
+        },
+        { text: m.hero_action_2(), href: '#features', variant: 'secondary' },
+      ]}
+    >
+      <Fragment slot="title" set:html={m.hero_title()} />
+      <Fragment slot="subtitle" set:html={m.hero_subtitle()} />
+    </Hero>
+  </div>
 
   <!-- Features2 Widget ************** -->
 
