@@ -27,16 +27,16 @@ const metadata = {
 <Layout metadata={metadata}>
   <!-- Hero Section with Background ******************* -->
   
-  <div class="relative min-h-screen flex items-center justify-center">
+  <div class="relative min-h-screen w-screen flex items-center justify-center">
     <!-- Background -->
-    <div class="absolute inset-0 flex justify-center items-center -z-30 overflow-hidden">
+    <div class="absolute w-full flex justify-center items-center -z-30 overflow-hidden">
       <div class="sm:hidden w-full h-full [&>svg]:w-full [&>svg]:h-full [&>svg]:object-cover">
         <Fragment set:html={brush_small} class:list="" />
       </div>
-      <div class="hidden sm:max-lg:block min-[768px]:mt-20 w-full h-full [&>svg]:w-full [&>svg]:h-full [&>svg]:object-cover">
+      <div class="hidden sm:max-lg:block w-full h-full [&>svg]:w-full [&>svg]:h-full [&>svg]:object-cover">
         <Fragment set:html={brush_medium} />
       </div>
-      <div class="hidden lg:block mt-20 w-full h-full [&>svg]:w-full [&>svg]:h-full [&>svg]:object-cover">
+      <div class="hidden lg:block w-full h-full [&>svg]:w-full [&>svg]:h-full [&>svg]:object-cover">
         <Fragment set:html={brush_large} />
       </div>
     </div>

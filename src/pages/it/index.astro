@@ -15,53 +15,50 @@ import ContactUs from '~/components/widgets/Contact.astro';
 import brush_small from '~/assets/images/brush/small.svg?raw';
 import brush_medium from '~/assets/images/brush/medium.svg?raw';
 import brush_large from '~/assets/images/brush/large.svg?raw';
-import brush_xlarge from '~/assets/images/brush/xlarge.svg?raw';
 import Content_dinamic from '~/components/widgets/Content_dinamic.astro';
 import * as m from '~/paraglide/messages';
 
 const metadata = {
-  title: 'Databrush — La Tua Infrastruttura Dati',
+  title: 'Databrush',
   ignoreTitleTemplate: true,
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
-
-  <Hero
-    tagline="Databrush"
-    actions={[
-      {
-        variant: 'primary',
-        target: '_blank',
-        text: m.hero_action_1(),
-        href: '/it/docs/renoir',
-        icon: 'tabler:download',
-      },
-      { text: m.hero_action_2(), href: '#features', variant: 'secondary' },
-    ]}
-  >
-    <Fragment slot="title" set:html={m.hero_title()} />
-
-    <Fragment slot="subtitle" set:html={m.hero_subtitle()} />
-
-    <Fragment slot="bg">
-      <div class="flex justify-center items-center -z-30 overflow-x-hidden">
-        <div class="sm:hidden w-full">
-          <Fragment set:html={brush_small} class:list="" />
-        </div>
-        <div class="hidden sm:max-lg:block min-[768px]:mt-20 w-full">
-          <Fragment set:html={brush_medium} />
-        </div>
-        <div class="hidden lg:max-2xl:block mt-20">
-          <Fragment set:html={brush_large} />
-        </div>
-        <div class="hidden 2xl:block -mt-16">
-          <Fragment set:html={brush_xlarge} />
-        </div>
+  <!-- Hero Section with Background ******************* -->
+  
+  <div class="relative min-h-screen w-screen flex items-center justify-center">
+    <!-- Background -->
+    <div class="absolute w-full flex justify-center items-center -z-30 overflow-hidden">
+      <div class="sm:hidden w-full h-full [&>svg]:w-full [&>svg]:h-full [&>svg]:object-cover">
+        <Fragment set:html={brush_small} class:list="" />
       </div>
-    </Fragment>
-  </Hero>
+      <div class="hidden sm:max-lg:block w-full h-full [&>svg]:w-full [&>svg]:h-full [&>svg]:object-cover">
+        <Fragment set:html={brush_medium} />
+      </div>
+      <div class="hidden lg:block w-full h-full [&>svg]:w-full [&>svg]:h-full [&>svg]:object-cover">
+        <Fragment set:html={brush_large} />
+      </div>
+    </div>
+    
+    <!-- Hero Content -->
+    <Hero
+      tagline="Databrush"
+      actions={[
+        {
+          variant: 'primary',
+          target: '_blank',
+          text: m.hero_action_1(),
+          href: '/docs/renoir',
+          icon: 'tabler:download',
+        },
+        { text: m.hero_action_2(), href: '#features', variant: 'secondary' },
+      ]}
+    >
+      <Fragment slot="title" set:html={m.hero_title()} />
+      <Fragment slot="subtitle" set:html={m.hero_subtitle()} />
+    </Hero>
+  </div>
 
   <!-- Features2 Widget ************** -->
 
@@ -101,7 +98,7 @@ const metadata = {
     </Fragment>
     <Fragment slot="footer">
       <a
-        href="/it/agent2"
+        href="/agent2"
         class="btn btn-primary inline-flex items-center gap-2 px-6 py-3 text-lg font-semibold text-white bg-primary hover:bg-primary-600 rounded-lg transition-colors"
       >
         {m.landing_agent_cta()}
@@ -111,8 +108,6 @@ const metadata = {
       </a>
     </Fragment>
   </Features2>
-
-
 
   <!-- Stats Widget ****************** -->
 
@@ -139,11 +134,11 @@ const metadata = {
       {
         title: m.services_item_1_title(),
         description: m.services_item_1_description(),
-        icon: 'tabler:stack-front',
+        icon: 'tabler:report-money',
         callToAction: {
           target: '_blank',
           text: m.services_item_1_cta(),
-          href: '/it/docs/renoir',
+          href: '/sales',
         },
         classes: {
           panel: 'flex justify-between',
@@ -156,7 +151,7 @@ const metadata = {
         callToAction: {
           target: '_blank',
           text: m.services_item_2_cta(),
-          href: '/it/contact',
+          href: '/email',
         },
         classes: {
           panel: 'flex justify-between',
@@ -169,7 +164,7 @@ const metadata = {
         callToAction: {
           target: '_blank',
           text: m.services_item_3_cta(),
-          href: '/it/renoir/overview',
+          href: '/dashboard',
         },
         classes: {
           panel: 'flex justify-between',
@@ -329,7 +324,7 @@ const metadata = {
         variant: 'primary',
         target: '_blank',
         text: m.hero_action_1(),
-        href: '/it/docs/renoir',
+        href: '/docs/renoir',
         icon: 'tabler:download',
       },
     ]}

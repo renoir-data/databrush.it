@@ -3,23 +3,6 @@ import { getPermalink, getBlogPermalink } from './utils/permalinks';
 export const getHeaderData = (m: typeof import('./paraglide/messages')) => ({
   links: [
     {
-      text: m.nav_products(),
-      links: [
-        {
-          text: m.nav_email(),
-          href: getPermalink('/email'),
-        },
-        {
-          text: m.nav_sales(),
-          href: getPermalink('/sales'),
-        },
-        {
-          text: m.nav_dashboard(),
-          href: getPermalink('/dashboard'),
-        }
-      ]
-    },
-    {
       text: m.nav_renoir(),
       links: [
         {
