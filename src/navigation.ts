@@ -18,6 +18,7 @@ export const getHeaderData = (m: typeof import('./paraglide/messages')) => ({
     {
       text: 'Agent²',
       href: getPermalink('/agent2'),
+      className: 'text-orange-500 hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300',
     },
     {
       text: m.nav_blog(),
