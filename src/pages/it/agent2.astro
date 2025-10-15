@@ -1,0 +1,304 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Content from '~/components/widgets/Content.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import { Image } from 'astro:assets';
+import * as m from '~/paraglide/messages';
+
+const metadata = {
+  title: m.agent_page_title(),
+};
+
+import mail_img from '~/assets/images/agent/Mail_ita.png';
+import sales_img from '~/assets/images/agent/Sales_ita.png';
+import intelligence_img from '~/assets/images/agent/Intelligence_ita.png';
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline={m.agent_tagline()}
+    actions={[
+      {
+        variant: 'primary',
+        text: m.agent_hero_action_1(),
+        href: '#modules',
+      },
+      { 
+        text: m.agent_hero_action_2(), 
+        href: '/it/contact',
+        variant: 'secondary' 
+      },
+    ]}
+  >
+    <Fragment slot="title" set:html={m.agent_hero_title()} />
+
+    <Fragment slot="subtitle" set:html={m.agent_hero_subtitle()} />
+  </Hero>
+
+  <!-- Overview Section -->
+  <Features3
+    title={m.agent_overview_title()}
+    subtitle={m.agent_overview_subtitle()}
+    columns={3}
+    items={[
+      {
+        title: m.agent_overview_item_1_title(),
+        description: m.agent_overview_item_1_description(),
+        icon: 'tabler:robot',
+      },
+      {
+        title: m.agent_overview_item_2_title(),
+        description: m.agent_overview_item_2_description(),
+        icon: 'tabler:brain',
+      },
+      {
+        title: m.agent_overview_item_3_title(),
+        description: m.agent_overview_item_3_description(),
+        icon: 'tabler:plug-connected',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features3>
+
+  <!-- Mail Module -->
+  <Content
+    id="modules"
+    isReversed
+    items={[
+      {
+        title: m.agent_mail_item_1_title(),
+        description: m.agent_mail_item_1_description(),
+        icon: 'tabler:mail',
+      },
+      {
+        title: m.agent_mail_item_2_title(),
+        description: m.agent_mail_item_2_description(),
+        icon: 'tabler:file',
+      },
+      {
+        title: m.agent_mail_item_3_title(),
+        description: m.agent_mail_item_3_description(),
+        icon: 'tabler:focus',
+      },
+    ]}
+  >
+    <Fragment slot="image" >
+      <div class="bg-[rgb(3,6,32)] rounded-lg p-8">
+        <Image
+          src={mail_img}
+          alt="Mail Module"
+          class="mx-auto w-full rounded-lg shadow-lg object-scale-down"
+          width={500}
+          height={500}
+          widths={[400, 768]}
+          sizes="(max-width: 768px) 100vw, 50vw"
+          loading="lazy"
+        />
+      </div>
+    </Fragment>
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        {m.agent_mail_title()}
+      </h3>
+      <p class="text-muted dark:text-slate-400">
+        {m.agent_mail_description()}
+      </p>
+    </Fragment>
+  </Content>
+
+  <!-- Sales Module -->
+  <Content
+    isAfterContent
+    items={[
+      {
+        title: m.agent_sales_item_1_title(),
+        description: m.agent_sales_item_1_description(),
+        icon: 'tabler:users',
+      },
+      {
+        title: m.agent_sales_item_2_title(),
+        description: m.agent_sales_item_2_description(),
+        icon: 'tabler:file',
+      },
+      {
+        title: m.agent_sales_item_3_title(),
+        description: m.agent_sales_item_3_description(),
+        icon: 'tabler:crystal-ball',
+      },
+    ]}
+  >
+    <Fragment slot="image" >
+      <div class="bg-[rgb(3,6,32)] rounded-lg p-8">
+        <Image
+          src={sales_img}
+          alt="Sales Module"
+          class="mx-auto w-full rounded-lg shadow-lg object-scale-down"
+          width={500}
+          height={500}
+          widths={[400, 768]}
+          sizes="(max-width: 768px) 100vw, 50vw"
+          loading="lazy"
+        />
+      </div>
+    </Fragment>
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        {m.agent_sales_title()}
+      </h3>
+      <p class="text-muted dark:text-slate-400">
+        {m.agent_sales_description()}
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Intelligence Module -->
+  <Content
+    isReversed
+    isAfterContent
+    items={[
+      {
+        title: m.agent_intelligence_item_1_title(),
+        description: m.agent_intelligence_item_1_description(),
+        icon: 'tabler:chart-dots',
+      },
+      {
+        title: m.agent_intelligence_item_2_title(),
+        description: m.agent_intelligence_item_2_description(),
+        icon: 'tabler:chart-arrows',
+      },
+      {
+        title: m.agent_intelligence_item_3_title(),
+        description: m.agent_intelligence_item_3_description(),
+        icon: 'tabler:bolt',
+      },
+    ]}
+  >
+    <Fragment slot="image" >
+      <div class="bg-[rgb(3,6,32)] rounded-lg p-8">
+        <Image
+          src={intelligence_img}
+          alt="Intelligence Module"
+          class="mx-auto w-full rounded-lg shadow-lg object-scale-down"
+          width={500}
+          height={500}
+          widths={[400, 768]}
+          sizes="(max-width: 768px) 100vw, 50vw"
+          loading="lazy"
+        />
+      </div>
+    </Fragment>
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        {m.agent_intelligence_title()}
+      </h3>
+      <p class="text-muted dark:text-slate-400">
+        {m.agent_intelligence_description()}
+      </p>
+    </Fragment>
+  </Content>
+  
+  <!-- Key Benefits -->
+  <Features3
+    title={m.agent_benefits_title()}
+    subtitle={m.agent_benefits_subtitle()}
+    columns={3}
+    items={[
+      {
+        title: m.agent_benefits_item_1_title(),
+        description: m.agent_benefits_item_1_description(),
+        icon: 'tabler:rocket',
+      },
+      {
+        title: m.agent_benefits_item_2_title(),
+        description: m.agent_benefits_item_2_description(),
+        icon: 'tabler:users-group',
+      },
+      {
+        title: m.agent_benefits_item_3_title(),
+        description: m.agent_benefits_item_3_description(),
+        icon: 'tabler:chart-infographic',
+      },
+      {
+        title: m.agent_benefits_item_4_title(),
+        description: m.agent_benefits_item_4_description(),
+        icon: 'tabler:trending-up',
+      },
+      {
+        title: m.agent_benefits_item_5_title(),
+        description: m.agent_benefits_item_5_description(),
+        icon: 'tabler:coin',
+      },
+      {
+        title: m.agent_benefits_item_6_title(),
+        description: m.agent_benefits_item_6_description(),
+        icon: 'tabler:trophy',
+      },
+    ]}
+  />
+
+  <!-- FAQs Widget ******************* -->
+  <FAQs
+    title={m.agent_faq_title()}
+    items={[
+      {
+        title: m.agent_faq_item_1_title(),
+        description: m.agent_faq_item_1_description(),
+      },
+      {
+        title: m.agent_faq_item_2_title(),
+        description: m.agent_faq_item_2_description(),
+      },
+      {
+        title: m.agent_faq_item_3_title(),
+        description: m.agent_faq_item_3_description(),
+      },
+      {
+        title: m.agent_faq_item_4_title(),
+        description: m.agent_faq_item_4_description(),
+      },
+      {
+        title: m.agent_faq_item_5_title(),
+        description: m.agent_faq_item_5_description(),
+      },
+      {
+        title: m.agent_faq_item_6_title(),
+        description: m.agent_faq_item_6_description(),
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </FAQs>
+
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: m.agent_cta_action_1(),
+        href: '/it/contact',
+      },
+      {
+        variant: 'secondary',
+        text: m.agent_cta_action_2(),
+        href: '#modules',
+      },
+    ]}
+  >
+    <Fragment slot="title" set:html={m.agent_cta_title()} />
+
+    <Fragment slot="subtitle" set:html={m.agent_cta_subtitle()} />
+  </CallToAction>
+</Layout>

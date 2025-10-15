@@ -33,6 +33,10 @@ export const getHeaderData = (m: typeof import('./paraglide/messages')) => ({
       ],
     },
     {
+      text: 'Agent²',
+      href: getPermalink('/agent2'),
+    },
+    {
       text: m.nav_blog(),
       href: getBlogPermalink(),
     },
@@ -61,6 +65,7 @@ export const getFooterData = (m: typeof import('./paraglide/messages')) => ({
     {
       title: m.footer_community(),
       links: [
+        { text: 'Agent²', href: getPermalink('/agent2') },
         { text: m.nav_blog(), href: getBlogPermalink() },
         { text: m.nav_roadmap(), href: getPermalink('/roadmap') },
         { text: m.nav_contact(), href: getPermalink('/contact') },
