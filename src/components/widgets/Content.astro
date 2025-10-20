@@ -15,6 +15,7 @@ const {
   items = [],
   columns,
   image = await Astro.slots.render('image'),
+  imageDark = await Astro.slots.render('imageDark'),
   isReversed = false,
   isAfterContent = false,
 
@@ -75,15 +76,28 @@ const {
               {typeof image === 'string' ? (
                 <Fragment set:html={image} />
               ) : (
-                <Image
-                  class="mx-auto w-full rounded-lg shadow-lg"
-                  width={500}
-                  height={500}
-                  widths={[400, 768]}
-                  sizes="(max-width: 768px) 100vw, 432px"
-                  layout="responsive"
-                  {...image}
-                />
+                <>
+                  <Image
+                    class={`mx-auto w-full rounded-lg shadow-lg ${imageDark ? 'dark:hidden' : ''}`}
+                    width={500}
+                    height={500}
+                    widths={[400, 768]}
+                    sizes="(max-width: 768px) 100vw, 432px"
+                    layout="responsive"
+                    {...image}
+                  />
+                  {imageDark && typeof imageDark !== 'string' && (
+                    <Image
+                      class="mx-auto w-full rounded-lg shadow-lg hidden dark:block"
+                      width={500}
+                      height={500}
+                      widths={[400, 768]}
+                      sizes="(max-width: 768px) 100vw, 432px"
+                      layout="responsive"
+                      {...imageDark}
+                    />
+                  )}
+                </>
               )}
             </div>
           )

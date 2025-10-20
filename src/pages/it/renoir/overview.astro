@@ -1,7 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 
-import Header from '~/components/widgets/Header.astro';
 import Hero2 from '~/components/widgets/Hero2.astro';
 import Features from '~/components/widgets/Features.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
@@ -15,9 +14,13 @@ import * as m from '~/paraglide/messages';
 
 import renoir from "~/assets/images/renoir.png";
 
-import data from '~/assets/images/use_cases/data_company.jpg';
-import processes from '~/assets/images/use_cases/processes.jpg';
-import value from '~/assets/images/use_cases/datavalue.jpg';
+import case1 from '~/assets/images/use_cases/case1.jpg';
+import case2 from '~/assets/images/use_cases/case2.jpg';
+import case3 from '~/assets/images/use_cases/case3.jpg';
+
+import case1_dark from '~/assets/images/use_cases/case1_dark.jpg';
+import case2_dark from '~/assets/images/use_cases/case2_dark.jpg';
+import case3_dark from '~/assets/images/use_cases/case3_dark.jpg';
 
 const metadata = {
   title: m.renoir_overview_title(),
@@ -108,7 +111,11 @@ const metadata = {
       },
     ]}
     image={{
-      src: data,
+      src: case1,
+      alt: 'Startup Image',
+    }}
+    imageDark={{
+      src: case1_dark,
       alt: 'Startup Image',
     }}
   >
@@ -138,7 +145,11 @@ const metadata = {
       },
     ]}
     image={{
-      src: processes,
+      src: case2,
+      alt: 'SaaS Businesses Image',
+    }}
+    imageDark={{
+      src: case2_dark,
       alt: 'SaaS Businesses Image',
     }}
   >
@@ -169,7 +180,11 @@ const metadata = {
       },
     ]}
     image={{
-      src: value,
+      src: case3,
+      alt: 'Portfolio Image',
+    }}
+    imageDark={{
+      src: case3_dark,
       alt: 'Portfolio Image',
     }}
   >
