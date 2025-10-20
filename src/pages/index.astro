@@ -26,7 +26,7 @@ const metadata = {
 
 <Layout metadata={metadata}>
   <!-- Hero Section with Background ******************* -->
-  
+
   <div class="relative min-h-screen w-screen flex items-center justify-center">
     <!-- Background -->
     <div class="absolute w-full flex justify-center items-center -z-30 overflow-hidden">
@@ -40,7 +40,7 @@ const metadata = {
         <Fragment set:html={brush_large} />
       </div>
     </div>
-    
+
     <!-- Hero Content -->
     <Hero
       tagline="Databrush"
@@ -70,7 +70,7 @@ const metadata = {
   </Features3>
 
   <!-- Agent² Section **************** -->
-  
+
   <Features2
     title={m.landing_agent_title()}
     tagline={m.landing_agent_tagline()}
@@ -80,16 +80,25 @@ const metadata = {
         title: m.landing_agent_item_1_title(),
         description: m.landing_agent_item_1_description(),
         icon: 'tabler:mail',
+        classes: {
+          panel: 'flex flex-col justify-center items-center text-center',
+        },
       },
       {
         title: m.landing_agent_item_2_title(),
         description: m.landing_agent_item_2_description(),
         icon: 'tabler:chart-line',
+        classes: {
+          panel: 'flex flex-col justify-center items-center text-center',
+        },
       },
       {
         title: m.landing_agent_item_3_title(),
         description: m.landing_agent_item_3_description(),
         icon: 'tabler:brain',
+        classes: {
+          panel: 'flex flex-col justify-center items-center text-center',
+        },
       },
     ]}
   >
@@ -102,8 +111,15 @@ const metadata = {
         class="btn btn-primary inline-flex items-center gap-2 px-6 py-3 text-lg font-semibold text-white bg-primary hover:bg-primary-600 rounded-lg transition-colors"
       >
         {m.landing_agent_cta()}
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-5 h-5"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          fill="none"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
         </svg>
       </a>
     </Fragment>
@@ -124,58 +140,6 @@ const metadata = {
       { title: m.stats_item_4_title(), amount: '4' },
     ]}
   />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title={m.services_title()}
-    subtitle={m.services_subtitle()}
-    items={[
-      {
-        title: m.services_item_1_title(),
-        description: m.services_item_1_description(),
-        icon: 'tabler:report-money',
-        callToAction: {
-          target: '_blank',
-          text: m.services_item_1_cta(),
-          href: '/sales',
-        },
-        classes: {
-          panel: 'flex justify-between',
-        },
-      },
-      {
-        title: m.services_item_2_title(),
-        description: m.services_item_2_description(),
-        icon: 'tabler:chart-covariate',
-        callToAction: {
-          target: '_blank',
-          text: m.services_item_2_cta(),
-          href: '/email',
-        },
-        classes: {
-          panel: 'flex justify-between',
-        },
-      },
-      {
-        title: m.services_item_3_title(),
-        description: m.services_item_3_description(),
-        icon: 'tabler:cloud',
-        callToAction: {
-          target: '_blank',
-          text: m.services_item_3_cta(),
-          href: '/dashboard',
-        },
-        classes: {
-          panel: 'flex justify-between',
-        },
-      },
-    ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Features2>
 
   <!-- Features Widget *************** -->
 
@@ -226,7 +190,7 @@ const metadata = {
       {
         title: m.use_cases_item_1_title(),
         description: m.use_cases_item_1_description(),
-        icon: 'tabler:presentation',
+        icon: 'tabler:shield',
         data: { 'data-index': '0' },
       },
       {
@@ -244,7 +208,10 @@ const metadata = {
     ]}
   >
     <Fragment slot="content">
-      <h3 class="text-4xl text-center font-bold tracking-tight dark:text-white sm:text-3xl mb-2" set:html={m.use_cases_title()}/>
+      <h3
+        class="text-4xl text-center font-bold tracking-tight dark:text-white sm:text-3xl mb-2"
+        set:html={m.use_cases_title()}
+      />
     </Fragment>
   </Content_dinamic>
 
