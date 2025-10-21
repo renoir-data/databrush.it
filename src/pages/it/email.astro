@@ -22,8 +22,8 @@ const metadata = {
     <div class="sticky top-0 h-screen flex items-center justify-center">
       <div class="relative h-[80%] mt-10">
         <video id="sales-video" muted playsinline class="w-full h-full object-cover rounded-md shadow-lg z-10">
-          <source src="/videos/agente-email.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
+          <source src={m.email_video_src()} type="video/mp4" />
+          {m.video_alt_text()}
         </video>
 
         <!-- Time-synced labels overlay -->
@@ -34,7 +34,9 @@ const metadata = {
             data-end="5.0"
             aria-hidden="true"
           >
-            <div class="bg-black/60 text-white text-sm md:text-base px-3 py-2 rounded-md shadow">Email</div>
+            <div class="bg-black/60 text-white text-sm md:text-base px-3 py-2 rounded-md shadow">
+              {m.email_label_1()}
+            </div>
             <svg
               class="absolute top-1/2 -right-8 w-8 h-8 text-white"
               viewBox="0 0 24 24"
@@ -51,7 +53,9 @@ const metadata = {
             data-end="12.0"
             aria-hidden="true"
           >
-            <div class="bg-black/60 text-white text-sm md:text-base px-3 py-2 rounded-md shadow">Documenti Analizzati</div>
+            <div class="bg-black/60 text-white text-sm md:text-base px-3 py-2 rounded-md shadow">
+              {m.email_label_2()}
+            </div>
             <svg
               class="absolute top-1/2 -left-8 w-8 h-8 text-white rotate-180"
               viewBox="0 0 24 24"
@@ -68,7 +72,9 @@ const metadata = {
             data-end="18.0"
             aria-hidden="true"
           >
-            <div class="bg-black/60 text-white text-sm md:text-base px-3 py-2 rounded-md shadow">Informazioni</div>
+            <div class="bg-black/60 text-white text-sm md:text-base px-3 py-2 rounded-md shadow">
+              {m.email_label_3()}
+            </div>
             <svg
               class="absolute top-1/2 -left-8 w-8 h-8 text-white rotate-180"
               viewBox="0 0 24 24"
