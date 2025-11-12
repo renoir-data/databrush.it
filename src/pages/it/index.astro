@@ -27,9 +27,9 @@ const metadata = {
 <Layout metadata={metadata}>
   <!-- Hero Section with Background ******************* -->
 
-  <div class="relative min-h-screen w-screen flex items-center justify-center">
+  <div class="relative min-h-screen w-full flex items-center justify-center overflow-hidden">
     <!-- Background -->
-    <div class="absolute w-full flex justify-center items-center -z-30 overflow-hidden">
+    <div class="absolute w-full flex justify-center items-center -z-30">
       <div class="sm:hidden w-full h-full [&>svg]:w-full [&>svg]:h-full [&>svg]:object-cover">
         <Fragment set:html={brush_small} class:list="" />
       </div>
@@ -49,7 +49,7 @@ const metadata = {
           variant: 'primary',
           target: '_blank',
           text: m.hero_action_1(),
-          href: '/docs/renoir',
+          href: '/it/docs/renoir',
           icon: 'tabler:download',
         },
         { text: m.hero_action_2(), href: '#features', variant: 'secondary' },
@@ -107,7 +107,7 @@ const metadata = {
     </Fragment>
     <Fragment slot="footer">
       <a
-        href="/agent2"
+        href="/it/agent2"
         class="btn btn-primary inline-flex items-center gap-2 px-6 py-3 text-lg font-semibold text-white bg-primary hover:bg-primary-600 rounded-lg transition-colors"
       >
         {m.landing_agent_cta()}
@@ -289,7 +289,7 @@ const metadata = {
         variant: 'primary',
         target: '_blank',
         text: m.hero_action_1(),
-        href: '/docs/renoir',
+        href: '/it/docs/renoir',
         icon: 'tabler:download',
       },
     ]}
