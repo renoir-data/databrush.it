@@ -1,21 +1,21 @@
 ---
-import '~/assets/styles/tailwind.css';
+import "~/assets/styles/tailwind.css";
 
-import { I18N } from 'astrowind:config';
+import { I18N } from "astrowind:config";
 
-import CommonMeta from '~/components/common/CommonMeta.astro';
-import Favicons from '~/components/Favicons.astro';
-import CustomStyles from '~/components/CustomStyles.astro';
-import ApplyColorMode from '~/components/common/ApplyColorMode.astro';
-import Metadata from '~/components/common/Metadata.astro';
-import SiteVerification from '~/components/common/SiteVerification.astro';
-import Analytics from '~/components/common/Analytics.astro';
-import BasicScripts from '~/components/common/BasicScripts.astro';
+import CommonMeta from "~/components/common/CommonMeta.astro";
+import Favicons from "~/components/Favicons.astro";
+import CustomStyles from "~/components/CustomStyles.astro";
+import ApplyColorMode from "~/components/common/ApplyColorMode.astro";
+import Metadata from "~/components/common/Metadata.astro";
+import SiteVerification from "~/components/common/SiteVerification.astro";
+import Analytics from "~/components/common/Analytics.astro";
+import BasicScripts from "~/components/common/BasicScripts.astro";
 
 // Comment the line below to disable View Transitions
-import { ClientRouter } from 'astro:transitions';
+import { ClientRouter } from "astro:transitions";
 
-import type { MetaData as MetaDataType } from '~/types';
+import type { MetaData as MetaDataType } from "~/types";
 
 export interface Props {
   metadata?: MetaDataType;
@@ -29,10 +29,17 @@ const { language, textDirection } = I18N;
 <html lang={language} dir={textDirection} class="2xl:text-[20px]">
   <head>
     <script
-  type="text/javascript"
-  src="https://app.termly.io/resource-blocker/d8913f80-590a-4cf3-a903-a21d50da1669?autoBlock=on"
-></script>
-<script defer src="http://script.databrush.it/script.js" data-website-id="36975ebe-a411-401b-be81-0bc1086a7a0b"></script>
+      type="text/javascript"
+      src="https://app.termly.io/resource-blocker/d8913f80-590a-4cf3-a903-a21d50da1669?autoBlock=on"
+    ></script>
+    <script
+      defer
+      src="http://script.databrush.it/script.js"
+      data-website-id="36975ebe-a411-401b-be81-0bc1086a7a0b"></script>
+    <script
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="83a173c1-64c9-4b01-8d7d-9aa9f5486a50"></script>
     <CommonMeta />
     <Favicons />
     <CustomStyles />
