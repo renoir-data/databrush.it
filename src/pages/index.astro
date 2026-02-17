@@ -15,9 +15,10 @@ import ContactUs from '~/components/widgets/Contact.astro';
 import brush_small from '~/assets/images/brush/small.svg?raw';
 import brush_medium from '~/assets/images/brush/medium.svg?raw';
 import brush_large from '~/assets/images/brush/large.svg?raw';
-import polimi_logo from '~/assets/images/polimi.svg?raw';
+import polimi_logo from '~/assets/images/spinoff.webp';
 import Content_dinamic from '~/components/widgets/Content_dinamic.astro';
 import * as m from '~/paraglide/messages';
+import { Image } from 'astro:assets';
 
 const metadata = {
   title: 'Databrush',
@@ -44,7 +45,7 @@ const metadata = {
 
     <!-- Hero Content -->
     <Hero
-      tagline="Databrush"
+      tagline="You need a Brush to paint a Data Masterpiece"
       actions={[
         {
           variant: 'primary',
@@ -65,24 +66,22 @@ const metadata = {
   <div class="px-4 py-16 mx-auto max-w-7xl sm:px-6 lg:px-8 lg:py-20">
     <div class="text-center mb-8">
       <p class="text-base font-semibold tracking-wide text-primary uppercase" set:html={m.credibility_tagline()} />
-      <p class="mt-2 text-muted max-w-3xl mx-auto" set:html={m.credibility_subtitle()} />
+      <p class="mt-2 text-muted max-w-3xl mx-auto" set:html={m.about_us_subtitle()} />
     </div>
     <div class="flex justify-center mb-8">
       <div class="w-64 h-auto [&>svg]:w-full [&>svg]:h-auto">
-        <Fragment set:html={polimi_logo} />
+        <Image src={polimi_logo} alt="SpinOff Politecnico Logo" />
       </div>
     </div>
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-3 mt-8">
-      <div class="flex items-center justify-center p-4 bg-blue-50 dark:bg-slate-800 rounded-lg">
-        <span class="text-sm font-medium text-center" set:html={m.credibility_badge_1()} />
-      </div>
-      <div class="flex items-center justify-center p-4 bg-blue-50 dark:bg-slate-800 rounded-lg">
-        <span class="text-sm font-medium text-center" set:html={m.credibility_badge_2()} />
-      </div>
-      <div class="flex items-center justify-center p-4 bg-blue-50 dark:bg-slate-800 rounded-lg">
-        <span class="text-sm font-medium text-center" set:html={m.credibility_badge_3()} />
-      </div>
-    </div>
+  <Stats
+    subtitle={m.stats_title()}
+    stats={[
+      { title: m.stats_item_1_title(), amount: '1º' },
+      { title: m.stats_item_2_title(), amount: '>1000' },
+      { title: m.stats_item_3_title(), amount: '83' },
+      { title: m.stats_item_4_title(), amount: '4' },
+    ]}
+  />
   </div>
 
   <!-- Pain Points Section (The "Why") ************** -->
@@ -177,15 +176,6 @@ const metadata = {
     </Fragment>
   </Features2>
 
-  <!-- Features2 Widget ************** -->
-
-  <Features3 title={m.about_us_title()} isBeforeContent={true}>
-    <Fragment slot="subtitle" set:html={m.about_us_subtitle()} />
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Features3>
-
   <!-- Agent² Section **************** -->
 
   <Features2
@@ -241,22 +231,6 @@ const metadata = {
       </a>
     </Fragment>
   </Features2>
-
-  <!-- Stats Widget ****************** -->
-
-  <!-- <TypedCodeImage /> -->
-  <!-- <IndustrialMonitoring/> -->
-
-  <Stats
-    title={m.stats_title()}
-    subtitle={m.stats_subtitle()}
-    stats={[
-      { title: m.stats_item_1_title(), amount: '1º' },
-      { title: m.stats_item_2_title(), amount: '>1000' },
-      { title: m.stats_item_3_title(), amount: '83' },
-      { title: m.stats_item_4_title(), amount: '4' },
-    ]}
-  />
 
   <!-- Features Widget *************** -->
 

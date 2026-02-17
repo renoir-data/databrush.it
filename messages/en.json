@@ -1,9 +1,9 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
-  "hero_subtitle": "We help enterprises build high-performance data infrastructures that are <span class=\"font-semibold\">10x more efficient</span> than industry standards. Reduce cloud costs and enable secure, local computation with our proprietary Rust-powered engine, <span class=\"font-semibold\">Renoir</span>.",
+  "hero_subtitle": "We help enterprises build high-performance data infrastructures that are <span class=\"font-semibold\">10x more efficient</span> than industry standards. Reduce cloud costs and enable secure, local computation with our Rust-powered engine, <span class=\"font-semibold\">Renoir</span>.",
   "hero_action_1": "Book a Consultation",
   "hero_action_2": "Calculate Your Potential Savings",
-  "hero_title": "The Future of <span class=\"dark:text-white highlight\">Real-Time Data</span> is Efficient and <span class=\"dark:text-white highlight\">Private</span>",
+  "hero_title": "Fast. Efficient. Private.",
   "about_us_title": "About us",
   "about_us_subtitle": "Databrush is built on decades of expertise in designing distributed infrastructures for data analytics. Led by <span class=\"text-accent dark:text-white highlight\">Davide, Luca, and Fabio</span>, and supported by <span class=\"text-accent dark:text-white highlight\">Gianpaolo and Alessandro</span> from Politecnico di Milano it combines technological innovation and strategic vision to tackle the most complex challenges.",
   "pain_points_title": "Why Choose Databrush?",
