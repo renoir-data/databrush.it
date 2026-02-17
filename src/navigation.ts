@@ -33,7 +33,7 @@ export const getHeaderData = (m: typeof import('./paraglide/messages')) => ({
       href: getPermalink('/about'),
     },
   ],
-  actions: [{ text: m.nav_download(), href: 'https://github.com/deib-polimi/renoir', target: '_blank' }],
+  // actions: [{ text: m.nav_download(), href: 'https://github.com/deib-polimi/renoir', target: '_blank' }],
 });
 
 export const getFooterData = (m: typeof import('./paraglide/messages')) => ({ 
