@@ -43,7 +43,7 @@ export const getCanonical = (path = ''): string | URL => {
 };
 
 /** */
-export const getPermalink = (slug = '', type = 'page'): string => {
+export const getPermalink = (slug = '', type = 'page', locale?: string): string => {
   let permalink: string;
 
   if (
@@ -70,11 +70,15 @@ export const getPermalink = (slug = '', type = 'page'): string => {
       break;
 
     case 'category':
-      permalink = createPath(CATEGORY_BASE, trimSlash(slug));
+      permalink = locale 
+        ? createPath(locale, CATEGORY_BASE, trimSlash(slug))
+        : createPath(CATEGORY_BASE, trimSlash(slug));
       break;
 
     case 'tag':
-      permalink = createPath(TAG_BASE, trimSlash(slug));
+      permalink = locale 
+        ? createPath(locale, TAG_BASE, trimSlash(slug))
+        : createPath(TAG_BASE, trimSlash(slug));
       break;
 
     case 'post':

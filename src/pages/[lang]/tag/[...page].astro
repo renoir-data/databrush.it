@@ -40,7 +40,7 @@ const tagSlug = Astro.params.page;
 const currentPage = 1; // Static generation - single page for each tag
 
 // Fetch all posts and filter by tag
-const allPosts = await fetchPostsByLocale('en');
+const allPosts = await fetchPostsByLocale(lang);
 const tag = { slug: tagSlug, title: tagSlug };
 
 const taggedPosts = allPosts.filter((post) => 

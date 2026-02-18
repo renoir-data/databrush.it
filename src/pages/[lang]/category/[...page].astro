@@ -32,10 +32,11 @@ export async function getStaticPaths() {
 
 // Get category slug from URL params
 const categorySlug = Astro.params.page;
+const lang = Astro.currentLocale || Astro.preferredLocale || 'en';
 const currentPage = 1; // Static generation - single page for each category
 
 // Fetch all posts and filter by category
-const allPosts = await fetchPostsByLocale('en');
+const allPosts = await fetchPostsByLocale(lang);
 const category = { slug: categorySlug, title: categorySlug };
 
 const categoryPosts = allPosts.filter((post) => 

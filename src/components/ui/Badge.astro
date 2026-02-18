@@ -1,0 +1,8 @@
+---
+export interface BadgeProps {
+  text: string;
+  href?: string;
+}
+const { text, href = undefined } = Astro.props;
+---
+<a href={href} class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 inset-ring inset-ring-blue-700/10">{text}</a>

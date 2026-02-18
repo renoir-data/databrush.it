@@ -10,12 +10,14 @@ import type { Post } from '~/types';
 import { getPermalink } from '~/utils/permalinks';
 import { findImage } from '~/utils/images';
 import { getFormattedDate } from '~/utils/utils';
+import Badge from '../ui/Badge.astro';
 
 export interface Props {
   post: Post;
 }
 
 const { post } = Astro.props;
+const locale = Astro.currentLocale || Astro.preferredLocale || 'en';
 const image = (await findImage(post.image)) as ImageMetadata | undefined;
 
 const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : '';
@@ -82,9 +84,7 @@ const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : 
               <>
                 {' '}
                 ·{' '}
-                <a class="hover:underline" href={getPermalink(post.category.slug, 'category')}>
-                  {post.category.title}
-                </a>
+                <Badge href={getPermalink(post.category.slug, 'category', locale)} text={post.category.title} />
               </>
             )
           }

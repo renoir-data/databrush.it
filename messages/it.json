@@ -14,7 +14,7 @@
   "pain_point_2_description": "Spostare i dati nel cloud per l'elaborazione è un rischio per la sicurezza. Noi elaboriamo alla fonte (l'Edge), quindi i tuoi dati non escono mai dal tuo edificio.",
   "pain_point_3_title": "Controllo Unificato",
   "pain_point_3_description": "Gestisci sensori edge e cluster cloud da un'unica dashboard. Niente più destreggiarsi tra strumenti e sistemi frammentati.",
-  "credibility_tagline": "Infrastrutture Dati Aziendali, Progettate dalla Ricerca",
+  "credibility_tagline": "L'eccellenza della Ricerca al servizio dell'Infrastruttura Dati",
   "credibility_subtitle": "Databrush è uno <span class=\"font-semibold text-accent dark:text-white\">spin-off del Politecnico di Milano</span>. Implementiamo Renoir—il motore di streaming basato su Rust più efficiente al mondo—per ridurre i costi del cloud e proteggere i tuoi dati all'edge.",
   "credibility_badge_1": "Spin-off del Politecnico di Milano",
   "credibility_badge_2": "1º Posto ACM DEBS",
