@@ -29,7 +29,7 @@ export default defineConfig({
   trailingSlash: 'ignore',
 
   i18n: {
-    defaultLocale: 'en',
+    defaultLocale: 'it',
     locales: ['en', 'it'],
     routing: {
       prefixDefaultLocale: true,

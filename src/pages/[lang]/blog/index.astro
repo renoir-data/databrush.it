@@ -4,7 +4,7 @@ import BlogList from '~/components/blog/List.astro';
 import Headline from '~/components/blog/Headline.astro';
 import Pagination from '~/components/blog/Pagination.astro';
 import * as m from '~/paraglide/messages';
-import { blogListRobots, fetchPostsByLocale, blogPostsPerPage } from '~/utils/blog';
+import { blogListRobots, fetchPostsByLocale, blogPostsPerPage, fetchPosts } from '~/utils/blog';
 import { BLOG_BASE } from '~/utils/permalinks';
 import type { MetaData } from '~/types';
 import { getLanguagePaths } from '~/lib/i18n';
@@ -17,7 +17,8 @@ export const prerender = true;
 
 const currentPage = 1;
 const lang = Astro.currentLocale;
-const allPosts = await fetchPostsByLocale(lang);
+const allLangPosts = await fetchPosts();
+const allPosts = allLangPosts.filter(p => p.permalink.startsWith(lang + '/'));
 const totalPages = Math.ceil(allPosts.length / blogPostsPerPage);
 
 const start = 0;

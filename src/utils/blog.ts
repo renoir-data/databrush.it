@@ -131,6 +131,7 @@ const loadByLocale = async function (locale: string = 'en'): Promise<Array<Post>
 
   const results = (await Promise.all(normalizedPosts))
     .sort((a, b) => b.publishDate.valueOf() - a.publishDate.valueOf())
+    .map((post) => ({ ...post, permalink: `${locale}/${post.permalink}` }))
     .filter((post) => !post.draft);
 
   return results;
