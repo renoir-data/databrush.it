@@ -6,7 +6,7 @@ import Pagination from '~/components/blog/Pagination.astro';
 import { blogTagRobots, fetchPosts, fetchPostsByLocale } from '~/utils/blog';
 import { LANGUAGES } from '~/lib/i18n';
 
-const lang = Astro.currentLocale;
+const lang = Astro.currentLocale || Astro.preferredLocale || 'it';
 
 export const prerender = true;
 

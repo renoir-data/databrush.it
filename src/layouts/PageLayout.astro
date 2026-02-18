@@ -5,9 +5,11 @@ import Footer from '~/components/widgets/Footer.astro';
 
 import { getHeaderData, getFooterData } from '~/navigation';
 import type { MetaData } from '~/types';
-import * as m from '~/paraglide/messages';
+import { loadLocale } from "~/lib/i18n";
 
-const lang = Astro.currentLocale || 'en';
+
+const lang = Astro.currentLocale || Astro.preferredLocale || 'it';
+const m = loadLocale(lang);
 const headerData = getHeaderData(m, lang);
 const footerData = getFooterData(m, lang);
 

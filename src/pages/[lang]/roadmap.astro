@@ -2,12 +2,15 @@
 import HeroText from '~/components/widgets/HeroText.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import PageLayout from '~/layouts/PageLayout.astro';
-import * as m from '~/paraglide/messages';
+import { loadLocale } from "~/lib/i18n";
 import { getLanguagePaths } from '~/lib/i18n';
 
 export function getStaticPaths() {
   return getLanguagePaths();
 }
+
+const lang = Astro.currentLocale || Astro.preferredLocale || 'it';
+const m = loadLocale(lang);
 
 const metadata = {
   title: m.roadmap_title(),

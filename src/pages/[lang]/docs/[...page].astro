@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 }
 
 const { page } = Astro.params;
-const lang = Astro.currentLocale || Astro.preferredLocale || 'en';
+const lang = Astro.currentLocale || Astro.preferredLocale || 'it';
 
 if (!page) {
   // Or return a Response for a custom 404 page

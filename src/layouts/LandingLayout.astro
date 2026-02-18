@@ -3,7 +3,7 @@ import PageLayout from '~/layouts/PageLayout.astro';
 import Header from '~/components/widgets/Header.astro';
 
 import { getHeaderData } from '~/navigation';
-import * as m from '~/paraglide/messages';
+import { loadLocale } from "~/lib/i18n";
 
 const headerData = getHeaderData(m);
 import type { MetaData } from '~/types';

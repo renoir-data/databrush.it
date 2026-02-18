@@ -24,9 +24,6 @@ export interface Props {
 
 const { metadata = {} } = Astro.props;
 const { language, textDirection } = I18N;
-
-const lang = Astro.currentLocale;
-setLocale(lang);
 ---
 
 <!doctype html>

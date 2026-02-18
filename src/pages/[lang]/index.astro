@@ -17,7 +17,7 @@ import brush_medium from '~/assets/images/brush/medium.svg?raw';
 import brush_large from '~/assets/images/brush/large.svg?raw';
 import polimi_logo from '~/assets/images/spinoff.webp';
 import Content_dinamic from '~/components/widgets/Content_dinamic.astro';
-import * as m from '~/paraglide/messages';
+import { loadLocale } from "~/lib/i18n";
 import { Image } from 'astro:assets';
 import { getLanguagePaths } from '~/lib/i18n';
 import { getRelativeLocaleUrl } from 'astro:i18n';
@@ -26,12 +26,13 @@ export function getStaticPaths() {
   return getLanguagePaths();
 }
 
+const lang = Astro.currentLocale || Astro.preferredLocale || 'it';
+const m = loadLocale(lang);
+
 const metadata = {
   title: 'Databrush',
   ignoreTitleTemplate: true,
 };
-
-const lang = Astro.currentLocale || Astro.preferredLocale || 'en';
 ---
 
 <Layout metadata={metadata}>
@@ -61,7 +62,6 @@ const lang = Astro.currentLocale || Astro.preferredLocale || 'en';
           href: getRelativeLocaleUrl(lang, '/contact'),
           icon: 'tabler:calendar',
         },
-        { text: m.hero_action_2(), href: '#contact-form', variant: 'secondary' },
       ]}
     >
       <Fragment slot="title" set:html={m.hero_title()} />

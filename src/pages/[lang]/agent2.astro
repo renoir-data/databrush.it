@@ -6,12 +6,15 @@ import Content from '~/components/widgets/Content.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import { Image } from 'astro:assets';
-import * as m from '~/paraglide/messages';
+import { loadLocale } from "~/lib/i18n";
 import { getLanguagePaths } from '~/lib/i18n';
 
 export function getStaticPaths() {
   return getLanguagePaths();
 }
+
+const lang = Astro.currentLocale || Astro.preferredLocale || 'it';
+const m = loadLocale(lang);
 
 const metadata = {
   title: m.agent_page_title(),
@@ -21,8 +24,6 @@ import mail_img from '~/assets/images/agent/Mail_eng.png';
 import sales_img from '~/assets/images/agent/Sales_eng.png';
 import intelligence_img from '~/assets/images/agent/Intelligence_eng.png';
 import { getRelativeLocaleUrl } from 'astro:i18n';
-
-const lang = Astro.currentLocale || Astro.preferredLocale || 'en';
 ---
 
 <Layout metadata={metadata}>

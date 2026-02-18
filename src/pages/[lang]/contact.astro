@@ -3,12 +3,15 @@ import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import ContactUs from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
-import * as m from '~/paraglide/messages';
+import { loadLocale } from "~/lib/i18n";
 import { getLanguagePaths } from '~/lib/i18n';
 
 export function getStaticPaths() {
   return getLanguagePaths();
 }
+
+const lang = Astro.currentLocale || Astro.preferredLocale || 'it';
+const m = loadLocale(lang);
 
 const metadata = {
   title: m.contact_page_title(),

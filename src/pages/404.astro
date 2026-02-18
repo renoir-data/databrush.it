@@ -1,12 +1,15 @@
 ---
 import Layout from '~/layouts/Layout.astro';
-import { getHomePermalink } from '~/utils/permalinks';
-import * as m from '~/paraglide/messages';
+import { loadLocale } from "~/lib/i18n";
 import { getLanguagePaths } from '~/lib/i18n';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
 export function getStaticPaths() {
   return getLanguagePaths();
 }
+
+const lang = Astro.currentLocale || Astro.preferredLocale || 'it';
+const m = loadLocale(lang);
 
 const metadata = {
   title: m.error_404_title(),
@@ -25,7 +28,7 @@ const metadata = {
         <p class="mt-4 mb-8 text-lg text-muted dark:text-slate-400">
           {m.error_404_description()}
         </p>
-        <a rel="noopener noreferrer" href={getHomePermalink()} class="btn ml-4">{m.error_404_back_button()}</a>
+        <a rel="noopener noreferrer" href={getRelativeLocaleUrl(lang, '/')} class="btn ml-4">{m.error_404_back_button()}</a>
       </div>
     </div>
   </section>

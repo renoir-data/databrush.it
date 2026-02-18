@@ -3,18 +3,20 @@ import PageLayout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Features from '~/components/widgets/Features.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
-import * as m from '~/paraglide/messages';
+import { loadLocale } from "~/lib/i18n";
 import { getLanguagePaths } from '~/lib/i18n';
 import { getRelativeLocaleUrl } from 'astro:i18n';
+
 export function getStaticPaths() {
   return getLanguagePaths();
 }
 
+const lang = Astro.currentLocale || Astro.preferredLocale || 'it';
+const m = loadLocale(lang);
+
 const metadata = {
   title: m.sales_page_title(),
 };
-
-const lang = Astro.currentLocale || Astro.preferredLocale || 'en';
 ---
 
 <PageLayout metadata={metadata}>
