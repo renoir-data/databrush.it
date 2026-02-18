@@ -6,6 +6,7 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 import dashboardImage from '~/assets/images/dashboard.png';
 import * as m from '~/paraglide/messages';
 import { getLanguagePaths } from '~/lib/i18n';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
 export function getStaticPaths() {
   return getLanguagePaths();
@@ -14,11 +15,13 @@ export function getStaticPaths() {
 const metadata = {
   title: m.dashboard_page_title(),
 };
+
+const lang = Astro.currentLocale || Astro.preferredLocale || 'en';
 ---
 
 <PageLayout metadata={metadata}>
   <div class="min-h-screen flex items-center justify-center">
-    <Hero actions={[{ text: m.dashboard_hero_action(), href: '/contact', variant: 'primary' }]}>
+    <Hero actions={[{ text: m.dashboard_hero_action(), href: getRelativeLocaleUrl(lang, '/contact'), variant: 'primary' }]}>
       <Fragment slot="title">{m.dashboard_page_title()}</Fragment>
       <Fragment slot="subtitle">{m.dashboard_hero_subtitle()}</Fragment>
     </Hero>
@@ -221,7 +224,7 @@ const metadata = {
         actions={[
           {
             text: m.dashboard_hero_action(),
-            href: '/contact',
+            href: getRelativeLocaleUrl(lang, '/contact'),
             variant: 'primary',
           },
         ]}

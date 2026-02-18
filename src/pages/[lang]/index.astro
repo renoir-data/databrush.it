@@ -20,6 +20,7 @@ import Content_dinamic from '~/components/widgets/Content_dinamic.astro';
 import * as m from '~/paraglide/messages';
 import { Image } from 'astro:assets';
 import { getLanguagePaths } from '~/lib/i18n';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
 export function getStaticPaths() {
   return getLanguagePaths();
@@ -29,6 +30,8 @@ const metadata = {
   title: 'Databrush',
   ignoreTitleTemplate: true,
 };
+
+const lang = Astro.currentLocale || Astro.preferredLocale || 'en';
 ---
 
 <Layout metadata={metadata}>
@@ -55,7 +58,7 @@ const metadata = {
         {
           variant: 'primary',
           text: m.hero_action_1(),
-          href: '/contact',
+          href: getRelativeLocaleUrl(lang, '/contact'),
           icon: 'tabler:calendar',
         },
         { text: m.hero_action_2(), href: '#contact-form', variant: 'secondary' },
@@ -386,7 +389,7 @@ const metadata = {
       {
         variant: 'primary',
         text: m.hero_action_1(),
-        href: '/contact',
+        href: getRelativeLocaleUrl(lang, '/contact'),
         icon: 'tabler:calendar',
       },
     ]}

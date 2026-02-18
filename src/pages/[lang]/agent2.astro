@@ -20,6 +20,9 @@ const metadata = {
 import mail_img from '~/assets/images/agent/Mail_eng.png';
 import sales_img from '~/assets/images/agent/Sales_eng.png';
 import intelligence_img from '~/assets/images/agent/Intelligence_eng.png';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const lang = Astro.currentLocale || Astro.preferredLocale || 'en';
 ---
 
 <Layout metadata={metadata}>
@@ -34,7 +37,7 @@ import intelligence_img from '~/assets/images/agent/Intelligence_eng.png';
       },
       { 
         text: m.agent_hero_action_2(), 
-        href: '/contact',
+        href: getRelativeLocaleUrl(lang, '/contact'),
         variant: 'secondary' 
       },
     ]}
@@ -126,7 +129,7 @@ import intelligence_img from '~/assets/images/agent/Intelligence_eng.png';
   <div class="max-w-7xl mx-auto px-4 md:px-8 pb-12">
     <div class="text-center">
       <a
-        href="/email"
+        href={getRelativeLocaleUrl(lang, '/email')}
         class="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 rounded-lg transition-colors duration-200"
       >
         {m.agent_mail_button()}
@@ -195,7 +198,7 @@ import intelligence_img from '~/assets/images/agent/Intelligence_eng.png';
     <div class="dark:bg-transparent relative">
       <div class="text-center py-12">
         <a
-          href="/sales"
+          href={getRelativeLocaleUrl(lang, '/sales')}
           class="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 rounded-lg transition-colors duration-200"
         >
           {m.agent_sales_button()}
@@ -261,7 +264,7 @@ import intelligence_img from '~/assets/images/agent/Intelligence_eng.png';
   <div class="max-w-7xl mx-auto px-4 md:px-8 pb-12">
     <div class="text-center">
       <a
-        href="/dashboard"
+        href={getRelativeLocaleUrl(lang, '/dashboard')}
         class="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 rounded-lg transition-colors duration-200"
       >
         {m.agent_dashboard_button()}
@@ -352,7 +355,7 @@ import intelligence_img from '~/assets/images/agent/Intelligence_eng.png';
       {
         variant: 'primary',
         text: m.agent_cta_action_1(),
-        href: '/contact',
+        href: getRelativeLocaleUrl(lang, '/contact'),
       },
       {
         variant: 'secondary',

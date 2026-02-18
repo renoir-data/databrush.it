@@ -22,6 +22,7 @@ import case1_dark from '~/assets/images/use_cases/case1_dark.jpg';
 import case2_dark from '~/assets/images/use_cases/case2_dark.jpg';
 import case3_dark from '~/assets/images/use_cases/case3_dark.jpg';
 import { getLanguagePaths } from '~/lib/i18n';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
 export function getStaticPaths() {
   return getLanguagePaths();
@@ -30,6 +31,8 @@ export function getStaticPaths() {
 const metadata = {
   title: m.renoir_overview_title(),
 };
+
+const lang = Astro.currentLocale || Astro.preferredLocale || 'en';
 ---
 
 <Layout metadata={metadata}>
@@ -39,7 +42,7 @@ const metadata = {
   <Hero2
     tagline="Databrush"
     actions={[
-      { variant: 'primary', target: '_blank', text: m.renoir_hero_action_1(), href: '/docs/renoir' },
+      { variant: 'primary', target: '_blank', text: m.renoir_hero_action_1(), href: getRelativeLocaleUrl(lang, '/docs/renoir') },
       { text: m.renoir_hero_action_2(), href: '#features' },
     ]}
     image={{
@@ -204,44 +207,6 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- Pricing Widget ******************* -->
-<!-- 
-  <Pricing
-    title={m.renoir_pricing_title()}
-    prices={[
-      {
-        title: m.renoir_pricing_open_source_title(),
-        subtitle: m.renoir_pricing_open_source_subtitle(),
-        price: m.renoir_pricing_open_source_price(),
-        period: m.renoir_pricing_open_source_period(),
-        callToAction: {
-          target: '_blank',
-          text: m.renoir_pricing_open_source_cta(),
-          href: '/docs/renoir',
-        },
-      },
-      {
-        title: m.renoir_pricing_enterprise_title(),
-        subtitle: m.renoir_pricing_enterprise_subtitle(),
-        price: m.renoir_pricing_enterprise_price(),
-        period: m.renoir_pricing_enterprise_period(),
-        callToAction: {
-          target: '_blank',
-          text: m.renoir_pricing_enterprise_cta(),
-          href: '/contact',
-        },
-        hasRibbon: true,
-      },
-      {
-        title: m.renoir_pricing_cloud_title(),
-        subtitle: m.renoir_pricing_cloud_subtitle(),
-        price: m.renoir_pricing_cloud_price(),
-        sign: '',
-        period: m.renoir_pricing_cloud_period(),
-      },
-    ]}
-  /> -->
-
   <!-- FAQs Widget ******************* -->
 
   <FAQs
@@ -274,7 +239,7 @@ const metadata = {
     subtitle={m.renoir_contact_subtitle()}
     callToAction={{
       text: m.renoir_contact_cta(),
-      href: '/contact',
+      href: getRelativeLocaleUrl(lang, '/contact'),
     }}
     items={[
       {

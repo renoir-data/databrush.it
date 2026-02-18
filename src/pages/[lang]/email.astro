@@ -5,7 +5,7 @@ import Features from '~/components/widgets/Features.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import * as m from '~/paraglide/messages';
 import { getLanguagePaths } from '~/lib/i18n';
-
+import { getRelativeLocaleUrl } from 'astro:i18n';
 export function getStaticPaths() {
   return getLanguagePaths();
 }
@@ -13,11 +13,13 @@ export function getStaticPaths() {
 const metadata = {
   title: m.email_page_title(),
 };
+
+const lang = Astro.currentLocale || Astro.preferredLocale || 'en';
 ---
 
 <PageLayout metadata={metadata}>
   <div class="min-h-screen flex items-center justify-center">
-    <Hero actions={[{ text: m.email_hero_action(), href: '/contact', variant: 'primary' }]}>
+    <Hero actions={[{ text: m.email_hero_action(), href: getRelativeLocaleUrl(lang, '/contact'), variant: 'primary' }]}>
       <Fragment slot="title">{m.email_page_title()}</Fragment>
       <Fragment slot="subtitle">{m.email_hero_subtitle()}</Fragment>
     </Hero>
@@ -230,7 +232,7 @@ const metadata = {
         actions={[
           {
             text: m.email_hero_action(),
-            href: '/contact',
+            href: getRelativeLocaleUrl(lang, '/contact'),
             variant: 'primary',
           },
         ]}
