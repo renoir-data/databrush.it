@@ -5,22 +5,22 @@ import SideNavMenu from '~/components/docs/SideNavMenu.astro';
 import TableofContent from '~/components/docs/TableofContent.astro';
 import type { MenuItem } from '~/doc_types';
 import PageLayout from '~/layouts/PageLayout.astro';
-import { fetchBook, next, previous, getStaticPathsDocs, getStaticPathsDocsByLocale } from '~/utils/docs';
+import { fetchBook, next, previous, getStaticPathsDocs } from '~/utils/docs';
 import { getEntry } from 'astro:content';
-import { LANGUAGES } from '~/lib/i18n';
 
 export async function getStaticPaths() {
   return getStaticPathsDocs();
 }
 
 const { page } = Astro.params;
+const lang = Astro.currentLocale || Astro.preferredLocale || 'en';
 
 if (!page) {
   // Or return a Response for a custom 404 page
   return Astro.redirect('/404');
 }
 
-const entry = await getEntry('docs', page);
+const entry = await getEntry('docs', `${lang}/${page}`);
 
 if (!entry) {
   // The requested page doesn't exist in the content collection.
@@ -32,11 +32,11 @@ const { Content, headings } = await render(entry);
 const pathname: string = Astro.url.pathname;
 
 const [book] = page.split('/');
-const menu: MenuItem[] = await fetchBook(book);
+const menu: MenuItem[] = await fetchBook(book, lang);
 const current: MenuItem | undefined = menu.find((item) => '/' + item.permalink === pathname);
 
-const prevPage: MenuItem | undefined = await previous(pathname);
-const nextPage: MenuItem | undefined = await next(pathname);
+const prevPage: MenuItem | undefined = await previous(pathname, lang);
+const nextPage: MenuItem | undefined = await next(pathname, lang);
 ---
 
 <PageLayout>

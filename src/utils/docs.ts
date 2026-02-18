@@ -1,21 +1,16 @@
 import { getCollection, render } from 'astro:content';
 import type { MarkdownHeading } from 'astro';
 import type { DocsEntry, MenuItem } from '~/doc_types';
-import { DOCS_BASE, DOCS_PERMALINK_PATTERN, trimSlash } from './permalinks';
-import { getLocalizedContent } from './localization';
+import { DOCS_BASE } from './permalinks';
 
 let _docs: DocsEntry[];
-let _books: MenuItem[];
+
 
 const load = async function (): Promise<DocsEntry[]> {
   const docs = await getCollection('docs');
   return Promise.all(docs);
 };
 
-const loadByLocale = async function (locale: string = 'en'): Promise<DocsEntry[]> {
-  const localizedDocs = await getLocalizedContent('docs', locale);
-  return localizedDocs.map(item => item.content);
-};
 
 export const fetchDocs = async (): Promise<DocsEntry[]> => {
   if (!_docs) {
@@ -25,25 +20,20 @@ export const fetchDocs = async (): Promise<DocsEntry[]> => {
   return _docs;
 };
 
-export const fetchDocsByLocale = async (locale: string = 'en'): Promise<DocsEntry[]> => {
-  return await loadByLocale(locale);
-};
-
-export const fetchBooks = async (): Promise<MenuItem[]> => {
-  if (!_books) {
-    _books = await buildBooks();
-  }
-
-  return _books;
-};
-
-const buildBooks = async (): Promise<MenuItem[]> => {
+const buildBooks = async (locale: string = 'en'): Promise<MenuItem[]> => {
   const books: MenuItem[] = [];
   const docs: DocsEntry[] = await fetchDocs();
 
-  docs.forEach((entry: DocsEntry) => {
+  // Filter docs by locale using string pattern
+  const localePrefix = `${locale}/`;
+  const filteredDocs = docs.filter(doc => doc.id.startsWith(localePrefix));
+
+  filteredDocs.forEach((entry: DocsEntry) => {
     let current = books;
-    const parts = entry.id.split('/');
+    // Remove locale prefix from entry.id (e.g., 'en/getting-started/intro' -> 'getting-started/intro')
+    const pathWithoutLocale = entry.id.slice(localePrefix.length);
+    const parts = pathWithoutLocale.split('/');
+    
     for (let i = 0; i < parts.length; i++) {
       let item: MenuItem | undefined = current.find((item) => item.slug === parts[i]);
       if (!item) {
@@ -70,13 +60,19 @@ const buildBooks = async (): Promise<MenuItem[]> => {
   return books;
 };
 
+export const fetchBooks = async (locale: string = 'en'): Promise<MenuItem[]> => {
+  // Don't cache when using locale to ensure fresh data
+  return await buildBooks(locale);
+};
+
 const generatePermalink = (id: string): string => {
-  const permalink = DOCS_PERMALINK_PATTERN.replace('%id%', id);
-  return permalink
-    .split('/')
-    .map((el) => trimSlash(el))
-    .filter((el) => !!el)
-    .join('/');
+  // id format: locale/book/page (e.g., 'en/getting-started/intro')
+  // Generate: locale/docs/book/page (e.g., 'en/docs/getting-started/intro')
+  const parts = id.split('/');
+  const locale = parts[0];
+  const pathWithoutLocale = parts.slice(1).join('/');
+  
+  return `${locale}/${DOCS_BASE}/${pathWithoutLocale}`;
 };
 
 export const getStaticPathsDocs = async () => {
@@ -87,8 +83,9 @@ export const getStaticPathsDocs = async () => {
 
   const pages = docs.map((entry, index) => {
     const lang = entry.id.split('/')[0];
+    const page = entry.id.split('/').slice(1).join('/');
     return {
-      params: { page: entry.id, lang },
+      params: { lang, page },
       props: { entry, headings: headings[index], page: entry.id },
     };
   });
@@ -96,95 +93,25 @@ export const getStaticPathsDocs = async () => {
   return pages;
 };
 
-export const getStaticPathsDocsByLocale = async (locale: string = 'en') => {
-  const docs = await fetchDocsByLocale(locale);
-  const headings: MarkdownHeading[][] = await Promise.all(
-    docs.map((entry) => render(entry).then((data: { headings }) => data.headings))
-  );
-
-  const pages = docs.map((entry, index) => {
-    const pageParam = entry.id;
-    
-    return {
-      params: { page: pageParam },
-      props: { entry, headings: headings[index], page: pageParam },
-    };
-  });
-
-  return pages;
+export const fetchBook = async (slug: string, locale: string = 'en'): Promise<MenuItem[]> => {
+  const books = await fetchBooks(locale);
+  const book = books.find((book) => book.slug === slug);
+  return book ? [book] : [];
 };
 
-export const getLocalizedDocsEntry = async (path: string, locale: string = 'en') => {
-  // Try to get localized version first
-  const localizedPath = locale === 'en' ? path : `${locale}/${path}`;
+export const previous = async (path: string, locale: string = 'en'): Promise<MenuItem | undefined> => {
+  // path format: /{locale}/docs/{book}/{...pages} (e.g., /en/docs/getting-started/intro)
+  const localeDocsPrefix = `/${locale}/${DOCS_BASE}/`;
   
-  try {
-    const docs = await getCollection('docs');
-    const entry = docs.find(doc => doc.id === localizedPath);
-    return entry;
-  } catch {
-    // Fallback to English if localized version doesn't exist
-    if (locale !== 'en') {
-      try {
-        const docs = await getCollection('docs');
-        const entry = docs.find(doc => doc.id === path);
-        return entry;
-      } catch {
-        return undefined;
-      }
-    }
+  if (!path.startsWith(localeDocsPrefix)) {
     return undefined;
   }
-};
-
-export const fetchBook = async (slug: string): Promise<MenuItem[]> => {
-  const books = await fetchBooks();
-  const book = books.find((book) => book.slug === slug);
-  return book ? [book] : [];
-};
-
-export const fetchBookByLocale = async (slug: string, locale: string = 'en'): Promise<MenuItem[]> => {
-  const docs = await fetchDocsByLocale(locale);
-  const books = await buildBooksFromDocs(docs);
-  const book = books.find((book) => book.slug === slug);
-  return book ? [book] : [];
-};
-
-const buildBooksFromDocs = async (docs: DocsEntry[]): Promise<MenuItem[]> => {
-  const books: MenuItem[] = [];
-
-  docs.forEach((entry: DocsEntry) => {
-    let current = books;
-    const parts = entry.id.split('/');
-    for (let i = 0; i < parts.length; i++) {
-      let item: MenuItem | undefined = current.find((item) => item.slug === parts[i]);
-      if (!item) {
-        item = {
-          title: '',
-          slug: parts[i],
-          permalink: '',
-          order: 0,
-          level: i,
-          children: [],
-        };
-        current.push(item!);
-      }
-      if (i + 1 == parts.length) {
-        item.title = entry.data.title;
-        item.order = entry.data.order;
-        item.permalink = generatePermalink(entry.id);
-      }
-      current.sort((a, b) => a.order - b.order);
-      current = item.children || [];
-    }
-  });
-
-  return books;
-};
-
-export const previous = async (path: string): Promise<MenuItem | undefined> => {
-  const [book] = path.replace(`/${DOCS_BASE}/`, '').split('/');
-  const root = await fetchBook(book);
+  
+  // Extract book from path (first segment after /locale/docs/)
+  const pathAfterDocs = path.slice(localeDocsPrefix.length);
+  const [book] = pathAfterDocs.split('/');
+  
+  const root = await fetchBook(book, locale);
 
   if (!root || root.length === 0) {
     return undefined;
@@ -211,9 +138,19 @@ export const previous = async (path: string): Promise<MenuItem | undefined> => {
   return undefined;
 };
 
-export const next = async (path: string): Promise<MenuItem | undefined> => {
-  const [book] = path.replace(`/${DOCS_BASE}/`, '').split('/');
-  const root = await fetchBook(book);
+export const next = async (path: string, locale: string = 'en'): Promise<MenuItem | undefined> => {
+  // path format: /{locale}/docs/{book}/{...pages} (e.g., /en/docs/getting-started/intro)
+  const localeDocsPrefix = `/${locale}/${DOCS_BASE}/`;
+  
+  if (!path.startsWith(localeDocsPrefix)) {
+    return undefined;
+  }
+  
+  // Extract book from path (first segment after /locale/docs/)
+  const pathAfterDocs = path.slice(localeDocsPrefix.length);
+  const [book] = pathAfterDocs.split('/');
+  
+  const root = await fetchBook(book, locale);
 
   if (!root || root.length === 0) {
     return undefined;
