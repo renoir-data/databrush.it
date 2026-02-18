@@ -4,12 +4,10 @@ import Logo from '~/components/Logo.astro';
 import ToggleTheme from '~/components/common/ToggleTheme.astro';
 import ToggleMenu from '~/components/common/ToggleMenu.astro';
 import Button from '~/components/ui/Button.astro';
-
-import { getHomePermalink } from '~/utils/permalinks';
 import { trimSlash, getAsset } from '~/utils/permalinks';
 import type { CallToAction } from '~/types';
-import { locales } from '~/paraglide/runtime';
-import { getRelativeLocaleUrl } from 'astro:i18n';
+import { LANGUAGES } from '~/lib/i18n';
+import { getPathByLocale, getRelativeLocaleUrl } from 'astro:i18n';
 
 interface Link {
   text?: string;
@@ -50,6 +48,12 @@ const {
 } = Astro.props;
 
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
+
+function localizeCurrentPath(lang: string) {
+  const path = currentPath.split('/').slice(2).join('/');
+  console.log('currentPath', currentPath, 'path', path);
+  return `/${lang}/${path}`;
+}
 ---
 
 <header
@@ -99,7 +103,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                     type="button"
                     class:list={[
                       'hover:text-link dark:hover:text-white px-4 py-3 flex items-center whitespace-nowrap',
-                      className
+                      className,
                     ]}
                   >
                     {text}{' '}
@@ -112,7 +116,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                           class:list={[
                             'first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap',
                             { 'aw-link-active': href2 === currentPath },
-                            className2
+                            className2,
                           ]}
                           href={href2}
                         >
@@ -127,7 +131,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                   class:list={[
                     'hover:text-link dark:hover:text-white px-4 py-3 flex items-center whitespace-nowrap',
                     { 'aw-link-active': href === currentPath },
-                    className
+                    className,
                   ]}
                   href={href}
                 >
@@ -156,19 +160,22 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
             >
               <Icon name="tabler:language" class="w-5 h-5" />
             </button>
-            <ul id="lang-switcher" class="dropdown-menu md:backdrop-blur-md dark:md:bg-dark rounded md:absolute pl-4 md:pl-0 hidden font-medium md:bg-white/90 md:min-w-[100px] drop-shadow-xl">
-              {locales.map((lang) => (
-                <li>
-                  <a
-                    id={lang}
-                    class="first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap"
-                    href="#"
-                    data-lang={lang}
-                  >
-                    {lang.toUpperCase()}
-                  </a>
-                </li>
-              ))}
+            <ul
+              class="dropdown-menu md:backdrop-blur-md dark:md:bg-dark rounded md:absolute pl-4 md:pl-0 hidden font-medium md:bg-white/90 md:min-w-[100px] drop-shadow-xl"
+            >
+              {
+                LANGUAGES.map((lang) => (
+                  <li>
+                    <a
+                      id={lang}
+                      class="first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap"
+                      href={localizeCurrentPath(lang)}
+                    >
+                      {lang.toUpperCase()}
+                    </a>
+                  </li>
+                ))
+              }
             </ul>
           </div>
 
@@ -199,63 +206,3 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
     </div>
   </div>
 </header>
-
-<script>
-  function initLanguageSwitcher() {
-    // Dynamic import to ensure it works after page transitions
-    const initSwitcher = async () => {
-      try {
-        const runtime = await import('/src/paraglide/runtime.js');
-        const { setLocale, getLocale } = runtime;
-        
-        const langSwitcher = document.getElementById('lang-switcher');
-        if (langSwitcher && langSwitcher.parentNode) {
-          // Remove any existing event listeners to prevent duplicates
-          const newLangSwitcher = langSwitcher.cloneNode(true);
-          langSwitcher.parentNode.replaceChild(newLangSwitcher, langSwitcher);
-          
-          // Update active state based on current locale
-          const currentLocale = getLocale();
-          if (newLangSwitcher instanceof Element) {
-            newLangSwitcher.querySelectorAll('a').forEach(link => {
-              const lang = link.getAttribute('data-lang');
-              if (lang === currentLocale) {
-                link.classList.add('aw-link-active');
-              } else {
-                link.classList.remove('aw-link-active');
-              }
-            });
-            
-            newLangSwitcher.addEventListener('click', (e) => {
-              if (e.target && e.target instanceof Element) {
-                const target = e.target.closest('a');
-                if (target && target.dataset.lang) {
-                  e.preventDefault();
-                  const newLang = target.dataset.lang;
-                  const currentLang = getLocale();
-                  if (newLang !== currentLang) {
-                    setLocale(newLang);
-                  }
-                }
-              }
-            });
-          }
-        }
-      } catch (error) {
-        console.error('Failed to initialize language switcher:', error);
-      }
-    };
-
-    initSwitcher();
-  }
-
-  // Initialize on page load
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initLanguageSwitcher);
-  } else {
-    initLanguageSwitcher();
-  }
-
-  // Re-initialize after Astro page transitions
-  document.addEventListener('astro:after-swap', initLanguageSwitcher);
-</script>
