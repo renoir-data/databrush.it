@@ -5,22 +5,29 @@ import Headline from '~/components/blog/Headline.astro';
 import Pagination from '~/components/blog/Pagination.astro';
 import { blogCategoryRobots, fetchPostsByLocale } from '~/utils/blog';
 import { CATEGORY_BASE } from '~/utils/permalinks';
+import { LANGUAGES } from '~/lib/i18n';
 
 export const prerender = true;
 
 export async function getStaticPaths() {
-  const posts = await fetchPostsByLocale('en');
-  const categories = new Set();
-  
-  posts.forEach((post) => {
-    if (post.category?.slug) {
-      categories.add(post.category.slug);
-    }
-  });
+  const allPaths = await Promise.all(
+    LANGUAGES.map(async lang => {
+      const posts = await fetchPostsByLocale(lang);
+      const categories = new Set();
+      
+      posts.forEach((post) => {
+        if (post.category?.slug) {
+          categories.add(post.category.slug);
+        }
+      });
 
-  return Array.from(categories).map((categorySlug) => ({
-    params: { page: categorySlug }
-  }));
+      return Array.from(categories).map((categorySlug) => ({
+        params: { lang, page: categorySlug }
+      }));
+    })
+  );
+
+  return allPaths.flat();
 }
 
 // Get category slug from URL params

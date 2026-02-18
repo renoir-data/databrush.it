@@ -3,27 +3,36 @@ import Layout from '~/layouts/PageLayout.astro';
 import BlogList from '~/components/blog/List.astro';
 import Headline from '~/components/blog/Headline.astro';
 import Pagination from '~/components/blog/Pagination.astro';
-import { blogTagRobots, fetchPostsByLocale } from '~/utils/blog';
+import { blogTagRobots, fetchPosts, fetchPostsByLocale } from '~/utils/blog';
+import { LANGUAGES } from '~/lib/i18n';
+
+const lang = Astro.currentLocale;
 
 export const prerender = true;
 
 export async function getStaticPaths() {
-  const posts = await fetchPostsByLocale('en');
-  const tags = new Set();
-  
-  posts.forEach((post) => {
-    if (post.tags) {
-      post.tags.forEach(tag => {
-        if (tag.slug) {
-          tags.add(tag.slug);
+  const allPaths = await Promise.all(
+    LANGUAGES.map(async lang => {
+      const posts = await fetchPostsByLocale(lang);
+      const tags = new Set();
+      
+      posts.forEach((post) => {
+        if (post.tags) {
+          post.tags.forEach(tag => {
+            if (tag.slug) {
+              tags.add(tag.slug);
+            }
+          });
         }
       });
-    }
-  });
 
-  return Array.from(tags).map((tagSlug) => ({
-    params: { page: tagSlug }
-  }));
+      return Array.from(tags).map((tagSlug) => ({
+        params: { lang, page: tagSlug }
+      }));
+    })
+  );
+
+  return allPaths.flat();
 }
 
 // Get tag slug from URL params

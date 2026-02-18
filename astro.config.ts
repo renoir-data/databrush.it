@@ -16,7 +16,7 @@ import astrowind from './vendor/integration';
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
 
 import react from '@astrojs/react';
-import { paraglideVitePlugin } from "@inlang/paraglide-js";
+import { paraglideVitePlugin } from '@inlang/paraglide-js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -27,13 +27,13 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
 export default defineConfig({
   output: 'static',
   trailingSlash: 'ignore',
-  
+
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'it'],
     routing: {
-      prefixDefaultLocale: false
-    }
+      prefixDefaultLocale: true,
+    },
   },
 
   integrations: [
@@ -100,7 +100,6 @@ export default defineConfig({
       paraglideVitePlugin({
         project: './project.inlang',
         outdir: './src/paraglide',
-        strategy: ['url', 'cookie', 'localStorage', 'baseLocale'],
       }),
     ],
   },

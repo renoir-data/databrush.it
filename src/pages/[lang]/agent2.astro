@@ -7,6 +7,11 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import { Image } from 'astro:assets';
 import * as m from '~/paraglide/messages';
+import { getLanguagePaths } from '~/lib/i18n';
+
+export function getStaticPaths() {
+  return getLanguagePaths();
+}
 
 const metadata = {
   title: m.agent_page_title(),

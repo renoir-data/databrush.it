@@ -4,6 +4,11 @@ import Hero from '~/components/widgets/Hero.astro';
 import Features from '~/components/widgets/Features.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import * as m from '~/paraglide/messages';
+import { getLanguagePaths } from '~/lib/i18n';
+
+export function getStaticPaths() {
+  return getLanguagePaths();
+}
 
 const metadata = {
   title: m.sales_page_title(),

@@ -5,23 +5,26 @@ import SideNavMenu from '~/components/docs/SideNavMenu.astro';
 import TableofContent from '~/components/docs/TableofContent.astro';
 import type { MenuItem } from '~/doc_types';
 import PageLayout from '~/layouts/PageLayout.astro';
-import { fetchBookByLocale, getLocalizedDocsEntry, next, previous, getStaticPathsDocsByLocale } from '~/utils/docs';
+import { fetchBook, next, previous, getStaticPathsDocs, getStaticPathsDocsByLocale } from '~/utils/docs';
+import { getEntry } from 'astro:content';
+import { LANGUAGES } from '~/lib/i18n';
 
 export async function getStaticPaths() {
-  return await getStaticPathsDocsByLocale('it');
+  return getStaticPathsDocs();
 }
 
 const { page } = Astro.params;
 
 if (!page) {
-  return Astro.redirect('/it/404');
+  // Or return a Response for a custom 404 page
+  return Astro.redirect('/404');
 }
 
-// Try to get Italian version, fallback to English
-const entry = await getLocalizedDocsEntry(page, 'it');
+const entry = await getEntry('docs', page);
 
 if (!entry) {
-  return Astro.redirect('/it/404');
+  // The requested page doesn't exist in the content collection.
+  return Astro.redirect('/404');
 }
 
 const { Content, headings } = await render(entry);
@@ -29,8 +32,8 @@ const { Content, headings } = await render(entry);
 const pathname: string = Astro.url.pathname;
 
 const [book] = page.split('/');
-const menu: MenuItem[] = await fetchBookByLocale(book, 'it');
-const current: MenuItem | undefined = menu.find((item) => '/it/' + item.permalink === pathname);
+const menu: MenuItem[] = await fetchBook(book);
+const current: MenuItem | undefined = menu.find((item) => '/' + item.permalink === pathname);
 
 const prevPage: MenuItem | undefined = await previous(pathname);
 const nextPage: MenuItem | undefined = await next(pathname);
@@ -52,12 +55,12 @@ const nextPage: MenuItem | undefined = await next(pathname);
       <div class="flex flex-col lg:flex-row">
         {
           prevPage && (
-            <a href={`/it/${prevPage.permalink}`} class="w-full my-2 lg:w-1/2 lg:m-2 no-underline shadow-md shadow-shadowed rounded-lg hover:-translate-y-1 duration-100 overflow-ellipsis whitespace-nowrap">
+            <a href={`/${prevPage.permalink}`} class="w-full my-2 lg:w-1/2 lg:m-2 no-underline shadow-md shadow-shadowed rounded-lg hover:-translate-y-1 duration-100 overflow-ellipsis whitespace-nowrap">
               <div>
                 <div class="flex flex-row justify-between items-center p-4">
                   <Icon name='tabler:arrow-left' class="flex-shrink-0"/>
                   <div class="flex flex-col max-w-[280px] overflow-hidden">
-                    <div class="text-right rtl">Precedente</div>
+                    <div class="text-right rtl">Previous</div>
                     <div class="text-right">
                       {prevPage.title}
                     </div>
@@ -69,11 +72,11 @@ const nextPage: MenuItem | undefined = await next(pathname);
         }
         {
           nextPage && (
-            <a href={`/it/${nextPage.permalink}`} class="w-full my-2 lg:w-1/2 lg:m-2 lg:ml-auto no-underline shadow-md shadow-shadowed rounded-lg hover:-translate-y-1 duration-100 overflow-ellipsis whitespace-nowrap">
+            <a href={`/${nextPage.permalink}`} class="w-full my-2 lg:w-1/2 lg:m-2 lg:ml-auto no-underline shadow-md shadow-shadowed rounded-lg hover:-translate-y-1 duration-100 overflow-ellipsis whitespace-nowrap">
               <div>
                 <div class="flex flex-row justify-between items-center p-4">
                   <div class="flex flex-col max-w-[280px] overflow-hidden">
-                    <div class="text-left">Successivo</div>
+                    <div class="text-left">Next</div>
                     <div class="text-left">
                       {nextPage.title}
                     </div>

@@ -16,6 +16,7 @@ import BasicScripts from "~/components/common/BasicScripts.astro";
 import { ClientRouter } from "astro:transitions";
 
 import type { MetaData as MetaDataType } from "~/types";
+import { setLocale } from "~/paraglide/runtime";
 
 export interface Props {
   metadata?: MetaDataType;
@@ -23,6 +24,9 @@ export interface Props {
 
 const { metadata = {} } = Astro.props;
 const { language, textDirection } = I18N;
+
+const lang = Astro.currentLocale;
+setLocale(lang);
 ---
 
 <!doctype html>

@@ -41,6 +41,19 @@ const generatePermalink = async ({
     .join('/');
 };
 
+export const getStaticPathsBlog = async () => {
+  const posts = await fetchPosts();
+
+  const pages = posts.map((entry, index) => {
+    const lang = entry.id.split('/')[0];
+    return {
+      params: { blog: entry.permalink, lang },
+    };
+  });
+
+  return pages;
+};
+
 const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> => {
   const { id, data } = post;
   const { Content, remarkPluginFrontmatter } = await render(post);

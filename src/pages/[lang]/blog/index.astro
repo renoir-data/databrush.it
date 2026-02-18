@@ -7,11 +7,17 @@ import * as m from '~/paraglide/messages';
 import { blogListRobots, fetchPostsByLocale, blogPostsPerPage } from '~/utils/blog';
 import { BLOG_BASE } from '~/utils/permalinks';
 import type { MetaData } from '~/types';
+import { getLanguagePaths } from '~/lib/i18n';
+
+export function getStaticPaths() {
+  return getLanguagePaths();
+}
 
 export const prerender = true;
 
 const currentPage = 1;
-const allPosts = await fetchPostsByLocale('it');
+const lang = Astro.currentLocale;
+const allPosts = await fetchPostsByLocale(lang);
 const totalPages = Math.ceil(allPosts.length / blogPostsPerPage);
 
 const start = 0;

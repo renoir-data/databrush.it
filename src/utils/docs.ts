@@ -86,8 +86,9 @@ export const getStaticPathsDocs = async () => {
   );
 
   const pages = docs.map((entry, index) => {
+    const lang = entry.id.split('/')[0];
     return {
-      params: { page: entry.id },
+      params: { page: entry.id, lang },
       props: { entry, headings: headings[index], page: entry.id },
     };
   });
@@ -103,9 +104,8 @@ export const getStaticPathsDocsByLocale = async (locale: string = 'en') => {
 
   const pages = docs.map((entry, index) => {
     // Remove locale prefix from entry.id for the page param
-    const pageParam = locale !== 'en' && entry.id.startsWith(`${locale}/`) 
-      ? entry.id.slice(locale.length + 1) 
-      : entry.id;
+    const pageParam = entry.id;
+    console.log(`Generating static path for locale '${locale}': ${pageParam}`);
     
     return {
       params: { page: pageParam },

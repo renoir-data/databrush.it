@@ -21,6 +21,11 @@ import case3 from '~/assets/images/use_cases/case3.jpg';
 import case1_dark from '~/assets/images/use_cases/case1_dark.jpg';
 import case2_dark from '~/assets/images/use_cases/case2_dark.jpg';
 import case3_dark from '~/assets/images/use_cases/case3_dark.jpg';
+import { getLanguagePaths } from '~/lib/i18n';
+
+export function getStaticPaths() {
+  return getLanguagePaths();
+}
 
 const metadata = {
   title: m.renoir_overview_title(),

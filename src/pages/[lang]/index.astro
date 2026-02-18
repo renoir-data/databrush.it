@@ -15,8 +15,15 @@ import ContactUs from '~/components/widgets/Contact.astro';
 import brush_small from '~/assets/images/brush/small.svg?raw';
 import brush_medium from '~/assets/images/brush/medium.svg?raw';
 import brush_large from '~/assets/images/brush/large.svg?raw';
+import polimi_logo from '~/assets/images/spinoff.webp';
 import Content_dinamic from '~/components/widgets/Content_dinamic.astro';
 import * as m from '~/paraglide/messages';
+import { Image } from 'astro:assets';
+import { getLanguagePaths } from '~/lib/i18n';
+
+export function getStaticPaths() {
+  return getLanguagePaths();
+}
 
 const metadata = {
   title: 'Databrush',
@@ -43,16 +50,15 @@ const metadata = {
 
     <!-- Hero Content -->
     <Hero
-      tagline="Databrush"
+      tagline="You need a Brush to paint a Data Masterpiece"
       actions={[
         {
           variant: 'primary',
-          target: '_blank',
           text: m.hero_action_1(),
-          href: '/it/docs/renoir',
-          icon: 'tabler:download',
+          href: '/contact',
+          icon: 'tabler:calendar',
         },
-        { text: m.hero_action_2(), href: '#features', variant: 'secondary' },
+        { text: m.hero_action_2(), href: '#contact-form', variant: 'secondary' },
       ]}
     >
       <Fragment slot="title" set:html={m.hero_title()} />
@@ -60,14 +66,120 @@ const metadata = {
     </Hero>
   </div>
 
-  <!-- Features2 Widget ************** -->
+  <!-- Academic Credibility Section ************** -->
 
-  <Features3 title={m.about_us_title()} isBeforeContent={true}>
-    <Fragment slot="subtitle" set:html={m.about_us_subtitle()} />
+  <div class="px-4 py-16 mx-auto max-w-7xl sm:px-6 lg:px-8 lg:py-20">
+    <div class="text-center mb-8">
+      <p class="text-base font-semibold tracking-wide text-primary uppercase" set:html={m.credibility_tagline()} />
+      <p class="mt-2 text-muted max-w-3xl mx-auto" set:html={m.about_us_subtitle()} />
+    </div>
+    <div class="flex justify-center mb-8">
+      <div class="w-64 h-auto [&>svg]:w-full [&>svg]:h-auto">
+        <Image src={polimi_logo} alt="SpinOff Politecnico Logo" />
+      </div>
+    </div>
+  <Stats
+    subtitle={m.stats_title()}
+    stats={[
+      { title: m.stats_item_1_title(), amount: '1º' },
+      { title: m.stats_item_2_title(), amount: '>1000' },
+      { title: m.stats_item_3_title(), amount: '83' },
+      { title: m.stats_item_4_title(), amount: '4' },
+    ]}
+  />
+  </div>
+
+  <!-- Pain Points Section (The "Why") ************** -->
+
+  <Features2
+    title={m.pain_points_title()}
+    subtitle={m.pain_points_subtitle()}
+    items={[
+      {
+        title: m.pain_point_1_title(),
+        description: m.pain_point_1_description(),
+        icon: 'tabler:cloud-dollar',
+        classes: {
+          panel: 'flex flex-col justify-center items-center text-center',
+        },
+      },
+      {
+        title: m.pain_point_2_title(),
+        description: m.pain_point_2_description(),
+        icon: 'tabler:shield-lock',
+        classes: {
+          panel: 'flex flex-col justify-center items-center text-center',
+        },
+      },
+      {
+        title: m.pain_point_3_title(),
+        description: m.pain_point_3_description(),
+        icon: 'tabler:layout-dashboard',
+        classes: {
+          panel: 'flex flex-col justify-center items-center text-center',
+        },
+      },
+    ]}>
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
-  </Features3>
+  </Features2>
+
+  <!-- Solution Section (The "Databrush Method") ************** -->
+
+  <Features
+    id="solution"
+    title={m.solution_title()}
+    subtitle={m.solution_subtitle()}
+    columns={3}
+    items={[
+      {
+        title: m.solution_step_1_title(),
+        description: m.solution_step_1_description(),
+        icon: 'tabler:search',
+      },
+      {
+        title: m.solution_step_2_title(),
+        description: m.solution_step_2_description(),
+        icon: 'tabler:tools',
+      },
+      {
+        title: m.solution_step_3_title(),
+        description: m.solution_step_3_description(),
+        icon: 'tabler:chart-line',
+      },
+    ]}
+  />
+
+  <!-- Engine Comparison Section ************** -->
+
+  <Features2
+    title={m.engine_title()}
+    subtitle={m.engine_subtitle()}
+    items={[
+      {
+        title: m.engine_old_way_title(),
+        description: `<ul class="list-disc pl-6 text-left"><li>${m.engine_old_way_item_1()}</li><li>${m.engine_old_way_item_2()}</li><li>${m.engine_old_way_item_3()}</li></ul>`,
+        icon: 'tabler:clock-pause',
+        classes: {
+          panel: 'flex flex-col justify-center items-center text-center',
+          icon: 'text-red-500',
+        },
+      },
+      {
+        title: m.engine_renoir_way_title(),
+        description: `<ul class="list-disc pl-6 text-left"><li>${m.engine_renoir_way_item_1()}</li><li>${m.engine_renoir_way_item_2()}</li><li>${m.engine_renoir_way_item_3()}</li></ul>`,
+        icon: 'tabler:bolt',
+        classes: {
+          panel: 'flex flex-col justify-center items-center text-center',
+          icon: 'text-green-500',
+        },
+      },
+    ]}>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
 
   <!-- Agent² Section **************** -->
 
@@ -107,7 +219,7 @@ const metadata = {
     </Fragment>
     <Fragment slot="footer">
       <a
-        href="/it/agent2"
+        href="/agent2"
         class="btn btn-primary inline-flex items-center gap-2 px-6 py-3 text-lg font-semibold text-white bg-primary hover:bg-primary-600 rounded-lg transition-colors"
       >
         {m.landing_agent_cta()}
@@ -125,21 +237,7 @@ const metadata = {
     </Fragment>
   </Features2>
 
-  <!-- Stats Widget ****************** -->
-
-  <!-- <TypedCodeImage /> -->
-  <!-- <IndustrialMonitoring/> -->
-
-  <Stats
-    title={m.stats_title()}
-    subtitle={m.stats_subtitle()}
-    stats={[
-      { title: m.stats_item_1_title(), amount: '1º' },
-      { title: m.stats_item_2_title(), amount: '>1000' },
-      { title: m.stats_item_3_title(), amount: '83' },
-      { title: m.stats_item_4_title(), amount: '4' },
-    ]}
-  />
+  <!-- Features Widget *************** -->
 
   <Features
     id="features"
@@ -251,7 +349,7 @@ const metadata = {
   </FAQs>
 
   <ContactUs
-    id="form"
+    id="contact-form"
     title={m.contact_title()}
     subtitle={m.contact_subtitle()}
     inputs={[
@@ -287,10 +385,9 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        target: '_blank',
         text: m.hero_action_1(),
-        href: '/it/docs/renoir',
-        icon: 'tabler:download',
+        href: '/contact',
+        icon: 'tabler:calendar',
       },
     ]}
   >
