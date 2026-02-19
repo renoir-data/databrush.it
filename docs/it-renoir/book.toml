@@ -1,0 +1,8 @@
+[book]
+title = "Renoir"
+authors = ["DataBrush"]
+language = "it"
+
+[output.html]
+git-repository-url = "https://github.com/deib-polimi/renoir"
+site-url = "/it/docs/renoir"

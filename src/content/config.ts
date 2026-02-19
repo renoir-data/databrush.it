@@ -65,15 +65,6 @@ const postCollection = defineCollection({
   }),
 });
 
-const docsCollection = defineCollection({
-  loader: glob({ pattern: ['**/*.md', '**/*.mdx'], base: 'src/data/docs' }),
-  schema: z.object({
-    title: z.string(),
-    order: z.number(),
-  })
-});
-
 export const collections = {
   post: postCollection,
-  docs: docsCollection,
 };

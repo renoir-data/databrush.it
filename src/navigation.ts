@@ -13,6 +13,7 @@ export const getHeaderData = (m: typeof import('./paraglide/messages'), lang: st
         {
           text: m.nav_documentation(),
           href: getRelativeLocaleUrl(lang, '/docs/renoir'),
+          target: '_blank',
         },
       ],
     },
