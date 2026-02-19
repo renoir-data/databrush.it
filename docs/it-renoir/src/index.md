@@ -104,4 +104,4 @@ num_cores = 24
 ssh = { username = "renoir", key_file = "/home/renoir/.ssh/id_ed25519" }
 ```
 
-Consulta la directory [esempi](examples/) per un set esteso di esempi funzionanti
+Consulta la directory [esempi](https://github.com/deib-polimi/renoir/tree/master/examples) per un set esteso di esempi funzionanti

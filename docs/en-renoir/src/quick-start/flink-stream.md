@@ -1,4 +1,4 @@
-> This guide assumes you have already set-up an environment for Renoir and created a cargo project following the [guide](../../install/install)
+> This guide assumes you have already set-up an environment for Renoir and created a cargo project following the [guide](/en/docs/renoir/install/install.html)
 
 > This quick introduction follows a hands-on approach showing examples comparing the Flink API to the Renoir API
 
