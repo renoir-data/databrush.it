@@ -54,10 +54,11 @@ export default defineConfig({
   trailingSlash: 'ignore',
 
   i18n: {
-    defaultLocale: 'it',
+    defaultLocale: 'en',
     locales: ['en', 'it'],
     routing: {
       prefixDefaultLocale: true,
+      redirectToDefaultLocale: false,
     },
   },
 

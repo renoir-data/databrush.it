@@ -17,11 +17,11 @@ export const getHeaderData = (m: typeof import('./paraglide/messages'), lang: st
         },
       ],
     },
-    {
-      text: 'Agent²',
-      href: getRelativeLocaleUrl(lang, '/agent2'),
-      className: 'text-orange-500 hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300',
-    },
+    // {
+    //   text: 'Agent²',
+    //   href: getRelativeLocaleUrl(lang, '/agent2'),
+    //   className: 'text-orange-500 hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300',
+    // },
     {
       text: m.nav_blog(),
       href: getRelativeLocaleUrl(lang, '/blog'),
