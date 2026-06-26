@@ -1,31 +1,18 @@
-# 🚀 AstroWind
+# 🖌️ Databrush
 
-<img src="https://raw.githubusercontent.com/onwidget/.github/main/resources/astrowind/lighthouse-score.png" align="right"
-     alt="AstroWind Lighthouse Score" width="100" height="358">
+**Databrush** is a premium website built using **[Astro](https://astro.build/) + [Tailwind CSS](https://tailwindcss.com/)**. It serves as the homepage for Databrush, an academic spin-off of **Politecnico di Milano** specializing in high-performance data processing via the Renoir engine.
 
-🌟 _Most *starred* & *forked* Astro theme in 2022 & 2023_. 🌟
+## 🎨 Design Theme: Neobrutalism
 
-**AstroWind** is a free and open-source template to make your website using **[Astro 5.0](https://astro.build/) + [Tailwind CSS](https://tailwindcss.com/)**. Ready to start a new project and designed taking into account web best practices.
+The website implements a customized, high-performance **Neobrutalist** design:
+- **Typography:** Bold and modern [Space Grotesk](https://fontsource.org/fonts/space-grotesk) variable font.
+- **Color Palette:** Curated brand identity utilizing **Company Teal** (`#26E9AF`) and **Product Purple** (`#AF4AD4`) over a warm cream/sand canvas (`#fbfaf5`) in light mode and matte black (`#121212`) in dark mode.
+- **Visual Structure:** Flat card components, thick solid black/white borders (`border-[3px]`), flat offset shadows (`shadow-[4px_4px_0px_0px]`), and hover translation micro-interactions.
 
-- ✅ **Production-ready** scores in **PageSpeed Insights** reports.
-- ✅ Integration with **Tailwind CSS** supporting **Dark mode** and **_RTL_**.
-- ✅ **Fast and SEO friendly blog** with automatic **RSS feed**, **MDX** support, **Categories & Tags**, **Social Share**, ...
-- ✅ **Image Optimization** (using new **Astro Assets** and **Unpic** for Universal image CDN).
-- ✅ Generation of **project sitemap** based on your routes.
-- ✅ **Open Graph tags** for social media sharing.
-- ✅ **Analytics** built-in Google Analytics, and Splitbee integration.
-
-<br>
-
-<img src="https://raw.githubusercontent.com/onwidget/.github/main/resources/astrowind/screenshot-astrowind-1.png" alt="AstroWind Theme Screenshot">
-
-[![onWidget](https://custom-icon-badges.demolab.com/badge/made%20by%20-onWidget-556bf2?style=flat-square&logo=onwidget&logoColor=white&labelColor=101827)](https://onwidget.com)
-[![License](https://img.shields.io/github/license/onwidget/astrowind?style=flat-square&color=dddddd&labelColor=000000)](https://github.com/onwidget/astrowind/blob/main/LICENSE.md)
-[![Maintained](https://img.shields.io/badge/maintained%3F-yes-brightgreen.svg?style=flat-square)](https://github.com/onwidget)
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/onwidget/astrowind#contributing)
-[![Known Vulnerabilities](https://snyk.io/test/github/onwidget/astrowind/badge.svg?style=flat-square)](https://snyk.io/test/github/onwidget/astrowind)
-[![Stars](https://img.shields.io/github/stars/onwidget/astrowind.svg?style=social&label=stars&maxAge=86400&color=ff69b4)](https://github.com/onwidget/astrowind)
-[![Forks](https://img.shields.io/github/forks/onwidget/astrowind.svg?style=social&label=forks&maxAge=86400&color=ff69b4)](https://github.com/onwidget/astrowind)
+- ✅ **Academic Credibility:** Spin-off of Politecnico di Milano.
+- ✅ **Clean Neobrutalist UI:** High-contrast grids, badges, cards, and dropdowns.
+- ✅ **Fully Responsive & Dark Mode:** Integrated dark/light mode toggle adapting the Neobrutalist borders and shadows.
+- ✅ **SEO & Performance Friendly:** Prerendered Astro routes for fast load times and clean metadata.
 
 <br>
 

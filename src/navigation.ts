@@ -50,7 +50,6 @@ export const getFooterData = (m: typeof import('./paraglide/messages'), lang: st
     {
       title: m.footer_community(),
       links: [
-        { text: 'Agent²', href: getRelativeLocaleUrl(lang, '/agent2') },
         { text: m.nav_blog(), href: getRelativeLocaleUrl(lang, '/blog') },
         { text: m.nav_roadmap(), href: getRelativeLocaleUrl(lang, '/roadmap') },
         { text: m.nav_contact(), href: getRelativeLocaleUrl(lang, '/contact') },

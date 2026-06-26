@@ -58,7 +58,7 @@ function localizeCurrentPath(lang: string) {
 <header
   class:list={[
     { sticky: isSticky, relative: !isSticky, dark: isDark },
-    'top-0 z-40 flex-none mx-auto w-full border-b border-gray-50/0 transition-[opacity] ease-in-out',
+    'top-0 z-40 flex-none mx-auto w-full border-b-[3px] border-black dark:border-white transition-[opacity] ease-in-out',
   ]}
   {...isSticky ? { 'data-aw-sticky-header': true } : {}}
   {...id ? { id } : {}}
@@ -108,12 +108,12 @@ function localizeCurrentPath(lang: string) {
                     {text}{' '}
                     <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" />
                   </button>
-                  <ul class="dropdown-menu md:backdrop-blur-md dark:md:bg-dark rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-white/90 md:min-w-[200px] drop-shadow-xl">
+                  <ul class="dropdown-menu dark:md:bg-dark md:absolute pl-4 md:pl-0 md:hidden font-bold md:bg-white md:min-w-[200px] border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] rounded-none">
                     {links.map(({ text: text2, href: href2, className: className2, target: target2 }) => (
                       <li>
                         <a
                           class:list={[
-                            'first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap',
+                            'md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap',
                             { 'aw-link-active': href2 === currentPath },
                             className2,
                           ]}
@@ -161,14 +161,14 @@ function localizeCurrentPath(lang: string) {
               <Icon name="tabler:language" class="w-5 h-5" />
             </button>
             <ul
-              class="dropdown-menu md:backdrop-blur-md dark:md:bg-dark rounded md:absolute pl-4 md:pl-0 hidden font-medium md:bg-white/90 md:min-w-[100px] drop-shadow-xl"
+              class="dropdown-menu dark:md:bg-dark md:absolute pl-4 md:pl-0 hidden font-bold md:bg-white md:min-w-[100px] border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] rounded-none"
             >
               {
                 LANGUAGES.map((lang) => (
                   <li>
                     <a
                       id={lang}
-                      class="first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap"
+                      class="md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap"
                       href={localizeCurrentPath(lang)}
                     >
                       {lang.toUpperCase()}

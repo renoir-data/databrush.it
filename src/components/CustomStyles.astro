@@ -1,5 +1,5 @@
 ---
-import '@fontsource-variable/inter';
+import '@fontsource/space-grotesk';
 
 // 'DM Sans'
 // Nunito
@@ -22,50 +22,52 @@ import '@fontsource-variable/inter';
 
 <style is:inline>
   :root {
-    --aw-font-sans: 'Inter Variable';
-    --aw-font-serif: 'Inter Variable';
-    --aw-font-heading: 'Inter Variable';
+    --aw-font-sans: 'Space Grotesk', sans-serif;
+    --aw-font-serif: 'Space Grotesk', sans-serif;
+    --aw-font-heading: 'Space Grotesk', sans-serif;
 
-    --aw-color-primary: rgb(1,97,239);
-    --aw-color-secondary: rgb(1,84,207);
-    --aw-color-accent: rgb(109,40,217);
+    --aw-color-primary: rgb(38, 233, 175); /* #26E9AF */
+    --aw-color-secondary: rgb(175, 74, 212); /* #AF4AD4 */
+    --aw-color-accent: rgb(175, 74, 212); /* #AF4AD4 */
 
     --aw-color-text-heading: rgb(0,0,0);
-    --aw-color-text-default: rgb(16,16,16);
-    --aw-color-text-muted: rgb(16 16 16 / 66%);
-    --aw-color-bg-page: rgb(255,255,255);
-    --aw-color-bg-page-alpha: rgba(255, 255, 255, 0.3);
+    --aw-color-text-default: rgb(0,0,0);
+    --aw-color-text-muted: rgb(0 0 0 / 80%);
+    --aw-color-bg-page: rgb(251, 250, 245);
+    --aw-color-bg-page-alpha: rgba(251, 250, 245, 0.3);
 
-    --aw-color-bg-page-dark: rgb(3,6,32);
-    --aw-color-bg-page-dark-alpha: rgba(3, 6, 32, 0.3);
+    --aw-color-bg-page-dark: rgb(18, 18, 18);
+    --aw-color-bg-page-dark-alpha: rgba(18, 18, 18, 0.3);
 
     --breakpoint-xs: 30rem;
 
     ::selection {
-      background-color: lavender;
+      background-color: rgb(38, 233, 175);
+      color: black;
     }
   }
 
   .dark {
-    --aw-font-sans: 'Inter Variable';
-    --aw-font-serif: 'Inter Variable';
-    --aw-font-heading: 'Inter Variable';
+    --aw-font-sans: 'Space Grotesk', sans-serif;
+    --aw-font-serif: 'Space Grotesk', sans-serif;
+    --aw-font-heading: 'Space Grotesk', sans-serif;
 
-    --aw-color-primary: rgb(1,97,239);
-    --aw-color-secondary: rgb(1,84,207);
-    --aw-color-accent: rgb(109,40,217);
+    --aw-color-primary: rgb(38, 233, 175);
+    --aw-color-secondary: rgb(175, 74, 212);
+    --aw-color-accent: rgb(175, 74, 212);
 
-    --aw-color-text-heading: rgb(247, 248, 248);
-    --aw-color-text-default: rgb(229, 236, 246);
-    --aw-color-text-muted: rgb(229 236 246 / 66%);
-    --aw-color-bg-page: rgb(3, 6, 32);
-    --aw-color-bg-page-alpha: rgba(3, 6, 32, 0.3);
+    --aw-color-text-heading: rgb(255, 255, 255);
+    --aw-color-text-default: rgb(240, 240, 240);
+    --aw-color-text-muted: rgb(240 240 240 / 70%);
+    --aw-color-bg-page: rgb(18, 18, 18);
+    --aw-color-bg-page-alpha: rgba(18, 18, 18, 0.3);
 
     --breakpoint-xs: 30rem;
 
     ::selection {
-      background-color: black;
-      color: snow;
+      background-color: rgb(175, 74, 212);
+      color: white;
     }
   }
 </style>
+

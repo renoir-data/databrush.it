@@ -56,21 +56,21 @@ const {
           columns={columns}
           defaultIcon="tabler:check"
           classes={{
-            container: `gap-y-2 md:gap-y-4`,
-            panel: 'max-w-none hover:ring ring-primary-500/70 transition-shadow duration-300 rounded-lg p-4 hover-div',
-            title: 'text-lg font-medium leading-6 dark:text-white ml-2 rtl:ml-0 rtl:mr-2 md:max-xl:text-2xl',
+            container: 'gap-y-4 md:gap-y-6',
+            panel: 'max-w-none border-[3px] border-black dark:border-white rounded-none p-4 bg-white dark:bg-slate-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)] hover-div transition-all duration-150 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255,1)] cursor-pointer',
+            title: 'text-lg font-bold leading-6 text-black dark:text-white ml-2 rtl:ml-0 rtl:mr-2 md:max-xl:text-2xl',
             description: 'text-muted dark:text-slate-400 ml-2 rtl:ml-0 rtl:mr-2 md:max-xl:hidden',
-            icon: 'flex h-7 w-7 items-center justify-center rounded-full bg-green-600 dark:bg-green-700 text-gray-50 p-1',
+            icon: 'flex h-7 w-7 items-center justify-center rounded-none border border-black dark:border-white bg-primary text-black p-1 flex-shrink-0',
             action: 'text-lg font-medium leading-6 dark:text-white ml-2 rtl:ml-0 rtl:mr-2',
           }}
         />
       </div>
       <div aria-hidden="true" class="mt-10 md:mt-0 md:basis-1/2">
         <div class="relative m-auto max-w-4xl dark:hidden">
-          <img id="slideshow_light" src={company.src} class="w-full h-auto rounded-3xl " alt="team" />
+          <img id="slideshow_light" src={company.src} class="w-full h-auto rounded-none border-[3px] border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]" alt="team" />
         </div>
         <div class="relative m-auto max-w-4xl hidden dark:block">
-          <img id="slideshow_dark" src={company_dark.src} class="w-full h-auto rounded-3xl " alt="team" />
+          <img id="slideshow_dark" src={company_dark.src} class="w-full h-auto rounded-none border-[3px] border-white shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]" alt="team" />
         </div>
       </div>
     </div>
